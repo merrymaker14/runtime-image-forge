@@ -1,0 +1,94 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Solución de problemas — Runtime Image Forge</title><meta name="description" content="Solución de problemas — Runtime Image Forge: generación local de imágenes para Unity."><link rel="stylesheet" href="../../site.css"><link rel="icon" href="../../assets/forge-mark.svg"><script src="../../site.js" defer></script><link rel="canonical" href="https://merrymaker14.github.io/runtime-image-forge/es/docs/troubleshooting.html"><link rel="alternate" hreflang="en" href="https://merrymaker14.github.io/runtime-image-forge/docs/troubleshooting.html"><link rel="alternate" hreflang="ru" href="https://merrymaker14.github.io/runtime-image-forge/ru/docs/troubleshooting.html"><link rel="alternate" hreflang="es" href="https://merrymaker14.github.io/runtime-image-forge/es/docs/troubleshooting.html"><link rel="alternate" hreflang="zh-Hans" href="https://merrymaker14.github.io/runtime-image-forge/zh-Hans/docs/troubleshooting.html"><link rel="alternate" hreflang="x-default" href="https://merrymaker14.github.io/runtime-image-forge/docs/troubleshooting.html"></head><body><a class="skip" href="#main">Ir al contenido</a><header class="header wrap"><a class="brand" href="../"><img src="../../assets/forge-mark.svg" width="42" height="42" alt="">Runtime Image Forge</a><nav aria-label="Navegación principal"><a href="../#demo">Juego complementario</a><a href="index.html">Documentación</a><a href="api.html">API</a></nav></header><nav class="language-switch wrap" aria-label="Idioma"><span>Idioma</span><a data-language="en" lang="en" hreflang="en" href="../../docs/troubleshooting.html">English</a><a data-language="ru" lang="ru" hreflang="ru" href="../../ru/docs/troubleshooting.html">Русский</a><a data-language="es" lang="es" hreflang="es" href="troubleshooting.html" aria-current="page">Español</a><a data-language="zh-Hans" lang="zh-Hans" hreflang="zh-Hans" href="../../zh-Hans/docs/troubleshooting.html">简体中文</a></nav><main id="main" class="doc-layout wrap"><nav class="doc-nav" aria-label="Documentación"><p>Guías y referencia</p><a href="index.html">Documentación</a><a href="quick-start.html">Inicio rápido</a><a href="models-and-styles.html">Modelos y estilos</a><a href="api.html">Runtime API</a><a href="exporting-images.html">Guardar y exportar</a><a href="mcp.html">Editor MCP</a><a href="troubleshooting.html" aria-current="page">Solución de problemas</a><a href="third-party-notices.html">Avisos de terceros</a></nav><article class="doc-article"><p class="doc-meta">Runtime Image Forge 1.0.0 · Unity 6000.5+</p><h1 id="troubleshooting">Solución de problemas</h1><nav class="toc" aria-label="En esta página"><ul><li><a href="#cancelling-and-unloading">Cancelar y liberar</a></li><li><a href="#requirements-and-limits">Requisitos y límites</a></li></ul></nav>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Tabla de referencia"><table>
+<thead>
+<tr>
+<th>Síntoma</th>
+<th>Acción</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Falta el archivo nativo</td>
+<td>Fuera de Play, elige <strong>Tools &gt; Runtime Image Forge &gt; Install Windows Backend</strong> y recompila el Player.</td>
+</tr>
+<tr>
+<td>La descarga se detiene o falla</td>
+<td>Comprueba internet, espacio y permisos. Reintenta con la acción explícita. Una descarga cancelada o fallida no sustituye un modelo válido.</td>
+</tr>
+<tr>
+<td>Falla el hash del modelo</td>
+<td>Sustituye la copia inválida mediante descarga HTTPS explícita o reimportación local verificada, según el perfil. Los perfiles de solo importación requieren importación local. No se acepta para generar hasta verificar su integridad.</td>
+</tr>
+<tr>
+<td>Falla la preparación</td>
+<td>Comprueba perfil, Windows x64, GPU Vulkan y archivos nativos. Consulta Console o Player log para la causa concreta.</td>
+</tr>
+<tr>
+<td>Falta una dependencia nativa o está desactualizada</td>
+<td>Instala la versión más reciente de Microsoft Visual C++ 2015–2022 Redistributable (x64) desde Microsoft y reinicia Unity o el juego. Si el mensaje continúa, actualiza el controlador gráfico.</td>
+</tr>
+<tr>
+<td>Una ruta contiene un enlace simbólico o una unión</td>
+<td>Mueve el proyecto, el juego, el paquete de modelos o la carpeta de exportación a una ubicación a la que se llegue sin enlaces simbólicos ni uniones de directorios. Esto incluye la carpeta de datos de la aplicación (<code>Application.persistentDataPath</code>) si se redirigió con una unión. Las carpetas sincronizadas en la nube, como OneDrive, no se consideran enlaces.</td>
+</tr>
+<tr>
+<td>El siguiente pedido tras una cancelación tarda más</td>
+<td>Cancelar la carga del modelo o una generación en curso libera el contexto nativo del modelo para recuperar su memoria. El siguiente pedido vuelve a cargar el modelo antes de generar. Cancelar un trabajo que aún espera en la cola no lo libera.</td>
+</tr>
+<tr>
+<td>La preparación sigue en curso</td>
+<td>La preparación verifica el checkpoint, carga el contexto nativo del modelo y calienta sin guardar. Muestra esta fase antes de aceptar pedidos.</td>
+</tr>
+<tr>
+<td>Un trabajo cancelado sigue liberando recursos</td>
+<td>Cancelar solicita detener la operación nativa e impide publicar su resultado. La cola conserva su espacio hasta que el trabajo nativo libere sus recursos. Espera a que termine antes de reutilizar o liberar el motor.</td>
+</tr>
+<tr>
+<td>Una biblioteca nativa no supera la verificación</td>
+<td>Cierra el juego o el Editor. Si se indica que el motor instalado está dañado, elimina la carpeta de su versión en <code>Application.persistentDataPath/RuntimeImageForge/Backends</code> y prepara de nuevo. Si falla la comprobación del archivo incluido, elimina <code>Assets/StreamingAssets/RuntimeImageForge/windows-vulkan.zip</code>, elige <strong>Tools &gt; Runtime Image Forge &gt; Install Windows Backend</strong> y vuelve a compilar el Player. El instalador nunca sobrescribe un archivo distinto ya existente.</td>
+</tr>
+<tr>
+<td>Ya hay otra versión de la biblioteca nativa cargada</td>
+<td>Reinicia el juego o Editor antes de cargar otra versión de la biblioteca nativa.</td>
+</tr>
+<tr>
+<td>Un trabajo termina sin imagen</td>
+<td>Consulta <code>ForgeGenerationJob.State</code> y <code>Error</code>; finalizar también incluye fallos y cancelaciones. Conserva la imagen correcta anterior.</td>
+</tr>
+<tr>
+<td>Cola llena</td>
+<td>Espera o cancela. El trabajo cancelado conserva su espacio hasta que el motor lo libere.</td>
+</tr>
+<tr>
+<td>El PNG transparente conserva fondo</td>
+<td>Asigna máscara y desactiva <strong>Conservar fondo</strong>. Comprueba contraste y máscara; la predicción puede dejar bordes imperfectos.</td>
+</tr>
+<tr>
+<td>Falla exportar junto al juego</td>
+<td>Usa datos persistentes o una carpeta escribible. La instalación protegida puede impedir escribir; se conservan archivos ajenos.</td>
+</tr>
+<tr>
+<td>Se modificó un paquete exportado</td>
+<td>Usa otro nombre o restaura el original. No se sobrescribe un paquete modificado.</td>
+</tr>
+<tr>
+<td>Falta un objeto restaurado</td>
+<td>Conserva PNG, clave original, receta y hash. Copiar solo el registro de inventario no copia la imagen.</td>
+</tr>
+<tr>
+<td>MCP no encuentra generador</td>
+<td>Abre la escena, entra en Play, prepara y permite operaciones Forge en esta sesión. Consulta <code>forge_status</code>.</td>
+</tr>
+<tr>
+<td>Desaparece un ID MCP anterior</td>
+<td>Los registros son acotados y pertenecen a una sesión. Guarda recibos/PNG a largo plazo; consigue un ID nuevo tras recargar.</td>
+</tr>
+</tbody></table></div>
+<h2 id="cancelling-and-unloading">Cancelar y liberar</h2>
+<p>Pasa un token de cancelación a preparación y generación. <code>CancelPreparation()</code> detiene el arranque y <code>CancelJob(id)</code> un trabajo incompleto. Cancelar impide publicar un resultado nuevo. <code>ImageGenerationQueue.CloseAsync()</code> cancela, espera a liberar el trabajo y elimina el motor. No elimines por separado un motor que ya pertenece a la cola.</p>
+<p>Texturas y sprites tienen su propio ciclo de vida. Conserva el propietario <code>UnityPngImage</code> mientras se muestran y libéralo en el hilo Unity o con <code>DisposeAsync()</code>. Libera imágenes anteriores al sustituirlas; la caché en disco no limita las texturas retenidas por el juego.</p>
+<h2 id="requirements-and-limits">Requisitos y límites</h2>
+<p>La implementación incluida admite Windows x64, sin motor para macOS, Linux, móvil o WebGL. La configuración probada es RTX 3060 Laptop GPU con 6 GB de VRAM. Es un equipo probado, no una garantía para cualquier dispositivo con cierta memoria.</p>
+<p>Los pesos de los modelos y las bibliotecas nativas se guardan en caché en <code>Application.persistentDataPath/RuntimeImageForge</code>; los PNG generados y la colección del juego complementario, en <code>Application.persistentDataPath/ForgeArt</code>. En el Editor es la carpeta de datos persistentes para los nombres de compañía y producto del proyecto, fuera del proyecto. Borra esas carpetas para eliminar los modelos y las imágenes en caché; cambiar el nombre de la compañía o del producto inicia una caché nueva.</p>
+<p>La generación y el recorte comparten GPU con el juego. Usa colas acotadas, dimensiones moderadas y una fase explícita de carga; mide tu hardware y juego. Mantén los pesos grandes como descarga separada explícita. Los píxeles pueden no representar el objeto pedido o variar en calidad; el recorte puede necesitar limpieza manual.</p>
+<p>Para soporte, incluye versión Unity, GPU/controlador, ID/revisión del modelo, ajustes, etapa y error pertinente de Console o Player log. Revisa los extractos antes de compartir rutas privadas o contenido del juego.</p>
+<div class="doc-bottom"><a href="index.html">Inicio de la documentación</a><a href="../">Resumen del producto</a></div></article></main><footer class="footer wrap"><span>© Strange Euphoria XR</span><a href="third-party-notices.html">Condiciones de modelos y componentes</a></footer></body></html>

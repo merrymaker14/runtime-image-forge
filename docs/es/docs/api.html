@@ -1,0 +1,164 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Runtime API — Runtime Image Forge</title><meta name="description" content="Runtime API — Runtime Image Forge: generación local de imágenes para Unity."><link rel="stylesheet" href="../../site.css"><link rel="icon" href="../../assets/forge-mark.svg"><script src="../../site.js" defer></script><link rel="canonical" href="https://merrymaker14.github.io/runtime-image-forge/es/docs/api.html"><link rel="alternate" hreflang="en" href="https://merrymaker14.github.io/runtime-image-forge/docs/api.html"><link rel="alternate" hreflang="ru" href="https://merrymaker14.github.io/runtime-image-forge/ru/docs/api.html"><link rel="alternate" hreflang="es" href="https://merrymaker14.github.io/runtime-image-forge/es/docs/api.html"><link rel="alternate" hreflang="zh-Hans" href="https://merrymaker14.github.io/runtime-image-forge/zh-Hans/docs/api.html"><link rel="alternate" hreflang="x-default" href="https://merrymaker14.github.io/runtime-image-forge/docs/api.html"></head><body><a class="skip" href="#main">Ir al contenido</a><header class="header wrap"><a class="brand" href="../"><img src="../../assets/forge-mark.svg" width="42" height="42" alt="">Runtime Image Forge</a><nav aria-label="Navegación principal"><a href="../#demo">Juego complementario</a><a href="index.html">Documentación</a><a href="api.html">API</a></nav></header><nav class="language-switch wrap" aria-label="Idioma"><span>Idioma</span><a data-language="en" lang="en" hreflang="en" href="../../docs/api.html">English</a><a data-language="ru" lang="ru" hreflang="ru" href="../../ru/docs/api.html">Русский</a><a data-language="es" lang="es" hreflang="es" href="api.html" aria-current="page">Español</a><a data-language="zh-Hans" lang="zh-Hans" hreflang="zh-Hans" href="../../zh-Hans/docs/api.html">简体中文</a></nav><main id="main" class="doc-layout wrap"><nav class="doc-nav" aria-label="Documentación"><p>Guías y referencia</p><a href="index.html">Documentación</a><a href="quick-start.html">Inicio rápido</a><a href="models-and-styles.html">Modelos y estilos</a><a href="api.html" aria-current="page">Runtime API</a><a href="exporting-images.html">Guardar y exportar</a><a href="mcp.html">Editor MCP</a><a href="troubleshooting.html">Solución de problemas</a><a href="third-party-notices.html">Avisos de terceros</a></nav><article class="doc-article"><p class="doc-meta">Runtime Image Forge 1.0.0 · Unity 6000.5+</p><h1 id="runtime-image-forge-api">API de Runtime Image Forge</h1><nav class="toc" aria-label="En esta página"><ul><li><a href="#model-download-size">Tamaño de descarga del modelo</a></li><li><a href="#scene-generator">Generador de escena</a></li><li><a href="#generate-an-icon">Generar un icono</a></li><li><a href="#implement-a-backend">Implementar un motor</a></li><li><a href="#save-games">Partidas guardadas</a></li></ul></nav>
+<p>Espacio de nombres: <code>StrangeEuphoriaXR.RuntimeImageForge</code>.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Tabla de referencia"><table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Función</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>GenerationIdentity</code></td>
+<td>Receta exacta del motor, modelo y componentes.</td>
+</tr>
+<tr>
+<td><code>GenerationRequest</code></td>
+<td>Ajustes aplicados inmutables y clave de caché.</td>
+</tr>
+<tr>
+<td><code>ChoiceStyle</code></td>
+<td>Copia del catálogo y expansión de opciones en una plantilla validada.</td>
+</tr>
+<tr>
+<td><code>ForgeStyleAsset</code></td>
+<td>Catálogo y ajustes de generación editables en el Inspector.</td>
+</tr>
+<tr>
+<td><code>ForgeBackgroundMode</code></td>
+<td>Modo del estilo, PNG transparente o PNG con fondo para un pedido.</td>
+</tr>
+<tr>
+<td><code>IImageGenerationBackend</code></td>
+<td>Contrato de generación en un hilo de trabajo.</td>
+</tr>
+<tr>
+<td><code>ForgeBackendSource</code></td>
+<td>Componente que crea un motor configurado.</td>
+</tr>
+<tr>
+<td><code>ForgeGenerator</code></td>
+<td>Preparación, trabajos, estado, cancelación y exportación por escena.</td>
+</tr>
+<tr>
+<td><code>ForgeGenerationJob</code></td>
+<td>Solicitud, estado, progreso, finalización e identidad del PNG.</td>
+</tr>
+<tr>
+<td><code>LocalForgeBackendSource</code></td>
+<td>Descarga del modelo fijado y configuración del motor Windows.</td>
+</tr>
+<tr>
+<td><code>ForgeModelProfile</code></td>
+<td>URL, revisión, hash, tamaño y política de muestreo del modelo.</td>
+</tr>
+<tr>
+<td><code>ForegroundModelProfile</code></td>
+<td>Modelo ONNX importado y políticas de entrada y salida.</td>
+</tr>
+<tr>
+<td><code>IImageBackendPreparation</code></td>
+<td>Validación opcional antes de aceptar solicitudes.</td>
+</tr>
+<tr>
+<td><code>ForgeModelIntegrityException</code></td>
+<td>Modelo ausente, incompleto o con hash incorrecto.</td>
+</tr>
+<tr>
+<td><code>ProcessedImageBackend</code></td>
+<td>Generación serial seguida de recorte opcional.</td>
+</tr>
+<tr>
+<td><code>RawImageFrame</code></td>
+<td>Copia y propiedad de píxeles RGB/RGBA, origen y paso de fila.</td>
+</tr>
+<tr>
+<td><code>ImageGenerationQueue</code></td>
+<td>FIFO acotada, cancelación, caché y propiedad del motor.</td>
+</tr>
+<tr>
+<td><code>GenerationProgress</code></td>
+<td>Etapa y progreso fraccional limitado.</td>
+</tr>
+<tr>
+<td><code>PngArtifact</code></td>
+<td>PNG inmutable, solicitud, SHA-256 e indicador de caché.</td>
+</tr>
+<tr>
+<td><code>PngFileStore</code></td>
+<td>Caché atómica en disco con claves y PNG validados.</td>
+</tr>
+<tr>
+<td><code>UnityPngEncoder</code></td>
+<td>RGB/RGBA a PNG RGBA8 con etiqueta sRGB.</td>
+</tr>
+<tr>
+<td><code>UnityPngImage</code></td>
+<td>Propietario de una textura y un sprite en ejecución.</td>
+</tr>
+<tr>
+<td><code>PngExporter</code></td>
+<td>Exportación atómica de PNG o PNG/receta sin sobrescribir archivos ajenos.</td>
+</tr>
+<tr>
+<td><code>ForgeExportPaths</code></td>
+<td>Carpetas junto al juego y en datos persistentes.</td>
+</tr>
+</tbody></table></div>
+<h2 id="model-download-size">Tamaño de descarga del modelo</h2>
+<p>El Inspector muestra la descarga completa de los pesos fijados. <code>ForgeModelProfile.GetTotalDownloadBytes()</code> valida el perfil y suma todos los archivos obligatorios, incluido el codificador de texto y el decodificador en un perfil por componentes. Devuelve el total de la primera descarga aunque algunos archivos estén en caché; el descargador reutiliza los archivos verificados. Excluye los archivos del motor y el espacio temporal de descarga. GB usa unidades decimales: 1 GB = 1.000.000.000 bytes.</p>
+<h2 id="scene-generator">Generador de escena</h2>
+<p>Llama a estas API en el hilo principal de Unity. Asigna la fuente y los perfiles en el Inspector. La descarga es una acción explícita del juego, separada de la preparación.</p>
+<p><code>ConnectBackend</code> inicializa la caché en disco antes de crear la cola y transfiere al generador la propiedad del backend. Al cerrar su escena o destruir el generador, se cancelan los trabajos y se cierra el backend después de vaciar la cola, incluso si el objeto aún no se había activado. Un fallo de integridad del modelo anula el estado preparado, cierra la cola anterior y activa <code>LocalForgeBackendSource.NeedsModelRepair</code>. Antes de preparar de nuevo, repara explícitamente el perfil elegido descargando sus archivos HTTPS fijados o reimportando un paquete local verificado; los perfiles de solo importación requieren importación local.</p>
+<p><code>PngFileStore</code> coordina las escrituras entre distintas instancias y procesos. Acepta un PNG idéntico para la misma solicitud sin reemplazar el archivo. Si la misma clave ya tiene un PNG válido con otro hash de contenido, conserva el archivo anterior y rechaza la nueva escritura; usa otra seed para obtener un resultado nuevo. Puede reparar un PNG corrupto. Los pequeños archivos <code>.lock</code> permanecen junto a la caché para coordinar las escrituras; no los elimines mientras un generador esté activo.</p>
+<pre tabindex="0"><code class="language-csharp">await localSource.DownloadModelAsync(downloadProgress, cancellationToken);
+var mode = ForgeBackgroundMode.Transparent; // Or KeepBackground; both produce PNG.
+await generator.PrepareAsync(style, mode, cancellationToken);
+var job = generator.Generate(style, choices, seed: 1234, backgroundMode: mode, token: cancellationToken);
+await job.Completion;
+if (job.State == &quot;completed&quot;)
+{
+    var artifact = await generator.ReadArtifactAsync(job.Request, cancellationToken);
+    var image = await UnityPngImage.CreateAsync(artifact, cancellationToken: cancellationToken);
+    // Retain image while displaying image.Sprite; dispose it when replacing the icon.
+    var bundle = await generator.ExportJobAsync(job.Id,
+        ForgeExportPaths.DirectoryFor(ForgeExportLocation.BesideGame), &quot;sword&quot;, cancellationToken);
+}
+</code></pre>
+<p><code>ForgeGenerationJob.Completion</code> termina al llegar a <code>completed</code>, <code>cancelled</code> o <code>failed</code>; comprueba <code>State</code> y <code>Error</code>. <code>CancelJob(id)</code> cancela un trabajo pendiente y <code>CancelPreparation()</code> detiene el arranque. El generador posee su cola y la cierra al descargar la escena. Conserva hasta 64 registros; los PNG permanecen en disco.</p>
+<p><code>ForgeBackgroundMode.StyleDefault</code> utiliza <code>style.keepBackground</code>. <code>Transparent</code> requiere un procesador de primer plano; <code>KeepBackground</code> lo omite. Pasa el modo tanto a preparación como a generación para calentar solo la ruta elegida. Cambiar a transparente después de preparar con fondo incluye el coste del primer uso del procesador en ese pedido. No cambia el recurso de estilo compartido. El modo forma parte de solicitud, caché, registro guardado y receta exportada. El motor nativo incluido rechaza un pedido transparente sin procesador.</p>
+<p>Si <code>HasLocalModel</code> es true, omite la descarga y prepara la copia local. La preparación comprueba SHA-256. <code>ForgeModelIntegrityException</code> marca la fuente para reparación; una descarga explícita correcta borra esa marca. Las descargas notifican progreso fraccional mediante <code>IProgress&lt;float&gt;</code>.</p>
+<h2 id="generate-an-icon">Generar un icono</h2>
+<p>Crea la cola una vez para un motor configurado y consérvala durante la vida de ese modelo:</p>
+<pre tabindex="0"><code class="language-csharp">using System.Collections.Generic;
+using System.IO;
+using StrangeEuphoriaXR.RuntimeImageForge;
+using UnityEngine;
+
+// localSource is a LocalForgeBackendSource with a verified model; style is a configured asset.
+await localSource.PrepareNativeAsync(cancellationToken);
+var backend = localSource.CreateBackend();
+var store = new PngFileStore(Path.Combine(Application.persistentDataPath, &quot;GeneratedArt&quot;));
+var queue = new ImageGenerationQueue(backend, new UnityPngEncoder(), store);
+var choices = new Dictionary&lt;string, string&gt;
+{
+    [&quot;item&quot;] = &quot;sword&quot;,
+    [&quot;material&quot;] = &quot;steel&quot;,
+    [&quot;detail&quot;] = &quot;runes&quot;
+};
+var request = style.CreateRequest(queue.Identity, choices, seed: 1234);
+var artifact = await queue.GenerateAsync(request, cancellationToken: cancellationToken);
+var image = await UnityPngImage.CreateAsync(artifact, cancellationToken: cancellationToken);
+inventorySlot.sprite = image.Sprite;
+// Retain image while the slot uses it. DisposeAsync releases its sprite and texture.
+</code></pre>
+<p>Libera la cola mediante <code>await queue.CloseAsync()</code> al descargar el modelo. Cada <code>UnityPngImage</code> tiene una vida independiente: cerrar la cola no destruye las imágenes ya mostradas. <code>store.GetPath(request.CacheKey)</code> devuelve la ruta del PNG si la caché está activada.</p>
+<p>Las claves del ejemplo pertenecen al estilo del taller. Otros juegos definen su propio catálogo. Una semilla registra una receta reproducible; cambiar modelo, motor o hardware puede cambiar los píxeles.</p>
+<h2 id="implement-a-backend">Implementar un motor</h2>
+<p>Mantén una <code>GenerationIdentity</code> estable mientras exista la cola. <code>ComponentsSha256</code> es un hash hexadecimal de 64 caracteres de la receta completa del modelo y sus componentes. Incluye codificador de texto, decodificador y configuración de adaptadores. Rechaza dimensiones o ajustes incompatibles en lugar de modificar silenciosamente la solicitud registrada.</p>
+<p>La cola invoca <code>GenerateAsync</code> en serie en un hilo de trabajo. Devuelve un <code>RawImageFrame</code> con las dimensiones exactas solicitadas. El constructor copia el búfer: después puede liberarlo el asignador nativo que lo posee. No devuelvas memoria prestada ni crees objetos UnityEngine desde este método.</p>
+<p>Notifica el progreso mediante el <code>IProgress&lt;GenerationProgress&gt;</code> recibido; no conserves el observador después de terminar. Respeta la cancelación durante la inferencia y el posprocesado y libera recursos nativos en <code>Dispose()</code>. La cola llama a <code>Dispose</code> después de acabar la última operación nativa.</p>
+<p><code>QueueCapacityException</code> es un rechazo síncrono cuando no queda capacidad. Un fallo del motor termina la Task de ese trabajo con error. La cancelación cancela la Task e impide publicar el resultado. Gestiona estos casos sin sustituir la imagen correcta anterior.</p>
+<h2 id="save-games">Partidas guardadas</h2>
+<p>Guarda la receta completa de <code>GenerationRequest</code>, su clave de caché, el PNG y su hash. <code>ForgeWorkshop.Receipt</code> muestra un registro compatible con JSON y comprueba que los ajustes restaurados generan la clave guardada. Son identificadores deterministas de contenido, no firmas de autenticación. Un registro modificado se rechaza en lugar de asociarlo a otro PNG.</p>
+<p>El taller guarda el inventario antes de añadir el icono a la colección visible. Durante esa escritura desactiva Cancel. Un pedido fallido o cancelado no añade objetos. Conserva el inventario dañado y bloquea nuevas escrituras para protegerlo. Los registros incluyen el modo de fondo: un retrato con Keep Background restaura la imagen completa original.</p>
+<div class="doc-bottom"><a href="index.html">Inicio de la documentación</a><a href="../">Resumen del producto</a></div></article></main><footer class="footer wrap"><span>© Strange Euphoria XR</span><a href="third-party-notices.html">Condiciones de modelos y componentes</a></footer></body></html>

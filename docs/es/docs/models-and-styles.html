@@ -1,0 +1,90 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Modelos y estilos — Runtime Image Forge</title><meta name="description" content="Modelos y estilos — Runtime Image Forge: generación local de imágenes para Unity."><link rel="stylesheet" href="../../site.css"><link rel="icon" href="../../assets/forge-mark.svg"><script src="../../site.js" defer></script><link rel="canonical" href="https://merrymaker14.github.io/runtime-image-forge/es/docs/models-and-styles.html"><link rel="alternate" hreflang="en" href="https://merrymaker14.github.io/runtime-image-forge/docs/models-and-styles.html"><link rel="alternate" hreflang="ru" href="https://merrymaker14.github.io/runtime-image-forge/ru/docs/models-and-styles.html"><link rel="alternate" hreflang="es" href="https://merrymaker14.github.io/runtime-image-forge/es/docs/models-and-styles.html"><link rel="alternate" hreflang="zh-Hans" href="https://merrymaker14.github.io/runtime-image-forge/zh-Hans/docs/models-and-styles.html"><link rel="alternate" hreflang="x-default" href="https://merrymaker14.github.io/runtime-image-forge/docs/models-and-styles.html"></head><body><a class="skip" href="#main">Ir al contenido</a><header class="header wrap"><a class="brand" href="../"><img src="../../assets/forge-mark.svg" width="42" height="42" alt="">Runtime Image Forge</a><nav aria-label="Navegación principal"><a href="../#demo">Juego complementario</a><a href="index.html">Documentación</a><a href="api.html">API</a></nav></header><nav class="language-switch wrap" aria-label="Idioma"><span>Idioma</span><a data-language="en" lang="en" hreflang="en" href="../../docs/models-and-styles.html">English</a><a data-language="ru" lang="ru" hreflang="ru" href="../../ru/docs/models-and-styles.html">Русский</a><a data-language="es" lang="es" hreflang="es" href="models-and-styles.html" aria-current="page">Español</a><a data-language="zh-Hans" lang="zh-Hans" hreflang="zh-Hans" href="../../zh-Hans/docs/models-and-styles.html">简体中文</a></nav><main id="main" class="doc-layout wrap"><nav class="doc-nav" aria-label="Documentación"><p>Guías y referencia</p><a href="index.html">Documentación</a><a href="quick-start.html">Inicio rápido</a><a href="models-and-styles.html" aria-current="page">Modelos y estilos</a><a href="api.html">Runtime API</a><a href="exporting-images.html">Guardar y exportar</a><a href="mcp.html">Editor MCP</a><a href="troubleshooting.html">Solución de problemas</a><a href="third-party-notices.html">Avisos de terceros</a></nav><article class="doc-article"><p class="doc-meta">Runtime Image Forge 1.0.0 · Unity 6000.5+</p><h1 id="models-and-styles">Modelos y estilos</h1><nav class="toc" aria-label="En esta página"><ul><li><a href="#choice-catalogs">Catálogos de opciones</a></li><li><a href="#generation-settings">Ajustes de generación</a></li><li><a href="#models-and-integrity">Modelos e integridad</a></li><li><a href="#transparent-pngs">PNG transparentes</a></li><li><a href="#import-a-local-model-pack">Importar un paquete local de modelos</a></li><li><a href="#choose-a-model-profile-in-the-editor">Elegir un perfil de modelo en el Editor</a></li></ul></nav>
+<p>El ejemplo The Ember Forge usa Bonsai Ternary 4B por defecto. El paquete independiente para Windows incluye su carpeta plana <code>RuntimeImageForgeModels</code> junto al juego; pulsa <strong>IMPORT MODEL PACK</strong> una vez para copiarla y verificarla. Al mover el paquete, conserva esa carpeta y los avisos originales. Los pesos se suministran por separado del paquete Unity; importa el paquete compatible de Bonsai o selecciona Klein para obtenerlo explícitamente mediante HTTPS.</p>
+<p>Los desarrolladores pueden descargar el mismo paquete Bonsai sin el juego: <strong>Runtime-Image-Forge-Bonsai-Models.zip</strong> en la <a href="https://merrymaker14.itch.io/the-ember-forge">página de The Ember Forge</a>.</p>
+<h2 id="choice-catalogs">Catálogos de opciones</h2>
+<p><code>ForgeStyleAsset</code> define dirección visual y opciones permitidas. Cada campo tiene una clave estable; cada opción, una clave, etiqueta visible y texto de prompt. La plantilla usa campos como <code>{item}</code>, <code>{material}</code> y <code>{detail}</code>. Envía todos los campos requeridos por clave. Se rechazan opciones desconocidas y campos sin resolver.</p>
+<p>Usa etiquetas en la interfaz y claves en los datos guardados. Por ejemplo, muestra <strong>Grabado rúnico</strong>, envía <code>runes</code> y expándelo a <strong>subtle engraved runes</strong>. Cambia <code>styleVersion</code> si cambia el significado de un estilo publicado. El prompt aplicado y los ajustes completos se registran en la receta: las ediciones posteriores no reescriben imágenes anteriores.</p>
+<p>El ejemplo importado contiene:</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Tabla de referencia"><table>
+<thead>
+<tr>
+<th>Estilo</th>
+<th>Campos</th>
+<th>Fondo</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Illustrated Forge</td>
+<td>item, material, detail</td>
+<td>Eliminado; requiere procesador de primer plano.</td>
+</tr>
+<tr>
+<td>Pixel Inspired Items</td>
+<td>item, material, detail</td>
+<td>Eliminado.</td>
+</tr>
+<tr>
+<td>Flat Icons</td>
+<td>item, material, detail</td>
+<td>Eliminado.</td>
+</tr>
+<tr>
+<td>Character Portraits</td>
+<td>character, mood, palette</td>
+<td>Conservado.</td>
+</tr>
+<tr>
+<td>Environment Cards</td>
+<td>location, time, weather</td>
+<td>Conservado.</td>
+</tr>
+</tbody></table></div>
+<p>Son presets de prompt editables. Pixel Inspired Items sugiere un aspecto; no impone una cuadrícula de píxeles, paleta exacta o consistencia de animación. Los prompts negativos y el catálogo orientan al modelo, pero no garantizan un resultado concreto.</p>
+<h2 id="generation-settings">Ajustes de generación</h2>
+<p>Anchura, altura, pasos, guía y semilla forman parte de la solicitud y de la clave de caché. Para Bonsai Ternary 4B y FLUX.2 Klein 4B, elige explícitamente un estilo de <code>Styles/NativeDistilled1024</code>: 1024 × 1024, 4 pasos y CFG 1. Ambos perfiles usan <code>euler</code> y <code>flux2</code>, traslado de pesos a la CPU y diffusion flash attention. Los valores recomendados del perfil no cambian el estilo automáticamente.</p>
+<p>Los estilos originales siguen siendo presets editables de 512 × 512 para la receta anterior. El motor requiere al menos 64 píxeles y dimensiones divisibles entre 64; rechaza ajustes incompatibles en lugar de sustituirlos silenciosamente. Una resolución mayor puede necesitar más recursos. Repetir una solicitud registrada puede reutilizar su PNG; la misma semilla en otro hardware o versión no garantiza píxeles idénticos.</p>
+<p>La opción <code>location=forge</code> del preset de entorno Native1024 describe un hogar de carbón encendido, un yunque grande y un martillo de herrero. Los prompts de pixel art e iconos planos orientan la apariencia, pero no imponen una cuadrícula ni una paleta exacta. Los modelos distilled con CFG 1 pueden ignorar los prompts negativos.</p>
+<h2 id="models-and-integrity">Modelos e integridad</h2>
+<p>Los perfiles incluidos <code>BonsaiTernary4B</code> y <code>FLUX2Klein4B</code> fijan por separado generador, codificador de texto y VAE. Cada componente declara revisión exacta del repositorio de origen, nombre de archivo, bytes, SHA-256 y licencia. Los pesos se obtienen por separado del paquete de Unity.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Tabla de referencia"><table>
+<thead>
+<tr>
+<th>Perfil</th>
+<th>Obtención</th>
+<th align="right">Pesos fijados completos</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Bonsai Ternary 4B</td>
+<td>Importar el paquete gratuito de modelos Bonsai (ver arriba).</td>
+<td align="right">4.642.526.382 bytes (4,64 GB / 4,32 GiB).</td>
+</tr>
+<tr>
+<td>FLUX.2 Klein 4B</td>
+<td>Descarga HTTPS explícita o importación local.</td>
+<td align="right">5.207.178.964 bytes (5,21 GB / 4,85 GiB).</td>
+</tr>
+</tbody></table></div>
+<p>Bonsai usa un perfil de solo importación. Coloca <code>bonsai-ternary-transformer.gguf</code>, <code>bonsai-qwen3-hqq-affine.gguf</code> y <code>diffusion_pytorch_model.safetensors</code> directamente en la carpeta elegida. Los GGUF son archivos convertidos; los checkpoints originales de Gemlite no coinciden con el perfil. La importación no busca subcarpetas ni convierte checkpoints. Conserva los LICENSE/NOTICE originales y los avisos de conversión con el paquete de modelos.</p>
+<p>Klein fija <code>flux-2-klein-4b-Q4_0.gguf</code>, <code>Qwen3-4B-Q4_K_M.gguf</code> y <code>full_encoder_small_decoder.safetensors</code>. En el Inspector, elige <strong>Descargar archivos del modelo y verificarlos</strong> para obtener los componentes HTTPS fijados con progreso y cancelación. <strong>Importar archivos de modelo verificados</strong> también acepta su carpeta local plana. Ambas acciones reutilizan archivos ya verificados en la caché elegida; seleccionar un perfil no inicia la obtención.</p>
+<p>Los tamaños indicados suman los tres archivos de pesos requeridos. DLL, avisos, archivos comprimidos, PNG exportados y copias temporales requieren espacio adicional. La importación conserva el paquete original y crea otra copia en caché; reserva al menos otro volumen completo de pesos en la unidad de caché, más margen. El Inspector muestra la suma completa de pesos fijados. El tamaño de los archivos no equivale a un requisito de RAM o VRAM.</p>
+<p>U2NETP ONNX es un modelo de primer plano independiente con Apache-2.0. El perfil original de DreamShaper permanece como preset anterior bajo CreativeML OpenRAIL-M. Las revisiones y condiciones están en <a href="third-party-notices.html">Avisos de terceros</a>.</p>
+<p>Cambia el perfil antes de preparar un generador. La cola preparada mantiene una identidad de backend. Termina los trabajos y cierra o libera el generador antes de seleccionar otro perfil guardado en Edit Mode.</p>
+<h2 id="transparent-pngs">PNG transparentes</h2>
+<p><strong>Refinar objetos delgados</strong> (<code>ForegroundModelProfile.refineUniformBackground</code>) puede ejecutar una segunda pasada para un objeto aislado sobre un fondo opaco uniforme cuando la primera máscara está incompleta. El procesador conserva la primera máscara si el recorte no es adecuado o la nueva máscara no supera las comprobaciones de conservación. La opción tiene una identidad de caché independiente. Revisa los bordes finos y las aberturas: el refinamiento no garantiza un recorte perfecto. Los perfiles de primer plano de la demo y del ejemplo de estilos activan esta opción.</p>
+<p>Desactiva <strong>Conservar fondo</strong> para objetos aislados y asigna el perfil de máscara a la fuente local. Después de generar, el procesador predice una máscara del objeto destacado. El resultado es RGBA con alfa directo; la exportación PNG conserva ese alfa.</p>
+<p>Activa <strong>Conservar fondo</strong> para retratos, entornos e ilustraciones completas. Omite el recorte y conserva toda la imagen. Ambos modos exportan PNG. Sin perfil de recorte, usa <code>ForgeBackgroundMode.KeepBackground</code>; el motor rechaza una solicitud transparente en lugar de devolver una imagen opaca sin avisar.</p>
+<p>Para dar elección al jugador, pasa <code>ForgeBackgroundMode.Transparent</code> o <code>ForgeBackgroundMode.KeepBackground</code> a <code>PrepareAsync</code>, <code>Generate</code> o la sobrecarga <code>CreateRequest</code>. <code>StyleDefault</code> conserva el valor del recurso. La selección pertenece a una receta y no edita el estilo compartido. Preparar con <code>KeepBackground</code> omite el calentamiento del recorte; si luego se elige transparencia, ese pedido incluye su preparación inicial.</p>
+<p>U2NETP está incluido: 4.615.341 bytes, unos 4,4 MiB, sin descarga adicional del jugador. Los volúmenes completos de pesos se indican arriba. El recorte es local y no tiene una tarifa API por imagen. Prepara la ruta transparente al iniciar; exportar un PNG existente solo copia sus bytes.</p>
+<p>Contornos finos, materiales translúcidos, huecos, sombras y objetos secundarios pueden producir máscaras imperfectas. Comprueba resultados reales para tu arte. El recorte produce una imagen 2D, no geometría ni contornos de sprite garantizados. La <a href="exporting-images.html">guía de exportación</a> explica cómo compartir el PNG original y su receta.</p>
+<h2 id="import-a-local-model-pack">Importar un paquete local de modelos</h2>
+<p>Activa <strong>Solo importación</strong> (<code>ForgeModelProfile.importOnly</code>) cuando los archivos se suministren localmente. La opción está desactivada por defecto; los perfiles HTTPS existentes y sus identidades de generación no cambian. Estos perfiles pueden dejar vacías las URL de descarga. Cada archivo sigue necesitando nombre exacto, revisión, tamaño en bytes, SHA-256 e información de licencia. Los nombres de componentes deben ser distintos sin diferenciar mayúsculas de minúsculas.</p>
+<p>En el inspector del perfil, elige <strong>Importar archivos de modelo verificados</strong> y selecciona la carpeta que contiene directamente los archivos. El importador no busca en subcarpetas ni descomprime archivos. Copia únicamente los nombres fijados, rechaza enlaces simbólicos y uniones de directorios, verifica cada archivo y lo instala en la caché de <code>Application.persistentDataPath/RuntimeImageForge</code>. No modifica los originales. La caché conserva su propia copia: reserva espacio para el paquete, la caché y un archivo temporal.</p>
+<p><strong>Cancelar importación</strong> detiene la copia. Los archivos verificados completados pueden reutilizarse; la copia incompleta se elimina. Un archivo válido en caché se reutiliza sin reemplazarlo. La falta de archivos de un perfil de solo importación nunca inicia una descarga de red.</p>
+<p>En un juego, llama explícitamente a <code>ForgeModelCache.ImportProfileAsync(cacheRoot, profile, selectedFolder, progress, cancellationToken)</code> o <code>LocalForgeBackendSource.ImportModelPackAsync(selectedFolder, progress, cancellationToken)</code>. La acción <strong>IMPORT MODEL PACK</strong> de la demo usa <code>LocalForgeBackendSource.ModelPackDirectory</code>: la carpeta fija <code>RuntimeImageForgeModels</code> junto al ejecutable, o junto a <code>Assets</code> en el Editor. Coloca los archivos exactos del perfil directamente allí y selecciona la acción. La caché existente funciona sin conexión y sin conservar el paquete original.</p>
+<p>La importación comprueba la identidad de los archivos, no la arquitectura ni la calidad de generación. Usa un backend compatible y conserva las licencias aplicables de los modelos.</p>
+<h2 id="choose-a-model-profile-in-the-editor">Elegir un perfil de modelo en el Editor</h2>
+<p>En <strong>Tools → Runtime Image Forge → Overview</strong>, asigna el <code>LocalForgeBackendSource</code> de la escena a <strong>Backend de la escena</strong> y elige un recurso guardado en <strong>Perfil del modelo</strong>. La misma lista aparece en el inspector del backend local. <strong>Abrir perfil del modelo</strong> muestra sus ajustes y la acción explícita de importación local.</p>
+<p>La selección solo cambia la referencia de ese origen y admite deshacer/rehacer. No modifica perfiles ni estilos, no transfiere archivos y no cambia el backend de un generador existente. Sal primero del modo Play; la compilación, la importación de recursos y cualquier generador listo o en preparación bloquean la selección. Cierra o descarga los generadores preparados antes de cambiar de perfil y prepara el modelo elegido en la siguiente sesión del juego.</p>
+<p>El perfil guardado necesita archivos correctamente fijados y una receta compatible con el backend. Aparecer en la lista no demuestra compatibilidad nativa ni calidad de imagen. Importa o descarga explícitamente los archivos exactos y comprueba que los estilos y ajustes del juego sean adecuados para el modelo.</p>
+<div class="doc-bottom"><a href="index.html">Inicio de la documentación</a><a href="../">Resumen del producto</a></div></article></main><footer class="footer wrap"><span>© Strange Euphoria XR</span><a href="third-party-notices.html">Condiciones de modelos y componentes</a></footer></body></html>

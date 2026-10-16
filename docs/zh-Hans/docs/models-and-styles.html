@@ -1,0 +1,90 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>模型与样式 — Runtime Image Forge</title><meta name="description" content="模型与样式 — Runtime Image Forge：Unity 本地图片生成。"><link rel="stylesheet" href="../../site.css"><link rel="icon" href="../../assets/forge-mark.svg"><script src="../../site.js" defer></script><link rel="canonical" href="https://merrymaker14.github.io/runtime-image-forge/zh-Hans/docs/models-and-styles.html"><link rel="alternate" hreflang="en" href="https://merrymaker14.github.io/runtime-image-forge/docs/models-and-styles.html"><link rel="alternate" hreflang="ru" href="https://merrymaker14.github.io/runtime-image-forge/ru/docs/models-and-styles.html"><link rel="alternate" hreflang="es" href="https://merrymaker14.github.io/runtime-image-forge/es/docs/models-and-styles.html"><link rel="alternate" hreflang="zh-Hans" href="https://merrymaker14.github.io/runtime-image-forge/zh-Hans/docs/models-and-styles.html"><link rel="alternate" hreflang="x-default" href="https://merrymaker14.github.io/runtime-image-forge/docs/models-and-styles.html"></head><body><a class="skip" href="#main">跳转到正文</a><header class="header wrap"><a class="brand" href="../"><img src="../../assets/forge-mark.svg" width="42" height="42" alt="">Runtime Image Forge</a><nav aria-label="主导航"><a href="../#demo">配套游戏</a><a href="index.html">文档</a><a href="api.html">API</a></nav></header><nav class="language-switch wrap" aria-label="语言"><span>语言</span><a data-language="en" lang="en" hreflang="en" href="../../docs/models-and-styles.html">English</a><a data-language="ru" lang="ru" hreflang="ru" href="../../ru/docs/models-and-styles.html">Русский</a><a data-language="es" lang="es" hreflang="es" href="../../es/docs/models-and-styles.html">Español</a><a data-language="zh-Hans" lang="zh-Hans" hreflang="zh-Hans" href="models-and-styles.html" aria-current="page">简体中文</a></nav><main id="main" class="doc-layout wrap"><nav class="doc-nav" aria-label="文档"><p>指南与参考</p><a href="index.html">文档</a><a href="quick-start.html">快速入门</a><a href="models-and-styles.html" aria-current="page">模型与样式</a><a href="api.html">Runtime API</a><a href="exporting-images.html">保存与导出</a><a href="mcp.html">Editor MCP</a><a href="troubleshooting.html">故障排查</a><a href="third-party-notices.html">第三方声明</a></nav><article class="doc-article"><p class="doc-meta">Runtime Image Forge 1.0.0 · Unity 6000.5+</p><h1 id="models-and-styles">模型和风格</h1><nav class="toc" aria-label="本页内容"><ul><li><a href="#choice-catalogs">选项目录</a></li><li><a href="#generation-settings">生成设置</a></li><li><a href="#models-and-integrity">模型和完整性</a></li><li><a href="#transparent-pngs">透明 PNG</a></li><li><a href="#import-a-local-model-pack">导入本地模型包</a></li><li><a href="#choose-a-model-profile-in-the-editor">在编辑器中选择模型配置</a></li></ul></nav>
+<p>The Ember Forge 示例默认使用 Bonsai Ternary 4B。独立 Windows 游戏包在游戏旁包含平铺的 <code>RuntimeImageForgeModels</code> 文件夹；首次点击 <strong>IMPORT MODEL PACK</strong> 以复制并验证文件。移动游戏包时，请保留该文件夹及原始声明。Unity 软件包不包含模型权重；请导入兼容的 Bonsai 模型包，或选择 Klein 配置并明确启动 HTTPS 下载。</p>
+<p>开发者可以单独下载同一 Bonsai 模型包，无需下载游戏：<a href="https://merrymaker14.itch.io/the-ember-forge">The Ember Forge 页面</a> 上的 <strong>Runtime-Image-Forge-Bonsai-Models.zip</strong>。</p>
+<h2 id="choice-catalogs">选项目录</h2>
+<p><code>ForgeStyleAsset</code> 同时定义视觉方向和允许玩家选择的内容。每个字段有稳定键，每个选项有键、显示名称和提示词文本。模板使用 <code>{item}</code>、<code>{material}</code>、<code>{detail}</code> 等字段。提交时应按键提供所有必需字段。未知选项或未展开字段会被拒绝。</p>
+<p>界面使用显示名称，存档使用键。例如显示<strong>符文雕刻</strong>，提交 <code>runes</code>，展开为 <strong>subtle engraved runes</strong>。已发布风格的含义改变时，应修改 <code>styleVersion</code>。每张图的配方记录实际提示词和全部设置，后续编辑不会改写先前图像。</p>
+<p>导入示例包含：</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="参考表格"><table>
+<thead>
+<tr>
+<th>风格</th>
+<th>选项字段</th>
+<th>背景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Illustrated Forge</td>
+<td>item, material, detail</td>
+<td>移除，需要前景处理器。</td>
+</tr>
+<tr>
+<td>Pixel Inspired Items</td>
+<td>item, material, detail</td>
+<td>移除。</td>
+</tr>
+<tr>
+<td>Flat Icons</td>
+<td>item, material, detail</td>
+<td>移除。</td>
+</tr>
+<tr>
+<td>Character Portraits</td>
+<td>character, mood, palette</td>
+<td>保留。</td>
+</tr>
+<tr>
+<td>Environment Cards</td>
+<td>location, time, weather</td>
+<td>保留。</td>
+</tr>
+</tbody></table></div>
+<p>这些是可编辑提示词预设。Pixel Inspired Items 只建议视觉外观，不强制像素网格、精确调色板或动画一致性。负面提示词和目录约束会引导模型，但不保证具体结果。</p>
+<h2 id="generation-settings">生成设置</h2>
+<p>宽度、高度、步数、引导强度和 Seed 都属于请求及缓存键。Bonsai Ternary 4B 与 FLUX.2 Klein 4B 应明确选择 <code>Styles/NativeDistilled1024</code> 中的风格：1024 × 1024、4 步、CFG 1。两个模型配置使用 <code>euler</code>、<code>flux2</code>、CPU 权重卸载和 diffusion flash attention。配置的推荐值不会自动修改风格。</p>
+<p>原始风格仍为旧生成参数提供可编辑的 512 × 512 预设。原生后端要求尺寸至少 64 像素且能被 64 整除；不支持的设置会被拒绝，不会默默替换。更高分辨率可能需要更多资源。重复已记录请求可复用 PNG 缓存，但不同硬件或后端版本上的相同 Seed 不保证相同像素。</p>
+<p>Native1024 环境预设的 <code>location=forge</code> 选项描述燃烧的煤炉、大型铁砧和锻造锤。像素艺术和扁平图标提示词只建议视觉方向，并不强制像素网格或精确调色板。CFG 1 的蒸馏模型可能忽略负面提示词。</p>
+<h2 id="models-and-integrity">模型和完整性</h2>
+<p>随附 <code>BonsaiTernary4B</code> 与 <code>FLUX2Klein4B</code> 配置分别固定生成器、文本编码器和 VAE。每个组件均声明来源仓库的精确修订版本、文件名、字节数、SHA-256 和许可证。权重与 Unity 软件包分开获取。</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="参考表格"><table>
+<thead>
+<tr>
+<th>配置</th>
+<th>获取方式</th>
+<th align="right">固定权重总量</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Bonsai Ternary 4B</td>
+<td>导入免费的 Bonsai 模型包（见上文）。</td>
+<td align="right">4,642,526,382 字节（4.64 GB / 4.32 GiB）。</td>
+</tr>
+<tr>
+<td>FLUX.2 Klein 4B</td>
+<td>显式 HTTPS 下载或本地导入。</td>
+<td align="right">5,207,178,964 字节（5.21 GB / 4.85 GiB）。</td>
+</tr>
+</tbody></table></div>
+<p>Bonsai 配置使用仅导入模式。将 <code>bonsai-ternary-transformer.gguf</code>、<code>bonsai-qwen3-hqq-affine.gguf</code> 和 <code>diffusion_pytorch_model.safetensors</code> 直接放入所选文件夹。GGUF 已经过转换，原始 Gemlite checkpoint 与此配置不匹配。导入操作不会搜索子文件夹或转换 checkpoint。请随模型包保留原始 LICENSE/NOTICE 和转换声明。</p>
+<p>Klein 固定 <code>flux-2-klein-4b-Q4_0.gguf</code>、<code>Qwen3-4B-Q4_K_M.gguf</code> 和 <code>full_encoder_small_decoder.safetensors</code>。在配置 Inspector 中点击<strong>下载并验证模型文件</strong>，可显式获取固定 HTTPS 组件，并查看进度或取消。<strong>导入经过验证的模型文件</strong>也支持这些文件的平面本地文件夹。两种操作均复用所选缓存中已验证的文件；选择模型配置不会开始获取文件。</p>
+<p>上述大小只计算三个必要的权重文件。DLL、声明、压缩包、导出 PNG 和临时副本需要额外空间。导入会保留源模型包并创建另一份缓存副本；缓存磁盘至少还需一套完整权重的空间，并留有余量。模型 Inspector 会显示完整的固定权重总量。权重文件大小不等于 RAM 或 VRAM 要求。</p>
+<p>随附 U2NETP ONNX 是独立的 Apache-2.0 前景模型。原始 DreamShaper 配置仍作为 CreativeML OpenRAIL-M 许可的旧预设保留。精确来源修订版本和条款见<a href="third-party-notices.html">第三方声明</a>。</p>
+<p>准备生成器前请更换模型配置。已准备队列保持一个后端标识。请先完成任务并关闭或卸载生成器，再在 Edit Mode 选择另一个已保存的配置。</p>
+<h2 id="transparent-pngs">透明 PNG</h2>
+<p>当均匀不透明背景上的单个独立物体在初始蒙版中不完整时，<strong>细化细长物体</strong>（<code>ForegroundModelProfile.refineUniformBackground</code>）可运行第二次前景处理。如果裁剪不合适或新蒙版未通过保留检查，处理器会保留初始蒙版。该选项具有独立的缓存标识。请检查细边缘和孔洞；细化不能保证完美抠图。演示游戏和风格示例的前景模型配置已启用此选项。</p>
+<p>独立物品请关闭<strong>保留背景</strong>，并在本地来源分配前景配置。生成后，处理器预测显著物体蒙版。结果为直通 alpha RGBA，PNG 导出保留 alpha。</p>
+<p>肖像、环境与完整插画请启用<strong>保留背景</strong>。此模式跳过前景处理并保留整幅图。两种模式都导出 PNG。没有分配前景配置时选择 <code>ForgeBackgroundMode.KeepBackground</code>；随附后端会拒绝透明请求，而不是默默返回不透明图像。</p>
+<p>若玩家可选择模式，则向 <code>PrepareAsync</code>、<code>Generate</code> 或风格 <code>CreateRequest</code> 重载传入 <code>ForgeBackgroundMode.Transparent</code> 或 <code>ForgeBackgroundMode.KeepBackground</code>。<code>StyleDefault</code> 保留资源默认值。覆盖属于单个配方，不修改共享风格。用 <code>KeepBackground</code> 准备会跳过前景预热；后来选透明模式时，该订单包含前景模型首次准备成本。</p>
+<p>U2NETP 随包提供，4,615,341 字节，约 4.4 MiB，玩家无需额外下载。完整模型权重大小见上表。抠图在本地运行，没有按图计费的 API。请在准备阶段预热透明流程；导出已有 PNG 只复制字节。</p>
+<p>细轮廓、半透明材质、空隙、阴影和附带物体可能导致不完善的蒙版。应验证符合美术方向的实际输出。抠图只生成 2D 图像，不创建几何体，也不保证精灵边缘完全干净。分享原始 PNG 和配方的方法见<a href="exporting-images.html">导出指南</a>。</p>
+<h2 id="import-a-local-model-pack">导入本地模型包</h2>
+<p>本地提供模型文件时，启用 <strong>仅导入</strong>（<code>ForgeModelProfile.importOnly</code>）。此选项默认关闭；现有 HTTPS 配置及其生成标识保持不变。仅导入配置的下载 URL 可以留空。每个文件仍需准确的文件名、版本、字节数、SHA-256 及许可证信息。各组件的文件名必须不同，且不区分大小写。</p>
+<p>在配置检查器中选择 <strong>导入经过验证的模型文件</strong>，然后选择直接包含文件的文件夹。导入器不会搜索子文件夹或解压归档。它只复制配置固定的文件名，拒绝符号链接和目录联接，验证每个文件后将其安装到 <code>Application.persistentDataPath/RuntimeImageForge</code> 缓存中，不修改源文件。缓存会保留独立副本，请为源模型包、缓存和一个临时文件预留空间。</p>
+<p>使用 <strong>取消导入</strong> 停止复制。已完成验证的文件可以重复使用；未完成的副本会被删除。缓存中有效的文件将直接复用，不会被替换。仅导入配置缺少文件时，绝不会启动网络下载。</p>
+<p>在游戏中显式调用 <code>ForgeModelCache.ImportProfileAsync(cacheRoot, profile, selectedFolder, progress, cancellationToken)</code> 或 <code>LocalForgeBackendSource.ImportModelPackAsync(selectedFolder, progress, cancellationToken)</code>。演示游戏的 <strong>IMPORT MODEL PACK</strong> 操作使用 <code>LocalForgeBackendSource.ModelPackDirectory</code>：可执行文件旁的固定文件夹 <code>RuntimeImageForgeModels</code>，在编辑器中则位于 <code>Assets</code> 旁。将配置要求的准确文件直接放入该文件夹后选择此操作。已有缓存可离线使用，无需保留源模型包。</p>
+<p>导入检查的是文件标识，不证明模型架构兼容性或生成质量。请使用兼容的后端，并保留适用的模型许可证。</p>
+<h2 id="choose-a-model-profile-in-the-editor">在编辑器中选择模型配置</h2>
+<p>在 <strong>Tools → Runtime Image Forge → Overview</strong> 中，将场景的 <code>LocalForgeBackendSource</code> 指定到<strong>场景后端</strong>，再从<strong>模型配置</strong>列表选择已保存的资源。本地后端检查器也提供同一列表。<strong>打开模型配置</strong>会显示其设置及显式本地导入操作。</p>
+<p>选择仅更改该来源的引用，并支持撤销和重做。它不会修改配置或样式、传输模型文件，也不会更改现有生成器的后端。请先退出播放模式；编译、资源导入及任何已就绪或正在准备的生成器都会阻止选择。更改配置前请关闭或卸载已准备好的生成器，再于下一次游戏运行时准备所选模型。</p>
+<p>已保存的配置必须具有有效的文件标识及后端支持的生成设置。出现在列表中并不能证明原生兼容性或图像质量。请显式导入或下载所需的准确文件，并确认游戏样式和设置适合该模型。</p>
+<div class="doc-bottom"><a href="index.html">文档首页</a><a href="../">产品概览</a></div></article></main><footer class="footer wrap"><span>© Strange Euphoria XR</span><a href="third-party-notices.html">模型与组件条款</a></footer></body></html>

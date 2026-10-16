@@ -1,0 +1,90 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Models and styles — Runtime Image Forge</title><meta name="description" content="Models and styles for Runtime Image Forge, local image generation for Unity."><link rel="stylesheet" href="../site.css"><link rel="icon" href="../assets/forge-mark.svg"><script src="../site.js" defer></script><link rel="canonical" href="https://merrymaker14.github.io/runtime-image-forge/docs/models-and-styles.html"><link rel="alternate" hreflang="en" href="https://merrymaker14.github.io/runtime-image-forge/docs/models-and-styles.html"><link rel="alternate" hreflang="ru" href="https://merrymaker14.github.io/runtime-image-forge/ru/docs/models-and-styles.html"><link rel="alternate" hreflang="es" href="https://merrymaker14.github.io/runtime-image-forge/es/docs/models-and-styles.html"><link rel="alternate" hreflang="zh-Hans" href="https://merrymaker14.github.io/runtime-image-forge/zh-Hans/docs/models-and-styles.html"><link rel="alternate" hreflang="x-default" href="https://merrymaker14.github.io/runtime-image-forge/docs/models-and-styles.html"></head><body><a class="skip" href="#main">Skip to content</a><header class="header wrap"><a class="brand" href="../"><img src="../assets/forge-mark.svg" width="42" height="42" alt="">Runtime Image Forge</a><nav aria-label="Main navigation"><a href="../#demo">Companion game</a><a href="index.html">Documentation</a><a href="api.html">API</a></nav></header><nav class="language-switch wrap" aria-label="Language"><span>Language</span><a data-language="en" lang="en" hreflang="en" href="models-and-styles.html" aria-current="page">English</a><a data-language="ru" lang="ru" hreflang="ru" href="../ru/docs/models-and-styles.html">Русский</a><a data-language="es" lang="es" hreflang="es" href="../es/docs/models-and-styles.html">Español</a><a data-language="zh-Hans" lang="zh-Hans" hreflang="zh-Hans" href="../zh-Hans/docs/models-and-styles.html">简体中文</a></nav><main id="main" class="doc-layout wrap"><nav class="doc-nav" aria-label="Documentation"><p>Guides and reference</p><a href="index.html">Documentation</a><a href="quick-start.html">Quick start</a><a href="models-and-styles.html" aria-current="page">Models and styles</a><a href="api.html">Runtime API</a><a href="exporting-images.html">Saving and export</a><a href="mcp.html">Editor MCP</a><a href="troubleshooting.html">Troubleshooting</a><a href="third-party-notices.html">Third-party notices</a></nav><article class="doc-article"><p class="doc-meta">Runtime Image Forge 1.0.0 · Unity 6000.5+</p><h1 id="models-and-styles">Models and styles</h1><nav class="toc" aria-label="On this page"><ul><li><a href="#choice-catalogs">Choice catalogs</a></li><li><a href="#generation-settings">Generation settings</a></li><li><a href="#models-and-integrity">Models and integrity</a></li><li><a href="#transparent-pngs">Transparent PNGs</a></li><li><a href="#import-a-local-model-pack">Import a local model pack</a></li><li><a href="#choose-a-model-profile-in-the-editor">Choose a model profile in the Editor</a></li></ul></nav>
+<p>The Ember Forge sample uses Bonsai Ternary 4B by default. The standalone Windows bundle includes its flat <code>RuntimeImageForgeModels</code> folder beside the game; choose <strong>IMPORT MODEL PACK</strong> once to copy and verify it. Preserve that folder with the original notices when moving the bundle. The Unity package keeps model weights separate; import the compatible Bonsai model pack or select the Klein profile for explicit HTTPS acquisition.</p>
+<p>Developers can download the same Bonsai pack without the game: <strong>Runtime-Image-Forge-Bonsai-Models.zip</strong> on <a href="https://merrymaker14.itch.io/the-ember-forge">The Ember Forge page</a>.</p>
+<h2 id="choice-catalogs">Choice catalogs</h2>
+<p>A <code>ForgeStyleAsset</code> defines both visual direction and allowed player choices. Each field has a stable key; each choice has a key, a display label and prompt text. The prompt template uses fields such as <code>{item}</code>, <code>{material}</code> and <code>{detail}</code>. Submit every required field by its key. Unknown choices and unresolved fields are rejected.</p>
+<p>Use labels for UI and keys for saved data. For example, display <strong>Runic engraving</strong>, submit <code>runes</code>, and expand it as <strong>subtle engraved runes</strong>. Change <code>styleVersion</code> when changing a shipped style&#39;s meaning. The applied prompt and complete settings are recorded in each image recipe, so later edits do not rewrite earlier images.</p>
+<p>The imported sample contains:</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Reference table"><table>
+<thead>
+<tr>
+<th>Style</th>
+<th>Choice fields</th>
+<th>Background</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Illustrated Forge</td>
+<td>item, material, detail</td>
+<td>Removed; requires a foreground processor.</td>
+</tr>
+<tr>
+<td>Pixel Inspired Items</td>
+<td>item, material, detail</td>
+<td>Removed.</td>
+</tr>
+<tr>
+<td>Flat Icons</td>
+<td>item, material, detail</td>
+<td>Removed.</td>
+</tr>
+<tr>
+<td>Character Portraits</td>
+<td>character, mood, palette</td>
+<td>Kept.</td>
+</tr>
+<tr>
+<td>Environment Cards</td>
+<td>location, time, weather</td>
+<td>Kept.</td>
+</tr>
+</tbody></table></div>
+<p>These are editable prompt presets. Pixel Inspired Items suggests an appearance; it does not enforce a pixel grid, exact palette or animation consistency. Negative prompts and catalog restrictions guide the model but do not guarantee a particular result.</p>
+<h2 id="generation-settings">Generation settings</h2>
+<p>Width, height, steps, guidance and seed are part of the request and cache key. For Bonsai Ternary 4B and FLUX.2 Klein 4B, choose an explicit style from <code>Styles/NativeDistilled1024</code>: 1024 × 1024, 4 steps and CFG 1. Both profiles use <code>euler</code> and <code>flux2</code>, with CPU weight offload and diffusion flash attention. Recommended profile values do not automatically change a style.</p>
+<p>The original styles remain editable 512 × 512 presets for the legacy recipe. The supplied native backend requires dimensions of at least 64 pixels, divisible by 64; it rejects unsupported settings instead of silently substituting them. Higher resolutions can need more resources. Repeating a recorded request can reuse its PNG cache; using the same seed across hardware or backend versions does not guarantee identical pixels.</p>
+<p>The Native1024 environment preset&#39;s <code>location=forge</code> choice specifies a glowing coal hearth, large anvil and smithing hammer. Pixel and flat-icon prompts suggest a visual direction; they do not enforce a pixel grid or exact palette. Distilled models at CFG 1 may ignore a negative prompt.</p>
+<h2 id="models-and-integrity">Models and integrity</h2>
+<p>The included <code>BonsaiTernary4B</code> and <code>FLUX2Klein4B</code> profiles each pin a generator, text encoder and VAE separately. Every component declares its exact source repository revision, filename, byte count, SHA-256 and license. The weight files are acquired separately from the Unity package.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Reference table"><table>
+<thead>
+<tr>
+<th>Profile</th>
+<th>Acquisition</th>
+<th align="right">Complete pinned weights</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Bonsai Ternary 4B</td>
+<td>Import the free Bonsai model pack (see above).</td>
+<td align="right">4,642,526,382 bytes (4.64 GB / 4.32 GiB).</td>
+</tr>
+<tr>
+<td>FLUX.2 Klein 4B</td>
+<td>Explicit HTTPS download or local import.</td>
+<td align="right">5,207,178,964 bytes (5.21 GB / 4.85 GiB).</td>
+</tr>
+</tbody></table></div>
+<p>Bonsai is an import-only profile. Put <code>bonsai-ternary-transformer.gguf</code>, <code>bonsai-qwen3-hqq-affine.gguf</code> and <code>diffusion_pytorch_model.safetensors</code> directly in the chosen folder. These GGUF files are converted forms; the original Gemlite checkpoints do not match the profile. Import does not search subfolders or convert checkpoints. Keep the original LICENSE/NOTICE and conversion notices with the model pack.</p>
+<p>Klein pins <code>flux-2-klein-4b-Q4_0.gguf</code>, <code>Qwen3-4B-Q4_K_M.gguf</code> and <code>full_encoder_small_decoder.safetensors</code>. In the profile Inspector, choose <strong>Download verified model files</strong> to obtain the fixed HTTPS components, with progress and cancellation. <strong>Import verified model files</strong> also accepts their flat local folder. Both actions reuse files already verified in the selected cache; profile selection never starts acquisition.</p>
+<p>Sizes above count the three required weight files. DLLs, notices, archives, exported PNGs and temporary copies are additional. Import keeps the source pack and creates a separate cache copy, so reserve at least another full payload on the cache volume plus headroom. The model Inspector shows the complete pinned weight total. Weight-file size is not a RAM or VRAM requirement.</p>
+<p>The supplied U2NETP ONNX is a separate Apache-2.0 foreground model. The original DreamShaper profile remains a legacy preset under CreativeML OpenRAIL-M. Exact source revisions and terms are in <a href="third-party-notices.html">Third-party notices</a>.</p>
+<p>Change the model/profile before preparing a new generator. A prepared queue retains one backend identity. Stop outstanding work and close/unload the generator before selecting another saved profile in Edit Mode.</p>
+<h2 id="transparent-pngs">Transparent PNGs</h2>
+<p><strong>Refine thin objects</strong> (<code>ForegroundModelProfile.refineUniformBackground</code>) can use a second foreground pass for one isolated object on a uniform opaque background when the first mask is incomplete. The processor keeps the first mask when the crop is unsuitable or the new mask fails its preservation checks. This option has a separate cache identity. Inspect fine edges and openings; refinement does not guarantee a perfect cutout. The companion and choice-style foreground profiles enable this option.</p>
+<p>Disable <strong>Keep Background</strong> for isolated items and assign the foreground profile to the local source. The foreground processor predicts a salient-object mask after generation. The result is straight-alpha RGBA; PNG export keeps that alpha.</p>
+<p>Enable <strong>Keep Background</strong> for portraits, environments and complete illustrations. This bypasses foreground processing and preserves the whole picture. Both modes export PNG. With no foreground profile assigned, choose <code>ForgeBackgroundMode.KeepBackground</code>; a transparent request is rejected by the supplied native backend instead of silently returning an opaque picture.</p>
+<p>For a player-facing choice, pass <code>ForgeBackgroundMode.Transparent</code> or <code>ForgeBackgroundMode.KeepBackground</code> to <code>PrepareAsync</code>, <code>Generate</code>, or the style&#39;s <code>CreateRequest</code> overload. <code>StyleDefault</code> preserves the asset&#39;s default. The override belongs to one recipe and does not edit the shared style. Preparing with <code>KeepBackground</code> skips foreground warmup; if the player later selects transparency, that order includes the foreground model&#39;s first-use setup.</p>
+<p>U2NETP is bundled: 4,615,341 bytes (about 4.4 MiB), with no separate player download. Model weight totals are listed above. Cutout runs locally and has no per-image API fee. Warm the selected transparent pipeline during preparation; exporting an existing PNG only copies its bytes.</p>
+<p>Fine outlines, translucent materials, gaps, shadows and incidental objects can make imperfect masks. Check actual outputs for your art direction. Background removal makes a 2D image; it does not create geometry or guarantee clean sprite contours. The <a href="exporting-images.html">export guide</a> explains how to share the original PNG and its recipe.</p>
+<h2 id="import-a-local-model-pack">Import a local model pack</h2>
+<p>Enable <strong>Import only</strong> (<code>ForgeModelProfile.importOnly</code>) when model files are supplied locally. This option defaults to off; existing HTTPS profiles and their generation identities are unchanged. Import-only profiles may leave download URLs empty. Every file still needs its exact filename, revision, byte count, SHA-256 and license information. Component filenames must be distinct when compared without regard to letter case.</p>
+<p>In the profile inspector, choose <strong>Import verified model files</strong>, then select the folder containing the files directly. The importer does not search subfolders or unpack archives. It copies only the pinned filenames, rejects symbolic links and directory junctions, verifies each file, and installs it into the cache under <code>Application.persistentDataPath/RuntimeImageForge</code>. It does not change the source files. The cache keeps its own copy, so retain enough space for both the pack and the cache plus a temporary file.</p>
+<p>Cancel using <strong>Cancel import</strong>. Completed verified files remain reusable; an unfinished copy is removed. A valid cached file is reused without replacing it. Missing import-only files never trigger a network download.</p>
+<p>For a game, explicitly call <code>ForgeModelCache.ImportProfileAsync(cacheRoot, profile, selectedFolder, progress, cancellationToken)</code> or <code>LocalForgeBackendSource.ImportModelPackAsync(selectedFolder, progress, cancellationToken)</code>. The companion&#39;s <strong>IMPORT MODEL PACK</strong> action uses <code>LocalForgeBackendSource.ModelPackDirectory</code>: the fixed <code>RuntimeImageForgeModels</code> folder beside the executable, or beside <code>Assets</code> in the Editor. Place the exact profile files directly in that folder, then choose the action. Existing cached files can be used offline without retaining the source pack.</p>
+<p>Import checks file identity, not model architecture or generation quality. Use a backend compatible with the model and keep the applicable model licenses.</p>
+<h2 id="choose-a-model-profile-in-the-editor">Choose a model profile in the Editor</h2>
+<p>In <strong>Tools → Runtime Image Forge → Overview</strong>, assign the scene&#39;s <code>LocalForgeBackendSource</code> to <strong>Scene backend</strong>, then choose a saved asset from <strong>Model profile</strong>. The same list is available in the local backend inspector. <strong>Open model profile</strong> opens its settings and explicit local import action.</p>
+<p>The selector changes only that source&#39;s reference and supports Undo/redo. It does not edit the selected profile or any style, transfer model files, or change an existing generator&#39;s backend. Exit Play Mode first; compilation, asset import and any ready or preparing generator block selection. Close/unload prepared generators before changing profiles, then prepare the selected model in the next game session.</p>
+<p>A saved profile must have valid file pins and a recipe supported by the backend. Its appearance in the list does not establish native compatibility or image quality. Import or download its exact files explicitly, and check that the game&#39;s styles and settings suit the model.</p>
+<div class="doc-bottom"><a href="index.html">Documentation home</a><a href="../">Product overview</a></div></article></main><footer class="footer wrap"><span>© Strange Euphoria XR</span><a href="third-party-notices.html">Model and component terms</a></footer></body></html>

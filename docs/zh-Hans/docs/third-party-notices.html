@@ -1,0 +1,96 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第三方声明 — Runtime Image Forge</title><meta name="description" content="第三方声明 — Runtime Image Forge：Unity 本地图片生成。"><link rel="stylesheet" href="../../site.css"><link rel="icon" href="../../assets/forge-mark.svg"><script src="../../site.js" defer></script><link rel="canonical" href="https://merrymaker14.github.io/runtime-image-forge/zh-Hans/docs/third-party-notices.html"><link rel="alternate" hreflang="en" href="https://merrymaker14.github.io/runtime-image-forge/docs/third-party-notices.html"><link rel="alternate" hreflang="ru" href="https://merrymaker14.github.io/runtime-image-forge/ru/docs/third-party-notices.html"><link rel="alternate" hreflang="es" href="https://merrymaker14.github.io/runtime-image-forge/es/docs/third-party-notices.html"><link rel="alternate" hreflang="zh-Hans" href="https://merrymaker14.github.io/runtime-image-forge/zh-Hans/docs/third-party-notices.html"><link rel="alternate" hreflang="x-default" href="https://merrymaker14.github.io/runtime-image-forge/docs/third-party-notices.html"></head><body><a class="skip" href="#main">跳转到正文</a><header class="header wrap"><a class="brand" href="../"><img src="../../assets/forge-mark.svg" width="42" height="42" alt="">Runtime Image Forge</a><nav aria-label="主导航"><a href="../#demo">配套游戏</a><a href="index.html">文档</a><a href="api.html">API</a></nav></header><nav class="language-switch wrap" aria-label="语言"><span>语言</span><a data-language="en" lang="en" hreflang="en" href="../../docs/third-party-notices.html">English</a><a data-language="ru" lang="ru" hreflang="ru" href="../../ru/docs/third-party-notices.html">Русский</a><a data-language="es" lang="es" hreflang="es" href="../../es/docs/third-party-notices.html">Español</a><a data-language="zh-Hans" lang="zh-Hans" hreflang="zh-Hans" href="third-party-notices.html" aria-current="page">简体中文</a></nav><main id="main" class="doc-layout wrap"><nav class="doc-nav" aria-label="文档"><p>指南与参考</p><a href="index.html">文档</a><a href="quick-start.html">快速入门</a><a href="models-and-styles.html">模型与样式</a><a href="api.html">Runtime API</a><a href="exporting-images.html">保存与导出</a><a href="mcp.html">Editor MCP</a><a href="troubleshooting.html">故障排查</a><a href="third-party-notices.html" aria-current="page">第三方声明</a></nav><article class="doc-article"><p class="doc-meta">Runtime Image Forge 1.0.0 · Unity 6000.5+</p><h1 id="third-party-components-and-model-terms">第三方组件与模型条款</h1>
+<p>Runtime Image Forge 随附基于 <a href="https://github.com/leejet/stable-diffusion.cpp/tree/f89d9b13d730eabeede7314ce49dacd18d3c90c2">stable-diffusion.cpp</a>、revision <code>f89d9b13d730eabeede7314ce49dacd18d3c90c2</code> 修改的 Windows x64 Vulkan 原生库。原生 DLL 在 Unity 进程内运行，并从所选模型读取 FLUX.2 VAE 归一化参数。安装器和加载器会校验随附本地库的固定 SHA-256。重新分发此后端的应用应保留随附声明。</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="参考表格"><table>
+<thead>
+<tr>
+<th>组件</th>
+<th>来源 / 许可证</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>stable-diffusion.cpp</td>
+<td>Leejet，MIT；随附源码来源和发行声明。</td>
+</tr>
+<tr>
+<td>ggml</td>
+<td><code>d25b121ce1d6ae0c7e62ad080460d9fc1e46dd93</code>，MIT。</td>
+</tr>
+<tr>
+<td>libwebp / libsharpyuv</td>
+<td><code>0c9546f7efc61eac7f79ae115c3f99c91c21c443</code>，BSD；随附作者和专利授权。</td>
+</tr>
+<tr>
+<td>libwebm</td>
+<td><code>5bf12267eea773a32fcf4949de52b0add158a8d5</code>，BSD；随附作者和专利授权。</td>
+</tr>
+<tr>
+<td>cpp-httplib</td>
+<td>Yuji Hirose，MIT。</td>
+</tr>
+<tr>
+<td>darts-clone</td>
+<td>BSD。</td>
+</tr>
+<tr>
+<td>Oniguruma</td>
+<td>BSD。</td>
+</tr>
+<tr>
+<td>utf8proc</td>
+<td>MIT 和 Unicode 声明。</td>
+</tr>
+<tr>
+<td>miniz / zip</td>
+<td>随附 MIT / 公共领域声明。</td>
+</tr>
+<tr>
+<td>stb image utilities</td>
+<td>Sean Barrett，MIT / 公共领域双重声明。</td>
+</tr>
+</tbody></table></div>
+<p>完整原文位于 <code>ThirdParty~</code>。<strong>Tools → Runtime Image Forge → Install Windows Backend</strong> 将这些声明和固定版本压缩包复制到 <code>Assets/StreamingAssets/RuntimeImageForge</code>，供游戏构建使用。命令会保留内容不同的现有文件，不会覆盖。</p>
+<p>包中随附的小型背景移除模型是 <a href="https://github.com/xuebinqin/U-2-Net/tree/ac7e1c817ecab7c7dff5ce6b1abba61cd213ff29">Xuebin Qin 的 U²-Netp</a> 的 ONNX 导出，采用 Apache 2.0。来源、checkpoint 校验和、导出细节及完整许可证位于 <code>Runtime/Models/U2NetP-320.onnx</code> 旁边，并包含在复制的声明中。它预测显著前景对象；复杂场景和精细边缘可能需要其他抠图模型。</p>
+<p>Bonsai Ternary 4B 和 FLUX.2 Klein 4B 以组件配置预设随附。权重文件与 Unity 软件包分开获取：Bonsai 需要兼容的已转换本地模型包；Klein 支持显式下载固定 HTTPS 组件或本地导入。</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="参考表格"><table>
+<thead>
+<tr>
+<th>预设/组件</th>
+<th>精确来源仓库及修订版本</th>
+<th>声明条款</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Bonsai — 生成器</td>
+<td><code>prism-ml/bonsai-image-ternary-4B-gemlite-2bit@bf047aa80569f193d2c4960033af6ba2629988fa</code></td>
+<td><a href="https://huggingface.co/prism-ml/bonsai-image-ternary-4B-gemlite-2bit/blob/bf047aa80569f193d2c4960033af6ba2629988fa/LICENSE">Apache-2.0</a></td>
+</tr>
+<tr>
+<td>Bonsai — 文本编码器与 VAE</td>
+<td><code>prism-ml/bonsai-image-binary-4B-gemlite-1bit@121529b06562ff8c5b75aa34c54c371d2655929b</code></td>
+<td><a href="https://huggingface.co/prism-ml/bonsai-image-binary-4B-gemlite-1bit/blob/121529b06562ff8c5b75aa34c54c371d2655929b/LICENSE">Apache-2.0</a></td>
+</tr>
+<tr>
+<td>Klein — 原始模型</td>
+<td><code>black-forest-labs/FLUX.2-klein-4B@e7b7dc27f91deacad38e78976d1f2b499d76a294</code></td>
+<td><a href="https://huggingface.co/black-forest-labs/FLUX.2-klein-4B/blob/e7b7dc27f91deacad38e78976d1f2b499d76a294/LICENSE.md">Apache-2.0</a></td>
+</tr>
+<tr>
+<td>Klein — 生成器 GGUF</td>
+<td><code>leejet/FLUX.2-klein-4B-GGUF@3b1f5a9dc3abb32238b053aeb3d823c30afdacbd</code></td>
+<td><a href="https://huggingface.co/leejet/FLUX.2-klein-4B-GGUF/tree/3b1f5a9dc3abb32238b053aeb3d823c30afdacbd">Apache-2.0</a></td>
+</tr>
+<tr>
+<td>Klein — 文本编码器 GGUF</td>
+<td><code>unsloth/Qwen3-4B-GGUF@22c9fc8a8c7700b76a1789366280a6a5a1ad1120</code></td>
+<td><a href="https://huggingface.co/unsloth/Qwen3-4B-GGUF/tree/22c9fc8a8c7700b76a1789366280a6a5a1ad1120">Apache-2.0</a></td>
+</tr>
+<tr>
+<td>Klein — VAE</td>
+<td><code>black-forest-labs/FLUX.2-small-decoder@a3efc24f613ef42d9428af62fdbd6f5fd8856c4a</code></td>
+<td><a href="https://huggingface.co/black-forest-labs/FLUX.2-small-decoder/tree/a3efc24f613ef42d9428af62fdbd6f5fd8856c4a">Apache-2.0</a></td>
+</tr>
+</tbody></table></div>
+<p>Bonsai 生成器和文本编码器 GGUF 是上述来源修订版本的转换形式，VAE 未修改。重新分发模型包时请保留 Prism 原始 LICENSE/NOTICE 和转换声明。Prism NOTICE 列明来源为 Black Forest Labs 的 FLUX.2 Klein 4B 与 Alibaba Cloud 的 Qwen3-4B。也请保留 Klein GGUF 组件的随附声明。使用或重新分发前请阅读完整条款；模型名称不授予商标权，也不表示作者认可。必要文件名、获取方式与权重大小见<a href="models-and-styles.html">模型和风格</a>。</p>
+<p>原始 DreamShaper 8 LCM 预设继续固定 <code>Lykon/dreamshaper-8-lcm@4645d8bc6a8e6b106d21606d63e8460cdad4f1a6</code>，采用 CreativeML OpenRAIL-M，权重需单独获取。使用或重新分发此旧配置时请保留原始模型许可证。</p>
+<p>Unity、Unity Inference Engine 和其他 Unity 包保留各自条款。配套游戏设置使用 Unity uGUI 和 TMP Essential Resources。<code>ThirdParty~/unity-ugui-notice.txt</code> 包含 Unity 版权声明，<code>ThirdParty~/unity-companion-license.txt</code> 包含完整 Unity Companion License 原文。后端安装操作会将两者复制到 StreamingAssets/RuntimeImageForge/Licenses。TMP Essentials 在 Assets/TextMesh Pro/Fonts 中包含 Liberation Sans 字体许可证。重新分发已构建游戏时请保留这些声明。</p>
+<div class="doc-bottom"><a href="index.html">文档首页</a><a href="../">产品概览</a></div></article></main><footer class="footer wrap"><span>© Strange Euphoria XR</span><a href="third-party-notices.html">模型与组件条款</a></footer></body></html>

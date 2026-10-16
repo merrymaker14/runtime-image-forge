@@ -1,0 +1,44 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Editor MCP — Runtime Image Forge</title><meta name="description" content="Editor MCP — Runtime Image Forge：Unity 本地图片生成。"><link rel="stylesheet" href="../../site.css"><link rel="icon" href="../../assets/forge-mark.svg"><script src="../../site.js" defer></script><link rel="canonical" href="https://merrymaker14.github.io/runtime-image-forge/zh-Hans/docs/mcp.html"><link rel="alternate" hreflang="en" href="https://merrymaker14.github.io/runtime-image-forge/docs/mcp.html"><link rel="alternate" hreflang="ru" href="https://merrymaker14.github.io/runtime-image-forge/ru/docs/mcp.html"><link rel="alternate" hreflang="es" href="https://merrymaker14.github.io/runtime-image-forge/es/docs/mcp.html"><link rel="alternate" hreflang="zh-Hans" href="https://merrymaker14.github.io/runtime-image-forge/zh-Hans/docs/mcp.html"><link rel="alternate" hreflang="x-default" href="https://merrymaker14.github.io/runtime-image-forge/docs/mcp.html"></head><body><a class="skip" href="#main">跳转到正文</a><header class="header wrap"><a class="brand" href="../"><img src="../../assets/forge-mark.svg" width="42" height="42" alt="">Runtime Image Forge</a><nav aria-label="主导航"><a href="../#demo">配套游戏</a><a href="index.html">文档</a><a href="api.html">API</a></nav></header><nav class="language-switch wrap" aria-label="语言"><span>语言</span><a data-language="en" lang="en" hreflang="en" href="../../docs/mcp.html">English</a><a data-language="ru" lang="ru" hreflang="ru" href="../../ru/docs/mcp.html">Русский</a><a data-language="es" lang="es" hreflang="es" href="../../es/docs/mcp.html">Español</a><a data-language="zh-Hans" lang="zh-Hans" hreflang="zh-Hans" href="mcp.html" aria-current="page">简体中文</a></nav><main id="main" class="doc-layout wrap"><nav class="doc-nav" aria-label="文档"><p>指南与参考</p><a href="index.html">文档</a><a href="quick-start.html">快速入门</a><a href="models-and-styles.html">模型与样式</a><a href="api.html">Runtime API</a><a href="exporting-images.html">保存与导出</a><a href="mcp.html" aria-current="page">Editor MCP</a><a href="troubleshooting.html">故障排查</a><a href="third-party-notices.html">第三方声明</a></nav><article class="doc-article"><p class="doc-meta">Runtime Image Forge 1.0.0 · Unity 6000.5+</p><h1 id="editor-agent-tools-mcp">编辑器代理工具（MCP）</h1>
+<p>可选 MCP 集成使用 Unity CLI 的 MCP 服务器以及 <code>com.unity.pipeline</code> 0.8.0-exp.1 或更新版本。只有安装此包后才会编译集成程序集。Runtime Image Forge 在游戏中生成和导出无需 MCP。</p>
+<ol>
+<li>在项目安装 Unity CLI 和 Pipeline 软件包。</li>
+<li>打开 <strong>Tools → Runtime Image Forge → Agent tools (MCP)</strong>，复制客户端配置，并允许本次编辑器会话生成、取消与导出。</li>
+<li>打开带 <code>ForgeGenerator</code> 和已配置后端来源的场景。进入播放模式，通过游戏界面准备模型。模型下载需要界面中的主动下载操作。</li>
+<li>连接 MCP 客户端。服务器命令为 <code>unity mcp --project-path &lt;absolute project path&gt;</code>。</li>
+</ol>
+<div class="table-scroll" tabindex="0" role="region" aria-label="参考表格"><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>forge_status</code></td>
+<td>列出场景生成器会话 ID 及就绪状态。</td>
+</tr>
+<tr>
+<td><code>forge_styles</code></td>
+<td>列出可编辑风格 GUID 及按字段顺序排列的允许选项。</td>
+</tr>
+<tr>
+<td><code>forge_generate</code></td>
+<td>提交风格 GUID、有序选项键、非负 Seed 和可选 <code>background_mode</code>，立即返回任务 ID。</td>
+</tr>
+<tr>
+<td><code>forge_job_status</code></td>
+<td>读取 queued、running、completed、cancelled、failed 状态与当前阶段。</td>
+</tr>
+<tr>
+<td><code>forge_cancel</code></td>
+<td>取消所选生成器的任务。</td>
+</tr>
+<tr>
+<td><code>forge_export</code></td>
+<td>将完成任务的 PNG 和配方导出到 <code>Assets/Generated/RuntimeImageForge</code> 并导入。</td>
+</tr>
+</tbody></table></div>
+<p>场景有多个生成器时请传入 <code>generator_id</code>。会话 ID 属于一个活跃场景组件，退出播放模式或重载场景后应重新查询。生成器最多保留 64 个近期任务的元数据；生成队列有独立容量上限。PNG 保存在磁盘。</p>
+<p>Forge 命令不接受任意导出路径，也不会修改模型配置、下载权重或安装包。模型与风格通过普通 Unity Inspector 配置。<code>background_mode</code> 接受默认 <code>style</code>、<code>transparent</code> 或 <code>keep</code>，仅覆盖单个订单而不修改风格。任务状态包含实际 <code>remove_background</code>。模式属于保存配方与缓存键，透明订单需要已配置前景模型。</p>
+<p>Unity MCP 连接也提供通用编辑器命令。请连接可信客户端并使用其权限设置。Forge 工具仅用于编辑器，不包含在游戏构建中。面向玩家的导出使用 <code>PngExporter</code>，无需网络服务或 MCP 客户端。</p>
+<div class="doc-bottom"><a href="index.html">文档首页</a><a href="../">产品概览</a></div></article></main><footer class="footer wrap"><span>© Strange Euphoria XR</span><a href="third-party-notices.html">模型与组件条款</a></footer></body></html>

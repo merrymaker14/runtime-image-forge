@@ -1,0 +1,8 @@
+{
+  "name": "runtime-image-forge-website",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": { "build": "node build.mjs" },
+  "devDependencies": { "marked": "18.1.0" }
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>故障排查 — Runtime Image Forge</title><meta name="description" content="故障排查 — Runtime Image Forge：Unity 本地图片生成。"><link rel="stylesheet" href="../../site.css"><link rel="icon" href="../../assets/forge-mark.svg"><script src="../../site.js" defer></script><link rel="canonical" href="https://merrymaker14.github.io/runtime-image-forge/zh-Hans/docs/troubleshooting.html"><link rel="alternate" hreflang="en" href="https://merrymaker14.github.io/runtime-image-forge/docs/troubleshooting.html"><link rel="alternate" hreflang="ru" href="https://merrymaker14.github.io/runtime-image-forge/ru/docs/troubleshooting.html"><link rel="alternate" hreflang="es" href="https://merrymaker14.github.io/runtime-image-forge/es/docs/troubleshooting.html"><link rel="alternate" hreflang="zh-Hans" href="https://merrymaker14.github.io/runtime-image-forge/zh-Hans/docs/troubleshooting.html"><link rel="alternate" hreflang="x-default" href="https://merrymaker14.github.io/runtime-image-forge/docs/troubleshooting.html"></head><body><a class="skip" href="#main">跳转到正文</a><header class="header wrap"><a class="brand" href="../"><img src="../../assets/forge-mark.svg" width="42" height="42" alt="">Runtime Image Forge</a><nav aria-label="主导航"><a href="../#demo">配套游戏</a><a href="index.html">文档</a><a href="api.html">API</a></nav></header><nav class="language-switch wrap" aria-label="语言"><span>语言</span><a data-language="en" lang="en" hreflang="en" href="../../docs/troubleshooting.html">English</a><a data-language="ru" lang="ru" hreflang="ru" href="../../ru/docs/troubleshooting.html">Русский</a><a data-language="es" lang="es" hreflang="es" href="../../es/docs/troubleshooting.html">Español</a><a data-language="zh-Hans" lang="zh-Hans" hreflang="zh-Hans" href="troubleshooting.html" aria-current="page">简体中文</a></nav><main id="main" class="doc-layout wrap"><nav class="doc-nav" aria-label="文档"><p>指南与参考</p><a href="index.html">文档</a><a href="quick-start.html">快速入门</a><a href="models-and-styles.html">模型与样式</a><a href="api.html">Runtime API</a><a href="exporting-images.html">保存与导出</a><a href="mcp.html">Editor MCP</a><a href="troubleshooting.html" aria-current="page">故障排查</a><a href="third-party-notices.html">第三方声明</a></nav><article class="doc-article"><p class="doc-meta">Runtime Image Forge 1.0.0 · Unity 6000.5+</p><h1 id="troubleshooting">故障排查</h1><nav class="toc" aria-label="本页内容"><ul><li><a href="#cancelling-and-unloading">取消与卸载</a></li><li><a href="#requirements-and-limits">要求与限制</a></li></ul></nav>
+<div class="table-scroll" tabindex="0" role="region" aria-label="参考表格"><table>
+<thead>
+<tr>
+<th>症状</th>
+<th>处理</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>原生归档缺失</td>
+<td>退出播放模式，选择 <strong>Tools &gt; Runtime Image Forge &gt; Install Windows Backend</strong>，再重新构建 Player。</td>
+</tr>
+<tr>
+<td>下载中断或失败</td>
+<td>检查网络、磁盘空间与写入权限，通过主动下载操作重试。取消或失败的下载不会替换有效模型。</td>
+</tr>
+<tr>
+<td>模型校验失败</td>
+<td>根据配置，通过显式 HTTPS 下载或重新导入经过验证的本地模型包来替换无效副本。仅导入配置必须使用本地导入。文件存在不代表可生成，需先通过完整性检查。</td>
+</tr>
+<tr>
+<td>准备失败</td>
+<td>检查配置、Windows x64、Vulkan GPU 支持与原生文件，在 Console 或 Player log 查看具体原因。</td>
+</tr>
+<tr>
+<td>原生依赖缺失或版本过旧</td>
+<td>从 Microsoft 安装最新的 Microsoft Visual C++ 2015–2022 Redistributable (x64)，然后重启 Unity 或游戏。如果仍有提示，请更新显卡驱动。</td>
+</tr>
+<tr>
+<td>路径包含符号链接或目录联接</td>
+<td>把项目、游戏、模型包或导出文件夹移动到路径中不含符号链接和目录联接的位置。如果应用数据文件夹（<code>Application.persistentDataPath</code>）通过目录联接重定向，也需要这样处理。OneDrive 等云同步文件夹不视为链接。</td>
+</tr>
+<tr>
+<td>取消后的下一个订单较慢</td>
+<td>取消正在进行的模型加载或生成会卸载原生模型上下文以释放内存。下一个订单在生成前会重新加载模型。取消仍在队列中等待的任务不会卸载上下文。</td>
+</tr>
+<tr>
+<td>准备仍在进行</td>
+<td>准备会校验 checkpoint、加载原生模型上下文并进行不保存图像的预热。接受订单前显示此阶段。</td>
+</tr>
+<tr>
+<td>已取消的任务仍在释放资源</td>
+<td>取消会请求原生操作停止，并阻止发布结果。原生工作释放资源前仍占用队列位置。请等待完成后再重用或释放后端。</td>
+</tr>
+<tr>
+<td>原生库校验失败</td>
+<td>关闭游戏或 Editor。如果提示已安装的后端已损坏，请删除 <code>Application.persistentDataPath/RuntimeImageForge/Backends</code> 下对应版本的文件夹，然后重新准备。如果随附的归档未通过校验，请删除 <code>Assets/StreamingAssets/RuntimeImageForge/windows-vulkan.zip</code>，选择 <strong>Tools &gt; Runtime Image Forge &gt; Install Windows Backend</strong> 并重新构建 Player。安装器从不覆盖已存在的不同文件。</td>
+</tr>
+<tr>
+<td>已加载另一个原生库版本</td>
+<td>加载其他原生库版本前，请重启游戏或 Editor。</td>
+</tr>
+<tr>
+<td>任务完成但没有图像</td>
+<td>检查 <code>ForgeGenerationJob.State</code> 与 <code>Error</code>，完成也包括失败或取消。界面应保留上一张成功图像。</td>
+</tr>
+<tr>
+<td>队列容量已满</td>
+<td>等待任务完成或取消。取消任务在后端释放前仍占用槽位。</td>
+</tr>
+<tr>
+<td>透明 PNG 仍有背景</td>
+<td>分配前景配置并关闭风格的<strong>保留背景</strong>。检查生成物体对比度和蒙版，预测可能留下不完善边缘。</td>
+</tr>
+<tr>
+<td>无法导出到游戏旁</td>
+<td>选择持久数据目录或可写文件夹。受保护目录可能禁止写入，已有无关文件会保留。</td>
+</tr>
+<tr>
+<td>导出组合包被修改</td>
+<td>换名称或恢复原始组合包。导出器拒绝覆盖已修改组合包。</td>
+</tr>
+<tr>
+<td>恢复物品时图像缺失</td>
+<td>同时保留原始缓存键、配方、内容哈希与 PNG。只复制库存记录不会复制图像。</td>
+</tr>
+<tr>
+<td>MCP 找不到生成器</td>
+<td>打开配置场景，进入播放模式并准备，允许当前 Editor 会话的 Forge 操作，再查询 <code>forge_status</code>。</td>
+</tr>
+<tr>
+<td>旧 MCP 任务 ID 消失</td>
+<td>元数据有数量限制并属于单一场景会话。长期保存记录与 PNG，重载后获取新会话 ID。</td>
+</tr>
+</tbody></table></div>
+<h2 id="cancelling-and-unloading">取消与卸载</h2>
+<p>准备与生成时传入取消令牌。<code>CancelPreparation()</code> 停止启动工作，<code>CancelJob(id)</code> 取消未完成场景任务。取消会阻止新结果发布。<code>ImageGenerationQueue.CloseAsync()</code> 取消任务，等待后端释放后销毁后端。不要单独释放已由队列拥有的后端。</p>
+<p>纹理和精灵有各自生命周期。显示期间保留 <code>UnityPngImage</code>，之后在 Unity 线程释放或使用 <code>DisposeAsync()</code>。替换图像时释放旧图像，磁盘缓存并不会限制游戏保留的纹理数量。</p>
+<h2 id="requirements-and-limits">要求与限制</h2>
+<p>随附本地实现支持 Windows x64，不提供 macOS、Linux、移动或 WebGL 后端。已测试配置为 RTX 3060 Laptop GPU、6 GB VRAM。这是测试配置，不保证所有具有特定内存大小的设备都能运行。</p>
+<p>模型权重和原生库缓存在 <code>Application.persistentDataPath/RuntimeImageForge</code>，生成的 PNG 和配套游戏收藏保存在 <code>Application.persistentDataPath/ForgeArt</code>。在编辑器中，这是项目公司名和产品名对应的持久数据文件夹，位于项目之外。删除这些文件夹即可移除缓存的模型和图片；更改公司名或产品名会开始新的缓存。</p>
+<p>生成与前景处理和游戏共享 GPU 资源。使用有界队列、适度尺寸与明确加载阶段，并测试目标游戏和硬件。大型扩散权重应由玩家主动单独下载。生成像素可能没有正确呈现所请求对象或质量不同，抠图也可能需要手动清理。</p>
+<p>请求支持时提供 Unity 版本、GPU/驱动、模型 ID/版本、风格设置、阶段和相关 Console 或 Player log 错误。分享日志前请检查私人路径或游戏内容。</p>
+<div class="doc-bottom"><a href="index.html">文档首页</a><a href="../">产品概览</a></div></article></main><footer class="footer wrap"><span>© Strange Euphoria XR</span><a href="third-party-notices.html">模型与组件条款</a></footer></body></html>

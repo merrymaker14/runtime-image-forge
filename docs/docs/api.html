@@ -1,0 +1,164 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Runtime API — Runtime Image Forge</title><meta name="description" content="Runtime API for Runtime Image Forge, local image generation for Unity."><link rel="stylesheet" href="../site.css"><link rel="icon" href="../assets/forge-mark.svg"><script src="../site.js" defer></script><link rel="canonical" href="https://merrymaker14.github.io/runtime-image-forge/docs/api.html"><link rel="alternate" hreflang="en" href="https://merrymaker14.github.io/runtime-image-forge/docs/api.html"><link rel="alternate" hreflang="ru" href="https://merrymaker14.github.io/runtime-image-forge/ru/docs/api.html"><link rel="alternate" hreflang="es" href="https://merrymaker14.github.io/runtime-image-forge/es/docs/api.html"><link rel="alternate" hreflang="zh-Hans" href="https://merrymaker14.github.io/runtime-image-forge/zh-Hans/docs/api.html"><link rel="alternate" hreflang="x-default" href="https://merrymaker14.github.io/runtime-image-forge/docs/api.html"></head><body><a class="skip" href="#main">Skip to content</a><header class="header wrap"><a class="brand" href="../"><img src="../assets/forge-mark.svg" width="42" height="42" alt="">Runtime Image Forge</a><nav aria-label="Main navigation"><a href="../#demo">Companion game</a><a href="index.html">Documentation</a><a href="api.html">API</a></nav></header><nav class="language-switch wrap" aria-label="Language"><span>Language</span><a data-language="en" lang="en" hreflang="en" href="api.html" aria-current="page">English</a><a data-language="ru" lang="ru" hreflang="ru" href="../ru/docs/api.html">Русский</a><a data-language="es" lang="es" hreflang="es" href="../es/docs/api.html">Español</a><a data-language="zh-Hans" lang="zh-Hans" hreflang="zh-Hans" href="../zh-Hans/docs/api.html">简体中文</a></nav><main id="main" class="doc-layout wrap"><nav class="doc-nav" aria-label="Documentation"><p>Guides and reference</p><a href="index.html">Documentation</a><a href="quick-start.html">Quick start</a><a href="models-and-styles.html">Models and styles</a><a href="api.html" aria-current="page">Runtime API</a><a href="exporting-images.html">Saving and export</a><a href="mcp.html">Editor MCP</a><a href="troubleshooting.html">Troubleshooting</a><a href="third-party-notices.html">Third-party notices</a></nav><article class="doc-article"><p class="doc-meta">Runtime Image Forge 1.0.0 · Unity 6000.5+</p><h1 id="runtime-image-forge-api">Runtime Image Forge API</h1><nav class="toc" aria-label="On this page"><ul><li><a href="#model-download-size">Model download size</a></li><li><a href="#scene-generator">Scene generator</a></li><li><a href="#generate-an-icon">Generate an icon</a></li><li><a href="#implement-a-backend">Implement a backend</a></li><li><a href="#save-games">Save games</a></li></ul></nav>
+<p>Namespace: <code>StrangeEuphoriaXR.RuntimeImageForge</code>.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Reference table"><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>GenerationIdentity</code></td>
+<td>Declares the exact backend/model/component recipe.</td>
+</tr>
+<tr>
+<td><code>GenerationRequest</code></td>
+<td>Immutable applied settings and cache key.</td>
+</tr>
+<tr>
+<td><code>ChoiceStyle</code></td>
+<td>Copies a catalog and expands selected values into a validated template.</td>
+</tr>
+<tr>
+<td><code>ForgeStyleAsset</code></td>
+<td>Inspector-editable choice catalog and generation settings.</td>
+</tr>
+<tr>
+<td><code>ForgeBackgroundMode</code></td>
+<td>Style default, transparent PNG, or PNG with background for one order.</td>
+</tr>
+<tr>
+<td><code>IImageGenerationBackend</code></td>
+<td>Worker-thread image generation contract.</td>
+</tr>
+<tr>
+<td><code>ForgeBackendSource</code></td>
+<td>Game component that creates a configured backend.</td>
+</tr>
+<tr>
+<td><code>ForgeGenerator</code></td>
+<td>Scene-owned preparation, jobs, status, cancellation and export.</td>
+</tr>
+<tr>
+<td><code>ForgeGenerationJob</code></td>
+<td>Retained request, state, progress, completion and PNG identity.</td>
+</tr>
+<tr>
+<td><code>LocalForgeBackendSource</code></td>
+<td>Pinned model download and Windows native backend setup.</td>
+</tr>
+<tr>
+<td><code>ForgeModelProfile</code></td>
+<td>Diffusion file URL, revision, hash, length and sampling policy.</td>
+</tr>
+<tr>
+<td><code>ForegroundModelProfile</code></td>
+<td>Imported ONNX model, preprocessing and output policy.</td>
+</tr>
+<tr>
+<td><code>IImageBackendPreparation</code></td>
+<td>Optional validation before accepting requests.</td>
+</tr>
+<tr>
+<td><code>ForgeModelIntegrityException</code></td>
+<td>Missing, incomplete or hash-invalid model.</td>
+</tr>
+<tr>
+<td><code>ProcessedImageBackend</code></td>
+<td>Serial generation followed by optional foreground processing.</td>
+</tr>
+<tr>
+<td><code>RawImageFrame</code></td>
+<td>Copies and owns RGB/RGBA pixels, including origin and row stride.</td>
+</tr>
+<tr>
+<td><code>ImageGenerationQueue</code></td>
+<td>Bounded FIFO, cancellation, cache and backend ownership.</td>
+</tr>
+<tr>
+<td><code>GenerationProgress</code></td>
+<td>Stage and clamped fractional progress.</td>
+</tr>
+<tr>
+<td><code>PngArtifact</code></td>
+<td>Immutable PNG, applied request, content SHA-256 and cache indicator.</td>
+</tr>
+<tr>
+<td><code>PngFileStore</code></td>
+<td>Atomic disk cache with validated keys and PNG structure.</td>
+</tr>
+<tr>
+<td><code>UnityPngEncoder</code></td>
+<td>RGB/RGBA to sRGB-tagged RGBA8 PNG.</td>
+</tr>
+<tr>
+<td><code>UnityPngImage</code></td>
+<td>Owns one runtime texture and sprite.</td>
+</tr>
+<tr>
+<td><code>PngExporter</code></td>
+<td>Atomic PNG or PNG/recipe bundle export without overwriting unrelated files.</td>
+</tr>
+<tr>
+<td><code>ForgeExportPaths</code></td>
+<td>Beside-game and persistent-data export directories.</td>
+</tr>
+</tbody></table></div>
+<h2 id="model-download-size">Model download size</h2>
+<p>The model Inspector displays the full pinned weight download. <code>ForgeModelProfile.GetTotalDownloadBytes()</code> validates the profile and adds every required model file, including the text encoder and decoder for a component profile. It returns the complete first-download payload even when some files are already cached; verified cached files are reused by the downloader. This figure excludes engine files and temporary download space. GB uses decimal units: 1 GB = 1,000,000,000 bytes.</p>
+<h2 id="scene-generator">Scene generator</h2>
+<p>Call these APIs on Unity&#39;s main thread. Assign a source and profiles in the Inspector; download is an explicit game action, separate from preparation.</p>
+<p>A custom <code>ConnectBackend</code> initializes the disk cache before creating its queue and takes ownership of the backend. Unloading or destroying the generator cancels its jobs and closes the backend after the queue drains, including an object that has not yet become active. If a request detects a model integrity failure, readiness is cleared, the old queue closes and <code>LocalForgeBackendSource.NeedsModelRepair</code> becomes true. Before preparing again, explicitly repair the selected profile by downloading its pinned HTTPS files or reimporting a verified local pack; import-only profiles require local import.</p>
+<p><code>PngFileStore</code> coordinates commits from separate stores and processes. An identical PNG for the same request is accepted without replacing the existing file. A valid PNG with a different content hash for the same key is kept and the new commit is rejected; use a different seed for a new result. A corrupt cached PNG can be repaired. Small <code>.lock</code> files remain beside cache entries to coordinate commits; do not delete them while a generator is active.</p>
+<pre tabindex="0"><code class="language-csharp">await localSource.DownloadModelAsync(downloadProgress, cancellationToken);
+var mode = ForgeBackgroundMode.Transparent; // Or KeepBackground; both produce PNG.
+await generator.PrepareAsync(style, mode, cancellationToken);
+var job = generator.Generate(style, choices, seed: 1234, backgroundMode: mode, token: cancellationToken);
+await job.Completion;
+if (job.State == &quot;completed&quot;)
+{
+    var artifact = await generator.ReadArtifactAsync(job.Request, cancellationToken);
+    var image = await UnityPngImage.CreateAsync(artifact, cancellationToken: cancellationToken);
+    // Retain image while displaying image.Sprite; dispose it when replacing the icon.
+    var bundle = await generator.ExportJobAsync(job.Id,
+        ForgeExportPaths.DirectoryFor(ForgeExportLocation.BesideGame), &quot;sword&quot;, cancellationToken);
+}
+</code></pre>
+<p><code>ForgeGenerationJob.Completion</code> finishes when the job reaches <code>completed</code>, <code>cancelled</code> or <code>failed</code>; inspect <code>State</code> and <code>Error</code> for the outcome. <code>CancelJob(id)</code> cancels an unfinished job. <code>CancelPreparation()</code> stops startup work. The generator owns its queue and closes it when the scene unloads. It retains up to 64 job records; PNGs live on disk.</p>
+<p><code>ForgeBackgroundMode.StyleDefault</code> uses <code>style.keepBackground</code>. <code>Transparent</code> requires a foreground processor; <code>KeepBackground</code> bypasses it. Pass the selected mode to preparation as well as generation to warm only the chosen pipeline. Switching from background to transparent after preparation pays the processor&#39;s first-use cost on that order. Neither override changes the shared style asset. The chosen policy is part of the request, cache key, saved receipt and export recipe. The supplied opaque native backend rejects a transparent request if no processor is configured.</p>
+<p>If <code>HasLocalModel</code> is true, skip the download action and prepare using the cached copy. Preparation checks its SHA-256. A <code>ForgeModelIntegrityException</code> marks that source for repair; an explicit successful download clears the flag. Model downloads report fractional progress through <code>IProgress&lt;float&gt;</code>.</p>
+<h2 id="generate-an-icon">Generate an icon</h2>
+<p>Create a queue once for a configured backend and retain it for the lifetime of that model:</p>
+<pre tabindex="0"><code class="language-csharp">using System.Collections.Generic;
+using System.IO;
+using StrangeEuphoriaXR.RuntimeImageForge;
+using UnityEngine;
+
+// localSource is a LocalForgeBackendSource with a verified model; style is a configured asset.
+await localSource.PrepareNativeAsync(cancellationToken);
+var backend = localSource.CreateBackend();
+var store = new PngFileStore(Path.Combine(Application.persistentDataPath, &quot;GeneratedArt&quot;));
+var queue = new ImageGenerationQueue(backend, new UnityPngEncoder(), store);
+var choices = new Dictionary&lt;string, string&gt;
+{
+    [&quot;item&quot;] = &quot;sword&quot;,
+    [&quot;material&quot;] = &quot;steel&quot;,
+    [&quot;detail&quot;] = &quot;runes&quot;
+};
+var request = style.CreateRequest(queue.Identity, choices, seed: 1234);
+var artifact = await queue.GenerateAsync(request, cancellationToken: cancellationToken);
+var image = await UnityPngImage.CreateAsync(artifact, cancellationToken: cancellationToken);
+inventorySlot.sprite = image.Sprite;
+// Retain image while the slot uses it. DisposeAsync releases its sprite and texture.
+</code></pre>
+<p>Release the queue with <code>await queue.CloseAsync()</code> when unloading its model. Each <code>UnityPngImage</code> has an independent lifetime; closing the queue does not destroy already displayed images. <code>store.GetPath(request.CacheKey)</code> returns the cached PNG path when caching is enabled.</p>
+<p>The choice keys in the example belong to the workshop style. Other games define their own catalog. A seed makes the requested recipe reproducible; changing the model, backend or hardware can change its resulting pixels.</p>
+<h2 id="implement-a-backend">Implement a backend</h2>
+<p>Provide a stable <code>GenerationIdentity</code> while the queue is alive. Its <code>ComponentsSha256</code> is a 64-character hexadecimal digest of the complete model/component recipe. Include the text encoder, decoder and any adapter configuration in that recipe. Reject unsupported dimensions or settings rather than silently changing the recorded request.</p>
+<p>The queue invokes <code>GenerateAsync</code> serially on a worker. Return a <code>RawImageFrame</code> of exactly the requested dimensions. Its constructor copies the provided pixel buffer, so the native buffer can then be freed by its owning allocator. Never return borrowed native memory or create UnityEngine objects from this method.</p>
+<p>Report progress through the supplied <code>IProgress&lt;GenerationProgress&gt;</code>. Treat reporting as observational; do not retain the observer after completion. Honour cancellation during model work and postprocessing, and release native resources in <code>Dispose()</code>. The queue calls <code>Dispose</code> only after the last native operation has ended.</p>
+<p><code>QueueCapacityException</code> is a synchronous rejection when there is no capacity. A failed backend operation faults that job&#39;s Task. Cancellation cancels the Task and prevents result publication. Handle each of these in the game&#39;s UI without replacing a previous successful image.</p>
+<h2 id="save-games">Save games</h2>
+<p>Persist the complete <code>GenerationRequest</code> recipe plus its cache key, the PNG and its content hash. The demo&#39;s <code>ForgeWorkshop.Receipt</code> shows a JSON-compatible record and checks that restored settings produce the saved key. These are deterministic content identifiers, not authentication signatures. A changed receipt is rejected rather than attached to a different PNG.</p>
+<p>The workshop commits its inventory file before adding the icon to the displayed collection. During that commit its Cancel button is disabled. A failed or cancelled order does not add a collection item. A damaged inventory is kept and new writes are blocked to preserve the existing save. Background policy is included in receipts; a portrait using Keep Background restores its original complete image.</p>
+<div class="doc-bottom"><a href="index.html">Documentation home</a><a href="../">Product overview</a></div></article></main><footer class="footer wrap"><span>© Strange Euphoria XR</span><a href="third-party-notices.html">Model and component terms</a></footer></body></html>

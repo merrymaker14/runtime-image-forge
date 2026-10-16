@@ -1,0 +1,164 @@
+<!DOCTYPE html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Runtime API — Runtime Image Forge</title><meta name="description" content="Runtime API — Runtime Image Forge: локальная генерация изображений для Unity."><link rel="stylesheet" href="../../site.css"><link rel="icon" href="../../assets/forge-mark.svg"><script src="../../site.js" defer></script><link rel="canonical" href="https://merrymaker14.github.io/runtime-image-forge/ru/docs/api.html"><link rel="alternate" hreflang="en" href="https://merrymaker14.github.io/runtime-image-forge/docs/api.html"><link rel="alternate" hreflang="ru" href="https://merrymaker14.github.io/runtime-image-forge/ru/docs/api.html"><link rel="alternate" hreflang="es" href="https://merrymaker14.github.io/runtime-image-forge/es/docs/api.html"><link rel="alternate" hreflang="zh-Hans" href="https://merrymaker14.github.io/runtime-image-forge/zh-Hans/docs/api.html"><link rel="alternate" hreflang="x-default" href="https://merrymaker14.github.io/runtime-image-forge/docs/api.html"></head><body><a class="skip" href="#main">Перейти к содержимому</a><header class="header wrap"><a class="brand" href="../"><img src="../../assets/forge-mark.svg" width="42" height="42" alt="">Runtime Image Forge</a><nav aria-label="Основная навигация"><a href="../#demo">Демонстрационная игра</a><a href="index.html">Документация</a><a href="api.html">API</a></nav></header><nav class="language-switch wrap" aria-label="Язык"><span>Язык</span><a data-language="en" lang="en" hreflang="en" href="../../docs/api.html">English</a><a data-language="ru" lang="ru" hreflang="ru" href="api.html" aria-current="page">Русский</a><a data-language="es" lang="es" hreflang="es" href="../../es/docs/api.html">Español</a><a data-language="zh-Hans" lang="zh-Hans" hreflang="zh-Hans" href="../../zh-Hans/docs/api.html">简体中文</a></nav><main id="main" class="doc-layout wrap"><nav class="doc-nav" aria-label="Документация"><p>Руководства и справочник</p><a href="index.html">Документация</a><a href="quick-start.html">Быстрый старт</a><a href="models-and-styles.html">Модели и стили</a><a href="api.html" aria-current="page">Runtime API</a><a href="exporting-images.html">Сохранение и экспорт</a><a href="mcp.html">Editor MCP</a><a href="troubleshooting.html">Решение проблем</a><a href="third-party-notices.html">Сторонние компоненты</a></nav><article class="doc-article"><p class="doc-meta">Runtime Image Forge 1.0.0 · Unity 6000.5+</p><h1 id="runtime-image-forge-api">Runtime Image Forge API</h1><nav class="toc" aria-label="На этой странице"><ul><li><a href="#model-download-size">Объём загрузки модели</a></li><li><a href="#scene-generator">Генератор сцены</a></li><li><a href="#generate-an-icon">Создание иконки</a></li><li><a href="#implement-a-backend">Собственный движок</a></li><li><a href="#save-games">Сохранения</a></li></ul></nav>
+<p>Пространство имён: <code>StrangeEuphoriaXR.RuntimeImageForge</code>.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Справочная таблица"><table>
+<thead>
+<tr>
+<th>Тип</th>
+<th>Назначение</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>GenerationIdentity</code></td>
+<td>Точный состав движка, модели и компонентов.</td>
+</tr>
+<tr>
+<td><code>GenerationRequest</code></td>
+<td>Неизменяемые применённые настройки и ключ кэша.</td>
+</tr>
+<tr>
+<td><code>ChoiceStyle</code></td>
+<td>Копия каталога и подстановка выбранных значений в проверенный шаблон.</td>
+</tr>
+<tr>
+<td><code>ForgeStyleAsset</code></td>
+<td>Редактируемый в инспекторе каталог и параметры генерации.</td>
+</tr>
+<tr>
+<td><code>ForgeBackgroundMode</code></td>
+<td>Режим стиля, прозрачный PNG или PNG с фоном для одного заказа.</td>
+</tr>
+<tr>
+<td><code>IImageGenerationBackend</code></td>
+<td>Контракт генерации изображений на рабочем потоке.</td>
+</tr>
+<tr>
+<td><code>ForgeBackendSource</code></td>
+<td>Компонент игры, создающий настроенный движок.</td>
+</tr>
+<tr>
+<td><code>ForgeGenerator</code></td>
+<td>Подготовка, задания, состояние, отмена и экспорт в рамках сцены.</td>
+</tr>
+<tr>
+<td><code>ForgeGenerationJob</code></td>
+<td>Запрос, состояние, прогресс, завершение и идентификаторы PNG.</td>
+</tr>
+<tr>
+<td><code>LocalForgeBackendSource</code></td>
+<td>Загрузка закреплённой модели и настройка движка Windows.</td>
+</tr>
+<tr>
+<td><code>ForgeModelProfile</code></td>
+<td>URL файла, ревизия, хеш, размер и параметры сэмплирования.</td>
+</tr>
+<tr>
+<td><code>ForegroundModelProfile</code></td>
+<td>Импортированная ONNX-модель, обработка входа и выхода.</td>
+</tr>
+<tr>
+<td><code>IImageBackendPreparation</code></td>
+<td>Необязательная проверка перед приёмом заказов.</td>
+</tr>
+<tr>
+<td><code>ForgeModelIntegrityException</code></td>
+<td>Отсутствующая, неполная модель или неверный хеш.</td>
+</tr>
+<tr>
+<td><code>ProcessedImageBackend</code></td>
+<td>Последовательная генерация с необязательной обработкой маски.</td>
+</tr>
+<tr>
+<td><code>RawImageFrame</code></td>
+<td>Копия RGB/RGBA с явным владением, началом координат и шагом строк.</td>
+</tr>
+<tr>
+<td><code>ImageGenerationQueue</code></td>
+<td>Ограниченная FIFO-очередь, отмена, кэш и владение движком.</td>
+</tr>
+<tr>
+<td><code>GenerationProgress</code></td>
+<td>Этап и ограниченная доля выполнения.</td>
+</tr>
+<tr>
+<td><code>PngArtifact</code></td>
+<td>Неизменяемый PNG, запрос, SHA-256 и признак кэша.</td>
+</tr>
+<tr>
+<td><code>PngFileStore</code></td>
+<td>Атомарный дисковый кэш с проверкой ключей и структуры PNG.</td>
+</tr>
+<tr>
+<td><code>UnityPngEncoder</code></td>
+<td>Преобразование RGB/RGBA в RGBA8 PNG с меткой sRGB.</td>
+</tr>
+<tr>
+<td><code>UnityPngImage</code></td>
+<td>Владелец одной runtime-текстуры и спрайта.</td>
+</tr>
+<tr>
+<td><code>PngExporter</code></td>
+<td>Атомарный экспорт PNG или комплекта PNG/рецепт с сохранением чужих файлов.</td>
+</tr>
+<tr>
+<td><code>ForgeExportPaths</code></td>
+<td>Папки рядом с игрой и в persistent-data.</td>
+</tr>
+</tbody></table></div>
+<h2 id="model-download-size">Объём загрузки модели</h2>
+<p>Инспектор модели показывает полный объём закреплённых весов. <code>ForgeModelProfile.GetTotalDownloadBytes()</code> проверяет профиль и суммирует все обязательные файлы модели, включая текстовый энкодер и декодер в компонентном профиле. Метод возвращает весь объём первой загрузки даже при наличии части файлов в кэше; загрузчик повторно использует проверенные файлы. В сумму не входят файлы движка и временное место для загрузки. GB — десятичная единица: 1 GB = 1 000 000 000 байт.</p>
+<h2 id="scene-generator">Генератор сцены</h2>
+<p>Вызывайте эти API на главном потоке Unity. Назначьте источник и профили в инспекторе; загрузка — явное действие игры, отдельно от подготовки.</p>
+<p>Вызов <code>ConnectBackend</code> создаёт дисковый кэш до очереди и передаёт генератору владение backend. При выгрузке или уничтожении генератора задания отменяются, а backend закрывается после завершения очереди, даже если объект ещё не был активирован. Ошибка целостности модели сбрасывает готовность, закрывает прежнюю очередь и устанавливает <code>LocalForgeBackendSource.NeedsModelRepair</code>. До повторной подготовки явно восстановите выбранный профиль: скачайте закреплённые HTTPS-файлы или повторно импортируйте проверенный локальный комплект; профили «Только импорт» требуют локального импорта.</p>
+<p><code>PngFileStore</code> согласовывает запись между отдельными экземплярами и процессами. Идентичный PNG для того же запроса принимается без замены файла. Если для того же ключа уже сохранён корректный PNG с другим хешем содержимого, он сохраняется, а новая запись отклоняется; для нового результата используйте другой seed. Повреждённый PNG можно восстановить. Небольшие файлы <code>.lock</code> остаются рядом с кэшем для согласования записей; не удаляйте их, пока генератор работает.</p>
+<pre tabindex="0"><code class="language-csharp">await localSource.DownloadModelAsync(downloadProgress, cancellationToken);
+var mode = ForgeBackgroundMode.Transparent; // Or KeepBackground; both produce PNG.
+await generator.PrepareAsync(style, mode, cancellationToken);
+var job = generator.Generate(style, choices, seed: 1234, backgroundMode: mode, token: cancellationToken);
+await job.Completion;
+if (job.State == &quot;completed&quot;)
+{
+    var artifact = await generator.ReadArtifactAsync(job.Request, cancellationToken);
+    var image = await UnityPngImage.CreateAsync(artifact, cancellationToken: cancellationToken);
+    // Retain image while displaying image.Sprite; dispose it when replacing the icon.
+    var bundle = await generator.ExportJobAsync(job.Id,
+        ForgeExportPaths.DirectoryFor(ForgeExportLocation.BesideGame), &quot;sword&quot;, cancellationToken);
+}
+</code></pre>
+<p><code>ForgeGenerationJob.Completion</code> завершается при <code>completed</code>, <code>cancelled</code> или <code>failed</code>; проверяйте <code>State</code> и <code>Error</code>. <code>CancelJob(id)</code> отменяет незавершённое задание, <code>CancelPreparation()</code> — запуск. Генератор владеет очередью и закрывает её при выгрузке сцены. Хранится до 64 записей заданий; PNG остаются на диске.</p>
+<p><code>ForgeBackgroundMode.StyleDefault</code> использует <code>style.keepBackground</code>. Для <code>Transparent</code> нужен обработчик маски; <code>KeepBackground</code> пропускает его. Передавайте режим и в подготовку, и в генерацию, чтобы прогреть только выбранный конвейер. Переход к прозрачности после подготовки с фоном включает стоимость первого вызова маски в этот заказ. Общий ресурс стиля не меняется. Режим входит в запрос, ключ кэша, сохранение и экспортный рецепт. Встроенный движок отклоняет прозрачный заказ без обработчика.</p>
+<p>При <code>HasLocalModel=true</code> пропускайте загрузку и готовьте кэшированную модель. Подготовка проверяет SHA-256. <code>ForgeModelIntegrityException</code> отмечает источник для восстановления; явная успешная загрузка снимает отметку. Прогресс загрузки — дробное значение через <code>IProgress&lt;float&gt;</code>.</p>
+<h2 id="generate-an-icon">Создание иконки</h2>
+<p>Создайте очередь один раз для настроенного движка и храните на протяжении жизни модели:</p>
+<pre tabindex="0"><code class="language-csharp">using System.Collections.Generic;
+using System.IO;
+using StrangeEuphoriaXR.RuntimeImageForge;
+using UnityEngine;
+
+// localSource is a LocalForgeBackendSource with a verified model; style is a configured asset.
+await localSource.PrepareNativeAsync(cancellationToken);
+var backend = localSource.CreateBackend();
+var store = new PngFileStore(Path.Combine(Application.persistentDataPath, &quot;GeneratedArt&quot;));
+var queue = new ImageGenerationQueue(backend, new UnityPngEncoder(), store);
+var choices = new Dictionary&lt;string, string&gt;
+{
+    [&quot;item&quot;] = &quot;sword&quot;,
+    [&quot;material&quot;] = &quot;steel&quot;,
+    [&quot;detail&quot;] = &quot;runes&quot;
+};
+var request = style.CreateRequest(queue.Identity, choices, seed: 1234);
+var artifact = await queue.GenerateAsync(request, cancellationToken: cancellationToken);
+var image = await UnityPngImage.CreateAsync(artifact, cancellationToken: cancellationToken);
+inventorySlot.sprite = image.Sprite;
+// Retain image while the slot uses it. DisposeAsync releases its sprite and texture.
+</code></pre>
+<p>При выгрузке модели вызовите <code>await queue.CloseAsync()</code>. У каждого <code>UnityPngImage</code> отдельное время жизни: закрытие очереди не уничтожает показанные картинки. <code>store.GetPath(request.CacheKey)</code> возвращает путь PNG при включённом кэше.</p>
+<p>Ключи примера принадлежат стилю кузницы. Другие игры задают свой каталог. Seed позволяет записать воспроизводимый запрос; изменение модели, движка и оборудования может менять пиксели.</p>
+<h2 id="implement-a-backend">Собственный движок</h2>
+<p>Держите <code>GenerationIdentity</code> стабильным, пока очередь активна. <code>ComponentsSha256</code> — 64-символьная шестнадцатеричная контрольная сумма полного состава модели и компонентов. Включайте text encoder, decoder и параметры адаптеров. Отклоняйте неподдерживаемые размеры и параметры вместо незаметного изменения записанного запроса.</p>
+<p>Очередь последовательно вызывает <code>GenerateAsync</code> на рабочем потоке. Верните <code>RawImageFrame</code> с точными запрошенными размерами. Конструктор копирует буфер пикселей, после чего его владелец может освободить нативную память. Не возвращайте заимствованную память и не создавайте объекты UnityEngine в этом методе.</p>
+<p>Показывайте прогресс через переданный <code>IProgress&lt;GenerationProgress&gt;</code>; не храните наблюдателя после завершения. Поддерживайте отмену при работе модели и последующей обработке, освобождайте нативные ресурсы в <code>Dispose()</code>. Очередь вызывает <code>Dispose</code> только после завершения последней нативной операции.</p>
+<p><code>QueueCapacityException</code> синхронно отклоняет запрос без свободного места. Ошибка движка завершает Task задания с ошибкой. Отмена отменяет Task и предотвращает публикацию результата. Обрабатывайте это в интерфейсе, сохраняя прежнюю успешную картинку.</p>
+<h2 id="save-games">Сохранения</h2>
+<p>Сохраняйте полный рецепт <code>GenerationRequest</code>, ключ кэша, PNG и контрольную сумму содержимого. <code>ForgeWorkshop.Receipt</code> демонстрирует JSON-совместимую запись и проверку совпадения восстановленных настроек с сохранённым ключом. Это детерминированные идентификаторы содержимого, не подписи подлинности. Изменённая запись отклоняется вместо привязки к другой картинке.</p>
+<p>Кузница сохраняет инвентарь на диск до добавления иконки в интерфейс. На время записи кнопка Cancel отключена. Неудачный или отменённый заказ не добавляет предмет. Повреждённый инвентарь сохраняется, а новые записи блокируются для защиты сохранения. Режим фона входит в запись; портрет с Keep Background восстанавливает полное исходное изображение.</p>
+<div class="doc-bottom"><a href="index.html">Главная документации</a><a href="../">Обзор продукта</a></div></article></main><footer class="footer wrap"><span>© Strange Euphoria XR</span><a href="third-party-notices.html">Условия моделей и компонентов</a></footer></body></html>

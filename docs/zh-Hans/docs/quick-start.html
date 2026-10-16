@@ -1,0 +1,53 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>快速入门 — Runtime Image Forge</title><meta name="description" content="快速入门 — Runtime Image Forge：Unity 本地图片生成。"><link rel="stylesheet" href="../../site.css"><link rel="icon" href="../../assets/forge-mark.svg"><script src="../../site.js" defer></script><link rel="canonical" href="https://merrymaker14.github.io/runtime-image-forge/zh-Hans/docs/quick-start.html"><link rel="alternate" hreflang="en" href="https://merrymaker14.github.io/runtime-image-forge/docs/quick-start.html"><link rel="alternate" hreflang="ru" href="https://merrymaker14.github.io/runtime-image-forge/ru/docs/quick-start.html"><link rel="alternate" hreflang="es" href="https://merrymaker14.github.io/runtime-image-forge/es/docs/quick-start.html"><link rel="alternate" hreflang="zh-Hans" href="https://merrymaker14.github.io/runtime-image-forge/zh-Hans/docs/quick-start.html"><link rel="alternate" hreflang="x-default" href="https://merrymaker14.github.io/runtime-image-forge/docs/quick-start.html"></head><body><a class="skip" href="#main">跳转到正文</a><header class="header wrap"><a class="brand" href="../"><img src="../../assets/forge-mark.svg" width="42" height="42" alt="">Runtime Image Forge</a><nav aria-label="主导航"><a href="../#demo">配套游戏</a><a href="index.html">文档</a><a href="api.html">API</a></nav></header><nav class="language-switch wrap" aria-label="语言"><span>语言</span><a data-language="en" lang="en" hreflang="en" href="../../docs/quick-start.html">English</a><a data-language="ru" lang="ru" hreflang="ru" href="../../ru/docs/quick-start.html">Русский</a><a data-language="es" lang="es" hreflang="es" href="../../es/docs/quick-start.html">Español</a><a data-language="zh-Hans" lang="zh-Hans" hreflang="zh-Hans" href="quick-start.html" aria-current="page">简体中文</a></nav><main id="main" class="doc-layout wrap"><nav class="doc-nav" aria-label="文档"><p>指南与参考</p><a href="index.html">文档</a><a href="quick-start.html" aria-current="page">快速入门</a><a href="models-and-styles.html">模型与样式</a><a href="api.html">Runtime API</a><a href="exporting-images.html">保存与导出</a><a href="mcp.html">Editor MCP</a><a href="troubleshooting.html">故障排查</a><a href="third-party-notices.html">第三方声明</a></nav><article class="doc-article"><p class="doc-meta">Runtime Image Forge 1.0.0 · Unity 6000.5+</p><h1 id="quick-start">快速入门</h1><nav class="toc" aria-label="本页内容"><ul><li><a href="#install-and-import-examples">安装并导入示例</a></li><li><a href="#configure-the-scene">配置场景</a></li><li><a href="#included-companion-game">随附演示游戏</a></li><li><a href="#first-download-and-order">首次下载与订单</a></li><li><a href="#build-a-game">构建游戏</a></li></ul></nav>
+<p>使用 Unity 6000.5 或更新版本。随附原生后端支持 Windows x64 和兼容 Vulkan 的 GPU；前景抠图使用 GPU Compute。Unity Inference Engine 2.6.1 作为软件包依赖安装。MCP 为可选功能。</p>
+<p>后端以原生 DLL 在 Unity Editor 或 Windows Player 进程内运行。Runtime Image Forge 在加载本地库之前校验其固定 SHA-256。图像生成无需独立服务器、监听端口或 API 密钥。</p>
+<p>原生库需要 Microsoft Visual C++ 2015–2022 Redistributable (x64)，大多数 Windows 电脑已经安装。缺少或版本过旧时，准备阶段会报告缺失原生依赖（关闭 <strong>准备时预热</strong> 时由第一个订单报告）；请从 Microsoft 安装最新版本后重启 Unity 或游戏。</p>
+<h2 id="install-and-import-examples">安装并导入示例</h2>
+<ol>
+<li>购买后在 <strong>Package Manager &gt; My Assets</strong> 中安装 Runtime Image Forge，它会作为包安装。本地 <code>.tgz</code> 副本可通过 <strong>Install package from tarball</strong> 添加。</li>
+<li>从软件包的 <strong>Samples</strong> 选项卡导入 <strong>Models and choice styles</strong>。包含 Bonsai Ternary 4B、FLUX.2 Klein 4B 配置、前景配置、<code>Styles/NativeDistilled1024</code> 中的五个 Native1024 风格及原始可编辑预设。</li>
+<li>打开 <strong>Tools &gt; Runtime Image Forge &gt; Overview</strong>。退出播放模式后选择<strong>安装 Windows 后端</strong>。原生 DLL 归档与声明会复制到项目 StreamingAssets，并包含在 Windows Player 构建中。</li>
+</ol>
+<p>权重需单独获取。Bonsai Ternary 4B 需要兼容的已转换平面模型包，固定权重共 4,642,526,382 字节（4.64 GB / 4.32 GiB）。FLUX.2 Klein 4B 的固定权重共 5,207,178,964 字节（5.21 GB / 4.85 GiB），可显式 HTTPS 下载或本地导入。引擎、声明、压缩包额外数据和临时副本需要额外空间。使用或重新分发前，请阅读<a href="models-and-styles.html">模型和风格</a>及所选配置的模型条款。</p>
+<p>Bonsai 模型包可从 <a href="https://merrymaker14.itch.io/the-ember-forge">itch.io 上的 The Ember Forge 页面</a> 免费下载：选择 <strong>Runtime-Image-Forge-Bonsai-Models.zip</strong>。其中只有三个权重文件及其声明和说明，不含可执行文件。解压后请保持 <code>RuntimeImageForgeModels</code> 文件夹完整。</p>
+<p>发布游戏前，请在模型 Inspector 检查<strong>全部模型权重</strong>。开始下载前向玩家显示首次完整下载的大小。引擎文件和下载临时空间另计；权重文件大小不等于 RAM 或 VRAM 要求。</p>
+<h2 id="configure-the-scene">配置场景</h2>
+<p>创建场景对象，添加 <code>LocalForgeBackendSource</code> 与 <code>ForgeGenerator</code>。</p>
+<ul>
+<li>在本地后端的<strong>模型配置</strong>中选择已导入的 <code>BonsaiTernary4B</code> 或 <code>FLUX2Klein4B</code> 资源。</li>
+<li>将 U2NETP 配置分配给<strong>前景蒙版</strong>。其 ONNX 引用指向软件包随附模型。</li>
+<li><strong>Vulkan 设备</strong>保持 <code>auto</code>，以选择合适本地 GPU。</li>
+<li>将此来源分配给生成器的<strong>后端来源</strong>。启用<strong>准备时预热</strong>，准备一次且不保存预热图片。</li>
+<li>首张图像选择 <code>Styles/NativeDistilled1024/IllustratedForgeNative1024</code>：1024 × 1024、4 步、CFG 1。选项键为 <code>item</code>、<code>material</code>、<code>detail</code>。选择配置不会修改风格设置。</li>
+</ul>
+<p>准备前先打开所选模型配置。Bonsai 使用<strong>导入经过验证的模型文件</strong>并选择已转换的平面模型包。Klein 可选择<strong>下载并验证模型文件</strong>，或从本地文件夹导入三个固定文件。两种操作均显示进度并支持取消。缓存配置验证完成后可离线准备。请完成任务并关闭已准备好的生成器后，在 Edit Mode 更换配置。</p>
+<p>Overview 中的<strong>创建模型配置</strong>、<strong>创建前景配置</strong>和<strong>创建选项风格</strong>会在所选 Assets 文件夹创建并选中资源，文件名不会重复覆盖。前景配置自动关联随附 ONNX 模型。新风格包含可编辑的物品、材料、细节目录。<strong>现有风格 &gt; 编辑所选风格</strong>可打开已保存目录。也支持 <strong>Assets &gt; Create &gt; Runtime Image Forge</strong> 菜单；从该菜单创建的前景配置需手动分配 ONNX。</p>
+<h2 id="included-companion-game">随附演示游戏</h2>
+<p>软件包包含 <strong>The Ember Forge</strong>：完整可编辑游戏场景、游戏源代码、工坊美术与独立配乐。Samples 文件随软件包下载，只有主动导入后才复制到项目 Assets。在 <strong>Samples</strong> 导入 <strong>The Ember Forge</strong>，然后选择 <strong>Tools &gt; Runtime Image Forge &gt; Open The Ember Forge sample</strong>。若项目没有 TMP 资源，该菜单会导入缺失的 TMP Essentials，随后打开场景并安装 Windows 原生 DLL 和声明。已有 TMP Settings 会保留。部分安装的 TMP 需先修复，其资源不会被覆盖。场景使用宿主项目的渲染与当前输入后端。示例已分配 <code>BonsaiTernary4B</code> 和 <code>IllustratedForgeNative1024</code>：1024 × 1024、4 步、CFG 1。若要使用 Klein，请在点击 Play 前在本地后端选择 <code>FLUX2Klein4B</code>；选择配置不会更改风格设置。游戏中 Bonsai 使用 <strong>IMPORT MODEL PACK</strong>，Klein 使用显式模型下载。</p>
+<p>请仅保留一个已导入的示例版本。替换旧版本前备份修改文件。示例 README 说明内容与首次启动步骤。单独的 Windows 独立发行版无需 Unity 或此软件包即可运行。</p>
+<p>在编辑器中运行示例时，请把解压后的 <code>RuntimeImageForgeModels</code> 文件夹放在项目 <code>Assets</code> 文件夹旁边，进入 Play Mode 并点击 <strong>IMPORT MODEL PACK</strong>。导入会复制并验证一次文件。</p>
+<h2 id="first-download-and-order">首次下载与订单</h2>
+<p>Klein 等 HTTPS 配置应将游戏的下载按钮连接到显式调用 <code>localSource.DownloadModelAsync(progress, token)</code>。Bonsai 等仅导入配置应显式调用 <code>localSource.ImportModelPackAsync(selectedFolder, progress, token)</code>。获取文件前向玩家显示完整权重大小、进度、取消及错误。请等待玩家选择后再获取模型文件。</p>
+<p>若 <code>HasLocalModel</code> 已为 true，直接准备。先选择透明 PNG 或带背景 PNG，再调用 <code>generator.PrepareAsync(style, backgroundMode, token)</code>。准备会校验缓存文件、加载原生模型上下文并预热选定流程，不保存预热图像。带背景 PNG 会跳过前景模型预热。等到 <code>generator.IsReady</code> 再接受订单。</p>
+<pre tabindex="0"><code class="language-csharp">var choices = new Dictionary&lt;string, string&gt;
+{
+    [&quot;item&quot;] = &quot;sword&quot;,
+    [&quot;material&quot;] = &quot;steel&quot;,
+    [&quot;detail&quot;] = &quot;runes&quot;
+};
+var backgroundMode = ForgeBackgroundMode.Transparent; // Use KeepBackground to skip cutout.
+await generator.PrepareAsync(style, backgroundMode, token);
+var job = generator.Generate(style, choices, 1234, backgroundMode, token);
+await job.Completion;
+if (job.State != &quot;completed&quot;)
+    throw new InvalidOperationException(job.Error ?? job.State);
+var artifact = await generator.ReadArtifactAsync(job.Request, token);
+var ownedImage = await UnityPngImage.CreateAsync(artifact, cancellationToken: token);
+inventoryImage.sprite = ownedImage.Sprite;
+</code></pre>
+<p>此代码片段使用 <code>System</code>、<code>System.Collections.Generic</code>、<code>StrangeEuphoriaXR.RuntimeImageForge</code>。<code>generator</code>、<code>style</code> 和 <code>inventoryImage</code> 代表已分配的组件与资源。界面使用精灵期间保留 <code>ownedImage</code>，替换图像或关闭视图时释放。生命周期与错误处理见 <a href="api.html">API 指南</a>。</p>
+<p>使用 <code>generator.ExportJobAsync(...)</code> 导出完成任务，或通过 <code>PngExporter</code> 导出现有 <code>PngArtifact</code>。导出保存已有图像，不会重新运行模型。</p>
+<h2 id="build-a-game">构建游戏</h2>
+<p>使用已配置场景构建 Windows x64 Player。保留 <code>StreamingAssets/RuntimeImageForge</code> 文件和声明。Bonsai 应提供游戏旁的兼容平面文件夹 <code>RuntimeImageForgeModels</code> 及本地导入操作；Klein 应提供显式 HTTPS 下载或本地导入。缓存文件验证完成后可供后续离线启动使用。重新分发模型包时请保留 LICENSE/NOTICE 和转换声明。恢复生成物品时请同时保存配方、内容哈希和 PNG。</p>
+<p>编辑器 Inspector 与可选 MCP 不包含在 Player。公开游戏无需 MCP 服务器。修复与取消行为见<a href="troubleshooting.html">故障排查</a>。</p>
+<div class="doc-bottom"><a href="index.html">文档首页</a><a href="../">产品概览</a></div></article></main><footer class="footer wrap"><span>© Strange Euphoria XR</span><a href="third-party-notices.html">模型与组件条款</a></footer></body></html>

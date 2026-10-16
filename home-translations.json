@@ -1,0 +1,517 @@
+{
+  "width=device-width, initial-scale=1": {
+    "ru": "width=device-width, initial-scale=1",
+    "es": "width=device-width, initial-scale=1",
+    "zh-Hans": "width=device-width, initial-scale=1"
+  },
+  "Runtime Image Forge — Local image generation for Unity": {
+    "ru": "Runtime Image Forge — Локальная генерация изображений для Unity",
+    "es": "Runtime Image Forge — Generación local de imágenes para Unity",
+    "zh-Hans": "Runtime Image Forge — Unity 本地图片生成"
+  },
+  "Generate images inside your Unity game. Editable choice styles, local models, transparent PNGs, persistent recipes and Editor MCP tools. Explore The Ember Forge companion demo.": {
+    "ru": "Генерируйте изображения внутри игры на Unity. Настраиваемые стили выбора, локальные модели, прозрачные PNG, сохраняемые рецепты и инструменты Editor MCP. Познакомьтесь с демонстрационной игрой The Ember Forge.",
+    "es": "Genera imágenes dentro de tu juego Unity. Estilos de opciones editables, modelos locales, PNG transparentes, recetas persistentes y herramientas Editor MCP. Explora The Ember Forge.",
+    "zh-Hans": "在 Unity 游戏中生成图片。可编辑选项样式、本地模型、透明 PNG、持久保存的配方和 Editor MCP 工具。了解 The Ember Forge 配套游戏。"
+  },
+  "Runtime Image Forge": {
+    "ru": "Runtime Image Forge",
+    "es": "Runtime Image Forge",
+    "zh-Hans": "Runtime Image Forge"
+  },
+  "Local image generation for Unity. Explore the included Ember Forge companion game.": {
+    "ru": "Локальная генерация изображений для Unity. Познакомьтесь с игрой The Ember Forge из комплекта.",
+    "es": "Generación local de imágenes para Unity. Explora el juego complementario The Ember Forge incluido.",
+    "zh-Hans": "Unity 本地图片生成。了解随附的 The Ember Forge 配套游戏。"
+  },
+  "Skip to content": {
+    "ru": "Перейти к содержимому",
+    "es": "Ir al contenido",
+    "zh-Hans": "跳转到正文"
+  },
+  "Strange Euphoria XR": {
+    "ru": "Strange Euphoria XR",
+    "es": "Strange Euphoria XR",
+    "zh-Hans": "Strange Euphoria XR"
+  },
+  "Main navigation": {
+    "ru": "Основная навигация",
+    "es": "Navegación principal",
+    "zh-Hans": "主导航"
+  },
+  "Companion game": {
+    "ru": "Демонстрационная игра",
+    "es": "Juego complementario",
+    "zh-Hans": "配套游戏"
+  },
+  "Documentation": {
+    "ru": "Документация",
+    "es": "Documentación",
+    "zh-Hans": "文档"
+  },
+  "API": {
+    "ru": "API",
+    "es": "API",
+    "zh-Hans": "API"
+  },
+  "Art made inside": {
+    "ru": "Изображения рождаются",
+    "es": "Arte creado dentro",
+    "zh-Hans": "在游戏中"
+  },
+  "your game.": {
+    "ru": "в вашей игре.",
+    "es": "de tu juego.",
+    "zh-Hans": "创作图片。"
+  },
+  "Let players craft something personal. Generate a local image, keep its recipe and turn the result into an item they can collect or share.": {
+    "ru": "Дайте игрокам создать что-то своё. Сгенерируйте изображение локально, сохраните его рецепт и превратите результат в предмет для коллекции или обмена.",
+    "es": "Deja que los jugadores creen algo propio. Genera una imagen local, guarda su receta y convierte el resultado en un objeto que puedan coleccionar o compartir.",
+    "zh-Hans": "让玩家创造属于自己的东西。在本地生成图片，保存配方，并将结果转化为可收藏或分享的物品。"
+  },
+  "Read the quick start": {
+    "ru": "Быстрый старт",
+    "es": "Leer el inicio rápido",
+    "zh-Hans": "阅读快速入门"
+  },
+  "Unity tool · Windows x64 native DLL backend": {
+    "ru": "Инструмент Unity · Нативный движок DLL для Windows x64",
+    "es": "Herramienta Unity · Motor DLL nativo para Windows x64",
+    "zh-Hans": "Unity 工具 · Windows x64 原生 DLL 后端"
+  },
+  "Complete editable companion game included in Samples.": {
+    "ru": "Полная редактируемая демонстрационная игра входит в Samples.",
+    "es": "El juego complementario editable completo se incluye en Samples.",
+    "zh-Hans": "Samples 包含完整可编辑配套游戏。"
+  },
+  "A locally generated bronze shield with a transparent background": {
+    "ru": "Бронзовый щит с прозрачным фоном, сгенерированный локально",
+    "es": "Un escudo de bronce generado localmente con fondo transparente",
+    "zh-Hans": "本地生成的透明背景青铜盾牌"
+  },
+  "Example output": {
+    "ru": "Пример результата",
+    "es": "Resultado de ejemplo",
+    "zh-Hans": "示例结果"
+  },
+  "Shield": {
+    "ru": "Щит",
+    "es": "Escudo",
+    "zh-Hans": "盾牌"
+  },
+  "Sword": {
+    "ru": "Меч",
+    "es": "Espada",
+    "zh-Hans": "剑"
+  },
+  "Hammer": {
+    "ru": "Молот",
+    "es": "Martillo",
+    "zh-Hans": "锤"
+  },
+  "Preview background": {
+    "ru": "Фон предпросмотра",
+    "es": "Fondo de vista previa",
+    "zh-Hans": "预览背景"
+  },
+  "Steel": {
+    "ru": "Стальной",
+    "es": "Acero",
+    "zh-Hans": "钢色"
+  },
+  "Light": {
+    "ru": "Светлый",
+    "es": "Claro",
+    "zh-Hans": "浅色"
+  },
+  "Alpha grid": {
+    "ru": "Сетка прозрачности",
+    "es": "Cuadrícula alfa",
+    "zh-Hans": "透明网格"
+  },
+  "Bronze shield · original 512 × 512 PNG": {
+    "ru": "Бронзовый щит · Исходный PNG 512 × 512",
+    "es": "Escudo de bronce · PNG original de 512 × 512",
+    "zh-Hans": "青铜盾牌 · 原始 512 × 512 PNG"
+  },
+  "Real outputs from the legacy 512 × 512 preset; changing this preview does not run a model.": {
+    "ru": "Настоящие результаты прежнего пресета 512 × 512; переключение предпросмотра не запускает модель.",
+    "es": "Resultados reales del preset anterior de 512 × 512; cambiar esta vista previa no ejecuta un modelo.",
+    "zh-Hans": "旧版 512 × 512 预设的真实输出；切换预览不会运行模型。"
+  },
+  "Save example PNG": {
+    "ru": "Сохранить пример PNG",
+    "es": "Guardar PNG de ejemplo",
+    "zh-Hans": "保存示例 PNG"
+  },
+  "From a player’s choice": {
+    "ru": "От выбора игрока",
+    "es": "De la elección del jugador",
+    "zh-Hans": "从玩家的选择"
+  },
+  "to a saved image.": {
+    "ru": "к сохранённому изображению.",
+    "es": "a una imagen guardada.",
+    "zh-Hans": "到保存的图片。"
+  },
+  "Choose the art direction in the Editor. Define the options your game accepts, prepare its local model, and submit a bounded generation job. Your game controls when a result becomes an item.": {
+    "ru": "Задайте художественное направление в редакторе. Определите варианты, которые принимает игра, подготовьте локальную модель и отправьте задачу с заданными параметрами. Игра решает, когда результат становится предметом.",
+    "es": "Elige la dirección artística en el Editor. Define las opciones que acepta tu juego, prepara su modelo local y envía una tarea con parámetros acotados. Tu juego decide cuándo el resultado se convierte en un objeto.",
+    "zh-Hans": "在编辑器中设定美术方向。定义游戏允许的选项，准备本地模型，并提交参数明确的生成任务。由游戏决定何时将结果变成物品。"
+  },
+  "Your style, your catalog": {
+    "ru": "Ваш стиль, ваш каталог",
+    "es": "Tu estilo, tu catálogo",
+    "zh-Hans": "你的样式，你的目录"
+  },
+  "Editable prompts and choice fields for item art, flat icons, portraits and environments. Keep a full background or apply foreground removal to isolated objects.": {
+    "ru": "Настраиваемые промпты и поля выбора для предметов, плоских иконок, портретов и окружения. Сохраните полный фон или удалите его у отдельного объекта.",
+    "es": "Prompts y campos de opciones editables para objetos, iconos planos, retratos y entornos. Conserva el fondo completo o elimina el fondo de objetos aislados.",
+    "zh-Hans": "为物品、扁平图标、肖像和环境配置可编辑提示词与选项字段。保留完整背景，或为独立物体移除背景。"
+  },
+  "Models and styles": {
+    "ru": "Модели и стили",
+    "es": "Modelos y estilos",
+    "zh-Hans": "模型与样式"
+  },
+  "A PNG you can use": {
+    "ru": "PNG для вашей игры",
+    "es": "Un PNG que puedes utilizar",
+    "zh-Hans": "可直接使用的 PNG"
+  },
+  "Display the result as a Texture2D or Sprite. Export its original PNG with a recipe that records the model, seed, prompts and applied settings.": {
+    "ru": "Покажите результат как Texture2D или Sprite. Экспортируйте исходный PNG с рецептом, фиксирующим модель, seed, промпты и применённые настройки.",
+    "es": "Muestra el resultado como Texture2D o Sprite. Exporta el PNG original con una receta que registra el modelo, seed, prompts y ajustes aplicados.",
+    "zh-Hans": "以 Texture2D 或 Sprite 显示结果。导出原始 PNG，并附带记录模型、seed、提示词及实际设置的配方。"
+  },
+  "Saving and sharing": {
+    "ru": "Сохранение и обмен",
+    "es": "Guardar y compartir",
+    "zh-Hans": "保存与分享"
+  },
+  "Control the whole job": {
+    "ru": "Управление всей задачей",
+    "es": "Control de toda la tarea",
+    "zh-Hans": "掌控整个任务"
+  },
+  "Preparation, warmup, queueing, cancellation, caching and clear failures. Optional Editor MCP tools let trusted agents generate, inspect and export jobs.": {
+    "ru": "Подготовка, прогрев, очередь, отмена, кеш и понятные ошибки. Необязательные инструменты Editor MCP позволяют доверенным агентам генерировать, проверять и экспортировать результаты.",
+    "es": "Preparación, calentamiento, cola, cancelación, caché y errores claros. Las herramientas opcionales Editor MCP permiten que agentes de confianza generen, inspeccionen y exporten resultados.",
+    "zh-Hans": "准备、预热、排队、取消、缓存和明确的错误信息。可选 Editor MCP 工具允许受信任的代理生成、检查与导出任务。"
+  },
+  "Editor MCP tools": {
+    "ru": "Инструменты Editor MCP",
+    "es": "Herramientas Editor MCP",
+    "zh-Hans": "Editor MCP 工具"
+  },
+  "The Ember Forge": {
+    "ru": "The Ember Forge",
+    "es": "The Ember Forge",
+    "zh-Hans": "The Ember Forge"
+  },
+  "A small workshop. A collection that is yours.": {
+    "ru": "Небольшая мастерская. Ваша собственная коллекция.",
+    "es": "Un pequeño taller. Una colección que es tuya.",
+    "zh-Hans": "小小工坊，属于你的收藏。"
+  },
+  "Choose a sword, shield, ring or amulet. Pick a material and an ornament, forge an image, then collect it. Save a transparent PNG and its recipe to share the result.": {
+    "ru": "Выберите меч, щит, кольцо или амулет. Задайте материал и украшение, выкуйте изображение и добавьте его в коллекцию. Сохраните прозрачный PNG и рецепт, чтобы поделиться результатом.",
+    "es": "Elige una espada, escudo, anillo o amuleto. Selecciona material y adorno, forja una imagen y añádela a tu colección. Guarda un PNG transparente y su receta para compartir el resultado.",
+    "zh-Hans": "选择剑、盾牌、戒指或护符，挑选材料与装饰，锻造图片并收藏。保存透明 PNG 和配方，即可分享成果。"
+  },
+  "The complete editable companion game is included with the Unity package:": {
+    "ru": "Полная редактируемая демонстрационная игра входит в пакет Unity:",
+    "es": "El juego complementario editable completo está incluido en el paquete Unity:",
+    "zh-Hans": "Unity 包包含完整可编辑配套游戏："
+  },
+  "scene, gameplay source, workshop art and soundtrack. Import it from Samples when you want to study or adapt it.": {
+    "ru": "сцена, исходники игрового процесса, оформление мастерской и музыка. Импортируйте её из Samples, когда захотите изучить или изменить.",
+    "es": "escena, código del juego, arte del taller y banda sonora. Impórtalo desde Samples cuando quieras estudiarlo o adaptarlo.",
+    "zh-Hans": "场景、游戏源码、工坊美术和配乐。需要学习或修改时，可从 Samples 导入。"
+  },
+  "Open the included game in Unity": {
+    "ru": "Открыть игру из комплекта в Unity",
+    "es": "Abrir el juego incluido en Unity",
+    "zh-Hans": "在 Unity 中打开随附游戏"
+  },
+  ".": {
+    "ru": ".",
+    "es": ".",
+    "zh-Hans": "。"
+  },
+  "View the included companion setup": {
+    "ru": "Открыть настройку игры из комплекта",
+    "es": "Ver la configuración del juego incluido",
+    "zh-Hans": "查看随附游戏的设置"
+  },
+  "Watch the gameplay trailer": {
+    "ru": "Смотреть игровой ролик",
+    "es": "Ver el tráiler del juego",
+    "zh-Hans": "观看实机预告片"
+  },
+  "A 60-second trailer of the legacy preset with real gameplay and an original soundtrack. The local model was prepared before capture.": {
+    "ru": "Минутный ролик прежнего пресета с настоящим игровым процессом и собственной музыкой. Локальная модель была подготовлена до записи.",
+    "es": "Un tráiler de 60 segundos del preset anterior con juego real y una banda sonora original. El modelo local se preparó antes de la grabación.",
+    "zh-Hans": "旧版预设的 60 秒预告片，包含真实游戏画面和原创配乐。录制前已准备好本地模型。"
+  },
+  "Download the trailer": {
+    "ru": "Скачать ролик",
+    "es": "Descargar el tráiler",
+    "zh-Hans": "下载预告片"
+  },
+  "Your first order": {
+    "ru": "Ваш первый заказ",
+    "es": "Tu primer encargo",
+    "zh-Hans": "你的第一份订单"
+  },
+  "Use the game's explicit download or import action for the selected model.": {
+    "ru": "Для выбранной модели используйте явное действие скачивания или импорта в игре.",
+    "es": "Usa la acción explícita de descarga o importación del juego para el modelo elegido.",
+    "zh-Hans": "为所选模型使用游戏中的显式下载或导入操作。"
+  },
+  "Wait for verification and warmup, then craft your first item.": {
+    "ru": "Дождитесь проверки и прогрева, затем создайте первый предмет.",
+    "es": "Espera la verificación y el calentamiento; después crea tu primer objeto.",
+    "zh-Hans": "等待校验和预热完成，再制作第一个物品。"
+  },
+  "Select it in the collection and save PNG + recipe.": {
+    "ru": "Выберите его в коллекции и сохраните PNG + рецепт.",
+    "es": "Selecciónalo en la colección y guarda PNG + receta.",
+    "zh-Hans": "在收藏中选中物品，保存 PNG + 配方。"
+  },
+  "Keep what you make": {
+    "ru": "Сохраните созданное",
+    "es": "Conserva lo que creas",
+    "zh-Hans": "留住你的作品"
+  },
+  "The collection saves up to 256 items, four per page. Export beside the game or into its data folder. Failed and cancelled orders do not add items.": {
+    "ru": "Коллекция хранит до 256 предметов, по четыре на странице. Экспортируйте рядом с игрой или в её папку данных. Неудачные и отменённые заказы не добавляют предметы.",
+    "es": "La colección guarda hasta 256 objetos, cuatro por página. Exporta junto al juego o a su carpeta de datos. Los encargos fallidos o cancelados no añaden objetos.",
+    "zh-Hans": "收藏最多保存 256 件物品，每页四件。可导出到游戏旁边或游戏数据目录。失败和取消的订单不会新增物品。"
+  },
+  "English game interface. English and Russian first-start instructions are included. No plugin purchase or Unity installation required for the standalone game.": {
+    "ru": "Интерфейс игры на английском. В комплекте инструкции первого запуска на английском и русском. Отдельная игра не требует покупки плагина или установки Unity.",
+    "es": "Interfaz del juego en inglés. Se incluyen instrucciones de primer inicio en inglés y ruso. El juego independiente no requiere comprar el plugin ni instalar Unity.",
+    "zh-Hans": "游戏界面为英文，随附英文和俄文首次启动说明。独立游戏无需购买插件或安装 Unity。"
+  },
+  "Local models.": {
+    "ru": "Локальные модели.",
+    "es": "Modelos locales.",
+    "zh-Hans": "本地模型。"
+  },
+  "Practical limits.": {
+    "ru": "Практические ограничения.",
+    "es": "Límites prácticos.",
+    "zh-Hans": "实际限制。"
+  },
+  "Unity and platform": {
+    "ru": "Unity и платформа",
+    "es": "Unity y plataforma",
+    "zh-Hans": "Unity 与平台"
+  },
+  "Tested hardware": {
+    "ru": "Проверенное оборудование",
+    "es": "Hardware probado",
+    "zh-Hans": "已测试硬件"
+  },
+  "NVIDIA RTX 3060 Laptop GPU, 6 GB VRAM. This is a tested configuration, not a guaranteed minimum.": {
+    "ru": "NVIDIA RTX 3060 Laptop GPU, 6 GB VRAM. Это проверенная конфигурация, а не гарантированный минимум.",
+    "es": "NVIDIA RTX 3060 Laptop GPU, 6 GB VRAM. Es una configuración probada, no un mínimo garantizado.",
+    "zh-Hans": "NVIDIA RTX 3060 Laptop GPU，6 GB VRAM。这是已测试配置，并非保证可运行的最低要求。"
+  },
+  "Included model profiles": {
+    "ru": "Профили моделей в комплекте",
+    "es": "Perfiles de modelos incluidos",
+    "zh-Hans": "随附模型配置"
+  },
+  "Bonsai Ternary 4B and FLUX.2 Klein 4B with U2NETP cutout. NativeDistilled1024 presets use 1024 × 1024, 4 steps and CFG 1. Pinned weights: Bonsai 4.64 GB (4.32 GiB), Klein 5.21 GB (4.85 GiB); engine and temporary space are additional.": {
+    "ru": "Bonsai Ternary 4B и FLUX.2 Klein 4B с маской U2NETP. Presets NativeDistilled1024 используют 1024 × 1024, 4 шага и CFG 1. Закреплённые веса: Bonsai 4,64 GB (4,32 GiB), Klein 5,21 GB (4,85 GiB); движок и временные файлы требуют дополнительного места.",
+    "es": "Bonsai Ternary 4B y FLUX.2 Klein 4B con recorte U2NETP. Los presets NativeDistilled1024 usan 1024 × 1024, 4 pasos y CFG 1. Pesos fijados: Bonsai 4,64 GB (4,32 GiB), Klein 5,21 GB (4,85 GiB); motor y espacio temporal son adicionales.",
+    "zh-Hans": "Bonsai Ternary 4B 与 FLUX.2 Klein 4B 配合 U2NETP 抠图。NativeDistilled1024 预设使用 1024 × 1024、4 步、CFG 1。固定权重：Bonsai 4.64 GB（4.32 GiB），Klein 5.21 GB（4.85 GiB）；引擎及临时文件空间另计。"
+  },
+  "What to expect": {
+    "ru": "Чего ожидать",
+    "es": "Qué esperar",
+    "zh-Hans": "效果预期"
+  },
+  "2D images. Requested details and fine cutout edges can be imperfect. Pixel-inspired prompts do not enforce a pixel grid.": {
+    "ru": "Двумерные изображения. Запрошенные детали и тонкие края маски могут быть неточными. Промпты в духе пиксельной графики не обеспечивают пиксельную сетку.",
+    "es": "Imágenes 2D. Los detalles solicitados y los bordes finos del recorte pueden ser imperfectos. Los prompts inspirados en píxeles no imponen una cuadrícula de píxeles.",
+    "zh-Hans": "输出为 2D 图片。请求的细节和精细抠图边缘可能不准确。像素风提示词不会强制形成像素网格。"
+  },
+  "Bonsai, Klein and U2NETP use Apache-2.0. Review the": {
+    "ru": "Bonsai, Klein и U2NETP используют Apache-2.0. Изучите",
+    "es": "Bonsai, Klein y U2NETP utilizan Apache-2.0. Consulta las",
+    "zh-Hans": "Bonsai、Klein 与 U2NETP 使用 Apache-2.0。请阅读"
+  },
+  "component and model terms": {
+    "ru": "условия компонентов и моделей",
+    "es": "condiciones de componentes y modelos",
+    "zh-Hans": "组件与模型条款"
+  },
+  "for your use and distribution.": {
+    "ru": "перед использованием и распространением.",
+    "es": "antes de utilizarlos y distribuirlos.",
+    "zh-Hans": "，再决定如何使用与分发。"
+  },
+  "Build it into": {
+    "ru": "Встройте инструмент",
+    "es": "Intégralo",
+    "zh-Hans": "将工具融入"
+  },
+  "your own game.": {
+    "ru": "в свою игру.",
+    "es": "en tu propio juego.",
+    "zh-Hans": "你自己的游戏。"
+  },
+  "Start with the imported model and style samples. Follow the scene setup, then choose the API layer your game needs. Documentation covers ownership, cancellation, save data and export.": {
+    "ru": "Начните с импортированных примеров моделей и стилей. Настройте сцену, затем выберите подходящий уровень API. Документация описывает владение ресурсами, отмену, сохранение данных и экспорт.",
+    "es": "Empieza con los ejemplos importados de modelos y estilos. Configura la escena y elige el nivel de API que necesita tu juego. La documentación cubre la propiedad de recursos, cancelación, datos guardados y exportación.",
+    "zh-Hans": "从导入的模型与样式示例开始。完成场景设置，再选择游戏所需的 API 层级。文档说明资源所有权、取消、存档和导出。"
+  },
+  "Install and generate your first image": {
+    "ru": "Установка и первое изображение",
+    "es": "Instalar y generar tu primera imagen",
+    "zh-Hans": "安装并生成第一张图片"
+  },
+  "Models, choice catalogs and styles": {
+    "ru": "Модели, каталоги выбора и стили",
+    "es": "Modelos, catálogos de opciones y estilos",
+    "zh-Hans": "模型、选项目录与样式"
+  },
+  "Runtime API and resource lifetimes": {
+    "ru": "Runtime API и время жизни ресурсов",
+    "es": "Runtime API y duración de los recursos",
+    "zh-Hans": "Runtime API 与资源生命周期"
+  },
+  "PNG export, recipes and safe paths": {
+    "ru": "Экспорт PNG, рецепты и безопасные пути",
+    "es": "Exportación PNG, recetas y rutas seguras",
+    "zh-Hans": "PNG 导出、配方与安全路径"
+  },
+  "Connect Editor agent tools": {
+    "ru": "Подключение инструментов Editor для агентов",
+    "es": "Conectar herramientas Editor para agentes",
+    "zh-Hans": "连接 Editor 代理工具"
+  },
+  "Downloads, errors and cancellation": {
+    "ru": "Загрузки, ошибки и отмена",
+    "es": "Descargas, errores y cancelación",
+    "zh-Hans": "下载、错误与取消"
+  },
+  "© Strange Euphoria XR": {
+    "ru": "© Strange Euphoria XR",
+    "es": "© Strange Euphoria XR",
+    "zh-Hans": "© Strange Euphoria XR"
+  },
+  "Third-party notices": {
+    "ru": "Сторонние компоненты",
+    "es": "Avisos de terceros",
+    "zh-Hans": "第三方声明"
+  },
+  "YouTube": {
+    "ru": "YouTube",
+    "es": "YouTube",
+    "zh-Hans": "YouTube"
+  },
+  "Games on itch.io": {
+    "ru": "Игры на itch.io",
+    "es": "Juegos en itch.io",
+    "zh-Hans": "itch.io 上的游戏"
+  },
+  "A locally generated steel sword with a transparent background": {
+    "ru": "Стальной меч с прозрачным фоном, сгенерированный локально",
+    "es": "Una espada de acero generada localmente con fondo transparente",
+    "zh-Hans": "本地生成的透明背景钢剑"
+  },
+  "Steel sword · original 512 × 512 PNG": {
+    "ru": "Стальной меч · Исходный PNG 512 × 512",
+    "es": "Espada de acero · PNG original de 512 × 512",
+    "zh-Hans": "钢剑 · 原始 512 × 512 PNG"
+  },
+  "A locally generated obsidian hammer with a transparent background": {
+    "ru": "Обсидиановый молот с прозрачным фоном, сгенерированный локально",
+    "es": "Un martillo de obsidiana generado localmente con fondo transparente",
+    "zh-Hans": "本地生成的透明背景黑曜石锤"
+  },
+  "Obsidian hammer · original 512 × 512 PNG": {
+    "ru": "Обсидиановый молот · Исходный PNG 512 × 512",
+    "es": "Martillo de obsidiana · PNG original de 512 × 512",
+    "zh-Hans": "黑曜石锤 · 原始 512 × 512 PNG"
+  },
+  "Ring": {
+    "ru": "Кольцо",
+    "es": "Anillo",
+    "zh-Hans": "戒指"
+  },
+  "Bronze shield · original 1024 × 1024 PNG": {
+    "ru": "Бронзовый щит · исходный PNG 1024 × 1024",
+    "es": "Escudo de bronce · PNG original de 1024 × 1024",
+    "zh-Hans": "青铜盾牌 · 原始 1024 × 1024 PNG"
+  },
+  "A locally generated bronze ring with its original background": {
+    "ru": "Бронзовое кольцо, сгенерированное локально, с исходным фоном",
+    "es": "Un anillo de bronce generado localmente con su fondo original",
+    "zh-Hans": "本地生成的青铜戒指，保留原始背景"
+  },
+  "Bronze ring · original 1024 × 1024 PNG with background": {
+    "ru": "Бронзовое кольцо · исходный PNG 1024 × 1024 с фоном",
+    "es": "Anillo de bronce · PNG original de 1024 × 1024 con fondo",
+    "zh-Hans": "青铜戒指 · 带背景的原始 1024 × 1024 PNG"
+  },
+  "Original Bonsai outputs at 1024 × 1024; changing this preview does not run a model.": {
+    "ru": "Исходные результаты Bonsai 1024 × 1024; переключение примеров не запускает модель.",
+    "es": "Resultados originales de Bonsai de 1024 × 1024; cambiar esta vista previa no ejecuta un modelo.",
+    "zh-Hans": "Bonsai 的原始 1024 × 1024 输出；切换预览不会运行模型。"
+  },
+  "Real gameplay with Bonsai and an original soundtrack. The local model was prepared before capture; generation is shown at its recorded pace.": {
+    "ru": "Настоящий игровой процесс с Bonsai и оригинальной музыкой. Локальная модель подготовлена до записи; генерация показана в исходном темпе.",
+    "es": "Juego real con Bonsai y una banda sonora original. El modelo local se preparó antes de grabar; la generación se muestra a su ritmo original.",
+    "zh-Hans": "使用 Bonsai 的真实游戏过程，配有原创音乐。本地模型在录制前已准备好；生成过程按录制时的实际节奏展示。"
+  },
+  "First-start instructions in English, Russian, Spanish and Simplified Chinese are included.": {
+    "ru": "Включены инструкции первого запуска на английском, русском, испанском и упрощённом китайском.",
+    "es": "Incluye instrucciones de primer inicio en inglés, ruso, español y chino simplificado.",
+    "zh-Hans": "附带英语、俄语、西班牙语和简体中文的首次启动说明。"
+  },
+  "English game interface. First-start instructions in English, Russian, Spanish and Simplified Chinese are included. No plugin purchase or Unity installation required for the standalone game.": {
+    "ru": "Интерфейс игры — на английском. Включены инструкции первого запуска на английском, русском, испанском и упрощённом китайском. Для отдельной игры не требуется покупка плагина или установка Unity.",
+    "es": "Interfaz del juego en inglés. Incluye instrucciones de primer inicio en inglés, ruso, español y chino simplificado. El juego independiente no requiere comprar el plugin ni instalar Unity.",
+    "zh-Hans": "游戏界面为英语。附带英语、俄语、西班牙语和简体中文的首次启动说明。独立游戏无需购买插件或安装 Unity。"
+  },
+  "Download The Ember Forge free": {
+    "ru": "Скачать The Ember Forge бесплатно",
+    "es": "Descargar The Ember Forge gratis",
+    "zh-Hans": "免费下载 The Ember Forge"
+  },
+  "Download the Windows game": {
+    "ru": "Скачайте игру для Windows",
+    "es": "Descarga el juego para Windows",
+    "zh-Hans": "下载 Windows 版游戏"
+  },
+  ", extract the whole folder and launch it.": {
+    "ru": ", распакуйте папку целиком и запустите игру.",
+    "es": ", extrae la carpeta completa e inicia el juego.",
+    "zh-Hans": "，解压完整文件夹并启动游戏。"
+  },
+  "Model weights are obtained separately: the free Bonsai model pack from": {
+    "ru": "Веса получаются отдельно: бесплатный пакет моделей Bonsai со",
+    "es": "Los pesos se obtienen por separado: el paquete gratuito de modelos Bonsai de la",
+    "zh-Hans": "权重单独获取：Bonsai 使用免费模型包，可从"
+  },
+  "The Ember Forge page": {
+    "ru": "страницы The Ember Forge",
+    "es": "página de The Ember Forge",
+    "zh-Hans": "The Ember Forge 页面"
+  },
+  "or an explicit HTTPS download for Klein. After setup, generation runs offline on the player's machine. Hardware, resolution and other GPU workloads affect preparation and generation.": {
+    "ru": "или явная HTTPS-загрузка для Klein. После настройки генерация работает офлайн на компьютере игрока. Оборудование, разрешение и другие задачи GPU влияют на подготовку и генерацию.",
+    "es": "o una descarga HTTPS explícita para Klein. Tras configurar, la generación funciona sin conexión en el equipo del jugador. El hardware, la resolución y otras tareas de GPU afectan a la preparación y la generación.",
+    "zh-Hans": "下载；Klein 使用显式 HTTPS 下载。设置完成后可在玩家电脑上离线生成。硬件、分辨率及其他 GPU 任务会影响准备和生成。"
+  },
+  "Unity 6000.5 or later. Supplied backend: Windows x64 Vulkan DLLs running inside Unity; requires the Microsoft Visual C++ 2015–2022 Redistributable (x64). Foreground processing uses GPU Compute.": {
+    "ru": "Unity 6000.5 или новее. Поставляемый движок: DLL Windows x64 Vulkan внутри Unity; нужен Microsoft Visual C++ 2015–2022 Redistributable (x64). Обработка переднего плана использует GPU Compute.",
+    "es": "Unity 6000.5 o posterior. Motor incluido: DLL de Windows x64 con Vulkan dentro de Unity; requiere Microsoft Visual C++ 2015–2022 Redistributable (x64). El procesamiento del primer plano usa GPU Compute.",
+    "zh-Hans": "Unity 6000.5 或更新版本。随附后端：在 Unity 内运行的 Windows x64 Vulkan DLL；需要 Microsoft Visual C++ 2015–2022 Redistributable (x64)。前景处理使用 GPU Compute。"
+  }
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Сторонние компоненты — Runtime Image Forge</title><meta name="description" content="Сторонние компоненты — Runtime Image Forge: локальная генерация изображений для Unity."><link rel="stylesheet" href="../../site.css"><link rel="icon" href="../../assets/forge-mark.svg"><script src="../../site.js" defer></script><link rel="canonical" href="https://merrymaker14.github.io/runtime-image-forge/ru/docs/third-party-notices.html"><link rel="alternate" hreflang="en" href="https://merrymaker14.github.io/runtime-image-forge/docs/third-party-notices.html"><link rel="alternate" hreflang="ru" href="https://merrymaker14.github.io/runtime-image-forge/ru/docs/third-party-notices.html"><link rel="alternate" hreflang="es" href="https://merrymaker14.github.io/runtime-image-forge/es/docs/third-party-notices.html"><link rel="alternate" hreflang="zh-Hans" href="https://merrymaker14.github.io/runtime-image-forge/zh-Hans/docs/third-party-notices.html"><link rel="alternate" hreflang="x-default" href="https://merrymaker14.github.io/runtime-image-forge/docs/third-party-notices.html"></head><body><a class="skip" href="#main">Перейти к содержимому</a><header class="header wrap"><a class="brand" href="../"><img src="../../assets/forge-mark.svg" width="42" height="42" alt="">Runtime Image Forge</a><nav aria-label="Основная навигация"><a href="../#demo">Демонстрационная игра</a><a href="index.html">Документация</a><a href="api.html">API</a></nav></header><nav class="language-switch wrap" aria-label="Язык"><span>Язык</span><a data-language="en" lang="en" hreflang="en" href="../../docs/third-party-notices.html">English</a><a data-language="ru" lang="ru" hreflang="ru" href="third-party-notices.html" aria-current="page">Русский</a><a data-language="es" lang="es" hreflang="es" href="../../es/docs/third-party-notices.html">Español</a><a data-language="zh-Hans" lang="zh-Hans" hreflang="zh-Hans" href="../../zh-Hans/docs/third-party-notices.html">简体中文</a></nav><main id="main" class="doc-layout wrap"><nav class="doc-nav" aria-label="Документация"><p>Руководства и справочник</p><a href="index.html">Документация</a><a href="quick-start.html">Быстрый старт</a><a href="models-and-styles.html">Модели и стили</a><a href="api.html">Runtime API</a><a href="exporting-images.html">Сохранение и экспорт</a><a href="mcp.html">Editor MCP</a><a href="troubleshooting.html">Решение проблем</a><a href="third-party-notices.html" aria-current="page">Сторонние компоненты</a></nav><article class="doc-article"><p class="doc-meta">Runtime Image Forge 1.0.0 · Unity 6000.5+</p><h1 id="third-party-components-and-model-terms">Сторонние компоненты и условия моделей</h1>
+<p>Runtime Image Forge включает изменённые нативные библиотеки Windows x64 Vulkan на основе <a href="https://github.com/leejet/stable-diffusion.cpp/tree/f89d9b13d730eabeede7314ce49dacd18d3c90c2">stable-diffusion.cpp</a>, ревизия <code>f89d9b13d730eabeede7314ce49dacd18d3c90c2</code>. Нативная DLL работает внутри процесса Unity и читает параметры нормализации FLUX.2 VAE из выбранной модели. Установщик и загрузчик сверяют поставляемые локальные библиотеки с закреплёнными SHA-256. Сохраняйте включённые уведомления в приложениях, распространяющих этот движок.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Справочная таблица"><table>
+<thead>
+<tr>
+<th>Компонент</th>
+<th>Источник / лицензия</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>stable-diffusion.cpp</td>
+<td>Leejet, MIT; ссылка на исходный код и лицензионные уведомления бинарного выпуска включены.</td>
+</tr>
+<tr>
+<td>ggml</td>
+<td><code>d25b121ce1d6ae0c7e62ad080460d9fc1e46dd93</code>, MIT.</td>
+</tr>
+<tr>
+<td>libwebp / libsharpyuv</td>
+<td><code>0c9546f7efc61eac7f79ae115c3f99c91c21c443</code>, BSD; авторы и патентное разрешение включены.</td>
+</tr>
+<tr>
+<td>libwebm</td>
+<td><code>5bf12267eea773a32fcf4949de52b0add158a8d5</code>, BSD; авторы и патентное разрешение включены.</td>
+</tr>
+<tr>
+<td>cpp-httplib</td>
+<td>Yuji Hirose, MIT.</td>
+</tr>
+<tr>
+<td>darts-clone</td>
+<td>BSD.</td>
+</tr>
+<tr>
+<td>Oniguruma</td>
+<td>BSD.</td>
+</tr>
+<tr>
+<td>utf8proc</td>
+<td>MIT и уведомления Unicode.</td>
+</tr>
+<tr>
+<td>miniz / zip</td>
+<td>Включены уведомления MIT / public domain.</td>
+</tr>
+<tr>
+<td>stb image utilities</td>
+<td>Sean Barrett, двойное уведомление MIT / public domain.</td>
+</tr>
+</tbody></table></div>
+<p>Полные оригинальные тексты находятся в <code>ThirdParty~</code>. <strong>Tools → Runtime Image Forge → Install Windows Backend</strong> копирует эти уведомления и закреплённый архив в <code>Assets/StreamingAssets/RuntimeImageForge</code> для сборок игры. Команда сохраняет отличающиеся существующие файлы, не перезаписывая их.</p>
+<p>Небольшая модель удаления фона, включённая в пакет, — ONNX-экспорт <a href="https://github.com/xuebinqin/U-2-Net/tree/ac7e1c817ecab7c7dff5ce6b1abba61cd213ff29">U²-Netp Xuebin Qin</a>, Apache 2.0. Источник, контрольная сумма checkpoint, сведения об экспорте и полная лицензия находятся рядом с <code>Runtime/Models/U2NetP-320.onnx</code> и в копируемых уведомлениях. Модель выделяет заметный объект переднего плана; сложные сцены и тонкие края могут потребовать другой модели удаления фона.</p>
+<p>Bonsai Ternary 4B и FLUX.2 Klein 4B поставляются как компонентные presets. Файлы весов получаются отдельно от Unity-пакета: Bonsai требует совместимый преобразованный локальный пакет, Klein поддерживает явную загрузку закреплённых HTTPS-компонентов или локальный импорт.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Справочная таблица"><table>
+<thead>
+<tr>
+<th>Preset/компонент</th>
+<th>Точный исходный репозиторий и ревизия</th>
+<th>Заявленная лицензия</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Bonsai — генератор</td>
+<td><code>prism-ml/bonsai-image-ternary-4B-gemlite-2bit@bf047aa80569f193d2c4960033af6ba2629988fa</code></td>
+<td><a href="https://huggingface.co/prism-ml/bonsai-image-ternary-4B-gemlite-2bit/blob/bf047aa80569f193d2c4960033af6ba2629988fa/LICENSE">Apache-2.0</a></td>
+</tr>
+<tr>
+<td>Bonsai — текстовый кодировщик и VAE</td>
+<td><code>prism-ml/bonsai-image-binary-4B-gemlite-1bit@121529b06562ff8c5b75aa34c54c371d2655929b</code></td>
+<td><a href="https://huggingface.co/prism-ml/bonsai-image-binary-4B-gemlite-1bit/blob/121529b06562ff8c5b75aa34c54c371d2655929b/LICENSE">Apache-2.0</a></td>
+</tr>
+<tr>
+<td>Klein — исходная модель</td>
+<td><code>black-forest-labs/FLUX.2-klein-4B@e7b7dc27f91deacad38e78976d1f2b499d76a294</code></td>
+<td><a href="https://huggingface.co/black-forest-labs/FLUX.2-klein-4B/blob/e7b7dc27f91deacad38e78976d1f2b499d76a294/LICENSE.md">Apache-2.0</a></td>
+</tr>
+<tr>
+<td>Klein — GGUF генератора</td>
+<td><code>leejet/FLUX.2-klein-4B-GGUF@3b1f5a9dc3abb32238b053aeb3d823c30afdacbd</code></td>
+<td><a href="https://huggingface.co/leejet/FLUX.2-klein-4B-GGUF/tree/3b1f5a9dc3abb32238b053aeb3d823c30afdacbd">Apache-2.0</a></td>
+</tr>
+<tr>
+<td>Klein — GGUF текстового кодировщика</td>
+<td><code>unsloth/Qwen3-4B-GGUF@22c9fc8a8c7700b76a1789366280a6a5a1ad1120</code></td>
+<td><a href="https://huggingface.co/unsloth/Qwen3-4B-GGUF/tree/22c9fc8a8c7700b76a1789366280a6a5a1ad1120">Apache-2.0</a></td>
+</tr>
+<tr>
+<td>Klein — VAE</td>
+<td><code>black-forest-labs/FLUX.2-small-decoder@a3efc24f613ef42d9428af62fdbd6f5fd8856c4a</code></td>
+<td><a href="https://huggingface.co/black-forest-labs/FLUX.2-small-decoder/tree/a3efc24f613ef42d9428af62fdbd6f5fd8856c4a">Apache-2.0</a></td>
+</tr>
+</tbody></table></div>
+<p>GGUF генератора и текстового encoder Bonsai — преобразованные формы перечисленных исходных ревизий; VAE не изменён. При распространении пакета сохраняйте оригинальные Prism LICENSE/NOTICE и уведомления о преобразовании. Prism NOTICE указывает происхождение от FLUX.2 Klein 4B Black Forest Labs и Qwen3-4B Alibaba Cloud. Сохраняйте также уведомления компонентов Klein GGUF. До использования или распространения изучите полные условия моделей; имена моделей не предоставляют права на товарные знаки и не означают одобрения авторами. <a href="models-and-styles.html">Модели и стили</a> содержат имена обязательных файлов, получение и объёмы весов.</p>
+<p>Исходный DreamShaper 8 LCM preset сохраняет <code>Lykon/dreamshaper-8-lcm@4645d8bc6a8e6b106d21606d63e8460cdad4f1a6</code> под CreativeML OpenRAIL-M. Его веса получаются отдельно. При использовании или распространении этого прежнего профиля сохраняйте оригинальную лицензию модели.</p>
+<p>Unity, Unity Inference Engine и другие пакеты Unity сохраняют собственные условия. Настройка companion game использует Unity uGUI и TMP Essential Resources. В <code>ThirdParty~/unity-ugui-notice.txt</code> находится уведомление об авторских правах Unity, а в <code>ThirdParty~/unity-companion-license.txt</code> — полный оригинал Unity Companion License. Установка backend копирует оба файла в StreamingAssets/RuntimeImageForge/Licenses. TMP Essentials содержит лицензию шрифта Liberation Sans в Assets/TextMesh Pro/Fonts. Сохраняйте эти уведомления при распространении собранной игры.</p>
+<div class="doc-bottom"><a href="index.html">Главная документации</a><a href="../">Обзор продукта</a></div></article></main><footer class="footer wrap"><span>© Strange Euphoria XR</span><a href="third-party-notices.html">Условия моделей и компонентов</a></footer></body></html>

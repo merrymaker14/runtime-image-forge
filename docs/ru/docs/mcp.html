@@ -1,0 +1,44 @@
+<!DOCTYPE html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Editor MCP — Runtime Image Forge</title><meta name="description" content="Editor MCP — Runtime Image Forge: локальная генерация изображений для Unity."><link rel="stylesheet" href="../../site.css"><link rel="icon" href="../../assets/forge-mark.svg"><script src="../../site.js" defer></script><link rel="canonical" href="https://merrymaker14.github.io/runtime-image-forge/ru/docs/mcp.html"><link rel="alternate" hreflang="en" href="https://merrymaker14.github.io/runtime-image-forge/docs/mcp.html"><link rel="alternate" hreflang="ru" href="https://merrymaker14.github.io/runtime-image-forge/ru/docs/mcp.html"><link rel="alternate" hreflang="es" href="https://merrymaker14.github.io/runtime-image-forge/es/docs/mcp.html"><link rel="alternate" hreflang="zh-Hans" href="https://merrymaker14.github.io/runtime-image-forge/zh-Hans/docs/mcp.html"><link rel="alternate" hreflang="x-default" href="https://merrymaker14.github.io/runtime-image-forge/docs/mcp.html"></head><body><a class="skip" href="#main">Перейти к содержимому</a><header class="header wrap"><a class="brand" href="../"><img src="../../assets/forge-mark.svg" width="42" height="42" alt="">Runtime Image Forge</a><nav aria-label="Основная навигация"><a href="../#demo">Демонстрационная игра</a><a href="index.html">Документация</a><a href="api.html">API</a></nav></header><nav class="language-switch wrap" aria-label="Язык"><span>Язык</span><a data-language="en" lang="en" hreflang="en" href="../../docs/mcp.html">English</a><a data-language="ru" lang="ru" hreflang="ru" href="mcp.html" aria-current="page">Русский</a><a data-language="es" lang="es" hreflang="es" href="../../es/docs/mcp.html">Español</a><a data-language="zh-Hans" lang="zh-Hans" hreflang="zh-Hans" href="../../zh-Hans/docs/mcp.html">简体中文</a></nav><main id="main" class="doc-layout wrap"><nav class="doc-nav" aria-label="Документация"><p>Руководства и справочник</p><a href="index.html">Документация</a><a href="quick-start.html">Быстрый старт</a><a href="models-and-styles.html">Модели и стили</a><a href="api.html">Runtime API</a><a href="exporting-images.html">Сохранение и экспорт</a><a href="mcp.html" aria-current="page">Editor MCP</a><a href="troubleshooting.html">Решение проблем</a><a href="third-party-notices.html">Сторонние компоненты</a></nav><article class="doc-article"><p class="doc-meta">Runtime Image Forge 1.0.0 · Unity 6000.5+</p><h1 id="editor-agent-tools-mcp">Инструменты агента в редакторе (MCP)</h1>
+<p>Необязательная интеграция использует MCP-сервер Unity CLI и <code>com.unity.pipeline</code> 0.8.0-exp.1 или новее. Её сборка компилируется только при наличии этого пакета. Для генерации и экспорта в игре Runtime Image Forge MCP не нужен.</p>
+<ol>
+<li>Установите Unity CLI и Pipeline в проект.</li>
+<li>Откройте <strong>Tools → Runtime Image Forge → Agent tools (MCP)</strong>. Скопируйте конфигурацию клиента и разрешите создание, отмену и экспорт Forge для текущего сеанса редактора.</li>
+<li>Откройте сцену с <code>ForgeGenerator</code> и настроенным источником движка. Войдите в Play Mode и подготовьте генератор через интерфейс игры. Загрузка модели требует явного действия в этом интерфейсе.</li>
+<li>Подключите MCP-клиент. Команда сервера: <code>unity mcp --project-path &lt;absolute project path&gt;</code>.</li>
+</ol>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Справочная таблица"><table>
+<thead>
+<tr>
+<th>Команда</th>
+<th>Назначение</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>forge_status</code></td>
+<td>ID сеансов генераторов сцены и их готовность.</td>
+</tr>
+<tr>
+<td><code>forge_styles</code></td>
+<td>GUID редактируемых стилей и разрешённые варианты в порядке полей.</td>
+</tr>
+<tr>
+<td><code>forge_generate</code></td>
+<td>GUID стиля, упорядоченные ключи вариантов, неотрицательный seed и необязательный <code>background_mode</code>. Немедленно возвращает ID задания.</td>
+</tr>
+<tr>
+<td><code>forge_job_status</code></td>
+<td>Состояния queued, running, completed, cancelled, failed и текущий этап.</td>
+</tr>
+<tr>
+<td><code>forge_cancel</code></td>
+<td>Отмена задания выбранного генератора.</td>
+</tr>
+<tr>
+<td><code>forge_export</code></td>
+<td>Экспорт PNG и рецепта готового задания в <code>Assets/Generated/RuntimeImageForge</code> с импортом.</td>
+</tr>
+</tbody></table></div>
+<p>Передавайте <code>generator_id</code>, если в сцене несколько генераторов. ID сеанса относится к одному живому компоненту; запрашивайте его снова после выхода из Play Mode или перезагрузки сцены. Генератор хранит сведения максимум о 64 последних заданиях; очередь генерации ограничена отдельно. PNG остаются на диске.</p>
+<p>Команды Forge не принимают произвольные пути экспорта, не меняют профили, не загружают веса и не устанавливают пакеты. Модели и стили настраиваются обычными инспекторами Unity. <code>background_mode</code> принимает <code>style</code> по умолчанию, <code>transparent</code> или <code>keep</code>; это переопределение одного заказа, не изменение стиля. Статус задания включает применённое <code>remove_background</code>. Режим входит в рецепт и ключ кэша. Для прозрачного заказа нужна назначенная модель маски.</p>
+<p>MCP-подключение Unity также предоставляет общие команды редактора. Подключайте доверенных клиентов и используйте их настройки разрешений. Инструменты Forge работают только в Editor и исключены из сборки игры. Экспорт для игроков использует <code>PngExporter</code> без сетевой службы и MCP-клиента.</p>
+<div class="doc-bottom"><a href="index.html">Главная документации</a><a href="../">Обзор продукта</a></div></article></main><footer class="footer wrap"><span>© Strange Euphoria XR</span><a href="third-party-notices.html">Условия моделей и компонентов</a></footer></body></html>

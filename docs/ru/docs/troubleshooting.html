@@ -1,0 +1,94 @@
+<!DOCTYPE html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Решение проблем — Runtime Image Forge</title><meta name="description" content="Решение проблем — Runtime Image Forge: локальная генерация изображений для Unity."><link rel="stylesheet" href="../../site.css"><link rel="icon" href="../../assets/forge-mark.svg"><script src="../../site.js" defer></script><link rel="canonical" href="https://merrymaker14.github.io/runtime-image-forge/ru/docs/troubleshooting.html"><link rel="alternate" hreflang="en" href="https://merrymaker14.github.io/runtime-image-forge/docs/troubleshooting.html"><link rel="alternate" hreflang="ru" href="https://merrymaker14.github.io/runtime-image-forge/ru/docs/troubleshooting.html"><link rel="alternate" hreflang="es" href="https://merrymaker14.github.io/runtime-image-forge/es/docs/troubleshooting.html"><link rel="alternate" hreflang="zh-Hans" href="https://merrymaker14.github.io/runtime-image-forge/zh-Hans/docs/troubleshooting.html"><link rel="alternate" hreflang="x-default" href="https://merrymaker14.github.io/runtime-image-forge/docs/troubleshooting.html"></head><body><a class="skip" href="#main">Перейти к содержимому</a><header class="header wrap"><a class="brand" href="../"><img src="../../assets/forge-mark.svg" width="42" height="42" alt="">Runtime Image Forge</a><nav aria-label="Основная навигация"><a href="../#demo">Демонстрационная игра</a><a href="index.html">Документация</a><a href="api.html">API</a></nav></header><nav class="language-switch wrap" aria-label="Язык"><span>Язык</span><a data-language="en" lang="en" hreflang="en" href="../../docs/troubleshooting.html">English</a><a data-language="ru" lang="ru" hreflang="ru" href="troubleshooting.html" aria-current="page">Русский</a><a data-language="es" lang="es" hreflang="es" href="../../es/docs/troubleshooting.html">Español</a><a data-language="zh-Hans" lang="zh-Hans" hreflang="zh-Hans" href="../../zh-Hans/docs/troubleshooting.html">简体中文</a></nav><main id="main" class="doc-layout wrap"><nav class="doc-nav" aria-label="Документация"><p>Руководства и справочник</p><a href="index.html">Документация</a><a href="quick-start.html">Быстрый старт</a><a href="models-and-styles.html">Модели и стили</a><a href="api.html">Runtime API</a><a href="exporting-images.html">Сохранение и экспорт</a><a href="mcp.html">Editor MCP</a><a href="troubleshooting.html" aria-current="page">Решение проблем</a><a href="third-party-notices.html">Сторонние компоненты</a></nav><article class="doc-article"><p class="doc-meta">Runtime Image Forge 1.0.0 · Unity 6000.5+</p><h1 id="troubleshooting">Решение проблем</h1><nav class="toc" aria-label="На этой странице"><ul><li><a href="#cancelling-and-unloading">Отмена и выгрузка</a></li><li><a href="#requirements-and-limits">Требования и ограничения</a></li></ul></nav>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Справочная таблица"><table>
+<thead>
+<tr>
+<th>Проблема</th>
+<th>Действие</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Нет архива движка</td>
+<td>Вне Play Mode выберите <strong>Tools &gt; Runtime Image Forge &gt; Install Windows Backend</strong>, затем пересоберите Player.</td>
+</tr>
+<tr>
+<td>Загрузка остановилась или не удалась</td>
+<td>Проверьте интернет, место на диске и разрешение записи. Повторите через явную кнопку загрузки. Отменённая или неудачная загрузка не заменяет исправный файл модели.</td>
+</tr>
+<tr>
+<td>Контрольная сумма модели не совпадает</td>
+<td>Замените неисправную копию явной HTTPS-загрузкой или повторным импортом проверенного локального комплекта в соответствии с профилем. Профили «Только импорт» требуют локального импорта. Наличие файла не разрешает генерацию до проверки целостности.</td>
+</tr>
+<tr>
+<td>Подготовка не удалась</td>
+<td>Проверьте профиль, Windows x64, поддержку Vulkan на GPU и файлы движка. Конкретная причина указана в Unity Console или Player log.</td>
+</tr>
+<tr>
+<td>Нативная зависимость отсутствует или устарела</td>
+<td>Установите последнюю версию Microsoft Visual C++ 2015–2022 Redistributable (x64) с сайта Microsoft и перезапустите Unity или игру. Если сообщение останется, обновите драйвер видеокарты.</td>
+</tr>
+<tr>
+<td>Путь содержит символическую ссылку или точку соединения</td>
+<td>Перенесите проект, игру, пакет моделей или папку экспорта туда, куда путь ведёт без символических ссылок и точек соединения каталогов (junction). Это касается и папки данных приложения (<code>Application.persistentDataPath</code>), если её перенаправили через junction. Папки облачной синхронизации, например OneDrive, ссылками не считаются.</td>
+</tr>
+<tr>
+<td>Следующий заказ после отмены идёт дольше</td>
+<td>Отмена загрузки модели или идущей генерации выгружает нативный контекст модели, чтобы освободить память. Следующий заказ сначала заново загружает модель. Отмена задания, которое ещё ждёт в очереди, контекст не выгружает.</td>
+</tr>
+<tr>
+<td>Подготовка ещё выполняется</td>
+<td>Подготовка проверяет файлы модели, загружает нативный контекст модели и выполняет прогрев без сохранения. Показывайте этот этап до приёма заказов.</td>
+</tr>
+<tr>
+<td>Отменённое задание ещё освобождает ресурсы</td>
+<td>Отмена запрашивает остановку нативной операции и запрещает публикацию результата. Место в очереди остаётся занятым до освобождения ресурсов. Дождитесь завершения перед повторным использованием или освобождением движка.</td>
+</tr>
+<tr>
+<td>Нативная библиотека не прошла проверку</td>
+<td>Закройте игру или Editor. Если сообщается, что установленный движок повреждён, удалите папку его версии в <code>Application.persistentDataPath/RuntimeImageForge/Backends</code> и повторите подготовку. Если проверку не прошёл архив из комплекта, удалите <code>Assets/StreamingAssets/RuntimeImageForge/windows-vulkan.zip</code>, выберите <strong>Tools &gt; Runtime Image Forge &gt; Install Windows Backend</strong> и пересоберите Player. Установщик никогда не перезаписывает отличающийся существующий файл.</td>
+</tr>
+<tr>
+<td>Уже загружена другая версия нативной библиотеки</td>
+<td>Перезапустите игру или Editor перед загрузкой другой версии нативной библиотеки.</td>
+</tr>
+<tr>
+<td>Задание завершено без картинки</td>
+<td>Проверьте <code>ForgeGenerationJob.State</code> и <code>Error</code>: завершение включает ошибки и отмену. Сохраняйте прежнее успешное изображение в интерфейсе.</td>
+</tr>
+<tr>
+<td>Очередь заполнена</td>
+<td>Дождитесь завершения или отмените работу. Отменённое задание занимает место, пока движок его не освободит.</td>
+</tr>
+<tr>
+<td>В прозрачном PNG остался фон</td>
+<td>Назначьте профиль маски и отключите <strong>Сохранять фон</strong> для стиля. Проверьте контраст предмета и маску: края могут быть несовершенны.</td>
+</tr>
+<tr>
+<td>Не работает экспорт рядом с игрой</td>
+<td>Выберите persistent-data или доступную папку. Защищённая установка может запрещать запись. Посторонние существующие файлы сохраняются.</td>
+</tr>
+<tr>
+<td>Экспортированный комплект изменён</td>
+<td>Используйте другое имя или восстановите исходный комплект. Экспорт не перезаписывает изменённый комплект.</td>
+</tr>
+<tr>
+<td>Не восстановился предмет</td>
+<td>Храните PNG с исходным ключом кэша, рецептом и контрольной суммой. Копия записи инвентаря сама не копирует картинку.</td>
+</tr>
+<tr>
+<td>MCP не видит генератор</td>
+<td>Откройте сцену, войдите в Play Mode, выполните подготовку и разрешите Forge-операции для сеанса Editor. Повторите <code>forge_status</code>.</td>
+</tr>
+<tr>
+<td>Старый ID задания MCP исчез</td>
+<td>Сведения о заданиях ограничены и принадлежат сеансу сцены. Сохраняйте записи и PNG надолго; после перезагрузки получите новый ID сеанса.</td>
+</tr>
+</tbody></table></div>
+<h2 id="cancelling-and-unloading">Отмена и выгрузка</h2>
+<p>Передавайте cancellation token при подготовке и генерации. <code>CancelPreparation()</code> останавливает запуск; <code>CancelJob(id)</code> — незавершённое задание сцены. Отмена предотвращает публикацию нового результата. <code>ImageGenerationQueue.CloseAsync()</code> отменяет работу, ждёт освобождения движка и освобождает его. Не освобождайте движок отдельно, если им уже владеет очередь.</p>
+<p>У текстур и спрайтов отдельное время жизни. Храните владельца <code>UnityPngImage</code>, пока они показаны, затем освобождайте на потоке Unity или через <code>DisposeAsync()</code>. При замене освобождайте старые изображения: кэш на диске не ограничивает количество текстур в игре.</p>
+<h2 id="requirements-and-limits">Требования и ограничения</h2>
+<p>Встроенная реализация поддерживает Windows x64; движков macOS, Linux, мобильных платформ и WebGL нет. Проверенная конфигурация — RTX 3060 Laptop GPU с 6 GB VRAM. Это проверенное оборудование, не обещание работы любого устройства с заданным объёмом памяти.</p>
+<p>Веса моделей и нативные библиотеки кэшируются в <code>Application.persistentDataPath/RuntimeImageForge</code>, созданные PNG и коллекция демо — в <code>Application.persistentDataPath/ForgeArt</code>. В редакторе это папка постоянных данных для названий компании и продукта проекта, вне самого проекта. Чтобы удалить кэш моделей и изображений, удалите эти папки; смена названия компании или продукта начинает новый кэш.</p>
+<p>Генерация и маска используют GPU вместе с игрой. Ограничивайте очередь и размеры, показывайте этап загрузки; измеряйте свою игру и оборудование. Большие диффузионные веса загружайте отдельно явным действием. Изображение может не соответствовать запрошенному предмету или отличаться качеством; маске может потребоваться ручная доработка.</p>
+<p>Для поддержки укажите версию Unity, GPU и драйвер, ID и ревизию модели, параметры стиля, этап и относящуюся к нему ошибку Console или Player log. Перед передачей проверьте фрагменты журнала на личные пути и содержимое игры.</p>
+<div class="doc-bottom"><a href="index.html">Главная документации</a><a href="../">Обзор продукта</a></div></article></main><footer class="footer wrap"><span>© Strange Euphoria XR</span><a href="third-party-notices.html">Условия моделей и компонентов</a></footer></body></html>
