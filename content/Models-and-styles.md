@@ -10,7 +10,7 @@ A `ForgeStyleAsset` defines both visual direction and allowed player choices. Ea
 
 Use labels for UI and keys for saved data. For example, display **Runic engraving**, submit `runes`, and expand it as **subtle engraved runes**. Change `styleVersion` when changing a shipped style's meaning. The applied prompt and complete settings are recorded in each image recipe, so later edits do not rewrite earlier images.
 
-The imported sample contains:
+The `Samples/Models and choice styles` folder contains:
 
 | Style | Choice fields | Background |
 | --- | --- | --- |

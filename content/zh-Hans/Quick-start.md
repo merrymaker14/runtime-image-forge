@@ -8,8 +8,8 @@
 
 ## 安装并导入示例
 
-1. 购买后在 **Package Manager > My Assets** 中安装 Runtime Image Forge，它会作为包安装。本地 `.tgz` 副本可通过 **Install package from tarball** 添加。
-2. 从软件包的 **Samples** 选项卡导入 **Models and choice styles**。包含 Bonsai Ternary 4B、FLUX.2 Klein 4B 配置、前景配置、`Styles/NativeDistilled1024` 中的五个 Native1024 风格及原始可编辑预设。
+1. 购买后打开 **Package Manager > My Assets**，下载并导入 Runtime Image Forge。其文件位于 `Assets/StrangeEuphoriaXR/RuntimeImageForge`。导入时还会添加 Unity Inference Engine 2.6.1 和 Unity uGUI 2.5.0 软件包依赖。
+2. 打开该文件夹中的 `Samples/Models and choice styles`。包含 Bonsai Ternary 4B、FLUX.2 Klein 4B 配置、前景配置、`Styles/NativeDistilled1024` 中的五个 Native1024 风格及原始可编辑预设。
 3. 打开 **Tools > Runtime Image Forge > Overview**。退出播放模式后选择**安装 Windows 后端**。原生 DLL 归档与声明会复制到项目 StreamingAssets，并包含在 Windows Player 构建中。
 
 权重需单独获取。Bonsai Ternary 4B 需要兼容的已转换平面模型包，固定权重共 4,642,526,382 字节（4.64 GB / 4.32 GiB）。FLUX.2 Klein 4B 的固定权重共 5,207,178,964 字节（5.21 GB / 4.85 GiB），可显式 HTTPS 下载或本地导入。引擎、声明、压缩包额外数据和临时副本需要额外空间。使用或重新分发前，请阅读[模型和风格](Models-and-styles.md)及所选配置的模型条款。
@@ -34,9 +34,9 @@ Overview 中的**创建模型配置**、**创建前景配置**和**创建选项�
 
 ## 随附演示游戏
 
-软件包包含 **The Ember Forge**：完整可编辑游戏场景、游戏源代码、工坊美术与独立配乐。Samples 文件随软件包下载，只有主动导入后才复制到项目 Assets。在 **Samples** 导入 **The Ember Forge**，然后选择 **Tools > Runtime Image Forge > Open The Ember Forge sample**。若项目没有 TMP 资源，该菜单会导入缺失的 TMP Essentials，随后打开场景并安装 Windows 原生 DLL 和声明。已有 TMP Settings 会保留。部分安装的 TMP 需先修复，其资源不会被覆盖。场景使用宿主项目的渲染与当前输入后端。示例已分配 `BonsaiTernary4B` 和 `IllustratedForgeNative1024`：1024 × 1024、4 步、CFG 1。若要使用 Klein，请在点击 Play 前在本地后端选择 `FLUX2Klein4B`；选择配置不会更改风格设置。游戏中 Bonsai 使用 **IMPORT MODEL PACK**，Klein 使用显式模型下载。
+软件包包含 **The Ember Forge**：完整可编辑游戏场景、游戏源代码、工坊美术与独立配乐，位于其 `Samples/The Ember Forge` 文件夹。选择 **Tools > Runtime Image Forge > Open The Ember Forge sample**。若项目没有 TMP 资源，该菜单会导入缺失的 TMP Essentials，随后打开示例场景并安装 Windows 原生 DLL 和声明。已有 TMP Settings 会保留。部分安装的 TMP 需先修复，其资源不会被覆盖。场景使用宿主项目的渲染与当前输入后端。示例已分配 `BonsaiTernary4B` 和 `IllustratedForgeNative1024`：1024 × 1024、4 步、CFG 1。若要使用 Klein，请在点击 Play 前在本地后端选择 `FLUX2Klein4B`；选择配置不会更改风格设置。游戏中 Bonsai 使用 **IMPORT MODEL PACK**，Klein 使用显式模型下载。
 
-请仅保留一个已导入的示例版本。替换旧版本前备份修改文件。示例 README 说明内容与首次启动步骤。单独的 Windows 独立发行版无需 Unity 或此软件包即可运行。
+请在项目中仅保留一份示例。导入新版本软件包前请备份已修改的示例文件。示例 README 说明内容与首次启动步骤。单独的 Windows 独立发行版无需 Unity 或此软件包即可运行。
 
 在编辑器中运行示例时，请把解压后的 `RuntimeImageForgeModels` 文件夹放在项目 `Assets` 文件夹旁边，进入 Play Mode 并点击 **IMPORT MODEL PACK**。导入会复制并验证一次文件。
 

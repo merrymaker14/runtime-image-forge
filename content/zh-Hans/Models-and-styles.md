@@ -10,7 +10,7 @@ The Ember Forge 示例默认使用 Bonsai Ternary 4B。独立 Windows 游戏包�
 
 界面使用显示名称，存档使用键。例如显示**符文雕刻**，提交 `runes`，展开为 **subtle engraved runes**。已发布风格的含义改变时，应修改 `styleVersion`。每张图的配方记录实际提示词和全部设置，后续编辑不会改写先前图像。
 
-导入示例包含：
+`Samples/Models and choice styles` 文件夹包含：
 
 | 风格 | 选项字段 | 背景 |
 | --- | --- | --- |

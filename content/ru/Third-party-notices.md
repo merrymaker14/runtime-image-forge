@@ -15,7 +15,7 @@ Runtime Image Forge включает изменённые нативные би�
 | miniz / zip | Включены уведомления MIT / public domain. |
 | stb image utilities | Sean Barrett, двойное уведомление MIT / public domain. |
 
-Полные оригинальные тексты находятся в `ThirdParty~`. **Tools → Runtime Image Forge → Install Windows Backend** копирует эти уведомления и закреплённый архив в `Assets/StreamingAssets/RuntimeImageForge` для сборок игры. Команда сохраняет отличающиеся существующие файлы, не перезаписывая их.
+Полные оригинальные тексты находятся в `ThirdParty`. **Tools → Runtime Image Forge → Install Windows Backend** копирует эти уведомления и архив закреплённых DLL в `Assets/StreamingAssets/RuntimeImageForge` для сборок игры. Команда сохраняет отличающиеся существующие файлы, не перезаписывая их.
 
 Небольшая модель удаления фона, включённая в пакет, — ONNX-экспорт [U²-Netp Xuebin Qin](https://github.com/xuebinqin/U-2-Net/tree/ac7e1c817ecab7c7dff5ce6b1abba61cd213ff29), Apache 2.0. Источник, контрольная сумма checkpoint, сведения об экспорте и полная лицензия находятся рядом с `Runtime/Models/U2NetP-320.onnx` и в копируемых уведомлениях. Модель выделяет заметный объект переднего плана; сложные сцены и тонкие края могут потребовать другой модели удаления фона.
 
@@ -34,4 +34,4 @@ GGUF генератора и текстового encoder Bonsai — преоб�
 
 Исходный DreamShaper 8 LCM preset сохраняет `Lykon/dreamshaper-8-lcm@4645d8bc6a8e6b106d21606d63e8460cdad4f1a6` под CreativeML OpenRAIL-M. Его веса получаются отдельно. При использовании или распространении этого прежнего профиля сохраняйте оригинальную лицензию модели.
 
-Unity, Unity Inference Engine и другие пакеты Unity сохраняют собственные условия. Настройка companion game использует Unity uGUI и TMP Essential Resources. В `ThirdParty~/unity-ugui-notice.txt` находится уведомление об авторских правах Unity, а в `ThirdParty~/unity-companion-license.txt` — полный оригинал Unity Companion License. Установка backend копирует оба файла в StreamingAssets/RuntimeImageForge/Licenses. TMP Essentials содержит лицензию шрифта Liberation Sans в Assets/TextMesh Pro/Fonts. Сохраняйте эти уведомления при распространении собранной игры.
+Unity, Unity Inference Engine и другие пакеты Unity сохраняют собственные условия. Настройка companion game использует Unity uGUI и TMP Essential Resources. В `ThirdParty/unity-ugui-notice.txt` находится уведомление об авторских правах Unity, а в `ThirdParty/unity-companion-license.txt` — полный оригинал Unity Companion License. Установка backend копирует оба файла в StreamingAssets/RuntimeImageForge/Licenses. TMP Essentials содержит лицензию шрифта Liberation Sans в Assets/TextMesh Pro/Fonts. Сохраняйте эти уведомления при распространении собранной игры.

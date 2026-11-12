@@ -10,7 +10,7 @@ Los desarrolladores pueden descargar el mismo paquete Bonsai sin el juego: **Run
 
 Usa etiquetas en la interfaz y claves en los datos guardados. Por ejemplo, muestra **Grabado rúnico**, envía `runes` y expándelo a **subtle engraved runes**. Cambia `styleVersion` si cambia el significado de un estilo publicado. El prompt aplicado y los ajustes completos se registran en la receta: las ediciones posteriores no reescriben imágenes anteriores.
 
-El ejemplo importado contiene:
+La carpeta `Samples/Models and choice styles` contiene:
 
 | Estilo | Campos | Fondo |
 | --- | --- | --- |

@@ -79,10 +79,10 @@
     "es": "Herramienta Unity · Motor DLL nativo para Windows x64",
     "zh-Hans": "Unity 工具 · Windows x64 原生 DLL 后端"
   },
-  "Complete editable companion game included in Samples.": {
-    "ru": "Полная редактируемая демонстрационная игра входит в Samples.",
-    "es": "El juego complementario editable completo se incluye en Samples.",
-    "zh-Hans": "Samples 包含完整可编辑配套游戏。"
+  "Complete editable companion game included.": {
+    "ru": "Полная редактируемая демонстрационная игра входит в комплект.",
+    "es": "Incluye el juego complementario editable completo.",
+    "zh-Hans": "包含完整可编辑配套游戏。"
   },
   "A locally generated bronze shield with a transparent background": {
     "ru": "Бронзовый щит с прозрачным фоном, сгенерированный локально",
@@ -224,10 +224,10 @@
     "es": "El juego complementario editable completo está incluido en el paquete Unity:",
     "zh-Hans": "Unity 包包含完整可编辑配套游戏："
   },
-  "scene, gameplay source, workshop art and soundtrack. Import it from Samples when you want to study or adapt it.": {
-    "ru": "сцена, исходники игрового процесса, оформление мастерской и музыка. Импортируйте её из Samples, когда захотите изучить или изменить.",
-    "es": "escena, código del juego, arte del taller y banda sonora. Impórtalo desde Samples cuando quieras estudiarlo o adaptarlo.",
-    "zh-Hans": "场景、游戏源码、工坊美术和配乐。需要学习或修改时，可从 Samples 导入。"
+  "scene, gameplay source, workshop art and soundtrack, ready to study or adapt in the package's Samples folder.": {
+    "ru": "сцена, исходники игрового процесса, оформление мастерской и музыка — в папке Samples пакета, готовые к изучению и изменению.",
+    "es": "escena, código del juego, arte del taller y banda sonora, en la carpeta Samples del paquete, listos para estudiar o adaptar.",
+    "zh-Hans": "场景、游戏源码、工坊美术和配乐，位于软件包的 Samples 文件夹，可直接学习或修改。"
   },
   "Open the included game in Unity": {
     "ru": "Открыть игру из комплекта в Unity",
@@ -364,10 +364,10 @@
     "es": "en tu propio juego.",
     "zh-Hans": "你自己的游戏。"
   },
-  "Start with the imported model and style samples. Follow the scene setup, then choose the API layer your game needs. Documentation covers ownership, cancellation, save data and export.": {
-    "ru": "Начните с импортированных примеров моделей и стилей. Настройте сцену, затем выберите подходящий уровень API. Документация описывает владение ресурсами, отмену, сохранение данных и экспорт.",
-    "es": "Empieza con los ejemplos importados de modelos y estilos. Configura la escena y elige el nivel de API que necesita tu juego. La documentación cubre la propiedad de recursos, cancelación, datos guardados y exportación.",
-    "zh-Hans": "从导入的模型与样式示例开始。完成场景设置，再选择游戏所需的 API 层级。文档说明资源所有权、取消、存档和导出。"
+  "Start with the included model and style samples. Follow the scene setup, then choose the API layer your game needs. Documentation covers ownership, cancellation, save data and export.": {
+    "ru": "Начните с готовых примеров моделей и стилей. Настройте сцену, затем выберите подходящий уровень API. Документация описывает владение ресурсами, отмену, сохранение данных и экспорт.",
+    "es": "Empieza con los ejemplos incluidos de modelos y estilos. Configura la escena y elige el nivel de API que necesita tu juego. La documentación cubre la propiedad de recursos, cancelación, datos guardados y exportación.",
+    "zh-Hans": "从随附的模型与样式示例开始。完成场景设置，再选择游戏所需的 API 层级。文档说明资源所有权、取消、存档和导出。"
   },
   "Install and generate your first image": {
     "ru": "Установка и первое изображение",

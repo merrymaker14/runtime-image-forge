@@ -4,8 +4,8 @@
 <p>原生库需要 Microsoft Visual C++ 2015–2022 Redistributable (x64)，大多数 Windows 电脑已经安装。缺少或版本过旧时，准备阶段会报告缺失原生依赖（关闭 <strong>准备时预热</strong> 时由第一个订单报告）；请从 Microsoft 安装最新版本后重启 Unity 或游戏。</p>
 <h2 id="install-and-import-examples">安装并导入示例</h2>
 <ol>
-<li>购买后在 <strong>Package Manager &gt; My Assets</strong> 中安装 Runtime Image Forge，它会作为包安装。本地 <code>.tgz</code> 副本可通过 <strong>Install package from tarball</strong> 添加。</li>
-<li>从软件包的 <strong>Samples</strong> 选项卡导入 <strong>Models and choice styles</strong>。包含 Bonsai Ternary 4B、FLUX.2 Klein 4B 配置、前景配置、<code>Styles/NativeDistilled1024</code> 中的五个 Native1024 风格及原始可编辑预设。</li>
+<li>购买后打开 <strong>Package Manager &gt; My Assets</strong>，下载并导入 Runtime Image Forge。其文件位于 <code>Assets/StrangeEuphoriaXR/RuntimeImageForge</code>。导入时还会添加 Unity Inference Engine 2.6.1 和 Unity uGUI 2.5.0 软件包依赖。</li>
+<li>打开该文件夹中的 <code>Samples/Models and choice styles</code>。包含 Bonsai Ternary 4B、FLUX.2 Klein 4B 配置、前景配置、<code>Styles/NativeDistilled1024</code> 中的五个 Native1024 风格及原始可编辑预设。</li>
 <li>打开 <strong>Tools &gt; Runtime Image Forge &gt; Overview</strong>。退出播放模式后选择<strong>安装 Windows 后端</strong>。原生 DLL 归档与声明会复制到项目 StreamingAssets，并包含在 Windows Player 构建中。</li>
 </ol>
 <p>权重需单独获取。Bonsai Ternary 4B 需要兼容的已转换平面模型包，固定权重共 4,642,526,382 字节（4.64 GB / 4.32 GiB）。FLUX.2 Klein 4B 的固定权重共 5,207,178,964 字节（5.21 GB / 4.85 GiB），可显式 HTTPS 下载或本地导入。引擎、声明、压缩包额外数据和临时副本需要额外空间。使用或重新分发前，请阅读<a href="models-and-styles.html">模型和风格</a>及所选配置的模型条款。</p>
@@ -23,8 +23,8 @@
 <p>准备前先打开所选模型配置。Bonsai 使用<strong>导入经过验证的模型文件</strong>并选择已转换的平面模型包。Klein 可选择<strong>下载并验证模型文件</strong>，或从本地文件夹导入三个固定文件。两种操作均显示进度并支持取消。缓存配置验证完成后可离线准备。请完成任务并关闭已准备好的生成器后，在 Edit Mode 更换配置。</p>
 <p>Overview 中的<strong>创建模型配置</strong>、<strong>创建前景配置</strong>和<strong>创建选项风格</strong>会在所选 Assets 文件夹创建并选中资源，文件名不会重复覆盖。前景配置自动关联随附 ONNX 模型。新风格包含可编辑的物品、材料、细节目录。<strong>现有风格 &gt; 编辑所选风格</strong>可打开已保存目录。也支持 <strong>Assets &gt; Create &gt; Runtime Image Forge</strong> 菜单；从该菜单创建的前景配置需手动分配 ONNX。</p>
 <h2 id="included-companion-game">随附演示游戏</h2>
-<p>软件包包含 <strong>The Ember Forge</strong>：完整可编辑游戏场景、游戏源代码、工坊美术与独立配乐。Samples 文件随软件包下载，只有主动导入后才复制到项目 Assets。在 <strong>Samples</strong> 导入 <strong>The Ember Forge</strong>，然后选择 <strong>Tools &gt; Runtime Image Forge &gt; Open The Ember Forge sample</strong>。若项目没有 TMP 资源，该菜单会导入缺失的 TMP Essentials，随后打开场景并安装 Windows 原生 DLL 和声明。已有 TMP Settings 会保留。部分安装的 TMP 需先修复，其资源不会被覆盖。场景使用宿主项目的渲染与当前输入后端。示例已分配 <code>BonsaiTernary4B</code> 和 <code>IllustratedForgeNative1024</code>：1024 × 1024、4 步、CFG 1。若要使用 Klein，请在点击 Play 前在本地后端选择 <code>FLUX2Klein4B</code>；选择配置不会更改风格设置。游戏中 Bonsai 使用 <strong>IMPORT MODEL PACK</strong>，Klein 使用显式模型下载。</p>
-<p>请仅保留一个已导入的示例版本。替换旧版本前备份修改文件。示例 README 说明内容与首次启动步骤。单独的 Windows 独立发行版无需 Unity 或此软件包即可运行。</p>
+<p>软件包包含 <strong>The Ember Forge</strong>：完整可编辑游戏场景、游戏源代码、工坊美术与独立配乐，位于其 <code>Samples/The Ember Forge</code> 文件夹。选择 <strong>Tools &gt; Runtime Image Forge &gt; Open The Ember Forge sample</strong>。若项目没有 TMP 资源，该菜单会导入缺失的 TMP Essentials，随后打开示例场景并安装 Windows 原生 DLL 和声明。已有 TMP Settings 会保留。部分安装的 TMP 需先修复，其资源不会被覆盖。场景使用宿主项目的渲染与当前输入后端。示例已分配 <code>BonsaiTernary4B</code> 和 <code>IllustratedForgeNative1024</code>：1024 × 1024、4 步、CFG 1。若要使用 Klein，请在点击 Play 前在本地后端选择 <code>FLUX2Klein4B</code>；选择配置不会更改风格设置。游戏中 Bonsai 使用 <strong>IMPORT MODEL PACK</strong>，Klein 使用显式模型下载。</p>
+<p>请在项目中仅保留一份示例。导入新版本软件包前请备份已修改的示例文件。示例 README 说明内容与首次启动步骤。单独的 Windows 独立发行版无需 Unity 或此软件包即可运行。</p>
 <p>在编辑器中运行示例时，请把解压后的 <code>RuntimeImageForgeModels</code> 文件夹放在项目 <code>Assets</code> 文件夹旁边，进入 Play Mode 并点击 <strong>IMPORT MODEL PACK</strong>。导入会复制并验证一次文件。</p>
 <h2 id="first-download-and-order">首次下载与订单</h2>
 <p>Klein 等 HTTPS 配置应将游戏的下载按钮连接到显式调用 <code>localSource.DownloadModelAsync(progress, token)</code>。Bonsai 等仅导入配置应显式调用 <code>localSource.ImportModelPackAsync(selectedFolder, progress, token)</code>。获取文件前向玩家显示完整权重大小、进度、取消及错误。请等待玩家选择后再获取模型文件。</p>

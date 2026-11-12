@@ -15,7 +15,7 @@ Runtime Image Forge includes modified Windows x64 Vulkan native libraries based 
 | miniz / zip | Supplied MIT/public-domain notices. |
 | stb image utilities | Sean Barrett, dual MIT/public-domain notice. |
 
-Full text is in `ThirdParty~`. **Tools → Runtime Image Forge → Install Windows Backend** copies those notices and the pinned archive into `Assets/StreamingAssets/RuntimeImageForge` for game builds. The command keeps different existing files instead of overwriting them.
+Full text is in `ThirdParty`. **Tools → Runtime Image Forge → Install Windows Backend** copies those notices and an archive of the pinned DLLs into `Assets/StreamingAssets/RuntimeImageForge` for game builds. The command keeps different existing files instead of overwriting them.
 
 The small foreground-removal model included in the package is an ONNX export of [Xuebin Qin's U²-Netp](https://github.com/xuebinqin/U-2-Net/tree/ac7e1c817ecab7c7dff5ce6b1abba61cd213ff29), Apache 2.0. Its source, checkpoint checksum, export details and complete license are beside `Runtime/Models/U2NetP-320.onnx` and in the copied notices. It predicts a salient foreground object; complex scenes and fine edges can need a different cutout model.
 
@@ -34,4 +34,4 @@ The Bonsai generator and text encoder GGUF files are converted representations o
 
 The original DreamShaper 8 LCM preset retains `Lykon/dreamshaper-8-lcm@4645d8bc6a8e6b106d21606d63e8460cdad4f1a6` under CreativeML OpenRAIL-M. Its weights are acquired separately. Preserve its original model license if using or redistributing that legacy profile.
 
-Unity, Unity Inference Engine and other Unity packages retain their own terms. The companion setup uses Unity uGUI and TMP Essential Resources. `ThirdParty~/unity-ugui-notice.txt` contains the Unity copyright notice and `ThirdParty~/unity-companion-license.txt` contains the full Unity Companion License. The backend installation action copies both into StreamingAssets/RuntimeImageForge/Licenses. TMP Essentials includes the Liberation Sans font license in Assets/TextMesh Pro/Fonts. Preserve these notices when redistributing a built game.
+Unity, Unity Inference Engine and other Unity packages retain their own terms. The companion setup uses Unity uGUI and TMP Essential Resources. `ThirdParty/unity-ugui-notice.txt` contains the Unity copyright notice and `ThirdParty/unity-companion-license.txt` contains the full Unity Companion License. The backend installation action copies both into StreamingAssets/RuntimeImageForge/Licenses. TMP Essentials includes the Liberation Sans font license in Assets/TextMesh Pro/Fonts. Preserve these notices when redistributing a built game.
