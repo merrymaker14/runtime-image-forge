@@ -15,7 +15,7 @@ Runtime Image Forge включает изменённые нативные би�
 | miniz / zip | Включены уведомления MIT / public domain. |
 | stb image utilities | Sean Barrett, двойное уведомление MIT / public domain. |
 
-Полные оригинальные тексты находятся в `ThirdParty`. **Tools → Runtime Image Forge → Install Windows Backend** копирует эти уведомления и архив закреплённых DLL в `Assets/StreamingAssets/RuntimeImageForge` для сборок игры. Команда сохраняет отличающиеся существующие файлы, не перезаписывая их.
+Полные оригинальные тексты находятся в `ThirdParty`. **Tools → Runtime Image Forge → Install Windows Backend** упаковывает закреплённые DLL в архив в `Assets/StreamingAssets/RuntimeImageForge` и копирует туда эти уведомления для сборок игры. Команда сохраняет отличающиеся существующие файлы, не перезаписывая их.
 
 Небольшая модель удаления фона, включённая в пакет, — ONNX-экспорт [U²-Netp Xuebin Qin](https://github.com/xuebinqin/U-2-Net/tree/ac7e1c817ecab7c7dff5ce6b1abba61cd213ff29), Apache 2.0. Источник, контрольная сумма checkpoint, сведения об экспорте и полная лицензия находятся рядом с `Runtime/Models/U2NetP-320.onnx` и в копируемых уведомлениях. Модель выделяет заметный объект переднего плана; сложные сцены и тонкие края могут потребовать другой модели удаления фона.
 

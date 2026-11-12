@@ -48,7 +48,7 @@
 <td>Sean Barrett, aviso dual MIT / dominio público.</td>
 </tr>
 </tbody></table></div>
-<p>Los textos originales completos están en <code>ThirdParty</code>. <strong>Tools → Runtime Image Forge → Install Windows Backend</strong> copia esos avisos y un archivo con las DLL fijadas a <code>Assets/StreamingAssets/RuntimeImageForge</code> para las compilaciones del juego. El comando conserva los archivos existentes que sean diferentes, sin sobrescribirlos.</p>
+<p>Los textos originales completos están en <code>ThirdParty</code>. <strong>Tools → Runtime Image Forge → Install Windows Backend</strong> empaqueta las DLL fijadas en un archivo comprimido en <code>Assets/StreamingAssets/RuntimeImageForge</code> y copia allí esos avisos para las compilaciones del juego. El comando conserva los archivos existentes que sean diferentes, sin sobrescribirlos.</p>
 <p>El pequeño modelo de eliminación de fondo incluido en el paquete es una exportación ONNX de <a href="https://github.com/xuebinqin/U-2-Net/tree/ac7e1c817ecab7c7dff5ce6b1abba61cd213ff29">U²-Netp de Xuebin Qin</a>, Apache 2.0. Su origen, suma de comprobación del checkpoint, detalles de exportación y licencia completa están junto a <code>Runtime/Models/U2NetP-320.onnx</code> y en los avisos copiados. Predice un objeto destacado en primer plano; las escenas complejas y los bordes finos pueden requerir otro modelo de recorte.</p>
 <p>Bonsai Ternary 4B y FLUX.2 Klein 4B se incluyen como presets de perfiles por componentes. Los pesos son independientes del paquete de Unity: Bonsai requiere un paquete local convertido compatible; Klein permite descargas explícitas de sus componentes HTTPS fijados o importación local.</p>
 <div class="table-scroll" tabindex="0" role="region" aria-label="Tabla de referencia"><table>

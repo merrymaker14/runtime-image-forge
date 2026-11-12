@@ -48,7 +48,7 @@
 <td>Sean Barrett, dual MIT/public-domain notice.</td>
 </tr>
 </tbody></table></div>
-<p>Full text is in <code>ThirdParty</code>. <strong>Tools → Runtime Image Forge → Install Windows Backend</strong> copies those notices and an archive of the pinned DLLs into <code>Assets/StreamingAssets/RuntimeImageForge</code> for game builds. The command keeps different existing files instead of overwriting them.</p>
+<p>Full text is in <code>ThirdParty</code>. <strong>Tools → Runtime Image Forge → Install Windows Backend</strong> packs the pinned DLLs into an archive in <code>Assets/StreamingAssets/RuntimeImageForge</code> and copies those notices there for game builds. The command keeps different existing files instead of overwriting them.</p>
 <p>The small foreground-removal model included in the package is an ONNX export of <a href="https://github.com/xuebinqin/U-2-Net/tree/ac7e1c817ecab7c7dff5ce6b1abba61cd213ff29">Xuebin Qin&#39;s U²-Netp</a>, Apache 2.0. Its source, checkpoint checksum, export details and complete license are beside <code>Runtime/Models/U2NetP-320.onnx</code> and in the copied notices. It predicts a salient foreground object; complex scenes and fine edges can need a different cutout model.</p>
 <p>Bonsai Ternary 4B and FLUX.2 Klein 4B are supplied as component-profile presets. Weight files are separate from the Unity package: Bonsai requires a compatible converted local pack; Klein permits explicit downloads of its pinned HTTPS components or local import.</p>
 <div class="table-scroll" tabindex="0" role="region" aria-label="Reference table"><table>

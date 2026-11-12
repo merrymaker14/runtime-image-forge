@@ -6,11 +6,11 @@
 
 原生库需要 Microsoft Visual C++ 2015–2022 Redistributable (x64)，大多数 Windows 电脑已经安装。缺少或版本过旧时，准备阶段会报告缺失原生依赖（关闭 **准备时预热** 时由第一个订单报告）；请从 Microsoft 安装最新版本后重启 Unity 或游戏。
 
-## 安装并导入示例
+## 安装
 
 1. 购买后打开 **Package Manager > My Assets**，下载并导入 Runtime Image Forge。其文件位于 `Assets/StrangeEuphoriaXR/RuntimeImageForge`。导入时还会添加 Unity Inference Engine 2.6.1 和 Unity uGUI 2.5.0 软件包依赖。
-2. 打开该文件夹中的 `Samples/Models and choice styles`。包含 Bonsai Ternary 4B、FLUX.2 Klein 4B 配置、前景配置、`Styles/NativeDistilled1024` 中的五个 Native1024 风格及原始可编辑预设。
-3. 打开 **Tools > Runtime Image Forge > Overview**。退出播放模式后选择**安装 Windows 后端**。原生 DLL 归档与声明会复制到项目 StreamingAssets，并包含在 Windows Player 构建中。
+2. 打开该文件夹中的 `Samples/Models and choice styles`。包含 Bonsai Ternary 4B、FLUX.2 Klein 4B 配置、前景配置、`Styles/NativeDistilled1024` 中的五个 Native1024 风格及原始可编辑预设。更新软件包会替换这些文件：要修改配置或风格，请先复制（Ctrl+D），再把副本移到 `Assets/StrangeEuphoriaXR/RuntimeImageForge` 之外的自有文件夹。
+3. 打开 **Tools > Runtime Image Forge > Overview**。退出播放模式后选择**安装 Windows 后端**。该命令会校验固定版本的原生 DLL，将其打包为项目 StreamingAssets 中的归档，并把所需声明复制到该处；这些文件会包含在 Windows Player 构建中。
 
 权重需单独获取。Bonsai Ternary 4B 需要兼容的已转换平面模型包，固定权重共 4,642,526,382 字节（4.64 GB / 4.32 GiB）。FLUX.2 Klein 4B 的固定权重共 5,207,178,964 字节（5.21 GB / 4.85 GiB），可显式 HTTPS 下载或本地导入。引擎、声明、压缩包额外数据和临时副本需要额外空间。使用或重新分发前，请阅读[模型和风格](Models-and-styles.md)及所选配置的模型条款。
 

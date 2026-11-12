@@ -6,11 +6,11 @@ The backend runs as a native DLL inside the Unity Editor or Windows Player proce
 
 The native libraries require the Microsoft Visual C++ 2015–2022 Redistributable (x64), which most Windows PCs already have. If it is missing or outdated, preparation reports a missing native dependency (with **Warmup On Prepare** off, the first order reports it); install the latest version from Microsoft and restart Unity or the game.
 
-## Install and import examples
+## Install
 
 1. After purchase, open **Package Manager > My Assets**, download Runtime Image Forge and import it. Its files are placed in `Assets/StrangeEuphoriaXR/RuntimeImageForge`. Import also adds the Unity Inference Engine 2.6.1 and Unity uGUI 2.5.0 package dependencies.
-2. Open `Samples/Models and choice styles` in that folder. It includes the Bonsai Ternary 4B and FLUX.2 Klein 4B profiles, a foreground profile, five Native1024 styles in `Styles/NativeDistilled1024` and the legacy editable presets.
-3. Open **Tools > Runtime Image Forge > Overview**. Choose **Install Windows backend** while outside Play Mode. This installs the native DLL archive and required notices into this project's StreamingAssets; these files are included in Windows Player builds.
+2. Open `Samples/Models and choice styles` in that folder. It includes the Bonsai Ternary 4B and FLUX.2 Klein 4B profiles, a foreground profile, five Native1024 styles in `Styles/NativeDistilled1024` and the legacy editable presets. Package updates replace these files: to change a profile or style, duplicate it (Ctrl+D) and move the copy to your own folder outside `Assets/StrangeEuphoriaXR/RuntimeImageForge`.
+3. Open **Tools > Runtime Image Forge > Overview**. Choose **Install Windows backend** while outside Play Mode. This verifies the pinned native DLLs, packs them into an archive in this project's StreamingAssets and copies the required notices there; these files are included in Windows Player builds.
 
 The model weights are acquired separately. Bonsai Ternary 4B requires a compatible converted flat pack with 4,642,526,382 pinned weight bytes (4.64 GB / 4.32 GiB); FLUX.2 Klein 4B has 5,207,178,964 pinned weight bytes (5.21 GB / 4.85 GiB), obtained by explicit HTTPS download or local import. Engine files, notices, archive overhead and temporary copies are additional. Read [Models and styles](Models-and-styles.md) and the profile's model terms before use or redistribution.
 

@@ -6,11 +6,11 @@ El motor se ejecuta como una DLL nativa dentro del proceso de Unity Editor o Win
 
 Las bibliotecas nativas requieren Microsoft Visual C++ 2015–2022 Redistributable (x64), que la mayoría de los PC con Windows ya tienen. Si falta o está desactualizado, la preparación informa de una dependencia nativa ausente (con **Calentar al preparar** desactivado, lo informa el primer pedido); instala la versión más reciente desde Microsoft y reinicia Unity o el juego.
 
-## Instalar e importar ejemplos
+## Instalación
 
 1. Tras la compra, abre **Package Manager > My Assets**, descarga Runtime Image Forge e impórtalo. Sus archivos se colocan en `Assets/StrangeEuphoriaXR/RuntimeImageForge`. La importación también añade las dependencias Unity Inference Engine 2.6.1 y Unity uGUI 2.5.0.
-2. Abre `Samples/Models and choice styles` en esa carpeta. Incluye los perfiles Bonsai Ternary 4B y FLUX.2 Klein 4B, un perfil de recorte, cinco estilos Native1024 en `Styles/NativeDistilled1024` y los presets anteriores editables.
-3. Abre **Tools > Runtime Image Forge > Overview**. Fuera del modo Play, elige **Instalar el motor para Windows**. Se copian el archivo de DLL nativas y sus avisos a StreamingAssets; estos archivos se incluyen en las compilaciones de Windows.
+2. Abre `Samples/Models and choice styles` en esa carpeta. Incluye los perfiles Bonsai Ternary 4B y FLUX.2 Klein 4B, un perfil de recorte, cinco estilos Native1024 en `Styles/NativeDistilled1024` y los presets anteriores editables. Las actualizaciones del paquete reemplazan estos archivos: para cambiar un perfil o un estilo, duplícalo (Ctrl+D) y mueve la copia a tu propia carpeta fuera de `Assets/StrangeEuphoriaXR/RuntimeImageForge`.
+3. Abre **Tools > Runtime Image Forge > Overview**. Fuera del modo Play, elige **Instalar el motor para Windows**. El comando verifica las DLL nativas fijadas, las empaqueta en un archivo comprimido en StreamingAssets del proyecto y copia allí sus avisos; estos archivos se incluyen en las compilaciones de Windows.
 
 Los pesos se obtienen por separado. Bonsai Ternary 4B requiere un paquete plano convertido compatible con 4.642.526.382 bytes de pesos fijados (4,64 GB / 4,32 GiB). FLUX.2 Klein 4B contiene 5.207.178.964 bytes fijados (5,21 GB / 4,85 GiB), disponibles mediante descarga HTTPS explícita o importación local. El motor, los avisos, la sobrecarga del archivo comprimido y las copias temporales requieren espacio adicional. Lee [Modelos y estilos](Models-and-styles.md) y las condiciones del perfil antes de usar o redistribuirlo.
 

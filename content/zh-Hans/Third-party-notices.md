@@ -15,7 +15,7 @@ Runtime Image Forge 随附基于 [stable-diffusion.cpp](https://github.com/leeje
 | miniz / zip | 随附 MIT / 公共领域声明。 |
 | stb image utilities | Sean Barrett，MIT / 公共领域双重声明。 |
 
-完整原文位于 `ThirdParty`。**Tools → Runtime Image Forge → Install Windows Backend** 将这些声明和由固定版本 DLL 组成的压缩包复制到 `Assets/StreamingAssets/RuntimeImageForge`，供游戏构建使用。命令会保留内容不同的现有文件，不会覆盖。
+完整原文位于 `ThirdParty`。**Tools → Runtime Image Forge → Install Windows Backend** 将固定版本的 DLL 打包为 `Assets/StreamingAssets/RuntimeImageForge` 中的压缩包，并把这些声明复制到该处，供游戏构建使用。命令会保留内容不同的现有文件，不会覆盖。
 
 包中随附的小型背景移除模型是 [Xuebin Qin 的 U²-Netp](https://github.com/xuebinqin/U-2-Net/tree/ac7e1c817ecab7c7dff5ce6b1abba61cd213ff29) 的 ONNX 导出，采用 Apache 2.0。来源、checkpoint 校验和、导出细节及完整许可证位于 `Runtime/Models/U2NetP-320.onnx` 旁边，并包含在复制的声明中。它预测显著前景对象；复杂场景和精细边缘可能需要其他抠图模型。
 
