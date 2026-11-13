@@ -59,6 +59,14 @@
 <td>等待任务完成或取消。取消任务在后端释放前仍占用槽位。</td>
 </tr>
 <tr>
+<td>透明 PNG 不可用或前景配置没有模型</td>
+<td>本包不包含抠图模型。请选择 <strong>Tools &gt; Runtime Image Forge &gt; Install Foreground Model</strong>：它会下载 U²-Netp 及其许可证，并分配给等待它的前景配置。在此之前请使用带背景的 PNG。无法访问 GitHub 时，请将第三方声明中列出的 <code>u2netp.onnx</code> 和 <code>U2NetP-LICENSE.txt</code> 原始文件放入 <code>Assets/RuntimeImageForge/ForegroundModel</code>，再运行该命令：它会校验 SHA-256 并直接使用，无需下载。如果模型已安装（例如重新导入示例后），请在配置的 Inspector 中选择<strong>分配已安装的模型</strong>，或再次运行该命令；它会复用已校验的文件。</td>
+</tr>
+<tr>
+<td>导入抠图模型时出现 MaxPool <code>ceil_mode</code> 和 Resize <code>cubic_coeff_a</code> 警告</td>
+<td>这对 U²-Netp 属于预期情况：其输入固定为 320 × 320，所有池化尺寸均为偶数，Resize 层为线性插值，因此警告中提到的属性不会影响结果。</td>
+</tr>
+<tr>
 <td>透明 PNG 仍有背景</td>
 <td>分配前景配置并关闭风格的<strong>保留背景</strong>。检查生成物体对比度和蒙版，预测可能留下不完善边缘。</td>
 </tr>

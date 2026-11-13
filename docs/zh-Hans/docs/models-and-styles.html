@@ -68,14 +68,14 @@
 <p>Bonsai 配置使用仅导入模式。将 <code>bonsai-ternary-transformer.gguf</code>、<code>bonsai-qwen3-hqq-affine.gguf</code> 和 <code>diffusion_pytorch_model.safetensors</code> 直接放入所选文件夹。GGUF 已经过转换，原始 Gemlite checkpoint 与此配置不匹配。导入操作不会搜索子文件夹或转换 checkpoint。请随模型包保留原始 LICENSE/NOTICE 和转换声明。</p>
 <p>Klein 固定 <code>flux-2-klein-4b-Q4_0.gguf</code>、<code>Qwen3-4B-Q4_K_M.gguf</code> 和 <code>full_encoder_small_decoder.safetensors</code>。在配置 Inspector 中点击<strong>下载并验证模型文件</strong>，可显式获取固定 HTTPS 组件，并查看进度或取消。<strong>导入经过验证的模型文件</strong>也支持这些文件的平面本地文件夹。两种操作均复用所选缓存中已验证的文件；选择模型配置不会开始获取文件。</p>
 <p>上述大小只计算三个必要的权重文件。DLL、声明、压缩包、导出 PNG 和临时副本需要额外空间。导入会保留源模型包并创建另一份缓存副本；缓存磁盘至少还需一套完整权重的空间，并留有余量。模型 Inspector 会显示完整的固定权重总量。权重文件大小不等于 RAM 或 VRAM 要求。</p>
-<p>随附 U2NETP ONNX 是独立的 Apache-2.0 前景模型。原始 DreamShaper 配置仍作为 CreativeML OpenRAIL-M 许可的旧预设保留。精确来源修订版本和条款见<a href="third-party-notices.html">第三方声明</a>。</p>
+<p>U²-Netp 是独立的 Apache-2.0 抠图模型，本包不包含该模型；<strong>安装抠图模型</strong>会按需下载。原始 DreamShaper 配置仍作为 CreativeML OpenRAIL-M 许可的旧预设保留。精确来源修订版本和条款见<a href="third-party-notices.html">第三方声明</a>。</p>
 <p>准备生成器前请更换模型配置。已准备队列保持一个后端标识。请先完成任务并关闭或卸载生成器，再在 Edit Mode 选择另一个已保存的配置。</p>
 <h2 id="transparent-pngs">透明 PNG</h2>
 <p>当均匀不透明背景上的单个独立物体在初始蒙版中不完整时，<strong>细化细长物体</strong>（<code>ForegroundModelProfile.refineUniformBackground</code>）可运行第二次前景处理。如果裁剪不合适或新蒙版未通过保留检查，处理器会保留初始蒙版。该选项具有独立的缓存标识。请检查细边缘和孔洞；细化不能保证完美抠图。演示游戏和风格示例的前景模型配置已启用此选项。</p>
 <p>独立物品请关闭<strong>保留背景</strong>，并在本地来源分配前景配置。生成后，处理器预测显著物体蒙版。结果为直通 alpha RGBA，PNG 导出保留 alpha。</p>
 <p>肖像、环境与完整插画请启用<strong>保留背景</strong>。此模式跳过前景处理并保留整幅图。两种模式都导出 PNG。没有分配前景配置时选择 <code>ForgeBackgroundMode.KeepBackground</code>；随附后端会拒绝透明请求，而不是默默返回不透明图像。</p>
 <p>若玩家可选择模式，则向 <code>PrepareAsync</code>、<code>Generate</code> 或风格 <code>CreateRequest</code> 重载传入 <code>ForgeBackgroundMode.Transparent</code> 或 <code>ForgeBackgroundMode.KeepBackground</code>。<code>StyleDefault</code> 保留资源默认值。覆盖属于单个配方，不修改共享风格。用 <code>KeepBackground</code> 准备会跳过前景预热；后来选透明模式时，该订单包含前景模型首次准备成本。</p>
-<p>U2NETP 随包提供，4,615,341 字节，约 4.4 MiB，玩家无需额外下载。完整模型权重大小见上表。抠图在本地运行，没有按图计费的 API。请在准备阶段预热透明流程；导出已有 PNG 只复制字节。</p>
+<p>U²-Netp 抠图模型只需在项目中安装一次：4,574,861 字节，约 4.4 MiB。游戏构建会包含该模型，玩家无需另行下载。完整模型权重大小见上表。抠图在本地运行，没有按图计费的 API。请在准备阶段预热透明流程；导出已有 PNG 只复制字节。U²-Netp 配置从名为 <code>1959</code> 的输出读取蒙版（<strong>蒙版输出名称</strong>）；对于只有一个输出的 ONNX 蒙版模型，请将该字段留空。</p>
 <p>细轮廓、半透明材质、空隙、阴影和附带物体可能导致不完善的蒙版。应验证符合美术方向的实际输出。抠图只生成 2D 图像，不创建几何体，也不保证精灵边缘完全干净。分享原始 PNG 和配方的方法见<a href="exporting-images.html">导出指南</a>。</p>
 <h2 id="import-a-local-model-pack">导入本地模型包</h2>
 <p>本地提供模型文件时，启用 <strong>仅导入</strong>（<code>ForgeModelProfile.importOnly</code>）。此选项默认关闭；现有 HTTPS 配置及其生成标识保持不变。仅导入配置的下载 URL 可以留空。每个文件仍需准确的文件名、版本、字节数、SHA-256 及许可证信息。各组件的文件名必须不同，且不区分大小写。</p>

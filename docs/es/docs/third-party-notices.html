@@ -28,6 +28,10 @@
 <td>Yuji Hirose, MIT.</td>
 </tr>
 <tr>
+<td>nlohmann/json</td>
+<td>3.11.2, Niels Lohmann, MIT.</td>
+</tr>
+<tr>
 <td>darts-clone</td>
 <td>BSD.</td>
 </tr>
@@ -49,7 +53,7 @@
 </tr>
 </tbody></table></div>
 <p>Los textos originales completos están en <code>ThirdParty</code>. <strong>Tools → Runtime Image Forge → Install Windows Backend</strong> empaqueta las DLL fijadas en un archivo comprimido en <code>Assets/StreamingAssets/RuntimeImageForge</code> y copia allí esos avisos para las compilaciones del juego. El comando conserva los archivos existentes que sean diferentes, sin sobrescribirlos.</p>
-<p>El pequeño modelo de eliminación de fondo incluido en el paquete es una exportación ONNX de <a href="https://github.com/xuebinqin/U-2-Net/tree/ac7e1c817ecab7c7dff5ce6b1abba61cd213ff29">U²-Netp de Xuebin Qin</a>, Apache 2.0. Su origen, suma de comprobación del checkpoint, detalles de exportación y licencia completa están junto a <code>Runtime/Models/U2NetP-320.onnx</code> y en los avisos copiados. Predice un objeto destacado en primer plano; las escenas complejas y los bordes finos pueden requerir otro modelo de recorte.</p>
+<p>El modelo de eliminación de fondo no está incluido en el paquete. A petición del desarrollador, <strong>Tools → Runtime Image Forge → Install Foreground Model</strong> (también en Overview y en el Inspector del perfil de recorte) descarga la exportación ONNX de <a href="https://github.com/xuebinqin/U-2-Net/tree/ac7e1c817ecab7c7dff5ce6b1abba61cd213ff29">U²-Netp de Xuebin Qin</a> publicada en la <a href="https://github.com/danielgatis/rembg/releases/tag/v0.0.0">versión v0.0.0 de rembg</a> (<code>u2netp.onnx</code>, 4.574.861 bytes, SHA-256 <code>309c8469258dda742793dce0ebea8e6dd393174f89934733ecc8b14c76f4ddd8</code>) y la licencia Apache 2.0 de U²-Net de la revisión fijada (<a href="https://raw.githubusercontent.com/xuebinqin/U-2-Net/ac7e1c817ecab7c7dff5ce6b1abba61cd213ff29/LICENSE"><code>LICENSE</code></a>, 11.357 bytes, SHA-256 <code>c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4</code>). Los guarda con un aviso en <code>Assets/RuntimeImageForge/ForegroundModel</code> y copia la licencia y el aviso a <code>Assets/StreamingAssets/RuntimeImageForge/Licenses</code> para las compilaciones del juego. Un modelo o una licencia existentes con el mismo nombre y otro contenido se conservan; el aviso es un archivo propio del comando y se reescribe. Predice un objeto destacado en primer plano; las escenas complejas y los bordes finos pueden requerir otro modelo de recorte.</p>
 <p>Bonsai Ternary 4B y FLUX.2 Klein 4B se incluyen como presets de perfiles por componentes. Los pesos son independientes del paquete de Unity: Bonsai requiere un paquete local convertido compatible; Klein permite descargas explícitas de sus componentes HTTPS fijados o importación local.</p>
 <div class="table-scroll" tabindex="0" role="region" aria-label="Tabla de referencia"><table>
 <thead>
@@ -91,6 +95,6 @@
 </tr>
 </tbody></table></div>
 <p>Los GGUF del generador y codificador de texto de Bonsai son representaciones convertidas de las revisiones indicadas; el VAE no se modifica. Conserva los LICENSE/NOTICE originales de Prism y los avisos de conversión al redistribuir el paquete. El NOTICE de Prism identifica FLUX.2 Klein 4B de Black Forest Labs y Qwen3-4B de Alibaba Cloud como obras de origen. Conserva también los avisos de los componentes Klein GGUF. Lee las condiciones completas antes de usar o redistribuir; los nombres no conceden derechos de marca ni implican respaldo de los autores. <a href="models-and-styles.html">Modelos y estilos</a> indica archivos requeridos, obtención y volúmenes de pesos.</p>
-<p>El preset original de DreamShaper 8 LCM conserva <code>Lykon/dreamshaper-8-lcm@4645d8bc6a8e6b106d21606d63e8460cdad4f1a6</code> bajo CreativeML OpenRAIL-M. Los pesos se obtienen por separado. Conserva la licencia original si utilizas o redistribuyes ese perfil anterior.</p>
-<p>Unity, Unity Inference Engine y los demás paquetes Unity conservan sus propias condiciones. La configuración del juego complementario utiliza Unity uGUI y TMP Essential Resources. <code>ThirdParty/unity-ugui-notice.txt</code> contiene el aviso de copyright de Unity y <code>ThirdParty/unity-companion-license.txt</code> la Unity Companion License completa. La instalación del backend copia ambos a StreamingAssets/RuntimeImageForge/Licenses. TMP Essentials incluye la licencia de Liberation Sans en Assets/TextMesh Pro/Fonts. Conserva estos avisos al redistribuir un juego compilado.</p>
+<p>El preset original de DreamShaper 8 LCM conserva <code>Lykon/dreamshaper-8-lcm@4645d8bc6a8e6b106d21606d63e8460cdad4f1a6</code> bajo CreativeML OpenRAIL-M. Los pesos se obtienen por separado. El paquete no incluye el texto de la licencia: léelo junto al modelo (<a href="https://huggingface.co/spaces/CompVis/stable-diffusion-license/blob/main/license.txt">CreativeML OpenRAIL-M</a>) y consérvalo si utilizas o redistribuyes ese perfil anterior.</p>
+<p>Unity, Unity Inference Engine y los demás paquetes Unity conservan sus propias condiciones; este paquete no los redistribuye. La configuración del juego complementario utiliza Unity uGUI y TMP Essential Resources de tu instalación de Unity (Unity Companion License); TMP Essentials incluye la licencia de Liberation Sans en Assets/TextMesh Pro/Fonts. Conserva los avisos de los componentes de Unity al redistribuir un juego compilado.</p>
 <div class="doc-bottom"><a href="index.html">Inicio de la documentación</a><a href="../">Resumen del producto</a></div></article></main><footer class="footer wrap"><span>© Strange Euphoria XR</span><a href="third-party-notices.html">Condiciones de modelos y componentes</a></footer></body></html>

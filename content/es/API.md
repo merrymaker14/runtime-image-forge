@@ -15,7 +15,7 @@ Espacio de nombres: `StrangeEuphoriaXR.RuntimeImageForge`.
 | `ForgeGenerationJob` | Solicitud, estado, progreso, finalización e identidad del PNG. |
 | `LocalForgeBackendSource` | Descarga del modelo fijado y configuración del motor Windows. |
 | `ForgeModelProfile` | URL, revisión, hash, tamaño y política de muestreo del modelo. |
-| `ForegroundModelProfile` | Modelo ONNX importado y políticas de entrada y salida. |
+| `ForegroundModelProfile` | Modelo ONNX importado, nombre de la salida de máscara y políticas de entrada y salida. |
 | `IImageBackendPreparation` | Validación opcional antes de aceptar solicitudes. |
 | `ForgeModelIntegrityException` | Modelo ausente, incompleto o con hash incorrecto. |
 | `ProcessedImageBackend` | Generación serial seguida de recorte opcional. |

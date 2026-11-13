@@ -9,6 +9,7 @@ Runtime Image Forge включает изменённые нативные би�
 | libwebp / libsharpyuv | `0c9546f7efc61eac7f79ae115c3f99c91c21c443`, BSD; авторы и патентное разрешение включены. |
 | libwebm | `5bf12267eea773a32fcf4949de52b0add158a8d5`, BSD; авторы и патентное разрешение включены. |
 | cpp-httplib | Yuji Hirose, MIT. |
+| nlohmann/json | 3.11.2, Niels Lohmann, MIT. |
 | darts-clone | BSD. |
 | Oniguruma | BSD. |
 | utf8proc | MIT и уведомления Unicode. |
@@ -17,7 +18,7 @@ Runtime Image Forge включает изменённые нативные би�
 
 Полные оригинальные тексты находятся в `ThirdParty`. **Tools → Runtime Image Forge → Install Windows Backend** упаковывает закреплённые DLL в архив в `Assets/StreamingAssets/RuntimeImageForge` и копирует туда эти уведомления для сборок игры. Команда сохраняет отличающиеся существующие файлы, не перезаписывая их.
 
-Небольшая модель удаления фона, включённая в пакет, — ONNX-экспорт [U²-Netp Xuebin Qin](https://github.com/xuebinqin/U-2-Net/tree/ac7e1c817ecab7c7dff5ce6b1abba61cd213ff29), Apache 2.0. Источник, контрольная сумма checkpoint, сведения об экспорте и полная лицензия находятся рядом с `Runtime/Models/U2NetP-320.onnx` и в копируемых уведомлениях. Модель выделяет заметный объект переднего плана; сложные сцены и тонкие края могут потребовать другой модели удаления фона.
+Модель удаления фона в пакет не входит. По запросу разработчика **Tools → Runtime Image Forge → Install Foreground Model** (та же кнопка есть в Overview и в инспекторе профиля маски) скачивает ONNX-экспорт [U²-Netp Xuebin Qin](https://github.com/xuebinqin/U-2-Net/tree/ac7e1c817ecab7c7dff5ce6b1abba61cd213ff29), опубликованный в [выпуске rembg v0.0.0](https://github.com/danielgatis/rembg/releases/tag/v0.0.0) (`u2netp.onnx`, 4 574 861 байт, SHA-256 `309c8469258dda742793dce0ebea8e6dd393174f89934733ecc8b14c76f4ddd8`), и лицензию Apache 2.0 из закреплённой ревизии U²-Net ([`LICENSE`](https://raw.githubusercontent.com/xuebinqin/U-2-Net/ac7e1c817ecab7c7dff5ce6b1abba61cd213ff29/LICENSE), 11 357 байт, SHA-256 `c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4`). Команда кладёт их с уведомлением в `Assets/RuntimeImageForge/ForegroundModel` и копирует лицензию и уведомление в `Assets/StreamingAssets/RuntimeImageForge/Licenses` для сборок игры. Модель или лицензия с тем же именем и другим содержимым сохраняются; уведомление — собственный файл команды, она его перезаписывает. Модель выделяет заметный объект переднего плана; сложные сцены и тонкие края могут потребовать другой модели удаления фона.
 
 Bonsai Ternary 4B и FLUX.2 Klein 4B поставляются как компонентные presets. Файлы весов получаются отдельно от Unity-пакета: Bonsai требует совместимый преобразованный локальный пакет, Klein поддерживает явную загрузку закреплённых HTTPS-компонентов или локальный импорт.
 
@@ -32,6 +33,6 @@ Bonsai Ternary 4B и FLUX.2 Klein 4B поставляются как компо�
 
 GGUF генератора и текстового encoder Bonsai — преобразованные формы перечисленных исходных ревизий; VAE не изменён. При распространении пакета сохраняйте оригинальные Prism LICENSE/NOTICE и уведомления о преобразовании. Prism NOTICE указывает происхождение от FLUX.2 Klein 4B Black Forest Labs и Qwen3-4B Alibaba Cloud. Сохраняйте также уведомления компонентов Klein GGUF. До использования или распространения изучите полные условия моделей; имена моделей не предоставляют права на товарные знаки и не означают одобрения авторами. [Модели и стили](Models-and-styles.md) содержат имена обязательных файлов, получение и объёмы весов.
 
-Исходный DreamShaper 8 LCM preset сохраняет `Lykon/dreamshaper-8-lcm@4645d8bc6a8e6b106d21606d63e8460cdad4f1a6` под CreativeML OpenRAIL-M. Его веса получаются отдельно. При использовании или распространении этого прежнего профиля сохраняйте оригинальную лицензию модели.
+Исходный DreamShaper 8 LCM preset сохраняет `Lykon/dreamshaper-8-lcm@4645d8bc6a8e6b106d21606d63e8460cdad4f1a6` под CreativeML OpenRAIL-M. Его веса получаются отдельно. Текста лицензии в пакете нет: читайте его вместе с моделью ([CreativeML OpenRAIL-M](https://huggingface.co/spaces/CompVis/stable-diffusion-license/blob/main/license.txt)) и сохраняйте при использовании или распространении этого прежнего профиля.
 
-Unity, Unity Inference Engine и другие пакеты Unity сохраняют собственные условия. Настройка companion game использует Unity uGUI и TMP Essential Resources. В `ThirdParty/unity-ugui-notice.txt` находится уведомление об авторских правах Unity, а в `ThirdParty/unity-companion-license.txt` — полный оригинал Unity Companion License. Установка backend копирует оба файла в StreamingAssets/RuntimeImageForge/Licenses. TMP Essentials содержит лицензию шрифта Liberation Sans в Assets/TextMesh Pro/Fonts. Сохраняйте эти уведомления при распространении собранной игры.
+Unity, Unity Inference Engine и другие пакеты Unity сохраняют собственные условия; этот пакет их не распространяет. Настройка companion game использует Unity uGUI и TMP Essential Resources из вашей установки Unity (Unity Companion License); TMP Essentials содержит лицензию шрифта Liberation Sans в Assets/TextMesh Pro/Fonts. Сохраняйте уведомления компонентов Unity при распространении собранной игры.

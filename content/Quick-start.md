@@ -23,14 +23,14 @@ Check **Full model weights** in the model Inspector before shipping your game. S
 Create one scene object and add `LocalForgeBackendSource` and `ForgeGenerator`.
 
 - Select the imported `BonsaiTernary4B` or `FLUX2Klein4B` asset in **Model profile** on the local backend.
-- Assign the imported U2NETP profile to **Foreground mask**. Its ONNX reference points to the package's supplied model.
+- Assign the imported U2NETP profile to **Foreground mask**. The package does not include the cutout model: choose **Install foreground model** in Overview, or **Tools > Runtime Image Forge > Install Foreground Model**, to download U²-Netp (4.6 MB, Apache-2.0) from the rembg release on GitHub with its license and notice. The profile receives the model automatically.
 - Leave **Vulkan device** at `auto` to select a suitable local GPU.
 - Assign this source to the generator's **Backend Source**. Leave **Warmup On Prepare** enabled to prepare once without saving the warmup picture.
 - Choose `Styles/NativeDistilled1024/IllustratedForgeNative1024` for the first image: 1024 × 1024, 4 steps, CFG 1. Its choice keys are `item`, `material` and `detail`. Profile selection does not change style settings.
 
 Before preparation, open the selected model profile. For Bonsai, use **Import verified model files** and select the flat converted pack. For Klein, choose **Download verified model files**, or import the three pinned files from a local folder. Both actions have progress/cancel. A verified cached profile can be prepared offline. Change profiles in Edit Mode after stopping work and closing prepared generators.
 
-Use **Create model profile**, **Create foreground profile** and **Create choice style** in Overview to create and select assets in your selected Assets folder, with unique filenames. The foreground profile is automatically assigned the supplied ONNX model. New styles include an editable item/material/detail catalog. **Existing style > Edit selected style** opens a saved catalog. Assets created from **Assets > Create > Runtime Image Forge** are also supported; assign the ONNX model to a foreground profile created from that menu.
+Use **Create model profile**, **Create foreground profile** and **Create choice style** in Overview to create and select assets in your selected Assets folder, with unique filenames. A new foreground profile receives the installed cutout model; without it, its Inspector offers **Install foreground model**. New styles include an editable item/material/detail catalog. **Existing style > Edit selected style** opens a saved catalog. Assets created from **Assets > Create > Runtime Image Forge** are also supported; assign the installed ONNX model to a foreground profile created from that menu.
 
 ## Included companion game
 

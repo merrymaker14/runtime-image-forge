@@ -23,14 +23,14 @@ Antes de distribuir el juego, revisa **Todos los pesos del modelo** en el Inspec
 Crea un objeto y añade `LocalForgeBackendSource` y `ForgeGenerator`.
 
 - En el backend local, elige el recurso importado `BonsaiTernary4B` o `FLUX2Klein4B` en **Perfil del modelo**.
-- Asigna U2NETP a **Máscara del primer plano**. Su referencia ONNX apunta al modelo incluido.
+- Asigna U2NETP a **Máscara del primer plano**. El paquete no incluye el modelo de recorte: elige **Instalar el modelo de recorte** en Overview, o **Tools > Runtime Image Forge > Install Foreground Model**, para descargar U²-Netp (4,6 MB, Apache-2.0) de la versión de rembg en GitHub con su licencia y su aviso. El perfil recibe el modelo automáticamente.
 - Mantén **Dispositivo Vulkan** en `auto` para seleccionar una GPU local adecuada.
 - Asigna esa fuente a **Fuente del motor** del generador. Mantén **Calentar al preparar** activo para preparar una vez sin guardar la imagen de calentamiento.
 - Para la primera imagen, elige `Styles/NativeDistilled1024/IllustratedForgeNative1024`: 1024 × 1024, 4 pasos, CFG 1. Las claves son `item`, `material` y `detail`. Elegir un perfil no cambia los ajustes del estilo.
 
 Antes de preparar, abre el perfil elegido. Para Bonsai, usa **Importar archivos de modelo verificados** y selecciona el paquete plano convertido. Para Klein, elige **Descargar archivos del modelo y verificarlos**, o importa los tres archivos fijados de una carpeta local. Ambas acciones muestran progreso y permiten cancelar. El perfil verificado en caché puede prepararse sin conexión. Cambia perfiles en Edit Mode después de terminar el trabajo y cerrar los generadores preparados.
 
-**Crear perfil de modelo**, **Crear perfil de recorte** y **Crear estilo con opciones** en Overview crean y seleccionan recursos en la carpeta Assets elegida, con nombres únicos. El perfil de recorte recibe automáticamente el ONNX incluido. Los estilos nuevos incluyen opciones editables de objeto, material y detalle. **Estilo existente > Editar el estilo seleccionado** abre un catálogo guardado. También puedes crear desde **Assets > Create > Runtime Image Forge**; asigna manualmente el ONNX a un perfil de recorte creado desde ese menú.
+**Crear perfil de modelo**, **Crear perfil de recorte** y **Crear estilo con opciones** en Overview crean y seleccionan recursos en la carpeta Assets elegida, con nombres únicos. Un perfil de recorte nuevo recibe el modelo de recorte instalado; si falta, su Inspector ofrece **Instalar el modelo de recorte**. Los estilos nuevos incluyen opciones editables de objeto, material y detalle. **Estilo existente > Editar el estilo seleccionado** abre un catálogo guardado. También puedes crear desde **Assets > Create > Runtime Image Forge**; asigna manualmente el ONNX instalado a un perfil de recorte creado desde ese menú.
 
 ## Juego incluido
 

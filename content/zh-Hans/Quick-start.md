@@ -23,14 +23,14 @@ Bonsai 模型包可从 [itch.io 上的 The Ember Forge 页面](https://merrymake
 创建场景对象，添加 `LocalForgeBackendSource` 与 `ForgeGenerator`。
 
 - 在本地后端的**模型配置**中选择已导入的 `BonsaiTernary4B` 或 `FLUX2Klein4B` 资源。
-- 将 U2NETP 配置分配给**前景蒙版**。其 ONNX 引用指向软件包随附模型。
+- 将 U2NETP 配置分配给**前景蒙版**。本包不包含抠图模型：在 Overview 中选择**安装抠图模型**，或选择 **Tools > Runtime Image Forge > Install Foreground Model**，从 GitHub 上的 rembg 发布版下载 U²-Netp（4.6 MB，Apache-2.0）及其许可证和声明。配置会自动获得该模型。
 - **Vulkan 设备**保持 `auto`，以选择合适本地 GPU。
 - 将此来源分配给生成器的**后端来源**。启用**准备时预热**，准备一次且不保存预热图片。
 - 首张图像选择 `Styles/NativeDistilled1024/IllustratedForgeNative1024`：1024 × 1024、4 步、CFG 1。选项键为 `item`、`material`、`detail`。选择配置不会修改风格设置。
 
 准备前先打开所选模型配置。Bonsai 使用**导入经过验证的模型文件**并选择已转换的平面模型包。Klein 可选择**下载并验证模型文件**，或从本地文件夹导入三个固定文件。两种操作均显示进度并支持取消。缓存配置验证完成后可离线准备。请完成任务并关闭已准备好的生成器后，在 Edit Mode 更换配置。
 
-Overview 中的**创建模型配置**、**创建前景配置**和**创建选项风格**会在所选 Assets 文件夹创建并选中资源，文件名不会重复覆盖。前景配置自动关联随附 ONNX 模型。新风格包含可编辑的物品、材料、细节目录。**现有风格 > 编辑所选风格**可打开已保存目录。也支持 **Assets > Create > Runtime Image Forge** 菜单；从该菜单创建的前景配置需手动分配 ONNX。
+Overview 中的**创建模型配置**、**创建前景配置**和**创建选项风格**会在所选 Assets 文件夹创建并选中资源，文件名不会重复覆盖。新建的前景配置会自动关联已安装的抠图模型；若未安装，其 Inspector 会提供**安装抠图模型**。新风格包含可编辑的物品、材料、细节目录。**现有风格 > 编辑所选风格**可打开已保存目录。也支持 **Assets > Create > Runtime Image Forge** 菜单；从该菜单创建的前景配置需手动分配已安装的 ONNX。
 
 ## 随附演示游戏
 

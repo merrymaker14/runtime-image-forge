@@ -15,7 +15,7 @@
 | `ForgeGenerationJob` | 保留的请求、状态、进度、完成信息与 PNG 标识。 |
 | `LocalForgeBackendSource` | 固定版本模型下载与 Windows 原生后端设置。 |
 | `ForgeModelProfile` | 扩散模型 URL、版本、校验值、长度与采样策略。 |
-| `ForegroundModelProfile` | 已导入 ONNX 模型、预处理与输出策略。 |
+| `ForegroundModelProfile` | 已导入 ONNX 模型、蒙版输出名称、预处理与输出策略。 |
 | `IImageBackendPreparation` | 接受请求前的可选验证。 |
 | `ForgeModelIntegrityException` | 模型缺失、不完整或哈希无效。 |
 | `ProcessedImageBackend` | 串行生成后进行可选前景处理。 |

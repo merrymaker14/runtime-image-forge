@@ -45,7 +45,7 @@ Klein 固定 `flux-2-klein-4b-Q4_0.gguf`、`Qwen3-4B-Q4_K_M.gguf` 和 `full_enco
 
 上述大小只计算三个必要的权重文件。DLL、声明、压缩包、导出 PNG 和临时副本需要额外空间。导入会保留源模型包并创建另一份缓存副本；缓存磁盘至少还需一套完整权重的空间，并留有余量。模型 Inspector 会显示完整的固定权重总量。权重文件大小不等于 RAM 或 VRAM 要求。
 
-随附 U2NETP ONNX 是独立的 Apache-2.0 前景模型。原始 DreamShaper 配置仍作为 CreativeML OpenRAIL-M 许可的旧预设保留。精确来源修订版本和条款见[第三方声明](Third-party-notices.md)。
+U²-Netp 是独立的 Apache-2.0 抠图模型，本包不包含该模型；**安装抠图模型**会按需下载。原始 DreamShaper 配置仍作为 CreativeML OpenRAIL-M 许可的旧预设保留。精确来源修订版本和条款见[第三方声明](Third-party-notices.md)。
 
 准备生成器前请更换模型配置。已准备队列保持一个后端标识。请先完成任务并关闭或卸载生成器，再在 Edit Mode 选择另一个已保存的配置。
 
@@ -59,7 +59,7 @@ Klein 固定 `flux-2-klein-4b-Q4_0.gguf`、`Qwen3-4B-Q4_K_M.gguf` 和 `full_enco
 
 若玩家可选择模式，则向 `PrepareAsync`、`Generate` 或风格 `CreateRequest` 重载传入 `ForgeBackgroundMode.Transparent` 或 `ForgeBackgroundMode.KeepBackground`。`StyleDefault` 保留资源默认值。覆盖属于单个配方，不修改共享风格。用 `KeepBackground` 准备会跳过前景预热；后来选透明模式时，该订单包含前景模型首次准备成本。
 
-U2NETP 随包提供，4,615,341 字节，约 4.4 MiB，玩家无需额外下载。完整模型权重大小见上表。抠图在本地运行，没有按图计费的 API。请在准备阶段预热透明流程；导出已有 PNG 只复制字节。
+U²-Netp 抠图模型只需在项目中安装一次：4,574,861 字节，约 4.4 MiB。游戏构建会包含该模型，玩家无需另行下载。完整模型权重大小见上表。抠图在本地运行，没有按图计费的 API。请在准备阶段预热透明流程；导出已有 PNG 只复制字节。U²-Netp 配置从名为 `1959` 的输出读取蒙版（**蒙版输出名称**）；对于只有一个输出的 ONNX 蒙版模型，请将该字段留空。
 
 细轮廓、半透明材质、空隙、阴影和附带物体可能导致不完善的蒙版。应验证符合美术方向的实际输出。抠图只生成 2D 图像，不创建几何体，也不保证精灵边缘完全干净。分享原始 PNG 和配方的方法见[导出指南](Exporting-images.md)。
 

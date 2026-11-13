@@ -59,6 +59,14 @@
 <td>Wait for active work to finish or cancel it. Cancelled work retains its slot until the worker releases it.</td>
 </tr>
 <tr>
+<td>Transparent PNG is unavailable or the foreground profile has no model</td>
+<td>The package does not include the cutout model. Choose <strong>Tools &gt; Runtime Image Forge &gt; Install Foreground Model</strong>; it downloads U²-Netp with its license and assigns it to waiting foreground profiles. Until then, use PNG with background. Without access to GitHub, place the exact <code>u2netp.onnx</code> and <code>U2NetP-LICENSE.txt</code> listed in the third-party notices in <code>Assets/RuntimeImageForge/ForegroundModel</code> and run the command again: it verifies their SHA-256 and uses them without downloading. If the model is already installed, for example after importing a sample again, choose <strong>Assign installed model</strong> in the profile Inspector or run the command again; it reuses the verified files.</td>
+</tr>
+<tr>
+<td>Importing the foreground model logs MaxPool <code>ceil_mode</code> and Resize <code>cubic_coeff_a</code> warnings</td>
+<td>Expected for U²-Netp. Its input is fixed at 320 × 320, so every pooled size stays even, and its Resize layers are linear; the attributes named in these warnings do not affect its result.</td>
+</tr>
+<tr>
 <td>Transparent PNG still has a background</td>
 <td>Assign the foreground profile and disable <strong>Keep Background</strong> for that style. Inspect the generated object&#39;s contrast and mask; foreground prediction can leave imperfect edges.</td>
 </tr>

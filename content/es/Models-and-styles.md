@@ -45,7 +45,7 @@ Klein fija `flux-2-klein-4b-Q4_0.gguf`, `Qwen3-4B-Q4_K_M.gguf` y `full_encoder_s
 
 Los tamaños indicados suman los tres archivos de pesos requeridos. DLL, avisos, archivos comprimidos, PNG exportados y copias temporales requieren espacio adicional. La importación conserva el paquete original y crea otra copia en caché; reserva al menos otro volumen completo de pesos en la unidad de caché, más margen. El Inspector muestra la suma completa de pesos fijados. El tamaño de los archivos no equivale a un requisito de RAM o VRAM.
 
-U2NETP ONNX es un modelo de primer plano independiente con Apache-2.0. El perfil original de DreamShaper permanece como preset anterior bajo CreativeML OpenRAIL-M. Las revisiones y condiciones están en [Avisos de terceros](Third-party-notices.md).
+U²-Netp es un modelo de recorte independiente con Apache-2.0 que el paquete no incluye; **Instalar el modelo de recorte** lo descarga a petición. El perfil original de DreamShaper permanece como preset anterior bajo CreativeML OpenRAIL-M. Las revisiones y condiciones están en [Avisos de terceros](Third-party-notices.md).
 
 Cambia el perfil antes de preparar un generador. La cola preparada mantiene una identidad de backend. Termina los trabajos y cierra o libera el generador antes de seleccionar otro perfil guardado en Edit Mode.
 
@@ -59,7 +59,7 @@ Activa **Conservar fondo** para retratos, entornos e ilustraciones completas. Om
 
 Para dar elección al jugador, pasa `ForgeBackgroundMode.Transparent` o `ForgeBackgroundMode.KeepBackground` a `PrepareAsync`, `Generate` o la sobrecarga `CreateRequest`. `StyleDefault` conserva el valor del recurso. La selección pertenece a una receta y no edita el estilo compartido. Preparar con `KeepBackground` omite el calentamiento del recorte; si luego se elige transparencia, ese pedido incluye su preparación inicial.
 
-U2NETP está incluido: 4.615.341 bytes, unos 4,4 MiB, sin descarga adicional del jugador. Los volúmenes completos de pesos se indican arriba. El recorte es local y no tiene una tarifa API por imagen. Prepara la ruta transparente al iniciar; exportar un PNG existente solo copia sus bytes.
+El modelo de recorte U²-Netp se instala una vez en el proyecto: 4.574.861 bytes, unos 4,4 MiB. Las compilaciones del juego lo incluyen, así que el jugador no lo descarga por separado. Los volúmenes completos de pesos se indican arriba. El recorte es local y no tiene una tarifa API por imagen. Prepara la ruta transparente al iniciar; exportar un PNG existente solo copia sus bytes. El perfil de U²-Netp lee la máscara de la salida llamada `1959` (**Nombre de la salida de máscara**); deja ese campo vacío para un modelo ONNX de máscara con una sola salida.
 
 Contornos finos, materiales translúcidos, huecos, sombras y objetos secundarios pueden producir máscaras imperfectas. Comprueba resultados reales para tu arte. El recorte produce una imagen 2D, no geometría ni contornos de sprite garantizados. La [guía de exportación](Exporting-images.md) explica cómo compartir el PNG original y su receta.
 

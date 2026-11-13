@@ -45,7 +45,7 @@ Klein pins `flux-2-klein-4b-Q4_0.gguf`, `Qwen3-4B-Q4_K_M.gguf` and `full_encoder
 
 Sizes above count the three required weight files. DLLs, notices, archives, exported PNGs and temporary copies are additional. Import keeps the source pack and creates a separate cache copy, so reserve at least another full payload on the cache volume plus headroom. The model Inspector shows the complete pinned weight total. Weight-file size is not a RAM or VRAM requirement.
 
-The supplied U2NETP ONNX is a separate Apache-2.0 foreground model. The original DreamShaper profile remains a legacy preset under CreativeML OpenRAIL-M. Exact source revisions and terms are in [Third-party notices](Third-party-notices.md).
+The U²-Netp cutout model is a separate Apache-2.0 model that the package does not include; **Install foreground model** downloads it on request. The original DreamShaper profile remains a legacy preset under CreativeML OpenRAIL-M. Exact source revisions and terms are in [Third-party notices](Third-party-notices.md).
 
 Change the model/profile before preparing a new generator. A prepared queue retains one backend identity. Stop outstanding work and close/unload the generator before selecting another saved profile in Edit Mode.
 
@@ -59,7 +59,7 @@ Enable **Keep Background** for portraits, environments and complete illustration
 
 For a player-facing choice, pass `ForgeBackgroundMode.Transparent` or `ForgeBackgroundMode.KeepBackground` to `PrepareAsync`, `Generate`, or the style's `CreateRequest` overload. `StyleDefault` preserves the asset's default. The override belongs to one recipe and does not edit the shared style. Preparing with `KeepBackground` skips foreground warmup; if the player later selects transparency, that order includes the foreground model's first-use setup.
 
-U2NETP is bundled: 4,615,341 bytes (about 4.4 MiB), with no separate player download. Model weight totals are listed above. Cutout runs locally and has no per-image API fee. Warm the selected transparent pipeline during preparation; exporting an existing PNG only copies its bytes.
+The U²-Netp cutout model is installed into the project once: 4,574,861 bytes (about 4.4 MiB). Game builds include it, so players do not download it separately. Model weight totals are listed above. Cutout runs locally and has no per-image API fee. Warm the selected transparent pipeline during preparation; exporting an existing PNG only copies its bytes. The U²-Netp profile reads the mask from the output named `1959` (**Mask output name**); leave that field empty for an ONNX mask model with a single output.
 
 Fine outlines, translucent materials, gaps, shadows and incidental objects can make imperfect masks. Check actual outputs for your art direction. Background removal makes a 2D image; it does not create geometry or guarantee clean sprite contours. The [export guide](Exporting-images.md) explains how to share the original PNG and its recipe.
 

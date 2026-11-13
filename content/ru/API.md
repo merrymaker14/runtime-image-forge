@@ -15,7 +15,7 @@
 | `ForgeGenerationJob` | Запрос, состояние, прогресс, завершение и идентификаторы PNG. |
 | `LocalForgeBackendSource` | Загрузка закреплённой модели и настройка движка Windows. |
 | `ForgeModelProfile` | URL файла, ревизия, хеш, размер и параметры сэмплирования. |
-| `ForegroundModelProfile` | Импортированная ONNX-модель, обработка входа и выхода. |
+| `ForegroundModelProfile` | Импортированная ONNX-модель, имя выхода маски, обработка входа и выхода. |
 | `IImageBackendPreparation` | Необязательная проверка перед приёмом заказов. |
 | `ForgeModelIntegrityException` | Отсутствующая, неполная модель или неверный хеш. |
 | `ProcessedImageBackend` | Последовательная генерация с необязательной обработкой маски. |

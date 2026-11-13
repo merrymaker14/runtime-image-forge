@@ -28,6 +28,10 @@
 <td>Yuji Hirose，MIT。</td>
 </tr>
 <tr>
+<td>nlohmann/json</td>
+<td>3.11.2，Niels Lohmann，MIT。</td>
+</tr>
+<tr>
 <td>darts-clone</td>
 <td>BSD。</td>
 </tr>
@@ -49,7 +53,7 @@
 </tr>
 </tbody></table></div>
 <p>完整原文位于 <code>ThirdParty</code>。<strong>Tools → Runtime Image Forge → Install Windows Backend</strong> 将固定版本的 DLL 打包为 <code>Assets/StreamingAssets/RuntimeImageForge</code> 中的压缩包，并把这些声明复制到该处，供游戏构建使用。命令会保留内容不同的现有文件，不会覆盖。</p>
-<p>包中随附的小型背景移除模型是 <a href="https://github.com/xuebinqin/U-2-Net/tree/ac7e1c817ecab7c7dff5ce6b1abba61cd213ff29">Xuebin Qin 的 U²-Netp</a> 的 ONNX 导出，采用 Apache 2.0。来源、checkpoint 校验和、导出细节及完整许可证位于 <code>Runtime/Models/U2NetP-320.onnx</code> 旁边，并包含在复制的声明中。它预测显著前景对象；复杂场景和精细边缘可能需要其他抠图模型。</p>
+<p>本包不包含背景移除模型。应开发者请求，<strong>Tools → Runtime Image Forge → Install Foreground Model</strong>（Overview 和前景配置的 Inspector 中也有该按钮）会下载 <a href="https://github.com/danielgatis/rembg/releases/tag/v0.0.0">rembg v0.0.0 发布版</a>中提供的 <a href="https://github.com/xuebinqin/U-2-Net/tree/ac7e1c817ecab7c7dff5ce6b1abba61cd213ff29">Xuebin Qin 的 U²-Netp</a> ONNX 导出（<code>u2netp.onnx</code>，4,574,861 字节，SHA-256 <code>309c8469258dda742793dce0ebea8e6dd393174f89934733ecc8b14c76f4ddd8</code>），以及固定修订版本中的 U²-Net Apache 2.0 许可证（<a href="https://raw.githubusercontent.com/xuebinqin/U-2-Net/ac7e1c817ecab7c7dff5ce6b1abba61cd213ff29/LICENSE"><code>LICENSE</code></a>，11,357 字节，SHA-256 <code>c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4</code>）。它会连同声明保存到 <code>Assets/RuntimeImageForge/ForegroundModel</code>，并把许可证和声明复制到 <code>Assets/StreamingAssets/RuntimeImageForge/Licenses</code> 供游戏构建使用。同名但内容不同的现有模型或许可证文件会被保留；声明文件由该命令生成，会被重写。它预测显著前景对象；复杂场景和精细边缘可能需要其他抠图模型。</p>
 <p>Bonsai Ternary 4B 和 FLUX.2 Klein 4B 以组件配置预设随附。权重文件与 Unity 软件包分开获取：Bonsai 需要兼容的已转换本地模型包；Klein 支持显式下载固定 HTTPS 组件或本地导入。</p>
 <div class="table-scroll" tabindex="0" role="region" aria-label="参考表格"><table>
 <thead>
@@ -91,6 +95,6 @@
 </tr>
 </tbody></table></div>
 <p>Bonsai 生成器和文本编码器 GGUF 是上述来源修订版本的转换形式，VAE 未修改。重新分发模型包时请保留 Prism 原始 LICENSE/NOTICE 和转换声明。Prism NOTICE 列明来源为 Black Forest Labs 的 FLUX.2 Klein 4B 与 Alibaba Cloud 的 Qwen3-4B。也请保留 Klein GGUF 组件的随附声明。使用或重新分发前请阅读完整条款；模型名称不授予商标权，也不表示作者认可。必要文件名、获取方式与权重大小见<a href="models-and-styles.html">模型和风格</a>。</p>
-<p>原始 DreamShaper 8 LCM 预设继续固定 <code>Lykon/dreamshaper-8-lcm@4645d8bc6a8e6b106d21606d63e8460cdad4f1a6</code>，采用 CreativeML OpenRAIL-M，权重需单独获取。使用或重新分发此旧配置时请保留原始模型许可证。</p>
-<p>Unity、Unity Inference Engine 和其他 Unity 包保留各自条款。配套游戏设置使用 Unity uGUI 和 TMP Essential Resources。<code>ThirdParty/unity-ugui-notice.txt</code> 包含 Unity 版权声明，<code>ThirdParty/unity-companion-license.txt</code> 包含完整 Unity Companion License 原文。后端安装操作会将两者复制到 StreamingAssets/RuntimeImageForge/Licenses。TMP Essentials 在 Assets/TextMesh Pro/Fonts 中包含 Liberation Sans 字体许可证。重新分发已构建游戏时请保留这些声明。</p>
+<p>原始 DreamShaper 8 LCM 预设继续固定 <code>Lykon/dreamshaper-8-lcm@4645d8bc6a8e6b106d21606d63e8460cdad4f1a6</code>，采用 CreativeML OpenRAIL-M，权重需单独获取。本包不包含许可证文本：请随模型阅读（<a href="https://huggingface.co/spaces/CompVis/stable-diffusion-license/blob/main/license.txt">CreativeML OpenRAIL-M</a>），使用或重新分发此旧配置时请保留它。</p>
+<p>Unity、Unity Inference Engine 和其他 Unity 包保留各自条款，本包不重新分发它们。配套游戏设置使用你的 Unity 安装中的 Unity uGUI 和 TMP Essential Resources（Unity Companion License）；TMP Essentials 在 Assets/TextMesh Pro/Fonts 中包含 Liberation Sans 字体许可证。重新分发已构建游戏时请保留 Unity 组件的声明。</p>
 <div class="doc-bottom"><a href="index.html">文档首页</a><a href="../">产品概览</a></div></article></main><footer class="footer wrap"><span>© Strange Euphoria XR</span><a href="third-party-notices.html">模型与组件条款</a></footer></body></html>

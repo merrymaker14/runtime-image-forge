@@ -324,10 +324,10 @@
     "es": "Perfiles de modelos incluidos",
     "zh-Hans": "随附模型配置"
   },
-  "Bonsai Ternary 4B and FLUX.2 Klein 4B with U2NETP cutout. NativeDistilled1024 presets use 1024 × 1024, 4 steps and CFG 1. Pinned weights: Bonsai 4.64 GB (4.32 GiB), Klein 5.21 GB (4.85 GiB); engine and temporary space are additional.": {
-    "ru": "Bonsai Ternary 4B и FLUX.2 Klein 4B с маской U2NETP. Presets NativeDistilled1024 используют 1024 × 1024, 4 шага и CFG 1. Закреплённые веса: Bonsai 4,64 GB (4,32 GiB), Klein 5,21 GB (4,85 GiB); движок и временные файлы требуют дополнительного места.",
-    "es": "Bonsai Ternary 4B y FLUX.2 Klein 4B con recorte U2NETP. Los presets NativeDistilled1024 usan 1024 × 1024, 4 pasos y CFG 1. Pesos fijados: Bonsai 4,64 GB (4,32 GiB), Klein 5,21 GB (4,85 GiB); motor y espacio temporal son adicionales.",
-    "zh-Hans": "Bonsai Ternary 4B 与 FLUX.2 Klein 4B 配合 U2NETP 抠图。NativeDistilled1024 预设使用 1024 × 1024、4 步、CFG 1。固定权重：Bonsai 4.64 GB（4.32 GiB），Klein 5.21 GB（4.85 GiB）；引擎及临时文件空间另计。"
+  "Bonsai Ternary 4B and FLUX.2 Klein 4B; the U2NETP cutout model is installed on request and is not part of the package. NativeDistilled1024 presets use 1024 × 1024, 4 steps and CFG 1. Pinned weights: Bonsai 4.64 GB (4.32 GiB), Klein 5.21 GB (4.85 GiB); engine and temporary space are additional.": {
+    "ru": "Bonsai Ternary 4B и FLUX.2 Klein 4B; модель маски U2NETP устанавливается по запросу и в пакет не входит. Presets NativeDistilled1024 используют 1024 × 1024, 4 шага и CFG 1. Закреплённые веса: Bonsai 4,64 GB (4,32 GiB), Klein 5,21 GB (4,85 GiB); движок и временные файлы требуют дополнительного места.",
+    "es": "Bonsai Ternary 4B y FLUX.2 Klein 4B; el modelo de recorte U2NETP se instala a petición y no forma parte del paquete. Los presets NativeDistilled1024 usan 1024 × 1024, 4 pasos y CFG 1. Pesos fijados: Bonsai 4,64 GB (4,32 GiB), Klein 5,21 GB (4,85 GiB); motor y espacio temporal son adicionales.",
+    "zh-Hans": "Bonsai Ternary 4B 与 FLUX.2 Klein 4B；U2NETP 抠图模型按需安装，不包含在软件包中。NativeDistilled1024 预设使用 1024 × 1024、4 步、CFG 1。固定权重：Bonsai 4.64 GB（4.32 GiB），Klein 5.21 GB（4.85 GiB）；引擎及临时文件空间另计。"
   },
   "What to expect": {
     "ru": "Чего ожидать",

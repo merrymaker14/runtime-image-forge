@@ -59,6 +59,14 @@
 <td>Espera o cancela. El trabajo cancelado conserva su espacio hasta que el motor lo libere.</td>
 </tr>
 <tr>
+<td>El PNG transparente no está disponible o el perfil de recorte no tiene modelo</td>
+<td>El paquete no incluye el modelo de recorte. Elige <strong>Tools &gt; Runtime Image Forge &gt; Install Foreground Model</strong>: descarga U²-Netp con su licencia y lo asigna a los perfiles de recorte que lo esperan. Mientras tanto, usa PNG con fondo. Sin acceso a GitHub, coloca los archivos exactos <code>u2netp.onnx</code> y <code>U2NetP-LICENSE.txt</code> indicados en los avisos de terceros en <code>Assets/RuntimeImageForge/ForegroundModel</code> y vuelve a ejecutar el comando: comprueba su SHA-256 y los usa sin descargar. Si el modelo ya está instalado, por ejemplo después de volver a importar un ejemplo, elige <strong>Asignar el modelo instalado</strong> en el Inspector del perfil o vuelve a ejecutar el comando; reutiliza los archivos verificados.</td>
+</tr>
+<tr>
+<td>Al importar el modelo de recorte aparecen avisos de MaxPool <code>ceil_mode</code> y Resize <code>cubic_coeff_a</code></td>
+<td>Es lo esperado con U²-Netp: su entrada es fija de 320 × 320, todos los tamaños de pooling son pares y sus capas Resize son lineales, así que los atributos de esos avisos no afectan a su resultado.</td>
+</tr>
+<tr>
 <td>El PNG transparente conserva fondo</td>
 <td>Asigna máscara y desactiva <strong>Conservar fondo</strong>. Comprueba contraste y máscara; la predicción puede dejar bordes imperfectos.</td>
 </tr>

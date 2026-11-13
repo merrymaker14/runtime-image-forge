@@ -15,7 +15,7 @@ Namespace: `StrangeEuphoriaXR.RuntimeImageForge`.
 | `ForgeGenerationJob` | Retained request, state, progress, completion and PNG identity. |
 | `LocalForgeBackendSource` | Pinned model download and Windows native backend setup. |
 | `ForgeModelProfile` | Diffusion file URL, revision, hash, length and sampling policy. |
-| `ForegroundModelProfile` | Imported ONNX model, preprocessing and output policy. |
+| `ForegroundModelProfile` | Imported ONNX model, mask output name, preprocessing and output policy. |
 | `IImageBackendPreparation` | Optional validation before accepting requests. |
 | `ForgeModelIntegrityException` | Missing, incomplete or hash-invalid model. |
 | `ProcessedImageBackend` | Serial generation followed by optional foreground processing. |
