@@ -1,100 +1,107 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Third-party notices — Runtime Image Forge</title><meta name="description" content="Third-party notices for Runtime Image Forge, local image generation for Unity."><link rel="stylesheet" href="../site.css"><link rel="icon" href="../assets/forge-mark.svg"><script src="../site.js" defer></script><link rel="canonical" href="https://merrymaker14.github.io/runtime-image-forge/docs/third-party-notices.html"><link rel="alternate" hreflang="en" href="https://merrymaker14.github.io/runtime-image-forge/docs/third-party-notices.html"><link rel="alternate" hreflang="ru" href="https://merrymaker14.github.io/runtime-image-forge/ru/docs/third-party-notices.html"><link rel="alternate" hreflang="es" href="https://merrymaker14.github.io/runtime-image-forge/es/docs/third-party-notices.html"><link rel="alternate" hreflang="zh-Hans" href="https://merrymaker14.github.io/runtime-image-forge/zh-Hans/docs/third-party-notices.html"><link rel="alternate" hreflang="x-default" href="https://merrymaker14.github.io/runtime-image-forge/docs/third-party-notices.html"></head><body><a class="skip" href="#main">Skip to content</a><header class="header wrap"><a class="brand" href="../"><img src="../assets/forge-mark.svg" width="42" height="42" alt="">Runtime Image Forge</a><nav aria-label="Main navigation"><a href="../#demo">Companion game</a><a href="index.html">Documentation</a><a href="api.html">API</a></nav></header><nav class="language-switch wrap" aria-label="Language"><span>Language</span><a data-language="en" lang="en" hreflang="en" href="third-party-notices.html" aria-current="page">English</a><a data-language="ru" lang="ru" hreflang="ru" href="../ru/docs/third-party-notices.html">Русский</a><a data-language="es" lang="es" hreflang="es" href="../es/docs/third-party-notices.html">Español</a><a data-language="zh-Hans" lang="zh-Hans" hreflang="zh-Hans" href="../zh-Hans/docs/third-party-notices.html">简体中文</a></nav><main id="main" class="doc-layout wrap"><nav class="doc-nav" aria-label="Documentation"><p>Guides and reference</p><a href="index.html">Documentation</a><a href="quick-start.html">Quick start</a><a href="models-and-styles.html">Models and styles</a><a href="api.html">Runtime API</a><a href="exporting-images.html">Saving and export</a><a href="mcp.html">Editor MCP</a><a href="troubleshooting.html">Troubleshooting</a><a href="third-party-notices.html" aria-current="page">Third-party notices</a></nav><article class="doc-article"><p class="doc-meta">Runtime Image Forge 1.0.0 · Unity 6000.5+</p><h1 id="third-party-components-and-model-terms">Third-party components and model terms</h1>
-<p>Runtime Image Forge includes modified Windows x64 Vulkan native libraries based on <a href="https://github.com/leejet/stable-diffusion.cpp/tree/f89d9b13d730eabeede7314ce49dacd18d3c90c2">stable-diffusion.cpp</a>, revision <code>f89d9b13d730eabeede7314ce49dacd18d3c90c2</code>. The native DLL runs inside the Unity process and reads FLUX.2 VAE normalization parameters from the selected model. The installer and loader verify the supplied local library files against pinned SHA-256 checksums. Keep the supplied notices with applications that redistribute this backend.</p>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Third-party notices — Runtime Image Forge</title><meta name="description" content="Third-party notices for Runtime Image Forge, local image generation for Unity."><link rel="stylesheet" href="../site.css"><link rel="icon" href="../assets/forge-mark.svg"><script src="../site.js" defer></script><link rel="canonical" href="https://merrymaker14.github.io/runtime-image-forge/docs/third-party-notices.html"><link rel="alternate" hreflang="en" href="https://merrymaker14.github.io/runtime-image-forge/docs/third-party-notices.html"><link rel="alternate" hreflang="ru" href="https://merrymaker14.github.io/runtime-image-forge/ru/docs/third-party-notices.html"><link rel="alternate" hreflang="es" href="https://merrymaker14.github.io/runtime-image-forge/es/docs/third-party-notices.html"><link rel="alternate" hreflang="zh-Hans" href="https://merrymaker14.github.io/runtime-image-forge/zh-Hans/docs/third-party-notices.html"><link rel="alternate" hreflang="x-default" href="https://merrymaker14.github.io/runtime-image-forge/docs/third-party-notices.html"></head><body><a class="skip" href="#main">Skip to content</a><header class="header wrap"><a class="brand" href="../"><img src="../assets/forge-mark.svg" width="42" height="42" alt="">Runtime Image Forge</a><nav aria-label="Main navigation"><a href="../#demo">Companion game</a><a href="index.html">Documentation</a><a href="api.html">API</a></nav></header><nav class="language-switch wrap" aria-label="Language"><span>Language</span><a data-language="en" lang="en" hreflang="en" href="third-party-notices.html" aria-current="page">English</a><a data-language="ru" lang="ru" hreflang="ru" href="../ru/docs/third-party-notices.html">Русский</a><a data-language="es" lang="es" hreflang="es" href="../es/docs/third-party-notices.html">Español</a><a data-language="zh-Hans" lang="zh-Hans" hreflang="zh-Hans" href="../zh-Hans/docs/third-party-notices.html">简体中文</a></nav><main id="main" class="doc-layout wrap"><nav class="doc-nav" aria-label="Documentation"><p>Guides and reference</p><a href="index.html">Documentation</a><a href="quick-start.html">Quick start</a><a href="models-and-styles.html">Models and styles</a><a href="api.html">Runtime API</a><a href="exporting-images.html">Saving and export</a><a href="mcp.html">Editor MCP</a><a href="troubleshooting.html">Troubleshooting</a><a href="third-party-notices.html" aria-current="page">Third-party notices</a></nav><article class="doc-article"><p class="doc-meta">Runtime Image Forge 1.0.0 · Unity 6000.5+</p><h1 id="third-party-components-and-model-terms">Third-party components and model terms</h1><nav class="toc" aria-label="On this page"><ul><li><a href="#included-in-this-package">Included in this package</a></li><li><a href="#made-for-this-package">Made for this package</a></li><li><a href="#used-from-your-unity-installation">Used from your Unity installation</a></li><li><a href="#downloaded-only-when-you-choose-to">Downloaded only when you choose to</a></li></ul></nav>
+<p>This page lists everything in Runtime Image Forge that comes from a third party, what was made for the package, and what the package can download on request. The same list is in <code>Third-Party Notices.txt</code> in the package folder.</p>
+<h2 id="included-in-this-package">Included in this package</h2>
+<p>The Windows x64 native backend in <code>Native/windows-x64</code> is a modified build of <a href="https://github.com/leejet/stable-diffusion.cpp/tree/f89d9b13d730eabeede7314ce49dacd18d3c90c2">stable-diffusion.cpp</a>, revision <code>f89d9b13d730eabeede7314ce49dacd18d3c90c2</code>, with the libraries below. The installer and loader check every DLL against a pinned SHA-256 checksum. The complete license texts are in <code>ThirdParty</code>.</p>
 <div class="table-scroll" tabindex="0" role="region" aria-label="Reference table"><table>
 <thead>
 <tr>
 <th>Component</th>
 <th>Source / license</th>
+<th>License file in <code>ThirdParty</code></th>
 </tr>
 </thead>
 <tbody><tr>
 <td>stable-diffusion.cpp</td>
-<td>Leejet, MIT; source link and binary release license notices supplied.</td>
+<td>leejet, MIT; modified by Strange Euphoria XR.</td>
+<td><code>stable-diffusion.cpp-LICENSE.txt</code>, <code>stable-diffusion.cpp-BINARY-LICENSE.txt</code>, <code>RuntimeImageForge-native-NOTICE.txt</code></td>
 </tr>
 <tr>
 <td>ggml</td>
 <td><code>d25b121ce1d6ae0c7e62ad080460d9fc1e46dd93</code>, MIT.</td>
+<td><code>ggml-LICENSE.txt</code></td>
 </tr>
 <tr>
 <td>libwebp / libsharpyuv</td>
-<td><code>0c9546f7efc61eac7f79ae115c3f99c91c21c443</code>, BSD, authors and patent grant supplied.</td>
+<td><code>0c9546f7efc61eac7f79ae115c3f99c91c21c443</code>, BSD 3-Clause with patent grant.</td>
+<td><code>libwebp-COPYING.txt</code>, <code>libwebp-AUTHORS.txt</code>, <code>libwebp-PATENTS.txt</code></td>
 </tr>
 <tr>
 <td>libwebm</td>
-<td><code>5bf12267eea773a32fcf4949de52b0add158a8d5</code>, BSD, authors and patent grant supplied.</td>
+<td><code>5bf12267eea773a32fcf4949de52b0add158a8d5</code>, BSD 3-Clause with patent grant.</td>
+<td><code>libwebm-LICENSE.txt</code>, <code>libwebm-AUTHORS.txt</code>, <code>libwebm-PATENTS.txt</code></td>
 </tr>
 <tr>
 <td>cpp-httplib</td>
 <td>Yuji Hirose, MIT.</td>
+<td><code>cpp-httplib-LICENSE.txt</code></td>
 </tr>
 <tr>
 <td>nlohmann/json</td>
 <td>3.11.2, Niels Lohmann, MIT.</td>
+<td><code>nlohmann-json-LICENSE.txt</code></td>
 </tr>
 <tr>
 <td>darts-clone</td>
-<td>BSD.</td>
+<td>BSD 3-Clause.</td>
+<td><code>darts-clone-LICENSE.txt</code></td>
 </tr>
 <tr>
 <td>Oniguruma</td>
-<td>BSD.</td>
+<td>BSD 2-Clause.</td>
+<td><code>oniguruma-LICENSE.txt</code></td>
 </tr>
 <tr>
 <td>utf8proc</td>
-<td>MIT and Unicode notices.</td>
+<td>MIT and Unicode data license.</td>
+<td><code>utf8proc-LICENSE.txt</code></td>
 </tr>
 <tr>
-<td>miniz / zip</td>
-<td>Supplied MIT/public-domain notices.</td>
+<td>miniz, zip</td>
+<td>MIT.</td>
+<td><code>miniz-LICENSE.txt</code>, <code>zip-LICENSE.txt</code></td>
 </tr>
 <tr>
 <td>stb image utilities</td>
-<td>Sean Barrett, dual MIT/public-domain notice.</td>
+<td>Sean Barrett, MIT or public domain.</td>
+<td><code>stb-LICENSE.txt</code></td>
 </tr>
 </tbody></table></div>
-<p>Full text is in <code>ThirdParty</code>. <strong>Tools → Runtime Image Forge → Install Windows Backend</strong> packs the pinned DLLs into an archive in <code>Assets/StreamingAssets/RuntimeImageForge</code> and copies those notices there for game builds. The command keeps different existing files instead of overwriting them.</p>
-<p>The foreground-removal model is not included in the package. On the developer&#39;s request, <strong>Tools → Runtime Image Forge → Install Foreground Model</strong> (also in Overview and the foreground profile Inspector) downloads the ONNX export of <a href="https://github.com/xuebinqin/U-2-Net/tree/ac7e1c817ecab7c7dff5ce6b1abba61cd213ff29">Xuebin Qin&#39;s U²-Netp</a> published in the <a href="https://github.com/danielgatis/rembg/releases/tag/v0.0.0">rembg release v0.0.0</a> (<code>u2netp.onnx</code>, 4,574,861 bytes, SHA-256 <code>309c8469258dda742793dce0ebea8e6dd393174f89934733ecc8b14c76f4ddd8</code>) and the U²-Net Apache 2.0 license from the pinned revision (<a href="https://raw.githubusercontent.com/xuebinqin/U-2-Net/ac7e1c817ecab7c7dff5ce6b1abba61cd213ff29/LICENSE"><code>LICENSE</code></a>, 11,357 bytes, SHA-256 <code>c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4</code>). It stores them in <code>Assets/RuntimeImageForge/ForegroundModel</code> with a notice and copies the license and notice to <code>Assets/StreamingAssets/RuntimeImageForge/Licenses</code> for game builds. A different model or license file with the same name is kept; the notice is the command&#39;s own file and is rewritten. The model predicts a salient foreground object; complex scenes and fine edges can need a different cutout model.</p>
-<p>Bonsai Ternary 4B and FLUX.2 Klein 4B are supplied as component-profile presets. Weight files are separate from the Unity package: Bonsai requires a compatible converted local pack; Klein permits explicit downloads of its pinned HTTPS components or local import.</p>
+<p><strong>Tools &gt; Runtime Image Forge &gt; Install Windows Backend</strong> (also run by <strong>Open The Ember Forge sample</strong>) packs the DLLs into an archive in <code>Assets/StreamingAssets/RuntimeImageForge</code> and copies these license files to <code>Assets/StreamingAssets/RuntimeImageForge/Licenses</code>, so they travel with a built game. A backend archive written by another version of the package is replaced; other existing files with different content are kept instead of being overwritten. Keep these notices when you distribute a game that contains the backend.</p>
+<h2 id="made-for-this-package">Made for this package</h2>
+<p>All other files were made for Runtime Image Forge by Strange Euphoria XR: the C# source code, Editor windows, icons and logo, the documentation, and The Ember Forge sample with its scene, scripts, model and style profiles and workshop illustration. The workshop illustration was created with OpenAI image generation. The package contains no third-party fonts, audio, images or models.</p>
+<h2 id="used-from-your-unity-installation">Used from your Unity installation</h2>
+<p>Unity uGUI, TextMesh Pro Essential Resources and Unity Inference Engine are Unity packages under their own terms and are not redistributed by this package. The sample uses the default TextMesh Pro font from TMP Essential Resources (Liberation Sans); its font license is imported with it into <code>Assets/TextMesh Pro/Fonts</code>. Keep the notices of Unity components when you distribute a built game.</p>
+<h2 id="downloaded-only-when-you-choose-to">Downloaded only when you choose to</h2>
+<p>Model files are not part of the package. They are downloaded from their publishers&#39; repositories over HTTPS only after an explicit action by the developer or player, and every file is checked against a pinned size and SHA-256. Their licenses apply to your use and distribution: read them before use, and keep each model&#39;s license and notice files when you distribute model files with a game. Model names do not grant trademark or endorsement rights.</p>
+<p><strong>FLUX.2 Klein 4B profile</strong> (<code>Samples/The Ember Forge/Profiles/FLUX2Klein4B</code>, and new profiles created with <strong>Create model profile</strong>):</p>
 <div class="table-scroll" tabindex="0" role="region" aria-label="Reference table"><table>
 <thead>
 <tr>
-<th>Preset/component</th>
-<th>Exact source repository and revision</th>
-<th>Declared terms</th>
+<th>Role</th>
+<th>Repository and revision</th>
+<th>License</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>Bonsai — generator</td>
-<td><code>prism-ml/bonsai-image-ternary-4B-gemlite-2bit@bf047aa80569f193d2c4960033af6ba2629988fa</code></td>
-<td><a href="https://huggingface.co/prism-ml/bonsai-image-ternary-4B-gemlite-2bit/blob/bf047aa80569f193d2c4960033af6ba2629988fa/LICENSE">Apache-2.0</a></td>
-</tr>
-<tr>
-<td>Bonsai — encoder + VAE</td>
-<td><code>prism-ml/bonsai-image-binary-4B-gemlite-1bit@121529b06562ff8c5b75aa34c54c371d2655929b</code></td>
-<td><a href="https://huggingface.co/prism-ml/bonsai-image-binary-4B-gemlite-1bit/blob/121529b06562ff8c5b75aa34c54c371d2655929b/LICENSE">Apache-2.0</a></td>
-</tr>
-<tr>
-<td>Klein — source model</td>
+<td>Source model</td>
 <td><code>black-forest-labs/FLUX.2-klein-4B@e7b7dc27f91deacad38e78976d1f2b499d76a294</code></td>
 <td><a href="https://huggingface.co/black-forest-labs/FLUX.2-klein-4B/blob/e7b7dc27f91deacad38e78976d1f2b499d76a294/LICENSE.md">Apache-2.0</a></td>
 </tr>
 <tr>
-<td>Klein — generator GGUF</td>
+<td>Generator GGUF</td>
 <td><code>leejet/FLUX.2-klein-4B-GGUF@3b1f5a9dc3abb32238b053aeb3d823c30afdacbd</code></td>
 <td><a href="https://huggingface.co/leejet/FLUX.2-klein-4B-GGUF/tree/3b1f5a9dc3abb32238b053aeb3d823c30afdacbd">Apache-2.0</a></td>
 </tr>
 <tr>
-<td>Klein — encoder GGUF</td>
+<td>Text encoder GGUF (Qwen3-4B)</td>
 <td><code>unsloth/Qwen3-4B-GGUF@22c9fc8a8c7700b76a1789366280a6a5a1ad1120</code></td>
 <td><a href="https://huggingface.co/unsloth/Qwen3-4B-GGUF/tree/22c9fc8a8c7700b76a1789366280a6a5a1ad1120">Apache-2.0</a></td>
 </tr>
 <tr>
-<td>Klein — VAE</td>
+<td>VAE</td>
 <td><code>black-forest-labs/FLUX.2-small-decoder@a3efc24f613ef42d9428af62fdbd6f5fd8856c4a</code></td>
 <td><a href="https://huggingface.co/black-forest-labs/FLUX.2-small-decoder/tree/a3efc24f613ef42d9428af62fdbd6f5fd8856c4a">Apache-2.0</a></td>
 </tr>
 </tbody></table></div>
-<p>The Bonsai generator and text encoder GGUF files are converted representations of the listed source revisions; its VAE is unchanged. The original Prism LICENSE/NOTICE and the conversion notices must accompany a redistributed pack. Prism&#39;s NOTICE identifies FLUX.2 Klein 4B by Black Forest Labs and Qwen3-4B by Alibaba Cloud as source works. Preserve notices supplied with the Klein GGUF components as well. Read the complete model terms before use or redistribution; model names do not grant trademark or endorsement rights. <a href="models-and-styles.html">Models and styles</a> lists required filenames, acquisition and weight totals.</p>
-<p>The original DreamShaper 8 LCM preset retains <code>Lykon/dreamshaper-8-lcm@4645d8bc6a8e6b106d21606d63e8460cdad4f1a6</code> under CreativeML OpenRAIL-M. Its weights are acquired separately. The package does not include the license text; read it with the model (<a href="https://huggingface.co/spaces/CompVis/stable-diffusion-license/blob/main/license.txt">CreativeML OpenRAIL-M</a>) and preserve it if using or redistributing that legacy profile.</p>
-<p>Unity, Unity Inference Engine and other Unity packages retain their own terms and are not redistributed by this package. The companion setup uses Unity uGUI and TMP Essential Resources from your Unity installation (Unity Companion License); TMP Essentials includes the Liberation Sans font license in Assets/TextMesh Pro/Fonts. Preserve the notices of Unity components when redistributing a built game.</p>
+<p><strong>U²-Netp foreground model.</strong> <strong>Tools &gt; Runtime Image Forge &gt; Install Foreground Model</strong> (also in Overview and the foreground profile Inspector) downloads the ONNX export of <a href="https://github.com/xuebinqin/U-2-Net/tree/ac7e1c817ecab7c7dff5ce6b1abba61cd213ff29">Xuebin Qin&#39;s U²-Netp</a> published in the <a href="https://github.com/danielgatis/rembg/releases/tag/v0.0.0">rembg release v0.0.0</a> (<code>u2netp.onnx</code>, 4,574,861 bytes, SHA-256 <code>309c8469258dda742793dce0ebea8e6dd393174f89934733ecc8b14c76f4ddd8</code>) together with the U²-Net Apache 2.0 license from the pinned revision (<a href="https://raw.githubusercontent.com/xuebinqin/U-2-Net/ac7e1c817ecab7c7dff5ce6b1abba61cd213ff29/LICENSE"><code>LICENSE</code></a>, 11,357 bytes, SHA-256 <code>c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4</code>). It stores them in <code>Assets/RuntimeImageForge/ForegroundModel</code> with a notice and copies the license and notice to <code>Assets/StreamingAssets/RuntimeImageForge/Licenses</code> for game builds. A different model or license file with the same name is kept; the notice is the command&#39;s own file and is rewritten. The model predicts a salient foreground object; complex scenes and fine edges can need a different cutout model.</p>
 <div class="doc-bottom"><a href="index.html">Documentation home</a><a href="../">Product overview</a></div></article></main><footer class="footer wrap"><span>© Strange Euphoria XR</span><a href="third-party-notices.html">Model and component terms</a></footer></body></html>

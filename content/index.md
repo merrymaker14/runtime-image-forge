@@ -12,6 +12,6 @@ Runtime Image Forge creates local PNG images from choices defined by your game. 
 | [Troubleshooting](Troubleshooting.md) | Download, readiness, GPU, cancellation and file errors. |
 | [Third-party notices](Third-party-notices.md) | Pinned components and their license texts. |
 
-The Ember Forge is included as an editable sample with its scene, gameplay source, art and soundtrack. A separate Windows download lets players try the game without Unity or the package.
+The Ember Forge is included as an editable sample game with its scene, gameplay source, art, model profiles and five choice styles. Start with **Tools > Runtime Image Forge > Open The Ember Forge sample**.
 
 The Editor, website and these guides are available in English, Russian, Spanish and Simplified Chinese. Choose **Editor language** in a Forge window or Inspector. Documentation buttons open the matching guide. Language selection changes presentation, not model prompts or game settings.

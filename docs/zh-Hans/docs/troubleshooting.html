@@ -44,7 +44,7 @@
 </tr>
 <tr>
 <td>原生库校验失败</td>
-<td>关闭游戏或 Editor。如果提示已安装的后端已损坏，请删除 <code>Application.persistentDataPath/RuntimeImageForge/Backends</code> 下对应版本的文件夹，然后重新准备。如果随附的归档未通过校验，请删除 <code>Assets/StreamingAssets/RuntimeImageForge/windows-vulkan.zip</code>，选择 <strong>Tools &gt; Runtime Image Forge &gt; Install Windows Backend</strong> 并重新构建 Player。安装器从不覆盖已存在的不同文件。</td>
+<td>关闭游戏或 Editor。如果提示已安装的后端已损坏，请删除 <code>Application.persistentDataPath/RuntimeImageForge/Backends</code> 下对应版本的文件夹，然后重新准备。如果随附的归档未通过校验，请删除 <code>Assets/StreamingAssets/RuntimeImageForge/windows-vulkan.zip</code>，选择 <strong>Tools &gt; Runtime Image Forge &gt; Install Windows Backend</strong> 并重新构建 Player。安装器只会替换由其他版本软件包写入的归档，从不覆盖其他文件。</td>
 </tr>
 <tr>
 <td>已加载另一个原生库版本</td>

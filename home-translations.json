@@ -224,10 +224,10 @@
     "es": "El juego complementario editable completo está incluido en el paquete Unity:",
     "zh-Hans": "Unity 包包含完整可编辑配套游戏："
   },
-  "scene, gameplay source, workshop art and soundtrack, ready to study or adapt in the package's Samples folder.": {
-    "ru": "сцена, исходники игрового процесса, оформление мастерской и музыка — в папке Samples пакета, готовые к изучению и изменению.",
-    "es": "escena, código del juego, arte del taller y banda sonora, en la carpeta Samples del paquete, listos para estudiar o adaptar.",
-    "zh-Hans": "场景、游戏源码、工坊美术和配乐，位于软件包的 Samples 文件夹，可直接学习或修改。"
+  "scene, gameplay source, workshop art and the FLUX.2 Klein 4B model profile, ready to study or adapt in the package's Samples folder.": {
+    "ru": "сцена, исходники игрового процесса, оформление мастерской и профиль модели FLUX.2 Klein 4B — в папке Samples пакета, готовые к изучению и изменению.",
+    "es": "escena, código del juego, arte del taller y el perfil del modelo FLUX.2 Klein 4B, en la carpeta Samples del paquete, listos para estudiar o adaptar.",
+    "zh-Hans": "场景、游戏源码、工坊美术和 FLUX.2 Klein 4B 模型配置，位于软件包的 Samples 文件夹，可直接学习或修改。"
   },
   "Open the included game in Unity": {
     "ru": "Открыть игру из комплекта в Unity",
@@ -264,10 +264,15 @@
     "es": "Tu primer encargo",
     "zh-Hans": "你的第一份订单"
   },
-  "Use the game's explicit download or import action for the selected model.": {
-    "ru": "Для выбранной модели используйте явное действие скачивания или импорта в игре.",
-    "es": "Usa la acción explícita de descarga o importación del juego para el modelo elegido.",
-    "zh-Hans": "为所选模型使用游戏中的显式下载或导入操作。"
+  "In Unity, choose Tools > Runtime Image Forge > Open The Ember Forge sample.": {
+    "ru": "В Unity выберите Tools > Runtime Image Forge > Open The Ember Forge sample.",
+    "es": "En Unity, elige Tools > Runtime Image Forge > Open The Ember Forge sample.",
+    "zh-Hans": "在 Unity 中选择 Tools > Runtime Image Forge > Open The Ember Forge sample。"
+  },
+  "Enter Play Mode and choose DOWNLOAD MODEL once.": {
+    "ru": "Войдите в Play Mode и один раз нажмите DOWNLOAD MODEL.",
+    "es": "Entra en el modo Play y elige DOWNLOAD MODEL una vez.",
+    "zh-Hans": "进入播放模式，选择一次 DOWNLOAD MODEL。"
   },
   "Wait for verification and warmup, then craft your first item.": {
     "ru": "Дождитесь проверки и прогрева, затем создайте первый предмет.",
@@ -289,10 +294,10 @@
     "es": "La colección guarda hasta 256 objetos, cuatro por página. Exporta junto al juego o a su carpeta de datos. Los encargos fallidos o cancelados no añaden objetos.",
     "zh-Hans": "收藏最多保存 256 件物品，每页四件。可导出到游戏旁边或游戏数据目录。失败和取消的订单不会新增物品。"
   },
-  "English game interface. English and Russian first-start instructions are included. No plugin purchase or Unity installation required for the standalone game.": {
-    "ru": "Интерфейс игры на английском. В комплекте инструкции первого запуска на английском и русском. Отдельная игра не требует покупки плагина или установки Unity.",
-    "es": "Interfaz del juego en inglés. Se incluyen instrucciones de primer inicio en inglés y ruso. El juego independiente no requiere comprar el plugin ni instalar Unity.",
-    "zh-Hans": "游戏界面为英文，随附英文和俄文首次启动说明。独立游戏无需购买插件或安装 Unity。"
+  "The sample's game interface is in English. The Editor windows and guides are in English, Russian, Spanish and Simplified Chinese.": {
+    "ru": "Интерфейс игры примера — на английском. Окна редактора и руководства — на английском, русском, испанском и упрощённом китайском.",
+    "es": "La interfaz del juego de ejemplo está en inglés. Las ventanas del Editor y las guías están en inglés, ruso, español y chino simplificado.",
+    "zh-Hans": "示例游戏界面为英语。编辑器窗口和指南提供英语、俄语、西班牙语和简体中文版本。"
   },
   "Local models.": {
     "ru": "Локальные модели.",
@@ -319,15 +324,15 @@
     "es": "NVIDIA RTX 3060 Laptop GPU, 6 GB VRAM. Es una configuración probada, no un mínimo garantizado.",
     "zh-Hans": "NVIDIA RTX 3060 Laptop GPU，6 GB VRAM。这是已测试配置，并非保证可运行的最低要求。"
   },
-  "Included model profiles": {
-    "ru": "Профили моделей в комплекте",
-    "es": "Perfiles de modelos incluidos",
+  "Included model profile": {
+    "ru": "Профиль модели в комплекте",
+    "es": "Perfil de modelo incluido",
     "zh-Hans": "随附模型配置"
   },
-  "Bonsai Ternary 4B and FLUX.2 Klein 4B; the U2NETP cutout model is installed on request and is not part of the package. NativeDistilled1024 presets use 1024 × 1024, 4 steps and CFG 1. Pinned weights: Bonsai 4.64 GB (4.32 GiB), Klein 5.21 GB (4.85 GiB); engine and temporary space are additional.": {
-    "ru": "Bonsai Ternary 4B и FLUX.2 Klein 4B; модель маски U2NETP устанавливается по запросу и в пакет не входит. Presets NativeDistilled1024 используют 1024 × 1024, 4 шага и CFG 1. Закреплённые веса: Bonsai 4,64 GB (4,32 GiB), Klein 5,21 GB (4,85 GiB); движок и временные файлы требуют дополнительного места.",
-    "es": "Bonsai Ternary 4B y FLUX.2 Klein 4B; el modelo de recorte U2NETP se instala a petición y no forma parte del paquete. Los presets NativeDistilled1024 usan 1024 × 1024, 4 pasos y CFG 1. Pesos fijados: Bonsai 4,64 GB (4,32 GiB), Klein 5,21 GB (4,85 GiB); motor y espacio temporal son adicionales.",
-    "zh-Hans": "Bonsai Ternary 4B 与 FLUX.2 Klein 4B；U2NETP 抠图模型按需安装，不包含在软件包中。NativeDistilled1024 预设使用 1024 × 1024、4 步、CFG 1。固定权重：Bonsai 4.64 GB（4.32 GiB），Klein 5.21 GB（4.85 GiB）；引擎及临时文件空间另计。"
+  "FLUX.2 Klein 4B; the U2NETP cutout model is installed on request and is not part of the package. The five included styles use 1024 × 1024, 4 steps and CFG 1. Pinned weights: 5.21 GB (4.85 GiB); engine and temporary space are additional.": {
+    "ru": "FLUX.2 Klein 4B; модель маски U2NETP устанавливается по запросу и в пакет не входит. Пять стилей в комплекте используют 1024 × 1024, 4 шага и CFG 1. Закреплённые веса: 5,21 GB (4,85 GiB); движок и временные файлы требуют дополнительного места.",
+    "es": "FLUX.2 Klein 4B; el modelo de recorte U2NETP se instala a petición y no forma parte del paquete. Los cinco estilos incluidos usan 1024 × 1024, 4 pasos y CFG 1. Pesos fijados: 5,21 GB (4,85 GiB); motor y espacio temporal son adicionales.",
+    "zh-Hans": "FLUX.2 Klein 4B；U2NETP 抠图模型按需安装，不包含在软件包中。随附的五种样式使用 1024 × 1024、4 步、CFG 1。固定权重：5.21 GB（4.85 GiB）；引擎及临时文件空间另计。"
   },
   "What to expect": {
     "ru": "Чего ожидать",
@@ -339,10 +344,10 @@
     "es": "Imágenes 2D. Los detalles solicitados y los bordes finos del recorte pueden ser imperfectos. Los prompts inspirados en píxeles no imponen una cuadrícula de píxeles.",
     "zh-Hans": "输出为 2D 图片。请求的细节和精细抠图边缘可能不准确。像素风提示词不会强制形成像素网格。"
   },
-  "Bonsai, Klein and U2NETP use Apache-2.0. Review the": {
-    "ru": "Bonsai, Klein и U2NETP используют Apache-2.0. Изучите",
-    "es": "Bonsai, Klein y U2NETP utilizan Apache-2.0. Consulta las",
-    "zh-Hans": "Bonsai、Klein 与 U2NETP 使用 Apache-2.0。请阅读"
+  "FLUX.2 Klein 4B and U2NETP use Apache-2.0. Review the": {
+    "ru": "FLUX.2 Klein 4B и U2NETP используют Apache-2.0. Изучите",
+    "es": "FLUX.2 Klein 4B y U2NETP utilizan Apache-2.0. Consulta las",
+    "zh-Hans": "FLUX.2 Klein 4B 与 U2NETP 使用 Apache-2.0。请阅读"
   },
   "component and model terms": {
     "ru": "условия компонентов и моделей",
@@ -414,11 +419,6 @@
     "es": "YouTube",
     "zh-Hans": "YouTube"
   },
-  "Games on itch.io": {
-    "ru": "Игры на itch.io",
-    "es": "Juegos en itch.io",
-    "zh-Hans": "itch.io 上的游戏"
-  },
   "A locally generated steel sword with a transparent background": {
     "ru": "Стальной меч с прозрачным фоном, сгенерированный локально",
     "es": "Una espada de acero generada localmente con fondo transparente",
@@ -464,50 +464,15 @@
     "es": "Resultados originales de Bonsai de 1024 × 1024; cambiar esta vista previa no ejecuta un modelo.",
     "zh-Hans": "Bonsai 的原始 1024 × 1024 输出；切换预览不会运行模型。"
   },
-  "Real gameplay with Bonsai and an original soundtrack. The local model was prepared before capture; generation is shown at its recorded pace.": {
-    "ru": "Настоящий игровой процесс с Bonsai и оригинальной музыкой. Локальная модель подготовлена до записи; генерация показана в исходном темпе.",
-    "es": "Juego real con Bonsai y una banda sonora original. El modelo local se preparó antes de grabar; la generación se muestra a su ritmo original.",
-    "zh-Hans": "使用 Bonsai 的真实游戏过程，配有原创音乐。本地模型在录制前已准备好；生成过程按录制时的实际节奏展示。"
+  "Real gameplay of the standalone Windows game, recorded with Bonsai and an original soundtrack. The local model was prepared before capture; generation is shown at its recorded pace.": {
+    "ru": "Настоящий игровой процесс отдельной игры для Windows, записанный с Bonsai и оригинальной музыкой. Локальная модель подготовлена до записи; генерация показана в исходном темпе.",
+    "es": "Juego real de la versión independiente para Windows, grabado con Bonsai y una banda sonora original. El modelo local se preparó antes de grabar; la generación se muestra a su ritmo original.",
+    "zh-Hans": "独立 Windows 版游戏的真实游戏过程，录制时使用 Bonsai 和原创音乐。本地模型在录制前已准备好；生成过程按录制时的实际节奏展示。"
   },
-  "First-start instructions in English, Russian, Spanish and Simplified Chinese are included.": {
-    "ru": "Включены инструкции первого запуска на английском, русском, испанском и упрощённом китайском.",
-    "es": "Incluye instrucciones de primer inicio en inglés, ruso, español y chino simplificado.",
-    "zh-Hans": "附带英语、俄语、西班牙语和简体中文的首次启动说明。"
-  },
-  "English game interface. First-start instructions in English, Russian, Spanish and Simplified Chinese are included. No plugin purchase or Unity installation required for the standalone game.": {
-    "ru": "Интерфейс игры — на английском. Включены инструкции первого запуска на английском, русском, испанском и упрощённом китайском. Для отдельной игры не требуется покупка плагина или установка Unity.",
-    "es": "Interfaz del juego en inglés. Incluye instrucciones de primer inicio en inglés, ruso, español y chino simplificado. El juego independiente no requiere comprar el plugin ni instalar Unity.",
-    "zh-Hans": "游戏界面为英语。附带英语、俄语、西班牙语和简体中文的首次启动说明。独立游戏无需购买插件或安装 Unity。"
-  },
-  "Download The Ember Forge free": {
-    "ru": "Скачать The Ember Forge бесплатно",
-    "es": "Descargar The Ember Forge gratis",
-    "zh-Hans": "免费下载 The Ember Forge"
-  },
-  "Download the Windows game": {
-    "ru": "Скачайте игру для Windows",
-    "es": "Descarga el juego para Windows",
-    "zh-Hans": "下载 Windows 版游戏"
-  },
-  ", extract the whole folder and launch it.": {
-    "ru": ", распакуйте папку целиком и запустите игру.",
-    "es": ", extrae la carpeta completa e inicia el juego.",
-    "zh-Hans": "，解压完整文件夹并启动游戏。"
-  },
-  "Model weights are obtained separately: the free Bonsai model pack from": {
-    "ru": "Веса получаются отдельно: бесплатный пакет моделей Bonsai со",
-    "es": "Los pesos se obtienen por separado: el paquete gratuito de modelos Bonsai de la",
-    "zh-Hans": "权重单独获取：Bonsai 使用免费模型包，可从"
-  },
-  "The Ember Forge page": {
-    "ru": "страницы The Ember Forge",
-    "es": "página de The Ember Forge",
-    "zh-Hans": "The Ember Forge 页面"
-  },
-  "or an explicit HTTPS download for Klein. After setup, generation runs offline on the player's machine. Hardware, resolution and other GPU workloads affect preparation and generation.": {
-    "ru": "или явная HTTPS-загрузка для Klein. После настройки генерация работает офлайн на компьютере игрока. Оборудование, разрешение и другие задачи GPU влияют на подготовку и генерацию.",
-    "es": "o una descarga HTTPS explícita para Klein. Tras configurar, la generación funciona sin conexión en el equipo del jugador. El hardware, la resolución y otras tareas de GPU afectan a la preparación y la generación.",
-    "zh-Hans": "下载；Klein 使用显式 HTTPS 下载。设置完成后可在玩家电脑上离线生成。硬件、分辨率及其他 GPU 任务会影响准备和生成。"
+  "Model weights are downloaded separately: the included FLUX.2 Klein 4B profile fetches its three pinned files over HTTPS only on an explicit download action. After setup, generation runs offline on the player's machine. Hardware, resolution and other GPU workloads affect preparation and generation.": {
+    "ru": "Веса моделей скачиваются отдельно: входящий в комплект профиль FLUX.2 Klein 4B загружает три закреплённых файла по HTTPS только по явной команде загрузки. После настройки генерация работает офлайн на компьютере игрока. Оборудование, разрешение и другие задачи GPU влияют на подготовку и генерацию.",
+    "es": "Los pesos de los modelos se descargan por separado: el perfil incluido FLUX.2 Klein 4B obtiene sus tres archivos fijados por HTTPS solo con una acción de descarga explícita. Tras configurar, la generación funciona sin conexión en el equipo del jugador. El hardware, la resolución y otras tareas de GPU afectan a la preparación y la generación.",
+    "zh-Hans": "模型权重需单独下载：随附的 FLUX.2 Klein 4B 配置仅在显式执行下载操作时通过 HTTPS 获取三个固定文件。设置完成后可在玩家电脑上离线生成。硬件、分辨率及其他 GPU 任务会影响准备和生成。"
   },
   "Unity 6000.5 or later. Supplied backend: Windows x64 Vulkan DLLs running inside Unity; requires the Microsoft Visual C++ 2015–2022 Redistributable (x64). Foreground processing uses GPU Compute.": {
     "ru": "Unity 6000.5 или новее. Поставляемый движок: DLL Windows x64 Vulkan внутри Unity; нужен Microsoft Visual C++ 2015–2022 Redistributable (x64). Обработка переднего плана использует GPU Compute.",

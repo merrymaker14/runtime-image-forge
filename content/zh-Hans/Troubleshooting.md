@@ -11,7 +11,7 @@
 | 取消后的下一个订单较慢 | 取消正在进行的模型加载或生成会卸载原生模型上下文以释放内存。下一个订单在生成前会重新加载模型。取消仍在队列中等待的任务不会卸载上下文。 |
 | 准备仍在进行 | 准备会校验 checkpoint、加载原生模型上下文并进行不保存图像的预热。接受订单前显示此阶段。 |
 | 已取消的任务仍在释放资源 | 取消会请求原生操作停止，并阻止发布结果。原生工作释放资源前仍占用队列位置。请等待完成后再重用或释放后端。 |
-| 原生库校验失败 | 关闭游戏或 Editor。如果提示已安装的后端已损坏，请删除 `Application.persistentDataPath/RuntimeImageForge/Backends` 下对应版本的文件夹，然后重新准备。如果随附的归档未通过校验，请删除 `Assets/StreamingAssets/RuntimeImageForge/windows-vulkan.zip`，选择 **Tools > Runtime Image Forge > Install Windows Backend** 并重新构建 Player。安装器从不覆盖已存在的不同文件。 |
+| 原生库校验失败 | 关闭游戏或 Editor。如果提示已安装的后端已损坏，请删除 `Application.persistentDataPath/RuntimeImageForge/Backends` 下对应版本的文件夹，然后重新准备。如果随附的归档未通过校验，请删除 `Assets/StreamingAssets/RuntimeImageForge/windows-vulkan.zip`，选择 **Tools > Runtime Image Forge > Install Windows Backend** 并重新构建 Player。安装器只会替换由其他版本软件包写入的归档，从不覆盖其他文件。 |
 | 已加载另一个原生库版本 | 加载其他原生库版本前，请重启游戏或 Editor。 |
 | 任务完成但没有图像 | 检查 `ForgeGenerationJob.State` 与 `Error`，完成也包括失败或取消。界面应保留上一张成功图像。 |
 | 队列容量已满 | 等待任务完成或取消。取消任务在后端释放前仍占用槽位。 |

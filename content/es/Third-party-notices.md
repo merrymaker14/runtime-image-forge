@@ -1,38 +1,46 @@
 # Componentes de terceros y condiciones de los modelos
 
-Runtime Image Forge incluye bibliotecas nativas modificadas para Windows x64 Vulkan basadas en [stable-diffusion.cpp](https://github.com/leejet/stable-diffusion.cpp/tree/f89d9b13d730eabeede7314ce49dacd18d3c90c2), revisión `f89d9b13d730eabeede7314ce49dacd18d3c90c2`. La DLL nativa se ejecuta dentro del proceso Unity y lee los parámetros de normalización de FLUX.2 VAE del modelo seleccionado. El instalador y el cargador verifican las bibliotecas locales incluidas con sus SHA-256 fijados. Conserva los avisos incluidos en las aplicaciones que redistribuyan este motor.
+Esta página enumera todo lo que Runtime Image Forge incluye de terceros, lo que se creó para el paquete y lo que el paquete puede descargar a petición. La misma lista está en `Third-Party Notices.txt`, en la carpeta del paquete.
 
-| Componente | Origen / licencia |
-| --- | --- |
-| stable-diffusion.cpp | Leejet, MIT; se incluyen el origen y el aviso de la versión. |
-| ggml | `d25b121ce1d6ae0c7e62ad080460d9fc1e46dd93`, MIT. |
-| libwebp / libsharpyuv | `0c9546f7efc61eac7f79ae115c3f99c91c21c443`, BSD; se incluyen autores y concesión de patentes. |
-| libwebm | `5bf12267eea773a32fcf4949de52b0add158a8d5`, BSD; se incluyen autores y concesión de patentes. |
-| cpp-httplib | Yuji Hirose, MIT. |
-| nlohmann/json | 3.11.2, Niels Lohmann, MIT. |
-| darts-clone | BSD. |
-| Oniguruma | BSD. |
-| utf8proc | MIT y avisos Unicode. |
-| miniz / zip | Avisos MIT / dominio público incluidos. |
-| stb image utilities | Sean Barrett, aviso dual MIT / dominio público. |
+## Incluido en este paquete
 
-Los textos originales completos están en `ThirdParty`. **Tools → Runtime Image Forge → Install Windows Backend** empaqueta las DLL fijadas en un archivo comprimido en `Assets/StreamingAssets/RuntimeImageForge` y copia allí esos avisos para las compilaciones del juego. El comando conserva los archivos existentes que sean diferentes, sin sobrescribirlos.
+El motor nativo para Windows x64 de `Native/windows-x64` es una compilación modificada de [stable-diffusion.cpp](https://github.com/leejet/stable-diffusion.cpp/tree/f89d9b13d730eabeede7314ce49dacd18d3c90c2), revisión `f89d9b13d730eabeede7314ce49dacd18d3c90c2`, con las bibliotecas que se indican a continuación. El instalador y el cargador comprueban cada DLL con una suma de comprobación SHA-256 fijada. Los textos completos de las licencias están en `ThirdParty`.
 
-El modelo de eliminación de fondo no está incluido en el paquete. A petición del desarrollador, **Tools → Runtime Image Forge → Install Foreground Model** (también en Overview y en el Inspector del perfil de recorte) descarga la exportación ONNX de [U²-Netp de Xuebin Qin](https://github.com/xuebinqin/U-2-Net/tree/ac7e1c817ecab7c7dff5ce6b1abba61cd213ff29) publicada en la [versión v0.0.0 de rembg](https://github.com/danielgatis/rembg/releases/tag/v0.0.0) (`u2netp.onnx`, 4.574.861 bytes, SHA-256 `309c8469258dda742793dce0ebea8e6dd393174f89934733ecc8b14c76f4ddd8`) y la licencia Apache 2.0 de U²-Net de la revisión fijada ([`LICENSE`](https://raw.githubusercontent.com/xuebinqin/U-2-Net/ac7e1c817ecab7c7dff5ce6b1abba61cd213ff29/LICENSE), 11.357 bytes, SHA-256 `c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4`). Los guarda con un aviso en `Assets/RuntimeImageForge/ForegroundModel` y copia la licencia y el aviso a `Assets/StreamingAssets/RuntimeImageForge/Licenses` para las compilaciones del juego. Un modelo o una licencia existentes con el mismo nombre y otro contenido se conservan; el aviso es un archivo propio del comando y se reescribe. Predice un objeto destacado en primer plano; las escenas complejas y los bordes finos pueden requerir otro modelo de recorte.
-
-Bonsai Ternary 4B y FLUX.2 Klein 4B se incluyen como presets de perfiles por componentes. Los pesos son independientes del paquete de Unity: Bonsai requiere un paquete local convertido compatible; Klein permite descargas explícitas de sus componentes HTTPS fijados o importación local.
-
-| Preset/componente | Repositorio y revisión exactos | Condiciones declaradas |
+| Componente | Origen / licencia | Archivo de licencia en `ThirdParty` |
 | --- | --- | --- |
-| Bonsai — generador | `prism-ml/bonsai-image-ternary-4B-gemlite-2bit@bf047aa80569f193d2c4960033af6ba2629988fa` | [Apache-2.0](https://huggingface.co/prism-ml/bonsai-image-ternary-4B-gemlite-2bit/blob/bf047aa80569f193d2c4960033af6ba2629988fa/LICENSE) |
-| Bonsai — codificador de texto y VAE | `prism-ml/bonsai-image-binary-4B-gemlite-1bit@121529b06562ff8c5b75aa34c54c371d2655929b` | [Apache-2.0](https://huggingface.co/prism-ml/bonsai-image-binary-4B-gemlite-1bit/blob/121529b06562ff8c5b75aa34c54c371d2655929b/LICENSE) |
-| Klein — modelo de origen | `black-forest-labs/FLUX.2-klein-4B@e7b7dc27f91deacad38e78976d1f2b499d76a294` | [Apache-2.0](https://huggingface.co/black-forest-labs/FLUX.2-klein-4B/blob/e7b7dc27f91deacad38e78976d1f2b499d76a294/LICENSE.md) |
-| Klein — GGUF del generador | `leejet/FLUX.2-klein-4B-GGUF@3b1f5a9dc3abb32238b053aeb3d823c30afdacbd` | [Apache-2.0](https://huggingface.co/leejet/FLUX.2-klein-4B-GGUF/tree/3b1f5a9dc3abb32238b053aeb3d823c30afdacbd) |
-| Klein — GGUF del codificador de texto | `unsloth/Qwen3-4B-GGUF@22c9fc8a8c7700b76a1789366280a6a5a1ad1120` | [Apache-2.0](https://huggingface.co/unsloth/Qwen3-4B-GGUF/tree/22c9fc8a8c7700b76a1789366280a6a5a1ad1120) |
-| Klein — VAE | `black-forest-labs/FLUX.2-small-decoder@a3efc24f613ef42d9428af62fdbd6f5fd8856c4a` | [Apache-2.0](https://huggingface.co/black-forest-labs/FLUX.2-small-decoder/tree/a3efc24f613ef42d9428af62fdbd6f5fd8856c4a) |
+| stable-diffusion.cpp | leejet, MIT; modificado por Strange Euphoria XR. | `stable-diffusion.cpp-LICENSE.txt`, `stable-diffusion.cpp-BINARY-LICENSE.txt`, `RuntimeImageForge-native-NOTICE.txt` |
+| ggml | `d25b121ce1d6ae0c7e62ad080460d9fc1e46dd93`, MIT. | `ggml-LICENSE.txt` |
+| libwebp / libsharpyuv | `0c9546f7efc61eac7f79ae115c3f99c91c21c443`, BSD 3-Clause con concesión de patentes. | `libwebp-COPYING.txt`, `libwebp-AUTHORS.txt`, `libwebp-PATENTS.txt` |
+| libwebm | `5bf12267eea773a32fcf4949de52b0add158a8d5`, BSD 3-Clause con concesión de patentes. | `libwebm-LICENSE.txt`, `libwebm-AUTHORS.txt`, `libwebm-PATENTS.txt` |
+| cpp-httplib | Yuji Hirose, MIT. | `cpp-httplib-LICENSE.txt` |
+| nlohmann/json | 3.11.2, Niels Lohmann, MIT. | `nlohmann-json-LICENSE.txt` |
+| darts-clone | BSD 3-Clause. | `darts-clone-LICENSE.txt` |
+| Oniguruma | BSD 2-Clause. | `oniguruma-LICENSE.txt` |
+| utf8proc | MIT y licencia de datos de Unicode. | `utf8proc-LICENSE.txt` |
+| miniz, zip | MIT. | `miniz-LICENSE.txt`, `zip-LICENSE.txt` |
+| stb image utilities | Sean Barrett, MIT o dominio público. | `stb-LICENSE.txt` |
 
-Los GGUF del generador y codificador de texto de Bonsai son representaciones convertidas de las revisiones indicadas; el VAE no se modifica. Conserva los LICENSE/NOTICE originales de Prism y los avisos de conversión al redistribuir el paquete. El NOTICE de Prism identifica FLUX.2 Klein 4B de Black Forest Labs y Qwen3-4B de Alibaba Cloud como obras de origen. Conserva también los avisos de los componentes Klein GGUF. Lee las condiciones completas antes de usar o redistribuir; los nombres no conceden derechos de marca ni implican respaldo de los autores. [Modelos y estilos](Models-and-styles.md) indica archivos requeridos, obtención y volúmenes de pesos.
+**Tools > Runtime Image Forge > Install Windows Backend** (que también ejecuta **Abrir el ejemplo The Ember Forge**) empaqueta las DLL en un archivo comprimido en `Assets/StreamingAssets/RuntimeImageForge` y copia estos archivos de licencia a `Assets/StreamingAssets/RuntimeImageForge/Licenses`, para que acompañen al juego compilado. El archivo comprimido del motor escrito por otra versión del paquete se reemplaza; los demás archivos existentes con otro contenido se conservan en lugar de sobrescribirse. Conserva estos avisos cuando distribuyas un juego que contenga el motor.
 
-El preset original de DreamShaper 8 LCM conserva `Lykon/dreamshaper-8-lcm@4645d8bc6a8e6b106d21606d63e8460cdad4f1a6` bajo CreativeML OpenRAIL-M. Los pesos se obtienen por separado. El paquete no incluye el texto de la licencia: léelo junto al modelo ([CreativeML OpenRAIL-M](https://huggingface.co/spaces/CompVis/stable-diffusion-license/blob/main/license.txt)) y consérvalo si utilizas o redistribuyes ese perfil anterior.
+## Creado para este paquete
 
-Unity, Unity Inference Engine y los demás paquetes Unity conservan sus propias condiciones; este paquete no los redistribuye. La configuración del juego complementario utiliza Unity uGUI y TMP Essential Resources de tu instalación de Unity (Unity Companion License); TMP Essentials incluye la licencia de Liberation Sans en Assets/TextMesh Pro/Fonts. Conserva los avisos de los componentes de Unity al redistribuir un juego compilado.
+Strange Euphoria XR creó para Runtime Image Forge todos los demás archivos: el código fuente en C#, las ventanas del Editor, los iconos y el logotipo, la documentación y el ejemplo The Ember Forge con su escena, sus scripts, sus perfiles de modelo y de estilo y la ilustración del taller. La ilustración del taller se creó con la generación de imágenes de OpenAI. El paquete no contiene fuentes, audio, imágenes ni modelos de terceros.
+
+## Usado desde tu instalación de Unity
+
+Unity uGUI, TextMesh Pro Essential Resources y Unity Inference Engine son paquetes de Unity sujetos a sus propias condiciones, y este paquete no los redistribuye. El ejemplo usa la fuente predeterminada de TextMesh Pro incluida en TMP Essential Resources (Liberation Sans); su licencia se importa junto con ella en `Assets/TextMesh Pro/Fonts`. Conserva los avisos de los componentes de Unity cuando distribuyas un juego compilado.
+
+## Se descarga solo si tú lo eliges
+
+Los archivos de modelo no forman parte del paquete. Se descargan por HTTPS desde los repositorios de sus editores solo después de una acción explícita del desarrollador o del jugador, y cada archivo se comprueba con un tamaño y un SHA-256 fijados. Sus licencias rigen tu uso y tu distribución: léelas antes de usarlos y conserva los archivos de licencia y de aviso de cada modelo cuando distribuyas archivos de modelo con un juego. Los nombres de los modelos no conceden derechos de marca ni implican respaldo.
+
+**Perfil FLUX.2 Klein 4B** (`Samples/The Ember Forge/Profiles/FLUX2Klein4B` y los perfiles nuevos creados con **Crear perfil de modelo**):
+
+| Función | Repositorio y revisión | Licencia |
+| --- | --- | --- |
+| Modelo de origen | `black-forest-labs/FLUX.2-klein-4B@e7b7dc27f91deacad38e78976d1f2b499d76a294` | [Apache-2.0](https://huggingface.co/black-forest-labs/FLUX.2-klein-4B/blob/e7b7dc27f91deacad38e78976d1f2b499d76a294/LICENSE.md) |
+| GGUF del generador | `leejet/FLUX.2-klein-4B-GGUF@3b1f5a9dc3abb32238b053aeb3d823c30afdacbd` | [Apache-2.0](https://huggingface.co/leejet/FLUX.2-klein-4B-GGUF/tree/3b1f5a9dc3abb32238b053aeb3d823c30afdacbd) |
+| GGUF del codificador de texto (Qwen3-4B) | `unsloth/Qwen3-4B-GGUF@22c9fc8a8c7700b76a1789366280a6a5a1ad1120` | [Apache-2.0](https://huggingface.co/unsloth/Qwen3-4B-GGUF/tree/22c9fc8a8c7700b76a1789366280a6a5a1ad1120) |
+| VAE | `black-forest-labs/FLUX.2-small-decoder@a3efc24f613ef42d9428af62fdbd6f5fd8856c4a` | [Apache-2.0](https://huggingface.co/black-forest-labs/FLUX.2-small-decoder/tree/a3efc24f613ef42d9428af62fdbd6f5fd8856c4a) |
+
+**Modelo de recorte U²-Netp.** **Tools > Runtime Image Forge > Install Foreground Model** (también disponible en Overview y en el Inspector del perfil de recorte) descarga la exportación ONNX de [U²-Netp de Xuebin Qin](https://github.com/xuebinqin/U-2-Net/tree/ac7e1c817ecab7c7dff5ce6b1abba61cd213ff29) publicada en la [versión v0.0.0 de rembg](https://github.com/danielgatis/rembg/releases/tag/v0.0.0) (`u2netp.onnx`, 4.574.861 bytes, SHA-256 `309c8469258dda742793dce0ebea8e6dd393174f89934733ecc8b14c76f4ddd8`) junto con la licencia Apache 2.0 de U²-Net de la revisión fijada ([`LICENSE`](https://raw.githubusercontent.com/xuebinqin/U-2-Net/ac7e1c817ecab7c7dff5ce6b1abba61cd213ff29/LICENSE), 11.357 bytes, SHA-256 `c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4`). Los guarda con un aviso en `Assets/RuntimeImageForge/ForegroundModel` y copia la licencia y el aviso a `Assets/StreamingAssets/RuntimeImageForge/Licenses` para las compilaciones del juego. Si ya existe un modelo o un archivo de licencia distinto con el mismo nombre, se conserva; el aviso es un archivo propio del comando y se reescribe. El modelo predice un objeto destacado en primer plano; las escenas complejas y los bordes finos pueden requerir otro modelo de recorte.

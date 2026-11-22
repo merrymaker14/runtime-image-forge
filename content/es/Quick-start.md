@@ -1,75 +1,86 @@
 # Inicio rápido
 
-Usa Unity 6000.5 o posterior. El motor nativo incluido admite Windows x64 y una GPU compatible con Vulkan; el recorte usa GPU Compute. Unity Inference Engine 2.6.1 se instala como dependencia. MCP es opcional.
+Runtime Image Forge requiere Unity 6000.5 o posterior, Windows x64, una GPU compatible con Vulkan y Microsoft Visual C++ 2015–2022 Redistributable (x64). El modelo de generación de imágenes se ejecuta dentro de Unity Editor o de tu juego para Windows; no necesita servidor, puerto de escucha ni clave API.
 
-El motor se ejecuta como una DLL nativa dentro del proceso de Unity Editor o Windows Player. Runtime Image Forge verifica las bibliotecas locales con sus SHA-256 fijados antes de cargarlas. La generación de imágenes no requiere un servidor separado, un puerto de escucha ni una clave API.
+## 1. Importa el paquete
 
-Las bibliotecas nativas requieren Microsoft Visual C++ 2015–2022 Redistributable (x64), que la mayoría de los PC con Windows ya tienen. Si falta o está desactualizado, la preparación informa de una dependencia nativa ausente (con **Calentar al preparar** desactivado, lo informa el primer pedido); instala la versión más reciente desde Microsoft y reinicia Unity o el juego.
+Abre **Package Manager > My Assets**, descarga Runtime Image Forge e impórtalo. Los archivos se colocan en `Assets/StrangeEuphoriaXR/RuntimeImageForge`, y Unity añade como dependencias los paquetes Unity Inference Engine 2.6.1 y Unity uGUI 2.5.0. La ventana **Overview** se abre una vez después de la importación; puedes volver a abrirla desde **Tools > Runtime Image Forge > Overview**.
 
-## Instalación
+## 2. Prueba The Ember Forge
 
-1. Tras la compra, abre **Package Manager > My Assets**, descarga Runtime Image Forge e impórtalo. Sus archivos se colocan en `Assets/StrangeEuphoriaXR/RuntimeImageForge`. La importación también añade las dependencias Unity Inference Engine 2.6.1 y Unity uGUI 2.5.0.
-2. Abre `Samples/Models and choice styles` en esa carpeta. Incluye los perfiles Bonsai Ternary 4B y FLUX.2 Klein 4B, un perfil de recorte, cinco estilos Native1024 en `Styles/NativeDistilled1024` y los presets anteriores editables. Las actualizaciones del paquete reemplazan estos archivos: para cambiar un perfil o un estilo, duplícalo (Ctrl+D) y mueve la copia a tu propia carpeta fuera de `Assets/StrangeEuphoriaXR/RuntimeImageForge`.
-3. Abre **Tools > Runtime Image Forge > Overview**. Fuera del modo Play, elige **Instalar el motor para Windows**. El comando verifica las DLL nativas fijadas, las empaqueta en un archivo comprimido en StreamingAssets del proyecto y copia allí sus avisos; estos archivos se incluyen en las compilaciones de Windows.
+The Ember Forge es un juego de creación de objetos completo y editable, ubicado en `Samples/The Ember Forge`. Muestra todo el ciclo: elegir un objeto, generar su imagen, guardarla en una colección y exportarla como PNG.
 
-Los pesos se obtienen por separado. Bonsai Ternary 4B requiere un paquete plano convertido compatible con 4.642.526.382 bytes de pesos fijados (4,64 GB / 4,32 GiB). FLUX.2 Klein 4B contiene 5.207.178.964 bytes fijados (5,21 GB / 4,85 GiB), disponibles mediante descarga HTTPS explícita o importación local. El motor, los avisos, la sobrecarga del archivo comprimido y las copias temporales requieren espacio adicional. Lee [Modelos y estilos](Models-and-styles.md) y las condiciones del perfil antes de usar o redistribuirlo.
+1. Elige **Tools > Runtime Image Forge > Open The Ember Forge sample** (o **Abrir el ejemplo The Ember Forge** en Overview). El comando instala el motor para Windows con sus avisos de licencia en `Assets/StreamingAssets/RuntimeImageForge`, importa TMP Essential Resources si el proyecto no tiene TMP Settings y abre la escena. Los TMP Settings que ya existan se conservan, y el archivo comprimido del motor de otra versión del paquete se reemplaza.
+2. Entra en el modo Play y elige **DOWNLOAD MODEL**. El ejemplo usa FLUX.2 Klein 4B: tres archivos fijados, 5.207.178.964 bytes en total (5,21 GB), que se descargan de Hugging Face por HTTPS y se verifican con SHA-256. Se muestra el progreso, y **CANCEL ORDER** detiene la descarga. Los archivos se guardan en caché en `Application.persistentDataPath/RuntimeImageForge`, así que los siguientes inicios funcionan sin conexión.
+3. Elige un objeto, un material y un detalle, y luego **FORGE MY ITEM**. En la RTX 3060 Laptop GPU con 6 GB de VRAM en la que se hizo la prueba, una imagen de 1024 × 1024 tarda unos 17 segundos, incluida la eliminación del fondo. Los tiempos dependen de la GPU, del controlador y de otros trabajos que use la GPU.
+4. Selecciona un objeto de la colección y usa los controles de exportación para guardar su PNG y su receta.
 
-Descarga gratis el paquete de modelos Bonsai desde la [página de The Ember Forge en itch.io](https://merrymaker14.itch.io/the-ember-forge): elige **Runtime-Image-Forge-Bonsai-Models.zip**. Solo contiene los tres archivos de pesos con sus avisos e instrucciones, sin ningún ejecutable. Extráelo y conserva intacta su carpeta `RuntimeImageForgeModels`.
+Para obtener iconos PNG transparentes, elige **Tools > Runtime Image Forge > Install Foreground Model** antes de entrar en el modo Play. El comando descarga el modelo de recorte U²-Netp (4,6 MB) con su licencia desde la versión pública de rembg en GitHub, los coloca en `Assets/RuntimeImageForge/ForegroundModel` y asigna el modelo al perfil de recorte del ejemplo. Sin él, el ejemplo solo ofrece PNG con fondo.
 
-Antes de distribuir el juego, revisa **Todos los pesos del modelo** en el Inspector. Muestra a los jugadores el tamaño completo de la primera descarga antes de iniciarla. Los archivos del motor y el espacio temporal son adicionales; el tamaño de los pesos no indica los requisitos de RAM o VRAM.
+## 3. Añade un generador a tu escena
 
-## Configurar la escena
+1. Crea un objeto en la escena y añade `LocalForgeBackendSource` y `ForgeGenerator`.
+2. En **Perfil del modelo** de la fuente local, selecciona `Samples/The Ember Forge/Profiles/FLUX2Klein4B`. **Crear perfil de modelo** en Overview crea en la carpeta seleccionada un perfil nuevo con los mismos ajustes de FLUX.2 Klein 4B.
+3. Para PNG transparentes, asigna `Samples/The Ember Forge/Profiles/U2NetPForeground` a **Máscara del primer plano** e instala el modelo de recorte como se describe arriba.
+4. Deja **Dispositivo Vulkan** en `auto` para seleccionar una GPU adecuada.
+5. Asigna la fuente a **Fuente del motor** del generador. Mantén activado **Calentar al preparar**: así la preparación ejecuta una generación de calentamiento sin guardar su imagen.
+6. Elige un estilo de `Samples/The Ember Forge/Styles`, por ejemplo `IllustratedForgeNative1024` (1024 × 1024, 4 pasos, CFG 1, claves de opción `item`, `material` y `detail`), o crea uno propio con **Crear estilo con opciones** en Overview.
 
-Crea un objeto y añade `LocalForgeBackendSource` y `ForgeGenerator`.
+Antes de editar un perfil o un estilo, cópialo a tu propia carpeta (selecciónalo, pulsa Ctrl+D y mueve la copia). Las actualizaciones del paquete reemplazan los archivos de `Assets/StrangeEuphoriaXR/RuntimeImageForge`.
 
-- En el backend local, elige el recurso importado `BonsaiTernary4B` o `FLUX2Klein4B` en **Perfil del modelo**.
-- Asigna U2NETP a **Máscara del primer plano**. El paquete no incluye el modelo de recorte: elige **Instalar el modelo de recorte** en Overview, o **Tools > Runtime Image Forge > Install Foreground Model**, para descargar U²-Netp (4,6 MB, Apache-2.0) de la versión de rembg en GitHub con su licencia y su aviso. El perfil recibe el modelo automáticamente.
-- Mantén **Dispositivo Vulkan** en `auto` para seleccionar una GPU local adecuada.
-- Asigna esa fuente a **Fuente del motor** del generador. Mantén **Calentar al preparar** activo para preparar una vez sin guardar la imagen de calentamiento.
-- Para la primera imagen, elige `Styles/NativeDistilled1024/IllustratedForgeNative1024`: 1024 × 1024, 4 pasos, CFG 1. Las claves son `item`, `material` y `detail`. Elegir un perfil no cambia los ajustes del estilo.
+En el Editor, el Inspector del perfil de modelo ofrece **Descargar archivos del modelo y verificarlos**, con progreso y cancelación, para que puedas llenar la caché antes de entrar en el modo Play.
 
-Antes de preparar, abre el perfil elegido. Para Bonsai, usa **Importar archivos de modelo verificados** y selecciona el paquete plano convertido. Para Klein, elige **Descargar archivos del modelo y verificarlos**, o importa los tres archivos fijados de una carpeta local. Ambas acciones muestran progreso y permiten cancelar. El perfil verificado en caché puede prepararse sin conexión. Cambia perfiles en Edit Mode después de terminar el trabajo y cerrar los generadores preparados.
+## 4. Primera descarga y primera imagen
 
-**Crear perfil de modelo**, **Crear perfil de recorte** y **Crear estilo con opciones** en Overview crean y seleccionan recursos en la carpeta Assets elegida, con nombres únicos. Un perfil de recorte nuevo recibe el modelo de recorte instalado; si falta, su Inspector ofrece **Instalar el modelo de recorte**. Los estilos nuevos incluyen opciones editables de objeto, material y detalle. **Estilo existente > Editar el estilo seleccionado** abre un catálogo guardado. También puedes crear desde **Assets > Create > Runtime Image Forge**; asigna manualmente el ONNX instalado a un perfil de recorte creado desde ese menú.
-
-## Juego incluido
-
-El paquete incluye **The Ember Forge**, una escena completa editable con código del juego, arte del taller y música propia, en su carpeta `Samples/The Ember Forge`. Elige **Tools > Runtime Image Forge > Open The Ember Forge sample**. El menú añade TMP Essentials si el proyecto no tiene recursos TMP, abre la escena del ejemplo e instala las DLL nativas de Windows y sus avisos. Conserva los TMP Settings existentes. Una instalación parcial de TMP debe repararse antes de abrir el ejemplo; sus recursos se conservan. La escena utiliza el renderizado y el sistema de entrada activo del proyecto. El ejemplo ya tiene asignados `BonsaiTernary4B` e `IllustratedForgeNative1024`: 1024 × 1024, 4 pasos y CFG 1. Para usar Klein, selecciona `FLUX2Klein4B` en el backend local antes de Play; elegir el perfil conserva los ajustes del estilo. En el juego, usa **IMPORT MODEL PACK** para Bonsai o la descarga explícita del modelo para Klein.
-
-Mantén una sola copia del ejemplo en el proyecto. Haz copia de los archivos modificados del ejemplo antes de importar una versión nueva del paquete. El README explica el contenido y el primer arranque. La distribución independiente para Windows funciona sin Unity ni este paquete.
-
-Para el ejemplo en el Editor, coloca la carpeta extraída `RuntimeImageForgeModels` junto a la carpeta `Assets` del proyecto, entra en Play Mode y pulsa **IMPORT MODEL PACK**. La importación copia y verifica los archivos una vez.
-
-## Primera descarga y pedido
-
-Para un perfil HTTPS como Klein, conecta el botón de descarga a una llamada explícita a `localSource.DownloadModelAsync(progress, token)`. Para un perfil de solo importación como Bonsai, llama explícitamente a `localSource.ImportModelPackAsync(selectedFolder, progress, token)`. Muestra el volumen completo, progreso, cancelación y errores antes de obtener los archivos. Espera a que el jugador elija esta acción.
-
-Si `HasLocalModel` es true, pasa a preparación. Elige primero PNG transparente o con fondo y llama a `generator.PrepareAsync(style, backgroundMode, token)`. Comprueba el archivo local, carga el contexto nativo del modelo y calienta la ruta elegida sin guardar una imagen. El PNG con fondo omite el calentamiento del recorte. Espera a `generator.IsReady` antes de aceptar pedidos.
+Inicia una descarga solo después de que el jugador la acepte. Muestra primero el tamaño completo: `profile.GetTotalDownloadBytes()` devuelve el total de los pesos fijados. Omite la descarga si `localSource.HasLocalModel` ya es true.
 
 ```csharp
-var choices = new Dictionary<string, string>
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+using StrangeEuphoriaXR.RuntimeImageForge;
+using UnityEngine;
+using UnityEngine.UI;
+
+public sealed class FirstImage : MonoBehaviour
 {
-    ["item"] = "sword",
-    ["material"] = "steel",
-    ["detail"] = "runes"
-};
-var backgroundMode = ForgeBackgroundMode.Transparent; // Use KeepBackground to skip cutout.
-await generator.PrepareAsync(style, backgroundMode, token);
-var job = generator.Generate(style, choices, 1234, backgroundMode, token);
-await job.Completion;
-if (job.State != "completed")
-    throw new InvalidOperationException(job.Error ?? job.State);
-var artifact = await generator.ReadArtifactAsync(job.Request, token);
-var ownedImage = await UnityPngImage.CreateAsync(artifact, cancellationToken: token);
-inventoryImage.sprite = ownedImage.Sprite;
+    [SerializeField] private LocalForgeBackendSource localSource;
+    [SerializeField] private ForgeGenerator generator;
+    [SerializeField] private ForgeStyleAsset style;
+    [SerializeField] private Image inventoryImage;
+    private UnityPngImage ownedImage;
+
+    // Call this from your button after the player has seen the download size.
+    public async Task ForgeAsync(CancellationToken token)
+    {
+        if (!localSource.HasLocalModel)
+            await localSource.DownloadModelAsync(new Progress<float>(p => Debug.Log($"Download {p:P0}")), token);
+
+        var backgroundMode = ForgeBackgroundMode.Transparent; // Use KeepBackground to skip the cutout.
+        await generator.PrepareAsync(style, backgroundMode, token);
+
+        var choices = new Dictionary<string, string> { ["item"] = "sword", ["material"] = "steel", ["detail"] = "runes" };
+        var job = generator.Generate(style, choices, 1234, backgroundMode, token);
+        await job.Completion;
+        if (job.State != "completed") throw new InvalidOperationException(job.Error ?? job.State);
+
+        var artifact = await generator.ReadArtifactAsync(job.Request, token);
+        ownedImage?.Dispose();
+        ownedImage = await UnityPngImage.CreateAsync(artifact, cancellationToken: token);
+        inventoryImage.sprite = ownedImage.Sprite;
+    }
+
+    private void OnDestroy() => ownedImage?.Dispose();
+}
 ```
 
-Este fragmento utiliza `System`, `System.Collections.Generic` y `StrangeEuphoriaXR.RuntimeImageForge`. `generator`, `style` e `inventoryImage` son tus componentes y recursos asignados. Conserva `ownedImage` mientras la interfaz utiliza su sprite; libéralo al sustituir la imagen o cerrar la vista. La [API](API.md) explica el ciclo de vida y los errores.
+`PrepareAsync` verifica los archivos en caché, carga el modelo y calienta la ruta seleccionada. Espera a que termine antes de aceptar pedidos. Conserva `ownedImage` mientras la interfaz muestre su sprite y libéralo cuando sustituyas la imagen. La guía [API de ejecución](API.md) explica los estados de los trabajos, la cancelación y el ciclo de vida de las imágenes.
 
-Exporta un trabajo terminado con `generator.ExportJobAsync(...)` o un `PngArtifact` existente con `PngExporter`. Exportar guarda la imagen sin ejecutar de nuevo el modelo.
+Exporta un trabajo completado con `generator.ExportJobAsync(...)`, o un `PngArtifact` existente con `PngExporter`. La exportación copia los píxeles terminados y no vuelve a ejecutar el modelo. Consulta [Guardar y exportar](Exporting-images.md).
 
-## Compilar un juego
+## 5. Compila un juego
 
-Compila un Player Windows x64 con la escena configurada. Conserva los archivos y avisos de `StreamingAssets/RuntimeImageForge`. Para Bonsai, proporciona una carpeta plana compatible `RuntimeImageForgeModels` junto al juego y una acción de importación local; para Klein, descarga HTTPS explícita o importación local. La caché verificada admite siguientes arranques sin conexión. Conserva LICENSE/NOTICE y avisos de conversión al redistribuir el paquete. Guarda receta, hash y PNG juntos al restaurar objetos generados.
+Compila un Player de Windows x64 con tu escena. Conserva los archivos que el instalador del motor colocó en `Assets/StreamingAssets/RuntimeImageForge`, incluidos los avisos de licencia. Tu juego debe ofrecer una descarga explícita del modelo (o una importación local de sus archivos) antes de la primera generación; después, los archivos verificados se reutilizan sin conexión. Conserva los avisos de licencia del modelo cuando distribuyas sus archivos con tu juego.
 
-Los inspectores y MCP opcional no se incluyen en el Player. El juego público no necesita servidor MCP. Consulta [Solución de problemas](Troubleshooting.md) para reparación y cancelación.
+Las ventanas del Editor y las herramientas MCP opcionales son exclusivas del Editor y no se incluyen en las compilaciones del Player. Consulta [Solución de problemas](Troubleshooting.md) si tienes problemas de descarga, preparación o cancelación.

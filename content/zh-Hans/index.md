@@ -12,6 +12,6 @@ Runtime Image Forge 根据游戏预先定义的选项，在本地生成 PNG。�
 | [故障排查](Troubleshooting.md) | 下载、就绪、GPU、取消与文件错误。 |
 | [第三方声明](Third-party-notices.md) | 固定组件版本与许可证文本。 |
 
-The Ember Forge 作为可编辑示例随软件包提供，包括场景、游戏代码、美术和音乐。独立 Windows 下载版无需 Unity 或此软件包即可游玩。
+The Ember Forge 作为可编辑的示例游戏随软件包提供，包括场景、玩法源代码、美术、模型配置和五个选项风格。请从 **Tools > Runtime Image Forge > Open The Ember Forge sample** 开始。
 
 编辑器、网站与指南提供英语、俄语、西班牙语和简体中文。在 Forge 窗口或 Inspector 中选择**编辑器语言**，文档按钮会打开相应指南。切换语言只改变界面呈现，不改变模型提示词或游戏设置。

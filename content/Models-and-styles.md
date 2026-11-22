@@ -1,84 +1,78 @@
 # Models and styles
 
-The Ember Forge sample uses Bonsai Ternary 4B by default. The standalone Windows bundle includes its flat `RuntimeImageForgeModels` folder beside the game; choose **IMPORT MODEL PACK** once to copy and verify it. Preserve that folder with the original notices when moving the bundle. The Unity package keeps model weights separate; import the compatible Bonsai model pack or select the Klein profile for explicit HTTPS acquisition.
-
-Developers can download the same Bonsai pack without the game: **Runtime-Image-Forge-Bonsai-Models.zip** on [The Ember Forge page](https://merrymaker14.itch.io/the-ember-forge).
+A **model profile** (`ForgeModelProfile`) says which model files to use and how to run them. A **choice style** (`ForgeStyleAsset`) says what players may choose and how those choices become a prompt. A **foreground profile** (`ForegroundModelProfile`) configures the optional background removal. The Ember Forge sample includes one of each kind, ready to use.
 
 ## Choice catalogs
 
-A `ForgeStyleAsset` defines both visual direction and allowed player choices. Each field has a stable key; each choice has a key, a display label and prompt text. The prompt template uses fields such as `{item}`, `{material}` and `{detail}`. Submit every required field by its key. Unknown choices and unresolved fields are rejected.
+A `ForgeStyleAsset` defines both the visual direction and the allowed player choices. Each field has a stable key; each choice has a key, a display label and prompt text. The prompt template uses fields such as `{item}`, `{material}` and `{detail}`. Submit every required field by its key. Unknown choices and unresolved fields are rejected.
 
-Use labels for UI and keys for saved data. For example, display **Runic engraving**, submit `runes`, and expand it as **subtle engraved runes**. Change `styleVersion` when changing a shipped style's meaning. The applied prompt and complete settings are recorded in each image recipe, so later edits do not rewrite earlier images.
+Use labels for UI and keys for saved data. For example, display **Runic engraving**, submit `runes`, and expand it as **subtle engraved runes**. Change `styleVersion` when you change the meaning of a style that is already in a released game. The applied prompt and all settings are recorded in each image recipe, so later edits do not change earlier images.
 
-The `Samples/Models and choice styles` folder contains:
+`Samples/The Ember Forge/Styles` contains five editable styles, all at 1024 × 1024, 4 steps and CFG 1:
 
 | Style | Choice fields | Background |
 | --- | --- | --- |
-| Illustrated Forge | item, material, detail | Removed; requires a foreground processor. |
+| Illustrated Forge | item, material, detail | Removed; requires a foreground profile. Used by the sample scene. |
 | Pixel Inspired Items | item, material, detail | Removed. |
 | Flat Icons | item, material, detail | Removed. |
 | Character Portraits | character, mood, palette | Kept. |
 | Environment Cards | location, time, weather | Kept. |
 
-These are editable prompt presets. Pixel Inspired Items suggests an appearance; it does not enforce a pixel grid, exact palette or animation consistency. Negative prompts and catalog restrictions guide the model but do not guarantee a particular result.
+These are prompt presets. Pixel Inspired Items suggests an appearance; it does not enforce a pixel grid, an exact palette or animation consistency. Negative prompts and catalog restrictions guide the model but do not guarantee a particular result. Distilled models at CFG 1 may ignore a negative prompt.
 
 ## Generation settings
 
-Width, height, steps, guidance and seed are part of the request and cache key. For Bonsai Ternary 4B and FLUX.2 Klein 4B, choose an explicit style from `Styles/NativeDistilled1024`: 1024 × 1024, 4 steps and CFG 1. Both profiles use `euler` and `flux2`, with CPU weight offload and diffusion flash attention. Recommended profile values do not automatically change a style.
+Width, height, steps, guidance and seed are part of the request and of its cache key. The supplied native backend requires width and height of at least 64 pixels, divisible by 64; it rejects unsupported settings instead of silently replacing them. Higher resolutions need more memory and time. Repeating a recorded request can reuse its cached PNG; the same seed on different hardware or backend versions does not guarantee identical pixels.
 
-The original styles remain editable 512 × 512 presets for the legacy recipe. The supplied native backend requires dimensions of at least 64 pixels, divisible by 64; it rejects unsupported settings instead of silently substituting them. Higher resolutions can need more resources. Repeating a recorded request can reuse its PNG cache; using the same seed across hardware or backend versions does not guarantee identical pixels.
+The model profile's recommended values (sampler `euler`, scheduler `flux2`, 4 steps, CFG 1, 1024 × 1024) describe the model; they do not change a style. Choose a style whose settings suit the model.
 
-The Native1024 environment preset's `location=forge` choice specifies a glowing coal hearth, large anvil and smithing hammer. Pixel and flat-icon prompts suggest a visual direction; they do not enforce a pixel grid or exact palette. Distilled models at CFG 1 may ignore a negative prompt.
+## The FLUX.2 Klein 4B profile
 
-## Models and integrity
+`Samples/The Ember Forge/Profiles/FLUX2Klein4B` and every new profile created with **Create model profile** use FLUX.2 Klein 4B (Apache-2.0). The profile pins three files separately; each entry declares its source repository revision, filename, byte count, SHA-256 and license:
 
-The included `BonsaiTernary4B` and `FLUX2Klein4B` profiles each pin a generator, text encoder and VAE separately. Every component declares its exact source repository revision, filename, byte count, SHA-256 and license. The weight files are acquired separately from the Unity package.
-
-| Profile | Acquisition | Complete pinned weights |
+| Role | File | Bytes |
 | --- | --- | ---: |
-| Bonsai Ternary 4B | Import the free Bonsai model pack (see above). | 4,642,526,382 bytes (4.64 GB / 4.32 GiB). |
-| FLUX.2 Klein 4B | Explicit HTTPS download or local import. | 5,207,178,964 bytes (5.21 GB / 4.85 GiB). |
+| Generator | `flux-2-klein-4b-Q4_0.gguf` | 2,460,378,560 |
+| Text encoder (Qwen3-4B) | `Qwen3-4B-Q4_K_M.gguf` | 2,497,281,312 |
+| VAE | `full_encoder_small_decoder.safetensors` | 249,519,092 |
+| **Total** | | **5,207,178,964 (5.21 GB / 4.85 GiB)** |
 
-Bonsai is an import-only profile. Put `bonsai-ternary-transformer.gguf`, `bonsai-qwen3-hqq-affine.gguf` and `diffusion_pytorch_model.safetensors` directly in the chosen folder. These GGUF files are converted forms; the original Gemlite checkpoints do not match the profile. Import does not search subfolders or convert checkpoints. Keep the original LICENSE/NOTICE and conversion notices with the model pack.
+The profile runs with CPU weight offload and flash attention in the diffusion model, so it fits a GPU with 6 GB of VRAM. On the tested RTX 3060 Laptop GPU (6 GB) with 32 GB of RAM, a 1024 × 1024 picture took about 17 seconds including background removal, and the game process used up to about 6.3 GB of RAM. This is a tested configuration, not a minimum.
 
-Klein pins `flux-2-klein-4b-Q4_0.gguf`, `Qwen3-4B-Q4_K_M.gguf` and `full_encoder_small_decoder.safetensors`. In the profile Inspector, choose **Download verified model files** to obtain the fixed HTTPS components, with progress and cancellation. **Import verified model files** also accepts their flat local folder. Both actions reuse files already verified in the selected cache; profile selection never starts acquisition.
+In the profile Inspector, **Download verified model files** downloads the three files over HTTPS with progress and cancellation; in a game, call `LocalForgeBackendSource.DownloadModelAsync`. **Import verified model files** accepts the same three files from a local folder. Both actions reuse files that are already verified in the cache, and selecting a profile never starts a download.
 
-Sizes above count the three required weight files. DLLs, notices, archives, exported PNGs and temporary copies are additional. Import keeps the source pack and creates a separate cache copy, so reserve at least another full payload on the cache volume plus headroom. The model Inspector shows the complete pinned weight total. Weight-file size is not a RAM or VRAM requirement.
+The sizes above count the weight files only. The native DLLs, notices, exported PNGs and a temporary download file need additional space. File size is not a RAM or VRAM requirement.
 
-The U²-Netp cutout model is a separate Apache-2.0 model that the package does not include; **Install foreground model** downloads it on request. The original DreamShaper profile remains a legacy preset under CreativeML OpenRAIL-M. Exact source revisions and terms are in [Third-party notices](Third-party-notices.md).
-
-Change the model/profile before preparing a new generator. A prepared queue retains one backend identity. Stop outstanding work and close/unload the generator before selecting another saved profile in Edit Mode.
+Change the profile before preparing a generator. A prepared generator keeps one model. Stop outstanding work and close the generator before you select another profile in Edit Mode.
 
 ## Transparent PNGs
 
-**Refine thin objects** (`ForegroundModelProfile.refineUniformBackground`) can use a second foreground pass for one isolated object on a uniform opaque background when the first mask is incomplete. The processor keeps the first mask when the crop is unsuitable or the new mask fails its preservation checks. This option has a separate cache identity. Inspect fine edges and openings; refinement does not guarantee a perfect cutout. The companion and choice-style foreground profiles enable this option.
+Disable **Keep Background** for isolated items and assign a foreground profile to the local source. After generation, the foreground processor predicts a mask for the main object. The result is RGBA with straight alpha; PNG export keeps that alpha.
 
-Disable **Keep Background** for isolated items and assign the foreground profile to the local source. The foreground processor predicts a salient-object mask after generation. The result is straight-alpha RGBA; PNG export keeps that alpha.
+The package does not include the cutout model. **Tools > Runtime Image Forge > Install Foreground Model** downloads U²-Netp (4,574,861 bytes, Apache-2.0) with its license, places it in `Assets/RuntimeImageForge/ForegroundModel` and assigns it to foreground profiles that wait for it. The model is installed into the project once and is included in game builds, so players do not download it separately. Cutout runs locally on the GPU. The U²-Netp profile reads the mask from the output named `1959` (**Mask output name**); leave that field empty for an ONNX mask model with a single output.
 
-Enable **Keep Background** for portraits, environments and complete illustrations. This bypasses foreground processing and preserves the whole picture. Both modes export PNG. With no foreground profile assigned, choose `ForgeBackgroundMode.KeepBackground`; a transparent request is rejected by the supplied native backend instead of silently returning an opaque picture.
+**Refine thin objects** (`ForegroundModelProfile.refineUniformBackground`) can run a second pass for one isolated object on a uniform background when the first mask is incomplete. The processor keeps the first mask when the crop is unsuitable or the new mask fails its checks. This option has its own cache identity. The sample's foreground profile enables it.
 
-For a player-facing choice, pass `ForgeBackgroundMode.Transparent` or `ForgeBackgroundMode.KeepBackground` to `PrepareAsync`, `Generate`, or the style's `CreateRequest` overload. `StyleDefault` preserves the asset's default. The override belongs to one recipe and does not edit the shared style. Preparing with `KeepBackground` skips foreground warmup; if the player later selects transparency, that order includes the foreground model's first-use setup.
+Enable **Keep Background** for portraits, environments and complete illustrations. This skips the cutout and keeps the whole picture. Both modes save PNG. Without a foreground profile, use `ForgeBackgroundMode.KeepBackground`: a transparent request is rejected instead of silently returning an opaque picture.
 
-The U²-Netp cutout model is installed into the project once: 4,574,861 bytes (about 4.4 MiB). Game builds include it, so players do not download it separately. Model weight totals are listed above. Cutout runs locally and has no per-image API fee. Warm the selected transparent pipeline during preparation; exporting an existing PNG only copies its bytes. The U²-Netp profile reads the mask from the output named `1959` (**Mask output name**); leave that field empty for an ONNX mask model with a single output.
+To let the player choose, pass `ForgeBackgroundMode.Transparent` or `ForgeBackgroundMode.KeepBackground` to `PrepareAsync`, `Generate` or the style's `CreateRequest` overload. `StyleDefault` uses the style's own setting. The choice belongs to one recipe and does not edit the shared style. Preparing with `KeepBackground` skips the cutout warmup; if the player later chooses transparency, that order also loads the cutout model.
 
-Fine outlines, translucent materials, gaps, shadows and incidental objects can make imperfect masks. Check actual outputs for your art direction. Background removal makes a 2D image; it does not create geometry or guarantee clean sprite contours. The [export guide](Exporting-images.md) explains how to share the original PNG and its recipe.
+Fine outlines, translucent materials, gaps, shadows and secondary objects can produce imperfect masks. Check real results for your art. Background removal makes a 2D image; it does not create geometry or guarantee clean sprite outlines. The [export guide](Exporting-images.md) explains how to share the PNG and its recipe.
 
-## Import a local model pack
+## Use your own model files
 
-Enable **Import only** (`ForgeModelProfile.importOnly`) when model files are supplied locally. This option defaults to off; existing HTTPS profiles and their generation identities are unchanged. Import-only profiles may leave download URLs empty. Every file still needs its exact filename, revision, byte count, SHA-256 and license information. Component filenames must be distinct when compared without regard to letter case.
+A profile can also describe a model you supply yourself. Enable **Import only** (`ForgeModelProfile.importOnly`) when the files are delivered locally rather than downloaded; download URLs may then stay empty. Every file still needs its exact filename, revision, byte count, SHA-256 and license information, and component filenames must differ even when letter case is ignored. Turn off **Separate component files** to describe a single checkpoint file instead of separate generator, text encoder and VAE files.
 
-In the profile inspector, choose **Import verified model files**, then select the folder containing the files directly. The importer does not search subfolders or unpack archives. It copies only the pinned filenames, rejects symbolic links and directory junctions, verifies each file, and installs it into the cache under `Application.persistentDataPath/RuntimeImageForge`. It does not change the source files. The cache keeps its own copy, so retain enough space for both the pack and the cache plus a temporary file.
+In the profile Inspector, choose **Import verified model files** and select the folder that contains the files directly. The importer does not search subfolders or unpack archives. It copies only the pinned filenames, rejects symbolic links and directory junctions, verifies each file and installs it into the cache under `Application.persistentDataPath/RuntimeImageForge`. It does not change the source files. Keep enough space for both the source files and the cache copy.
 
-Cancel using **Cancel import**. Completed verified files remain reusable; an unfinished copy is removed. A valid cached file is reused without replacing it. Missing import-only files never trigger a network download.
+**Cancel import** stops the copy. Completed verified files stay reusable; an unfinished copy is removed. Missing import-only files never trigger a network download.
 
-For a game, explicitly call `ForgeModelCache.ImportProfileAsync(cacheRoot, profile, selectedFolder, progress, cancellationToken)` or `LocalForgeBackendSource.ImportModelPackAsync(selectedFolder, progress, cancellationToken)`. The companion's **IMPORT MODEL PACK** action uses `LocalForgeBackendSource.ModelPackDirectory`: the fixed `RuntimeImageForgeModels` folder beside the executable, or beside `Assets` in the Editor. Place the exact profile files directly in that folder, then choose the action. Existing cached files can be used offline without retaining the source pack.
+In a game, call `LocalForgeBackendSource.ImportModelPackAsync(selectedFolder, progress, cancellationToken)` or `ForgeModelCache.ImportProfileAsync(cacheRoot, profile, selectedFolder, progress, cancellationToken)`. For an import-only profile the sample shows **IMPORT MODEL PACK** and reads the `RuntimeImageForgeModels` folder beside the game executable (beside `Assets` in the Editor), exposed as `LocalForgeBackendSource.ModelPackDirectory`.
 
-Import checks file identity, not model architecture or generation quality. Use a backend compatible with the model and keep the applicable model licenses.
+Import checks file identity, not model architecture or image quality. Use a model that the supplied backend supports, and follow the license of every model you use or distribute.
 
 ## Choose a model profile in the Editor
 
-In **Tools → Runtime Image Forge → Overview**, assign the scene's `LocalForgeBackendSource` to **Scene backend**, then choose a saved asset from **Model profile**. The same list is available in the local backend inspector. **Open model profile** opens its settings and explicit local import action.
+In **Tools > Runtime Image Forge > Overview**, assign the scene's `LocalForgeBackendSource` to **Scene backend**, then choose a saved profile from **Model profile**. The same list is available in the local backend Inspector. **Open model profile** opens its settings, download and import actions.
 
-The selector changes only that source's reference and supports Undo/redo. It does not edit the selected profile or any style, transfer model files, or change an existing generator's backend. Exit Play Mode first; compilation, asset import and any ready or preparing generator block selection. Close/unload prepared generators before changing profiles, then prepare the selected model in the next game session.
-
-A saved profile must have valid file pins and a recipe supported by the backend. Its appearance in the list does not establish native compatibility or image quality. Import or download its exact files explicitly, and check that the game's styles and settings suit the model.
+The selector changes only that source's reference and supports Undo. It does not edit the profile or any style, move model files or change a generator that is already prepared. Exit Play Mode first; compilation, asset import and any ready or preparing generator block the selection.

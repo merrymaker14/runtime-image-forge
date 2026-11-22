@@ -1,84 +1,78 @@
 # Modelos y estilos
 
-El ejemplo The Ember Forge usa Bonsai Ternary 4B por defecto. El paquete independiente para Windows incluye su carpeta plana `RuntimeImageForgeModels` junto al juego; pulsa **IMPORT MODEL PACK** una vez para copiarla y verificarla. Al mover el paquete, conserva esa carpeta y los avisos originales. Los pesos se suministran por separado del paquete Unity; importa el paquete compatible de Bonsai o selecciona Klein para obtenerlo explícitamente mediante HTTPS.
-
-Los desarrolladores pueden descargar el mismo paquete Bonsai sin el juego: **Runtime-Image-Forge-Bonsai-Models.zip** en la [página de The Ember Forge](https://merrymaker14.itch.io/the-ember-forge).
+Un **perfil de modelo** (`ForgeModelProfile`) indica qué archivos de modelo se usan y cómo se ejecutan. Un **estilo con opciones** (`ForgeStyleAsset`) indica qué pueden elegir los jugadores y cómo esas elecciones se convierten en un prompt. Un **perfil de recorte** (`ForegroundModelProfile`) configura la eliminación opcional del fondo. El ejemplo The Ember Forge incluye recursos de cada tipo listos para usar.
 
 ## Catálogos de opciones
 
-`ForgeStyleAsset` define dirección visual y opciones permitidas. Cada campo tiene una clave estable; cada opción, una clave, etiqueta visible y texto de prompt. La plantilla usa campos como `{item}`, `{material}` y `{detail}`. Envía todos los campos requeridos por clave. Se rechazan opciones desconocidas y campos sin resolver.
+Un `ForgeStyleAsset` define tanto la dirección visual como las opciones permitidas para el jugador. Cada campo tiene una clave estable; cada opción tiene una clave, una etiqueta visible y un texto de prompt. La plantilla del prompt usa campos como `{item}`, `{material}` y `{detail}`. Envía cada campo obligatorio por su clave. Se rechazan las opciones desconocidas y los campos sin resolver.
 
-Usa etiquetas en la interfaz y claves en los datos guardados. Por ejemplo, muestra **Grabado rúnico**, envía `runes` y expándelo a **subtle engraved runes**. Cambia `styleVersion` si cambia el significado de un estilo publicado. El prompt aplicado y los ajustes completos se registran en la receta: las ediciones posteriores no reescriben imágenes anteriores.
+Usa las etiquetas en la interfaz y las claves en los datos guardados. Por ejemplo, muestra **Grabado rúnico**, envía `runes` y expándelo a **subtle engraved runes**. Cambia `styleVersion` cuando cambies el significado de un estilo que ya está en un juego publicado. El prompt aplicado y todos los ajustes se registran en la receta de cada imagen, así que las ediciones posteriores no cambian las imágenes anteriores.
 
-La carpeta `Samples/Models and choice styles` contiene:
+`Samples/The Ember Forge/Styles` contiene cinco estilos editables, todos de 1024 × 1024, 4 pasos y CFG 1:
 
-| Estilo | Campos | Fondo |
+| Estilo | Campos de opción | Fondo |
 | --- | --- | --- |
-| Illustrated Forge | item, material, detail | Eliminado; requiere procesador de primer plano. |
+| Illustrated Forge | item, material, detail | Eliminado; requiere un perfil de recorte. Lo usa la escena del ejemplo. |
 | Pixel Inspired Items | item, material, detail | Eliminado. |
 | Flat Icons | item, material, detail | Eliminado. |
 | Character Portraits | character, mood, palette | Conservado. |
 | Environment Cards | location, time, weather | Conservado. |
 
-Son presets de prompt editables. Pixel Inspired Items sugiere un aspecto; no impone una cuadrícula de píxeles, paleta exacta o consistencia de animación. Los prompts negativos y el catálogo orientan al modelo, pero no garantizan un resultado concreto.
+Son presets de prompt. Pixel Inspired Items sugiere un aspecto; no impone una cuadrícula de píxeles, una paleta exacta ni coherencia en la animación. Los prompts negativos y las restricciones del catálogo orientan al modelo, pero no garantizan un resultado concreto. Los modelos destilados con CFG 1 pueden ignorar un prompt negativo.
 
 ## Ajustes de generación
 
-Anchura, altura, pasos, guía y semilla forman parte de la solicitud y de la clave de caché. Para Bonsai Ternary 4B y FLUX.2 Klein 4B, elige explícitamente un estilo de `Styles/NativeDistilled1024`: 1024 × 1024, 4 pasos y CFG 1. Ambos perfiles usan `euler` y `flux2`, traslado de pesos a la CPU y diffusion flash attention. Los valores recomendados del perfil no cambian el estilo automáticamente.
+La anchura, la altura, los pasos, la guía y la semilla forman parte de la solicitud y de su clave de caché. El motor nativo incluido requiere que la anchura y la altura sean de al menos 64 píxeles y divisibles entre 64; rechaza los ajustes no admitidos en lugar de sustituirlos sin avisar. Las resoluciones más altas necesitan más memoria y tiempo. Repetir una solicitud registrada puede reutilizar su PNG en caché; la misma semilla en otro hardware o con otra versión del motor no garantiza píxeles idénticos.
 
-Los estilos originales siguen siendo presets editables de 512 × 512 para la receta anterior. El motor requiere al menos 64 píxeles y dimensiones divisibles entre 64; rechaza ajustes incompatibles en lugar de sustituirlos silenciosamente. Una resolución mayor puede necesitar más recursos. Repetir una solicitud registrada puede reutilizar su PNG; la misma semilla en otro hardware o versión no garantiza píxeles idénticos.
+Los valores recomendados del perfil de modelo (muestreador `euler`, planificador `flux2`, 4 pasos, CFG 1, 1024 × 1024) describen el modelo; no cambian ningún estilo. Elige un estilo cuyos ajustes se adapten al modelo.
 
-La opción `location=forge` del preset de entorno Native1024 describe un hogar de carbón encendido, un yunque grande y un martillo de herrero. Los prompts de pixel art e iconos planos orientan la apariencia, pero no imponen una cuadrícula ni una paleta exacta. Los modelos distilled con CFG 1 pueden ignorar los prompts negativos.
+## El perfil FLUX.2 Klein 4B
 
-## Modelos e integridad
+`Samples/The Ember Forge/Profiles/FLUX2Klein4B` y cada perfil nuevo creado con **Crear perfil de modelo** usan FLUX.2 Klein 4B (Apache-2.0). El perfil fija tres archivos por separado; cada entrada declara la revisión del repositorio de origen, el nombre de archivo, el número de bytes, el SHA-256 y la licencia:
 
-Los perfiles incluidos `BonsaiTernary4B` y `FLUX2Klein4B` fijan por separado generador, codificador de texto y VAE. Cada componente declara revisión exacta del repositorio de origen, nombre de archivo, bytes, SHA-256 y licencia. Los pesos se obtienen por separado del paquete de Unity.
-
-| Perfil | Obtención | Pesos fijados completos |
+| Función | Archivo | Bytes |
 | --- | --- | ---: |
-| Bonsai Ternary 4B | Importar el paquete gratuito de modelos Bonsai (ver arriba). | 4.642.526.382 bytes (4,64 GB / 4,32 GiB). |
-| FLUX.2 Klein 4B | Descarga HTTPS explícita o importación local. | 5.207.178.964 bytes (5,21 GB / 4,85 GiB). |
+| Generador | `flux-2-klein-4b-Q4_0.gguf` | 2.460.378.560 |
+| Codificador de texto (Qwen3-4B) | `Qwen3-4B-Q4_K_M.gguf` | 2.497.281.312 |
+| VAE | `full_encoder_small_decoder.safetensors` | 249.519.092 |
+| **Total** | | **5.207.178.964 (5,21 GB / 4,85 GiB)** |
 
-Bonsai usa un perfil de solo importación. Coloca `bonsai-ternary-transformer.gguf`, `bonsai-qwen3-hqq-affine.gguf` y `diffusion_pytorch_model.safetensors` directamente en la carpeta elegida. Los GGUF son archivos convertidos; los checkpoints originales de Gemlite no coinciden con el perfil. La importación no busca subcarpetas ni convierte checkpoints. Conserva los LICENSE/NOTICE originales y los avisos de conversión con el paquete de modelos.
+El perfil funciona con traslado de pesos a la CPU y flash attention en el modelo de difusión, por lo que cabe en una GPU con 6 GB de VRAM. En la RTX 3060 Laptop GPU (6 GB) con 32 GB de RAM en la que se hizo la prueba, una imagen de 1024 × 1024 tardó unos 17 segundos, incluida la eliminación del fondo, y el proceso del juego usó hasta unos 6,3 GB de RAM. Es una configuración probada, no un requisito mínimo.
 
-Klein fija `flux-2-klein-4b-Q4_0.gguf`, `Qwen3-4B-Q4_K_M.gguf` y `full_encoder_small_decoder.safetensors`. En el Inspector, elige **Descargar archivos del modelo y verificarlos** para obtener los componentes HTTPS fijados con progreso y cancelación. **Importar archivos de modelo verificados** también acepta su carpeta local plana. Ambas acciones reutilizan archivos ya verificados en la caché elegida; seleccionar un perfil no inicia la obtención.
+En el Inspector del perfil, **Descargar archivos del modelo y verificarlos** descarga los tres archivos por HTTPS con progreso y cancelación; en un juego, llama a `LocalForgeBackendSource.DownloadModelAsync`. **Importar archivos de modelo verificados** acepta los mismos tres archivos desde una carpeta local. Ambas acciones reutilizan los archivos que ya están verificados en la caché, y seleccionar un perfil nunca inicia una descarga.
 
-Los tamaños indicados suman los tres archivos de pesos requeridos. DLL, avisos, archivos comprimidos, PNG exportados y copias temporales requieren espacio adicional. La importación conserva el paquete original y crea otra copia en caché; reserva al menos otro volumen completo de pesos en la unidad de caché, más margen. El Inspector muestra la suma completa de pesos fijados. El tamaño de los archivos no equivale a un requisito de RAM o VRAM.
+Los tamaños anteriores solo cuentan los archivos de pesos. Las DLL nativas, los avisos, los PNG exportados y un archivo temporal de descarga necesitan espacio adicional. El tamaño de los archivos no es un requisito de RAM ni de VRAM.
 
-U²-Netp es un modelo de recorte independiente con Apache-2.0 que el paquete no incluye; **Instalar el modelo de recorte** lo descarga a petición. El perfil original de DreamShaper permanece como preset anterior bajo CreativeML OpenRAIL-M. Las revisiones y condiciones están en [Avisos de terceros](Third-party-notices.md).
-
-Cambia el perfil antes de preparar un generador. La cola preparada mantiene una identidad de backend. Termina los trabajos y cierra o libera el generador antes de seleccionar otro perfil guardado en Edit Mode.
+Cambia el perfil antes de preparar un generador. Un generador preparado mantiene un único modelo. Detén el trabajo pendiente y cierra el generador antes de seleccionar otro perfil en Edit Mode.
 
 ## PNG transparentes
 
-**Refinar objetos delgados** (`ForegroundModelProfile.refineUniformBackground`) puede ejecutar una segunda pasada para un objeto aislado sobre un fondo opaco uniforme cuando la primera máscara está incompleta. El procesador conserva la primera máscara si el recorte no es adecuado o la nueva máscara no supera las comprobaciones de conservación. La opción tiene una identidad de caché independiente. Revisa los bordes finos y las aberturas: el refinamiento no garantiza un recorte perfecto. Los perfiles de primer plano de la demo y del ejemplo de estilos activan esta opción.
+Desactiva **Conservar fondo** para los objetos aislados y asigna un perfil de recorte a la fuente local. Después de la generación, el procesador de primer plano predice una máscara del objeto principal. El resultado es RGBA con alfa directo; la exportación PNG conserva ese alfa.
 
-Desactiva **Conservar fondo** para objetos aislados y asigna el perfil de máscara a la fuente local. Después de generar, el procesador predice una máscara del objeto destacado. El resultado es RGBA con alfa directo; la exportación PNG conserva ese alfa.
+El paquete no incluye el modelo de recorte. **Tools > Runtime Image Forge > Install Foreground Model** descarga U²-Netp (4.574.861 bytes, Apache-2.0) con su licencia, lo coloca en `Assets/RuntimeImageForge/ForegroundModel` y lo asigna a los perfiles de recorte que lo esperan. El modelo se instala una sola vez en el proyecto y se incluye en las compilaciones del juego, así que los jugadores no lo descargan por separado. El recorte se ejecuta localmente en la GPU. El perfil de U²-Netp lee la máscara de la salida llamada `1959` (**Nombre de la salida de máscara**); deja ese campo vacío para un modelo ONNX de máscara con una sola salida.
 
-Activa **Conservar fondo** para retratos, entornos e ilustraciones completas. Omite el recorte y conserva toda la imagen. Ambos modos exportan PNG. Sin perfil de recorte, usa `ForgeBackgroundMode.KeepBackground`; el motor rechaza una solicitud transparente en lugar de devolver una imagen opaca sin avisar.
+**Refinar objetos delgados** (`ForegroundModelProfile.refineUniformBackground`) puede ejecutar una segunda pasada para un objeto aislado sobre un fondo uniforme cuando la primera máscara está incompleta. El procesador conserva la primera máscara si el encuadre no es adecuado o si la nueva máscara no supera sus comprobaciones. Esta opción tiene su propia identidad de caché. El perfil de recorte del ejemplo la tiene activada.
 
-Para dar elección al jugador, pasa `ForgeBackgroundMode.Transparent` o `ForgeBackgroundMode.KeepBackground` a `PrepareAsync`, `Generate` o la sobrecarga `CreateRequest`. `StyleDefault` conserva el valor del recurso. La selección pertenece a una receta y no edita el estilo compartido. Preparar con `KeepBackground` omite el calentamiento del recorte; si luego se elige transparencia, ese pedido incluye su preparación inicial.
+Activa **Conservar fondo** para retratos, entornos e ilustraciones completas. Así se omite el recorte y se conserva toda la imagen. Ambos modos guardan PNG. Sin perfil de recorte, usa `ForgeBackgroundMode.KeepBackground`: una solicitud transparente se rechaza en lugar de devolver sin avisar una imagen opaca.
 
-El modelo de recorte U²-Netp se instala una vez en el proyecto: 4.574.861 bytes, unos 4,4 MiB. Las compilaciones del juego lo incluyen, así que el jugador no lo descarga por separado. Los volúmenes completos de pesos se indican arriba. El recorte es local y no tiene una tarifa API por imagen. Prepara la ruta transparente al iniciar; exportar un PNG existente solo copia sus bytes. El perfil de U²-Netp lee la máscara de la salida llamada `1959` (**Nombre de la salida de máscara**); deja ese campo vacío para un modelo ONNX de máscara con una sola salida.
+Para que el jugador elija, pasa `ForgeBackgroundMode.Transparent` o `ForgeBackgroundMode.KeepBackground` a `PrepareAsync`, `Generate` o la sobrecarga `CreateRequest` del estilo. `StyleDefault` usa el ajuste propio del estilo. La elección pertenece a una receta y no edita el estilo compartido. Preparar con `KeepBackground` omite el calentamiento del recorte; si el jugador elige después la transparencia, ese pedido también carga el modelo de recorte.
 
-Contornos finos, materiales translúcidos, huecos, sombras y objetos secundarios pueden producir máscaras imperfectas. Comprueba resultados reales para tu arte. El recorte produce una imagen 2D, no geometría ni contornos de sprite garantizados. La [guía de exportación](Exporting-images.md) explica cómo compartir el PNG original y su receta.
+Los contornos finos, los materiales translúcidos, los huecos, las sombras y los objetos secundarios pueden producir máscaras imperfectas. Comprueba resultados reales con tu arte. La eliminación del fondo produce una imagen 2D; no crea geometría ni garantiza contornos de sprite limpios. La [guía de exportación](Exporting-images.md) explica cómo compartir el PNG y su receta.
 
-## Importar un paquete local de modelos
+## Usar tus propios archivos de modelo
 
-Activa **Solo importación** (`ForgeModelProfile.importOnly`) cuando los archivos se suministren localmente. La opción está desactivada por defecto; los perfiles HTTPS existentes y sus identidades de generación no cambian. Estos perfiles pueden dejar vacías las URL de descarga. Cada archivo sigue necesitando nombre exacto, revisión, tamaño en bytes, SHA-256 e información de licencia. Los nombres de componentes deben ser distintos sin diferenciar mayúsculas de minúsculas.
+Un perfil también puede describir un modelo que proporciones tú mismo. Activa **Solo importación** (`ForgeModelProfile.importOnly`) cuando los archivos se entreguen localmente en lugar de descargarse; en ese caso, las URL de descarga pueden quedar vacías. Cada archivo sigue necesitando su nombre exacto, su revisión, su número de bytes, su SHA-256 y la información de su licencia, y los nombres de los archivos de componentes deben ser distintos incluso sin distinguir mayúsculas de minúsculas. Desactiva **Archivos separados de componentes** para describir un único archivo de checkpoint en lugar de archivos separados de generador, codificador de texto y VAE.
 
-En el inspector del perfil, elige **Importar archivos de modelo verificados** y selecciona la carpeta que contiene directamente los archivos. El importador no busca en subcarpetas ni descomprime archivos. Copia únicamente los nombres fijados, rechaza enlaces simbólicos y uniones de directorios, verifica cada archivo y lo instala en la caché de `Application.persistentDataPath/RuntimeImageForge`. No modifica los originales. La caché conserva su propia copia: reserva espacio para el paquete, la caché y un archivo temporal.
+En el Inspector del perfil, elige **Importar archivos de modelo verificados** y selecciona la carpeta que contiene directamente los archivos. El importador no busca en subcarpetas ni descomprime archivos comprimidos. Copia solo los nombres de archivo fijados, rechaza los enlaces simbólicos y las uniones de directorios, verifica cada archivo y lo instala en la caché de `Application.persistentDataPath/RuntimeImageForge`. No modifica los archivos de origen. Reserva espacio suficiente para los archivos de origen y para la copia en caché.
 
-**Cancelar importación** detiene la copia. Los archivos verificados completados pueden reutilizarse; la copia incompleta se elimina. Un archivo válido en caché se reutiliza sin reemplazarlo. La falta de archivos de un perfil de solo importación nunca inicia una descarga de red.
+**Cancelar importación** detiene la copia. Los archivos verificados completados siguen siendo reutilizables; la copia sin terminar se elimina. La falta de archivos en un perfil de solo importación nunca inicia una descarga por red.
 
-En un juego, llama explícitamente a `ForgeModelCache.ImportProfileAsync(cacheRoot, profile, selectedFolder, progress, cancellationToken)` o `LocalForgeBackendSource.ImportModelPackAsync(selectedFolder, progress, cancellationToken)`. La acción **IMPORT MODEL PACK** de la demo usa `LocalForgeBackendSource.ModelPackDirectory`: la carpeta fija `RuntimeImageForgeModels` junto al ejecutable, o junto a `Assets` en el Editor. Coloca los archivos exactos del perfil directamente allí y selecciona la acción. La caché existente funciona sin conexión y sin conservar el paquete original.
+En un juego, llama a `LocalForgeBackendSource.ImportModelPackAsync(selectedFolder, progress, cancellationToken)` o a `ForgeModelCache.ImportProfileAsync(cacheRoot, profile, selectedFolder, progress, cancellationToken)`. Con un perfil de solo importación, el ejemplo muestra **IMPORT MODEL PACK** y lee la carpeta `RuntimeImageForgeModels` situada junto al ejecutable del juego (junto a `Assets` en el Editor), disponible como `LocalForgeBackendSource.ModelPackDirectory`.
 
-La importación comprueba la identidad de los archivos, no la arquitectura ni la calidad de generación. Usa un backend compatible y conserva las licencias aplicables de los modelos.
+La importación comprueba la identidad de los archivos, no la arquitectura del modelo ni la calidad de las imágenes. Usa un modelo compatible con el motor incluido y respeta la licencia de cada modelo que uses o distribuyas.
 
 ## Elegir un perfil de modelo en el Editor
 
-En **Tools → Runtime Image Forge → Overview**, asigna el `LocalForgeBackendSource` de la escena a **Backend de la escena** y elige un recurso guardado en **Perfil del modelo**. La misma lista aparece en el inspector del backend local. **Abrir perfil del modelo** muestra sus ajustes y la acción explícita de importación local.
+En **Tools > Runtime Image Forge > Overview**, asigna el `LocalForgeBackendSource` de la escena a **Backend de la escena** y elige un perfil guardado en **Perfil del modelo**. La misma lista está disponible en el Inspector del motor local. **Abrir perfil del modelo** abre sus ajustes y sus acciones de descarga e importación.
 
-La selección solo cambia la referencia de ese origen y admite deshacer/rehacer. No modifica perfiles ni estilos, no transfiere archivos y no cambia el backend de un generador existente. Sal primero del modo Play; la compilación, la importación de recursos y cualquier generador listo o en preparación bloquean la selección. Cierra o descarga los generadores preparados antes de cambiar de perfil y prepara el modelo elegido en la siguiente sesión del juego.
-
-El perfil guardado necesita archivos correctamente fijados y una receta compatible con el backend. Aparecer en la lista no demuestra compatibilidad nativa ni calidad de imagen. Importa o descarga explícitamente los archivos exactos y comprueba que los estilos y ajustes del juego sean adecuados para el modelo.
+El selector solo cambia la referencia de esa fuente y admite deshacer. No edita el perfil ni ningún estilo, no mueve archivos de modelo y no cambia un generador que ya esté preparado. Sal primero del modo Play; la compilación, la importación de recursos y cualquier generador listo o en preparación bloquean la selección.

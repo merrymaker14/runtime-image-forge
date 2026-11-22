@@ -44,7 +44,7 @@
 </tr>
 <tr>
 <td>A native library fails verification</td>
-<td>Close the game or Editor. If the installed backend is reported as damaged, delete its version folder under <code>Application.persistentDataPath/RuntimeImageForge/Backends</code> and prepare again. If the bundled archive fails its check, delete <code>Assets/StreamingAssets/RuntimeImageForge/windows-vulkan.zip</code>, choose <strong>Tools &gt; Runtime Image Forge &gt; Install Windows Backend</strong> and rebuild the Player. The installer never overwrites a different existing file.</td>
+<td>Close the game or Editor. If the installed backend is reported as damaged, delete its version folder under <code>Application.persistentDataPath/RuntimeImageForge/Backends</code> and prepare again. If the bundled archive fails its check, delete <code>Assets/StreamingAssets/RuntimeImageForge/windows-vulkan.zip</code>, choose <strong>Tools &gt; Runtime Image Forge &gt; Install Windows Backend</strong> and rebuild the Player. The installer replaces only an archive written by another version of the package and never overwrites any other file.</td>
 </tr>
 <tr>
 <td>A different native library version is already loaded</td>
