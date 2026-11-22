@@ -71,6 +71,8 @@ En un juego, llama a `LocalForgeBackendSource.ImportModelPackAsync(selectedFolde
 
 La importación comprueba la identidad de los archivos, no la arquitectura del modelo ni la calidad de las imágenes. Usa un modelo compatible con el motor incluido y respeta la licencia de cada modelo que uses o distribuyas.
 
+El motor incluye un solo vocabulario de tokenizador, el de CLIP, para checkpoints con codificador de texto CLIP, como Stable Diffusion 1.5. Para un codificador de texto Qwen, como el archivo Qwen3-4B de FLUX.2 Klein, lee el tokenizador del archivo GGUF, así que un codificador Qwen debe ser un archivo GGUF que incluya su tokenizador, como los que generan las conversiones de llama.cpp. Los modelos cuyos codificadores de texto necesitan un tokenizador T5, UMT5, Mistral o Gemma, como FLUX.1, Stable Diffusion 3 y Wan, no son compatibles: su preparación falla con un error que nombra el tokenizador que falta.
+
 ## Elegir un perfil de modelo en el Editor
 
 En **Tools > Runtime Image Forge > Overview**, asigna el `LocalForgeBackendSource` de la escena a **Backend de la escena** y elige un perfil guardado en **Perfil del modelo**. La misma lista está disponible en el Inspector del motor local. **Abrir perfil del modelo** abre sus ajustes y sus acciones de descarga e importación.

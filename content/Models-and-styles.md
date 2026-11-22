@@ -71,6 +71,8 @@ In a game, call `LocalForgeBackendSource.ImportModelPackAsync(selectedFolder, pr
 
 Import checks file identity, not model architecture or image quality. Use a model that the supplied backend supports, and follow the license of every model you use or distribute.
 
+The backend includes one tokenizer vocabulary, CLIP's, for checkpoints with CLIP text encoders such as Stable Diffusion 1.5. For a Qwen text encoder, such as the Qwen3-4B file of FLUX.2 Klein, it reads the tokenizer from the GGUF file, so a Qwen text encoder must be a GGUF file that includes its tokenizer, as llama.cpp conversions do. Models whose text encoders need a T5, UMT5, Mistral or Gemma tokenizer, such as FLUX.1, Stable Diffusion 3 and Wan, are not supported: preparing one fails with an error that names the missing tokenizer.
+
 ## Choose a model profile in the Editor
 
 In **Tools > Runtime Image Forge > Overview**, assign the scene's `LocalForgeBackendSource` to **Scene backend**, then choose a saved profile from **Model profile**. The same list is available in the local backend Inspector. **Open model profile** opens its settings, download and import actions.

@@ -19,6 +19,9 @@
 | utf8proc | MIT и лицензия на данные Unicode. | `utf8proc-LICENSE.txt` |
 | miniz, zip | MIT. | `miniz-LICENSE.txt`, `zip-LICENSE.txt` |
 | stb image utilities | Sean Barrett, MIT или общественное достояние. | `stb-LICENSE.txt` |
+| Словарь токенизатора OpenAI CLIP | `bpe_simple_vocab_16e6` из [openai/CLIP](https://github.com/openai/CLIP/tree/d05afc436d78f1c48dc0dbf8e5980a9d471f35f6), MIT; встроен в движок для текстовых энкодеров CLIP. | `openai-clip-LICENSE.txt` |
+
+Других словарей токенизаторов в движке нет. Для текстового энкодера Qwen токенизатор читается из GGUF-файла этого энкодера, который скачивается вместе с моделью на условиях её лицензии.
 
 **Tools > Runtime Image Forge > Install Windows Backend** (эту же установку выполняет **Открыть пример The Ember Forge**) упаковывает DLL в архив в `Assets/StreamingAssets/RuntimeImageForge` и копирует эти файлы лицензий в `Assets/StreamingAssets/RuntimeImageForge/Licenses`, чтобы они попали в собранную игру. Архив движка, записанный другой версией пакета, заменяется; остальные существующие файлы с другим содержимым команда сохраняет, а не перезаписывает. Распространяя игру с этим движком, сохраняйте эти уведомления.
 

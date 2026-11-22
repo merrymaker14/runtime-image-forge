@@ -23,6 +23,10 @@
 <td>Comprueba perfil, Windows x64, GPU Vulkan y archivos nativos. Consulta Console o Player log para la causa concreta.</td>
 </tr>
 <tr>
+<td>La preparación informa de que falta un tokenizador</td>
+<td>El motor incluye el tokenizador CLIP y lee el tokenizador Qwen de un archivo GGUF del codificador de texto. <em>The text encoder file has no Qwen tokenizer data</em> significa que el codificador de texto no es un archivo GGUF con su tokenizador: usa el codificador GGUF del modelo, como el del perfil FLUX.2 Klein. Un mensaje que indica que el motor no incluye el tokenizador T5, UMT5, Mistral o Gemma significa que esa familia de modelos no es compatible.</td>
+</tr>
+<tr>
 <td>Falta una dependencia nativa o está desactualizada</td>
 <td>Instala la versión más reciente de Microsoft Visual C++ 2015–2022 Redistributable (x64) desde Microsoft y reinicia Unity o el juego. Si el mensaje continúa, actualiza el controlador gráfico.</td>
 </tr>

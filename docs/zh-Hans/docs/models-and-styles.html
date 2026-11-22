@@ -90,6 +90,7 @@
 <p><strong>取消导入</strong>会停止复制。已完成验证的文件仍可复用；未完成的副本会被删除。仅导入配置缺少文件时，绝不会触发网络下载。</p>
 <p>在游戏中，请调用 <code>LocalForgeBackendSource.ImportModelPackAsync(selectedFolder, progress, cancellationToken)</code> 或 <code>ForgeModelCache.ImportProfileAsync(cacheRoot, profile, selectedFolder, progress, cancellationToken)</code>。对于仅导入配置，示例会显示 <strong>IMPORT MODEL PACK</strong>，并读取游戏可执行文件旁的 <code>RuntimeImageForgeModels</code> 文件夹（在编辑器中位于 <code>Assets</code> 旁），该文件夹通过 <code>LocalForgeBackendSource.ModelPackDirectory</code> 提供。</p>
 <p>导入检查的是文件标识，而不是模型架构或图像质量。请使用随附后端支持的模型，并遵守你使用或分发的每个模型的许可证。</p>
+<p>后端只内置一份分词器词表，即 CLIP 词表，供使用 CLIP 文本编码器的检查点（例如 Stable Diffusion 1.5）使用。对于 Qwen 文本编码器（例如 FLUX.2 Klein 的 Qwen3-4B 文件），后端会从 GGUF 文件中读取分词器，因此 Qwen 文本编码器必须是自带分词器的 GGUF 文件（llama.cpp 转换得到的文件即是如此）。文本编码器需要 T5、UMT5、Mistral 或 Gemma 分词器的模型（例如 FLUX.1、Stable Diffusion 3 和 Wan）不受支持：准备此类模型会失败，并在错误中指出缺少的分词器。</p>
 <h2 id="choose-a-model-profile-in-the-editor">在编辑器中选择模型配置</h2>
 <p>在 <strong>Tools &gt; Runtime Image Forge &gt; Overview</strong> 中，将场景的 <code>LocalForgeBackendSource</code> 指定到<strong>场景后端</strong>，然后从<strong>模型配置</strong>中选择已保存的配置。本地后端的 Inspector 中也有同一列表。<strong>打开模型配置</strong>会打开其设置以及下载和导入操作。</p>
 <p>选择器只更改该来源的引用，并支持撤销。它不会编辑配置或任何风格，不会移动模型文件，也不会更改已准备好的生成器。请先退出播放模式；编译、资源导入以及任何已就绪或正在准备的生成器都会阻止选择。</p>

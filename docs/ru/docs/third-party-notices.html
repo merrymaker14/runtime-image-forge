@@ -65,7 +65,13 @@
 <td>Sean Barrett, MIT или общественное достояние.</td>
 <td><code>stb-LICENSE.txt</code></td>
 </tr>
+<tr>
+<td>Словарь токенизатора OpenAI CLIP</td>
+<td><code>bpe_simple_vocab_16e6</code> из <a href="https://github.com/openai/CLIP/tree/d05afc436d78f1c48dc0dbf8e5980a9d471f35f6">openai/CLIP</a>, MIT; встроен в движок для текстовых энкодеров CLIP.</td>
+<td><code>openai-clip-LICENSE.txt</code></td>
+</tr>
 </tbody></table></div>
+<p>Других словарей токенизаторов в движке нет. Для текстового энкодера Qwen токенизатор читается из GGUF-файла этого энкодера, который скачивается вместе с моделью на условиях её лицензии.</p>
 <p><strong>Tools &gt; Runtime Image Forge &gt; Install Windows Backend</strong> (эту же установку выполняет <strong>Открыть пример The Ember Forge</strong>) упаковывает DLL в архив в <code>Assets/StreamingAssets/RuntimeImageForge</code> и копирует эти файлы лицензий в <code>Assets/StreamingAssets/RuntimeImageForge/Licenses</code>, чтобы они попали в собранную игру. Архив движка, записанный другой версией пакета, заменяется; остальные существующие файлы с другим содержимым команда сохраняет, а не перезаписывает. Распространяя игру с этим движком, сохраняйте эти уведомления.</p>
 <h2 id="made-for-this-package">Создано для пакета</h2>
 <p>Все остальные файлы созданы Strange Euphoria XR специально для Runtime Image Forge: исходный код на C#, окна редактора, иконки и логотип, документация, а также пример The Ember Forge со сценой, скриптами, профилями моделей и стилей и иллюстрацией мастерской. Иллюстрация мастерской создана с помощью генерации изображений OpenAI. В пакете нет сторонних шрифтов, аудио, изображений и моделей.</p>

@@ -23,6 +23,10 @@
 <td>Check the selected profile, Windows x64 support, Vulkan GPU support and native files. Read the Unity Console or Player log for the specific cause.</td>
 </tr>
 <tr>
+<td>Preparation reports a missing tokenizer</td>
+<td>The backend includes the CLIP tokenizer and reads the Qwen tokenizer from a GGUF text encoder file. <em>The text encoder file has no Qwen tokenizer data</em> means that the text encoder is not a GGUF file with its tokenizer: use the model&#39;s GGUF text encoder, such as the one in the FLUX.2 Klein profile. A message that the backend does not include the T5, UMT5, Mistral or Gemma tokenizer means that this model family is not supported.</td>
+</tr>
+<tr>
 <td>A native dependency is missing or outdated</td>
 <td>Install the latest Microsoft Visual C++ 2015–2022 Redistributable (x64) from Microsoft and restart Unity or the game. Update the graphics driver if the message remains.</td>
 </tr>

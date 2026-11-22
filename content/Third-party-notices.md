@@ -19,6 +19,9 @@ The Windows x64 native backend in `Native/windows-x64` is a modified build of [s
 | utf8proc | MIT and Unicode data license. | `utf8proc-LICENSE.txt` |
 | miniz, zip | MIT. | `miniz-LICENSE.txt`, `zip-LICENSE.txt` |
 | stb image utilities | Sean Barrett, MIT or public domain. | `stb-LICENSE.txt` |
+| OpenAI CLIP tokenizer vocabulary | `bpe_simple_vocab_16e6` from [openai/CLIP](https://github.com/openai/CLIP/tree/d05afc436d78f1c48dc0dbf8e5980a9d471f35f6), MIT; built into the backend for CLIP text encoders. | `openai-clip-LICENSE.txt` |
+
+The backend contains no other tokenizer vocabulary. For a Qwen text encoder it reads the tokenizer from that encoder's GGUF file, which you download with the model under the model's license.
 
 **Tools > Runtime Image Forge > Install Windows Backend** (also run by **Open The Ember Forge sample**) packs the DLLs into an archive in `Assets/StreamingAssets/RuntimeImageForge` and copies these license files to `Assets/StreamingAssets/RuntimeImageForge/Licenses`, so they travel with a built game. A backend archive written by another version of the package is replaced; other existing files with different content are kept instead of being overwritten. Keep these notices when you distribute a game that contains the backend.
 

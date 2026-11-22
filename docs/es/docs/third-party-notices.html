@@ -65,7 +65,13 @@
 <td>Sean Barrett, MIT o dominio público.</td>
 <td><code>stb-LICENSE.txt</code></td>
 </tr>
+<tr>
+<td>Vocabulario del tokenizador OpenAI CLIP</td>
+<td><code>bpe_simple_vocab_16e6</code> de <a href="https://github.com/openai/CLIP/tree/d05afc436d78f1c48dc0dbf8e5980a9d471f35f6">openai/CLIP</a>, MIT; integrado en el motor para codificadores de texto CLIP.</td>
+<td><code>openai-clip-LICENSE.txt</code></td>
+</tr>
 </tbody></table></div>
+<p>El motor no contiene ningún otro vocabulario de tokenizador. Para un codificador de texto Qwen lee el tokenizador del archivo GGUF de ese codificador, que se descarga con el modelo según la licencia del modelo.</p>
 <p><strong>Tools &gt; Runtime Image Forge &gt; Install Windows Backend</strong> (que también ejecuta <strong>Abrir el ejemplo The Ember Forge</strong>) empaqueta las DLL en un archivo comprimido en <code>Assets/StreamingAssets/RuntimeImageForge</code> y copia estos archivos de licencia a <code>Assets/StreamingAssets/RuntimeImageForge/Licenses</code>, para que acompañen al juego compilado. El archivo comprimido del motor escrito por otra versión del paquete se reemplaza; los demás archivos existentes con otro contenido se conservan en lugar de sobrescribirse. Conserva estos avisos cuando distribuyas un juego que contenga el motor.</p>
 <h2 id="made-for-this-package">Creado para este paquete</h2>
 <p>Strange Euphoria XR creó para Runtime Image Forge todos los demás archivos: el código fuente en C#, las ventanas del Editor, los iconos y el logotipo, la documentación y el ejemplo The Ember Forge con su escena, sus scripts, sus perfiles de modelo y de estilo y la ilustración del taller. La ilustración del taller se creó con la generación de imágenes de OpenAI. El paquete no contiene fuentes, audio, imágenes ni modelos de terceros.</p>

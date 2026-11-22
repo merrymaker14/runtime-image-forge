@@ -71,6 +71,8 @@
 
 导入检查的是文件标识，而不是模型架构或图像质量。请使用随附后端支持的模型，并遵守你使用或分发的每个模型的许可证。
 
+后端只内置一份分词器词表，即 CLIP 词表，供使用 CLIP 文本编码器的检查点（例如 Stable Diffusion 1.5）使用。对于 Qwen 文本编码器（例如 FLUX.2 Klein 的 Qwen3-4B 文件），后端会从 GGUF 文件中读取分词器，因此 Qwen 文本编码器必须是自带分词器的 GGUF 文件（llama.cpp 转换得到的文件即是如此）。文本编码器需要 T5、UMT5、Mistral 或 Gemma 分词器的模型（例如 FLUX.1、Stable Diffusion 3 和 Wan）不受支持：准备此类模型会失败，并在错误中指出缺少的分词器。
+
 ## 在编辑器中选择模型配置
 
 在 **Tools > Runtime Image Forge > Overview** 中，将场景的 `LocalForgeBackendSource` 指定到**场景后端**，然后从**模型配置**中选择已保存的配置。本地后端的 Inspector 中也有同一列表。**打开模型配置**会打开其设置以及下载和导入操作。

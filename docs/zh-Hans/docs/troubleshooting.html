@@ -23,6 +23,10 @@
 <td>检查配置、Windows x64、Vulkan GPU 支持与原生文件，在 Console 或 Player log 查看具体原因。</td>
 </tr>
 <tr>
+<td>准备时提示缺少分词器</td>
+<td>后端内置 CLIP 分词器，并从文本编码器的 GGUF 文件读取 Qwen 分词器。<em>The text encoder file has no Qwen tokenizer data</em> 表示文本编码器不是自带分词器的 GGUF 文件：请使用该模型的 GGUF 文本编码器，例如 FLUX.2 Klein 配置中的文件。如果提示后端不包含 T5、UMT5、Mistral 或 Gemma 分词器，则表示不支持该模型系列。</td>
+</tr>
+<tr>
 <td>原生依赖缺失或版本过旧</td>
 <td>从 Microsoft 安装最新的 Microsoft Visual C++ 2015–2022 Redistributable (x64)，然后重启 Unity 或游戏。如果仍有提示，请更新显卡驱动。</td>
 </tr>

@@ -19,6 +19,9 @@
 | utf8proc | MIT 和 Unicode 数据许可证。 | `utf8proc-LICENSE.txt` |
 | miniz, zip | MIT。 | `miniz-LICENSE.txt`, `zip-LICENSE.txt` |
 | stb image utilities | Sean Barrett，MIT 或公共领域。 | `stb-LICENSE.txt` |
+| OpenAI CLIP 分词器词表 | 来自 [openai/CLIP](https://github.com/openai/CLIP/tree/d05afc436d78f1c48dc0dbf8e5980a9d471f35f6) 的 `bpe_simple_vocab_16e6`，MIT；内置于后端，供 CLIP 文本编码器使用。 | `openai-clip-LICENSE.txt` |
+
+后端不包含其他分词器词表。对于 Qwen 文本编码器，后端会从该编码器的 GGUF 文件读取分词器；该文件随模型一起下载，并适用模型的许可证。
 
 **Tools > Runtime Image Forge > Install Windows Backend**（**打开 The Ember Forge 示例**也会执行此安装）会将 DLL 打包为 `Assets/StreamingAssets/RuntimeImageForge` 中的归档，并把这些许可证文件复制到 `Assets/StreamingAssets/RuntimeImageForge/Licenses`，使其随构建的游戏一起提供。由其他版本软件包写入的后端归档会被替换；其他内容不同的现有文件会保留，而不会被覆盖。分发包含此后端的游戏时，请保留这些声明。
 

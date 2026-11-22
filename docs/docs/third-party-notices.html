@@ -65,7 +65,13 @@
 <td>Sean Barrett, MIT or public domain.</td>
 <td><code>stb-LICENSE.txt</code></td>
 </tr>
+<tr>
+<td>OpenAI CLIP tokenizer vocabulary</td>
+<td><code>bpe_simple_vocab_16e6</code> from <a href="https://github.com/openai/CLIP/tree/d05afc436d78f1c48dc0dbf8e5980a9d471f35f6">openai/CLIP</a>, MIT; built into the backend for CLIP text encoders.</td>
+<td><code>openai-clip-LICENSE.txt</code></td>
+</tr>
 </tbody></table></div>
+<p>The backend contains no other tokenizer vocabulary. For a Qwen text encoder it reads the tokenizer from that encoder&#39;s GGUF file, which you download with the model under the model&#39;s license.</p>
 <p><strong>Tools &gt; Runtime Image Forge &gt; Install Windows Backend</strong> (also run by <strong>Open The Ember Forge sample</strong>) packs the DLLs into an archive in <code>Assets/StreamingAssets/RuntimeImageForge</code> and copies these license files to <code>Assets/StreamingAssets/RuntimeImageForge/Licenses</code>, so they travel with a built game. A backend archive written by another version of the package is replaced; other existing files with different content are kept instead of being overwritten. Keep these notices when you distribute a game that contains the backend.</p>
 <h2 id="made-for-this-package">Made for this package</h2>
 <p>All other files were made for Runtime Image Forge by Strange Euphoria XR: the C# source code, Editor windows, icons and logo, the documentation, and The Ember Forge sample with its scene, scripts, model and style profiles and workshop illustration. The workshop illustration was created with OpenAI image generation. The package contains no third-party fonts, audio, images or models.</p>

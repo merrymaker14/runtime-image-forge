@@ -19,6 +19,9 @@ El motor nativo para Windows x64 de `Native/windows-x64` es una compilación mod
 | utf8proc | MIT y licencia de datos de Unicode. | `utf8proc-LICENSE.txt` |
 | miniz, zip | MIT. | `miniz-LICENSE.txt`, `zip-LICENSE.txt` |
 | stb image utilities | Sean Barrett, MIT o dominio público. | `stb-LICENSE.txt` |
+| Vocabulario del tokenizador OpenAI CLIP | `bpe_simple_vocab_16e6` de [openai/CLIP](https://github.com/openai/CLIP/tree/d05afc436d78f1c48dc0dbf8e5980a9d471f35f6), MIT; integrado en el motor para codificadores de texto CLIP. | `openai-clip-LICENSE.txt` |
+
+El motor no contiene ningún otro vocabulario de tokenizador. Para un codificador de texto Qwen lee el tokenizador del archivo GGUF de ese codificador, que se descarga con el modelo según la licencia del modelo.
 
 **Tools > Runtime Image Forge > Install Windows Backend** (que también ejecuta **Abrir el ejemplo The Ember Forge**) empaqueta las DLL en un archivo comprimido en `Assets/StreamingAssets/RuntimeImageForge` y copia estos archivos de licencia a `Assets/StreamingAssets/RuntimeImageForge/Licenses`, para que acompañen al juego compilado. El archivo comprimido del motor escrito por otra versión del paquete se reemplaza; los demás archivos existentes con otro contenido se conservan en lugar de sobrescribirse. Conserva estos avisos cuando distribuyas un juego que contenga el motor.
 
