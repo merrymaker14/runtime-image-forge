@@ -449,25 +449,25 @@
     "es": "Escudo de bronce · PNG original de 1024 × 1024",
     "zh-Hans": "青铜盾牌 · 原始 1024 × 1024 PNG"
   },
-  "A locally generated bronze ring with its original background": {
-    "ru": "Бронзовое кольцо, сгенерированное локально, с исходным фоном",
-    "es": "Un anillo de bronce generado localmente con su fondo original",
-    "zh-Hans": "本地生成的青铜戒指，保留原始背景"
+  "A locally generated obsidian ring with its original background": {
+    "ru": "Обсидиановое кольцо, сгенерированное локально, с исходным фоном",
+    "es": "Un anillo de obsidiana generado localmente con su fondo original",
+    "zh-Hans": "本地生成的黑曜石戒指，保留原始背景"
   },
-  "Bronze ring · original 1024 × 1024 PNG with background": {
-    "ru": "Бронзовое кольцо · исходный PNG 1024 × 1024 с фоном",
-    "es": "Anillo de bronce · PNG original de 1024 × 1024 con fondo",
-    "zh-Hans": "青铜戒指 · 带背景的原始 1024 × 1024 PNG"
+  "Obsidian ring · original 1024 × 1024 PNG with background": {
+    "ru": "Обсидиановое кольцо · исходный PNG 1024 × 1024 с фоном",
+    "es": "Anillo de obsidiana · PNG original de 1024 × 1024 con fondo",
+    "zh-Hans": "黑曜石戒指 · 带背景的原始 1024 × 1024 PNG"
   },
-  "Original Bonsai outputs at 1024 × 1024; changing this preview does not run a model.": {
-    "ru": "Исходные результаты Bonsai 1024 × 1024; переключение примеров не запускает модель.",
-    "es": "Resultados originales de Bonsai de 1024 × 1024; cambiar esta vista previa no ejecuta un modelo.",
-    "zh-Hans": "Bonsai 的原始 1024 × 1024 输出；切换预览不会运行模型。"
+  "Original FLUX.2 Klein 4B outputs at 1024 × 1024; changing this preview does not run a model.": {
+    "ru": "Исходные результаты FLUX.2 Klein 4B 1024 × 1024; переключение примеров не запускает модель.",
+    "es": "Resultados originales de FLUX.2 Klein 4B de 1024 × 1024; cambiar esta vista previa no ejecuta un modelo.",
+    "zh-Hans": "FLUX.2 Klein 4B 的原始 1024 × 1024 输出；切换预览不会运行模型。"
   },
-  "Real gameplay of the standalone Windows game, recorded with Bonsai and an original soundtrack. The local model was prepared before capture; generation is shown at its recorded pace.": {
-    "ru": "Настоящий игровой процесс отдельной игры для Windows, записанный с Bonsai и оригинальной музыкой. Локальная модель подготовлена до записи; генерация показана в исходном темпе.",
-    "es": "Juego real de la versión independiente para Windows, grabado con Bonsai y una banda sonora original. El modelo local se preparó antes de grabar; la generación se muestra a su ritmo original.",
-    "zh-Hans": "独立 Windows 版游戏的真实游戏过程，录制时使用 Bonsai 和原创音乐。本地模型在录制前已准备好；生成过程按录制时的实际节奏展示。"
+  "The sample from the package, running as a Windows Player with FLUX.2 Klein 4B and recorded with an original soundtrack. The model was downloaded and warmed up before capture; generation is shown at its recorded pace.": {
+    "ru": "Пример из пакета, запущенный как Windows Player с FLUX.2 Klein 4B и записанный с оригинальной музыкой. Модель скачана и прогрета до записи; генерация показана в исходном темпе.",
+    "es": "El ejemplo del paquete, ejecutado como Windows Player con FLUX.2 Klein 4B y grabado con una banda sonora original. El modelo se descargó y se precalentó antes de grabar; la generación se muestra a su ritmo original.",
+    "zh-Hans": "软件包中的示例，以 Windows Player 运行，使用 FLUX.2 Klein 4B，并配以原创音乐录制。录制前已下载并预热模型；生成过程按录制时的实际节奏展示。"
   },
   "Model weights are downloaded separately: the included FLUX.2 Klein 4B profile fetches its three pinned files over HTTPS only on an explicit download action. After setup, generation runs offline on the player's machine. Hardware, resolution and other GPU workloads affect preparation and generation.": {
     "ru": "Веса моделей скачиваются отдельно: входящий в комплект профиль FLUX.2 Klein 4B загружает три закреплённых файла по HTTPS только по явной команде загрузки. После настройки генерация работает офлайн на компьютере игрока. Оборудование, разрешение и другие задачи GPU влияют на подготовку и генерацию.",

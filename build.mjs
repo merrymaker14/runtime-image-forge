@@ -33,7 +33,7 @@ const translate = (text,locale) => {
 };
 const sampleDetails={
  shield:['shield.png','A locally generated bronze shield with a transparent background','Bronze shield · original 1024 × 1024 PNG'],
- ring:['ring.png','A locally generated bronze ring with its original background','Bronze ring · original 1024 × 1024 PNG with background']
+ ring:['ring.png','A locally generated obsidian ring with its original background','Obsidian ring · original 1024 × 1024 PNG with background']
 };
 const homeSource=await readFile('public/index.html','utf8');
 await mkdir('docs/docs',{recursive:true});await cp('public','docs',{recursive:true});
