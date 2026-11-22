@@ -478,5 +478,25 @@
     "ru": "Unity 6000.5 или новее. Поставляемый движок: DLL Windows x64 Vulkan внутри Unity; нужен Microsoft Visual C++ 2015–2022 Redistributable (x64). Обработка переднего плана использует GPU Compute.",
     "es": "Unity 6000.5 o posterior. Motor incluido: DLL de Windows x64 con Vulkan dentro de Unity; requiere Microsoft Visual C++ 2015–2022 Redistributable (x64). El procesamiento del primer plano usa GPU Compute.",
     "zh-Hans": "Unity 6000.5 或更新版本。随附后端：在 Unity 内运行的 Windows x64 Vulkan DLL；需要 Microsoft Visual C++ 2015–2022 Redistributable (x64)。前景处理使用 GPU Compute。"
+  },
+  "Play the Windows demo": {
+    "ru": "Сыграть в демо для Windows",
+    "es": "Jugar la demo para Windows",
+    "zh-Hans": "试玩 Windows 演示"
+  },
+  "Play it without Unity.": {
+    "ru": "Играйте без Unity.",
+    "es": "Juega sin Unity.",
+    "zh-Hans": "无需 Unity 即可游玩。"
+  },
+  "The Ember Forge for Windows is an 80 MB download. It needs Windows x64 and a Vulkan-capable GPU; on first launch it downloads FLUX.2 Klein 4B (5.21 GB) from Hugging Face and then works offline.": {
+    "ru": "The Ember Forge для Windows — загрузка 80 МБ. Нужны Windows x64 и GPU с Vulkan; при первом запуске игра скачивает FLUX.2 Klein 4B (5,21 ГБ) с Hugging Face и дальше работает без интернета.",
+    "es": "The Ember Forge para Windows es una descarga de 80 MB. Necesita Windows x64 y una GPU con Vulkan; en el primer inicio descarga FLUX.2 Klein 4B (5,21 GB) desde Hugging Face y después funciona sin conexión.",
+    "zh-Hans": "The Ember Forge Windows 版下载仅 80 MB。需要 Windows x64 和支持 Vulkan 的 GPU；首次启动时会从 Hugging Face 下载 FLUX.2 Klein 4B（5.21 GB），之后可离线运行。"
+  },
+  "Download for Windows · 80 MB": {
+    "ru": "Скачать для Windows · 80 МБ",
+    "es": "Descargar para Windows · 80 MB",
+    "zh-Hans": "下载 Windows 版 · 80 MB"
   }
 }
